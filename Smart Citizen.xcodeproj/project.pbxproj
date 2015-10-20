@@ -12,6 +12,8 @@
 		12471D411BD1810A00B86052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D3F1BD1810A00B86052 /* Main.storyboard */; };
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
+		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; settings = {ASSET_TAGS = (); }; };
+		12D0EEFD1BD6EBA6006A2801 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 12D0EEFC1BD6EBA6006A2801 /* README.md */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +23,9 @@
 		12471D401BD1810A00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12471D421BD1810A00B86052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12471D451BD1810B00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
+		12D0EEF81BD6EB0B006A2801 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		12D0EEFC1BD6EBA6006A2801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,49 @@
 		12471D3A1BD1810A00B86052 /* Smart Citizen */ = {
 			isa = PBXGroup;
 			children = (
+				12D0EEFE1BD6EBC3006A2801 /* Core */,
+				12D0EEFA1BD6EB37006A2801 /* Controller */,
+				12D0EEFB1BD6EB42006A2801 /* Model */,
 				12471D3B1BD1810A00B86052 /* AppDelegate.swift */,
 				12471D3D1BD1810A00B86052 /* ViewController.swift */,
 				12471D3F1BD1810A00B86052 /* Main.storyboard */,
 				12471D421BD1810A00B86052 /* Assets.xcassets */,
 				12471D441BD1810B00B86052 /* LaunchScreen.storyboard */,
-				12471D471BD1810B00B86052 /* Info.plist */,
+				12D0EEF71BD6EA34006A2801 /* Support */,
 			);
 			path = "Smart Citizen";
+			sourceTree = "<group>";
+		};
+		12D0EEF71BD6EA34006A2801 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				12D0EEF81BD6EB0B006A2801 /* .gitignore */,
+				12471D471BD1810B00B86052 /* Info.plist */,
+				12D0EEFC1BD6EBA6006A2801 /* README.md */,
+			);
+			name = Support;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		12D0EEFA1BD6EB37006A2801 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		12D0EEFB1BD6EB42006A2801 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		12D0EEFE1BD6EBC3006A2801 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */,
 				12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */,
 				12471D431BD1810A00B86052 /* Assets.xcassets in Resources */,
 				12471D411BD1810A00B86052 /* Main.storyboard in Resources */,
@@ -135,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12D0EEFD1BD6EBA6006A2801 /* README.md in Sources */,
 				12471D3E1BD1810A00B86052 /* ViewController.swift in Sources */,
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +325,7 @@
 				12471D4C1BD1810B00B86052 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
