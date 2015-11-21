@@ -13,6 +13,7 @@
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
 		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; };
+		12F497131C00B365001E3EB1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 12F497121C00B365001E3EB1 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
 		12D0EEF81BD6EB0B006A2801 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		12D0EEFC1BD6EBA6006A2801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		12F497121C00B365001E3EB1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		12D0EEF71BD6EA34006A2801 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				12F497121C00B365001E3EB1 /* Podfile */,
 				12D0EEF81BD6EB0B006A2801 /* .gitignore */,
 				12471D471BD1810B00B86052 /* Info.plist */,
 				12D0EEFC1BD6EBA6006A2801 /* README.md */,
@@ -168,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12F497131C00B365001E3EB1 /* Podfile in Resources */,
 				12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */,
 				12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */,
 				12471D431BD1810A00B86052 /* Assets.xcassets in Resources */,
