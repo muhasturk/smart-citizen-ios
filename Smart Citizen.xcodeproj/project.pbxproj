@@ -11,6 +11,7 @@
 		12471D411BD1810A00B86052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D3F1BD1810A00B86052 /* Main.storyboard */; };
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
+		12A423AD1C00D6B800C9744D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A423AC1C00D6B800C9744D /* Util.swift */; };
 		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; };
 		73F7D6F2B74289678569F141 /* Pods_Smart_Citizen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DDC2688F4AA6A16BA4C347 /* Pods_Smart_Citizen.framework */; };
 /* End PBXBuildFile section */
@@ -22,6 +23,7 @@
 		12471D421BD1810A00B86052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12471D451BD1810B00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
+		12A423AC1C00D6B800C9744D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Core/Util.swift; sourceTree = "<group>"; };
 		12D0EEF81BD6EB0B006A2801 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		12D0EEFC1BD6EBA6006A2801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		29F94C4A4F57303150764A58 /* Pods-Smart Citizen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Citizen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		12D0EEFE1BD6EBC3006A2801 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				12A423AC1C00D6B800C9744D /* Util.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
+				12A423AD1C00D6B800C9744D /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
