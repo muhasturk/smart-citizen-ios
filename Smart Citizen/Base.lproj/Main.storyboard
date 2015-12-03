@@ -223,7 +223,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dashboard" id="L6s-c9-fmB"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Map" id="L6s-c9-fmB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -244,7 +244,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.97304188174785533" green="0.91228315791841519" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Ff0-kC-ym4"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Dashboard" id="Ff0-kC-ym4"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6L-37-wf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +265,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.74983852956206842" green="1" blue="0.78802904081258718" alpha="0.29542025862068966" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="nC5-89-Bgf"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Report" id="nC5-89-Bgf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-KY-gRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,7 +286,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.97249168157577515" green="0.97746187448501587" blue="0.92324960231781006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="OEB-Q4-Kbd"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="Profile" id="OEB-Q4-Kbd"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrR-Al-gBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,7 +307,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.66184049844741821" green="0.93068426847457886" blue="0.91145509481430054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="So8-kX-umX"/>
+                    <tabBarItem key="tabBarItem" tag="5" title="Item" id="So8-kX-umX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-uU-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,10 +327,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JPb-1s-u9z"/>
-                        <segue destination="ZqU-4d-Xem" kind="relationship" relationship="viewControllers" id="JKd-iG-uVA"/>
-                        <segue destination="1hD-Nx-i6y" kind="relationship" relationship="viewControllers" id="2nx-hg-vEX"/>
-                        <segue destination="nOu-iU-xgZ" kind="relationship" relationship="viewControllers" id="FCg-T2-ZRe"/>
-                        <segue destination="Lbk-ns-F1d" kind="relationship" relationship="viewControllers" id="7cO-Sg-JMA"/>
+                        <segue destination="nOu-iU-xgZ" kind="relationship" relationship="viewControllers" id="0fV-9A-Ysr"/>
+                        <segue destination="Lbk-ns-F1d" kind="relationship" relationship="viewControllers" id="bbj-yH-2Za"/>
+                        <segue destination="ZqU-4d-Xem" kind="relationship" relationship="viewControllers" id="9Wb-dn-b4b"/>
+                        <segue destination="1hD-Nx-i6y" kind="relationship" relationship="viewControllers" id="Yqb-BE-Hf3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQj-gg-IXT" userLabel="First Responder" sceneMemberID="firstResponder"/>
