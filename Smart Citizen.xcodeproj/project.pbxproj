@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1227E1451C1094E20072D751 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227E1441C1094E20072D751 /* LoginVC.swift */; };
+		1227E1471C1095200072D751 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227E1461C1095200072D751 /* SignUpVC.swift */; };
 		12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12471D3B1BD1810A00B86052 /* AppDelegate.swift */; };
 		12471D411BD1810A00B86052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D3F1BD1810A00B86052 /* Main.storyboard */; };
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1227E1441C1094E20072D751 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Controller/LoginVC.swift; sourceTree = "<group>"; };
+		1227E1461C1095200072D751 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = Controller/SignUpVC.swift; sourceTree = "<group>"; };
 		12471D381BD1810A00B86052 /* Smart Citizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Citizen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12471D3B1BD1810A00B86052 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12471D401BD1810A00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,7 +104,9 @@
 		12D0EEFA1BD6EB37006A2801 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1227E1441C1094E20072D751 /* LoginVC.swift */,
 				12A423AE1C00DA4400C9744D /* ProfileVC.swift */,
+				1227E1461C1095200072D751 /* SignUpVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -262,6 +268,8 @@
 			files = (
 				12A423AF1C00DA4400C9744D /* ProfileVC.swift in Sources */,
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
+				1227E1451C1094E20072D751 /* LoginVC.swift in Sources */,
+				1227E1471C1095200072D751 /* SignUpVC.swift in Sources */,
 				12A423AD1C00D6B800C9744D /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
