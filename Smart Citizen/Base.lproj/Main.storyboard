@@ -223,7 +223,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Map" id="L6s-c9-fmB"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Map" image="geo_fence-50" id="L6s-c9-fmB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -244,7 +244,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.97304188174785533" green="0.91228315791841519" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="Dashboard" id="Ff0-kC-ym4"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Dashboard" image="Content" id="Ff0-kC-ym4"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6L-37-wf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +265,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.74983852956206842" green="1" blue="0.78802904081258718" alpha="0.29542025862068966" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="Report" id="nC5-89-Bgf"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Report" image="Iris Scan" id="nC5-89-Bgf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-KY-gRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,7 +286,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.97249168157577515" green="0.97746187448501587" blue="0.92324960231781006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="4" title="Profile" id="OEB-Q4-Kbd"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="Profile" image="Administrator" id="OEB-Q4-Kbd"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrR-Al-gBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,7 +353,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="5" title="Item" id="So8-kX-umX"/>
+                    <tabBarItem key="tabBarItem" tag="5" title="Settings" image="Settings" id="So8-kX-umX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-uU-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,8 +405,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Administrator" width="25" height="25"/>
+        <image name="Content" width="25" height="25"/>
+        <image name="Iris Scan" width="25" height="25"/>
+        <image name="Settings" width="25" height="25"/>
         <image name="app_icon" width="1024" height="1024"/>
         <image name="daytime" width="640" height="1136"/>
+        <image name="geo_fence-50" width="25" height="25"/>
         <image name="logo" width="775" height="89"/>
         <image name="nighttheme" width="640" height="1136"/>
     </resources>
