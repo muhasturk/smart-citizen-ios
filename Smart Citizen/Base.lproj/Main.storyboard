@@ -105,6 +105,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="erP-Sl-TBk"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="emailField" destination="RRz-UI-7io" id="jSg-uP-buf"/>
+                        <outlet property="passwordField" destination="xJc-6U-MNF" id="3U9-cC-ATK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfa-Q5-Zsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
