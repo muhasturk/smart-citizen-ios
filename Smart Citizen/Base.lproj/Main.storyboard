@@ -57,7 +57,7 @@
                                 <animations/>
                                 <state key="normal" title="Start Using"/>
                                 <connections>
-                                    <segue destination="oer-D6-63B" kind="show" id="crO-Qz-pqE"/>
+                                    <segue destination="oer-D6-63B" kind="presentation" id="crO-Qz-pqE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,7 +103,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mustafa Hastürk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3up-3e-KFo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mustafa Hastürk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3up-3e-KFo">
                                 <rect key="frame" x="124" y="51" width="127" height="21"/>
                                 <animations/>
                                 <constraints>
