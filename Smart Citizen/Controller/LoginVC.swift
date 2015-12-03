@@ -12,6 +12,8 @@ class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "Login"
     }
 
     override func didReceiveMemoryWarning() {
