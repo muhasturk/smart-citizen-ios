@@ -31,6 +31,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="Bhx-Xi-OJu" eventType="touchUpInside" id="guz-Nn-OVP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v2-GL-3pD">
                                 <rect key="frame" x="134" y="496" width="107" height="30"/>
@@ -62,12 +65,23 @@
                                     <constraint firstAttribute="height" constant="69" id="d78-pF-JLN"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwg-Zs-Z5b">
+                                <rect key="frame" x="16" y="626" width="343" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8LL-RQ-2cj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vv4-aN-aB1" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leadingMargin" constant="-20" id="30R-kc-e4G"/>
                             <constraint firstItem="H45-S1-IHs" firstAttribute="top" secondItem="vv4-aN-aB1" secondAttribute="bottom" id="8vv-65-PWW"/>
+                            <constraint firstItem="Nwg-Zs-Z5b" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leadingMargin" id="9Bz-sr-62Z"/>
                             <constraint firstItem="RRz-UI-7io" firstAttribute="centerY" secondItem="gOb-kB-ZgG" secondAttribute="centerY" id="9hq-Rj-CQ5"/>
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="top" secondItem="9fz-PA-F6O" secondAttribute="bottom" constant="66" id="Aq9-Md-1Fo"/>
                             <constraint firstItem="vv4-aN-aB1" firstAttribute="top" secondItem="9fz-PA-F6O" secondAttribute="bottom" id="CPI-ak-80S"/>
@@ -83,6 +97,8 @@
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="top" secondItem="RRz-UI-7io" secondAttribute="bottom" constant="15" id="hxS-fr-J91"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RRz-UI-7io" secondAttribute="trailing" constant="23" id="iRn-a2-wVH"/>
                             <constraint firstItem="3v2-GL-3pD" firstAttribute="top" secondItem="aqP-5d-wcf" secondAttribute="bottom" constant="18" id="kFO-bG-Yuj"/>
+                            <constraint firstItem="Nwg-Zs-Z5b" firstAttribute="trailing" secondItem="gOb-kB-ZgG" secondAttribute="trailingMargin" id="nqg-7n-JyJ"/>
+                            <constraint firstItem="H45-S1-IHs" firstAttribute="top" secondItem="Nwg-Zs-Z5b" secondAttribute="bottom" constant="20" id="pFC-pR-9aW"/>
                             <constraint firstItem="RRz-UI-7io" firstAttribute="trailing" secondItem="xJc-6U-MNF" secondAttribute="trailing" id="t10-6u-Gyg"/>
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="leading" secondItem="RRz-UI-7io" secondAttribute="leading" id="vMW-ag-Gcw"/>
                             <constraint firstItem="aqP-5d-wcf" firstAttribute="trailing" secondItem="3v2-GL-3pD" secondAttribute="trailing" id="wEt-mX-1Iy"/>
@@ -99,6 +115,8 @@
                     <connections>
                         <outlet property="emailField" destination="RRz-UI-7io" id="jSg-uP-buf"/>
                         <outlet property="passwordField" destination="xJc-6U-MNF" id="3U9-cC-ATK"/>
+                        <outlet property="resultLabel" destination="Nwg-Zs-Z5b" id="dJR-9U-b5T"/>
+                        <segue destination="oer-D6-63B" kind="presentation" identifier="doLogin" id="Z1x-hc-jBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qfa-Q5-Zsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -345,4 +363,7 @@
         <image name="logo" width="775" height="89"/>
         <image name="nighttheme" width="640" height="1136"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Z1x-hc-jBw"/>
+    </inferredMetricsTieBreakers>
 </document>

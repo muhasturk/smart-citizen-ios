@@ -12,18 +12,30 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var resultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         emailField.delegate = self
         passwordField.delegate = self
-        
         self.navigationItem.title = "Login"
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func loginAction(sender: AnyObject) {
+        print("logine basıldı")
+        if emailField.text == "hi@m.com" && passwordField.text == "hi" {
+            performSegueWithIdentifier("doLogin", sender: sender)
+        }
+        else {
+            resultLabel.text = "Giriş bilgileri hatalı"
+        }
+    }
+
     
     // press return
     func textFieldShouldReturn(textField: UITextField) -> Bool {
