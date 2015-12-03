@@ -17,6 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daytime" translatesAutoresizingMaskIntoConstraints="NO" id="vv4-aN-aB1">
+                                <rect key="frame" x="-4" y="64" width="383" height="603"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqP-5d-wcf">
+                                <rect key="frame" x="134" y="451" width="107" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.74067133665084839" blue="0.61067491769790649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="S7S-gw-3zg"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v2-GL-3pD">
                                 <rect key="frame" x="134" y="499" width="107" height="30"/>
                                 <animations/>
@@ -35,7 +50,7 @@
                                     <constraint firstAttribute="height" constant="30" id="VH2-fH-jhh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xJc-6U-MNF">
                                 <rect key="frame" x="42" y="367" width="290" height="30"/>
@@ -50,23 +65,13 @@
                                     <constraint firstAttribute="height" constant="69" id="Uyn-gt-09T"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqP-5d-wcf">
-                                <rect key="frame" x="134" y="451" width="107" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.74067133665084839" blue="0.61067491769790649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="S7S-gw-3zg"/>
-                                </constraints>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RRz-UI-7io" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leadingMargin" constant="26" id="2nF-6L-02g"/>
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="height" secondItem="RRz-UI-7io" secondAttribute="height" id="Bw2-43-1Xg"/>
+                            <constraint firstItem="H45-S1-IHs" firstAttribute="top" secondItem="vv4-aN-aB1" secondAttribute="bottom" id="Bzo-c3-CGv"/>
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leadingMargin" constant="26" id="DqR-kH-tMq"/>
                             <constraint firstItem="aqP-5d-wcf" firstAttribute="centerX" secondItem="gOb-kB-ZgG" secondAttribute="centerX" id="KXO-nU-7cg"/>
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="centerX" secondItem="gOb-kB-ZgG" secondAttribute="centerX" id="M8g-dd-WgP"/>
@@ -77,15 +82,18 @@
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leading" id="WAd-YA-3xf"/>
                             <constraint firstItem="RRz-UI-7io" firstAttribute="centerX" secondItem="gOb-kB-ZgG" secondAttribute="centerX" id="a4L-s1-WLK"/>
                             <constraint firstItem="aqP-5d-wcf" firstAttribute="width" secondItem="3v2-GL-3pD" secondAttribute="width" id="aCT-cm-h0U"/>
+                            <constraint firstItem="vv4-aN-aB1" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leadingMargin" constant="-20" id="eNe-2X-VMq"/>
                             <constraint firstItem="3v2-GL-3pD" firstAttribute="top" secondItem="aqP-5d-wcf" secondAttribute="bottom" constant="18" id="fkC-nY-lUT"/>
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="centerX" secondItem="gOb-kB-ZgG" secondAttribute="centerX" id="hLO-9i-coA"/>
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="centerX" secondItem="aqP-5d-wcf" secondAttribute="centerX" id="iUq-xb-9j2"/>
+                            <constraint firstItem="vv4-aN-aB1" firstAttribute="top" secondItem="9fz-PA-F6O" secondAttribute="bottom" id="lzm-Rk-MQw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RRz-UI-7io" secondAttribute="trailing" constant="27" id="muC-aN-fne"/>
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="centerX" secondItem="RRz-UI-7io" secondAttribute="centerX" id="nAp-d0-f2n"/>
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="top" secondItem="RRz-UI-7io" secondAttribute="bottom" constant="18" id="p9r-9v-tqm"/>
                             <constraint firstAttribute="trailing" secondItem="WL8-ay-HmQ" secondAttribute="trailing" id="vKt-Cn-MKx"/>
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="centerX" secondItem="xJc-6U-MNF" secondAttribute="centerX" id="vTg-cS-mj0"/>
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="top" secondItem="9fz-PA-F6O" secondAttribute="bottom" constant="72" id="wZp-45-pgP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vv4-aN-aB1" secondAttribute="trailing" constant="-20" id="xgZ-Cg-Xxs"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -216,6 +224,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="daytime" width="640" height="1136"/>
         <image name="logo" width="775" height="89"/>
     </resources>
 </document>
