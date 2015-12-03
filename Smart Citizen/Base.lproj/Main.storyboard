@@ -368,10 +368,10 @@
             </objects>
             <point key="canvasLocation" x="-431.5" y="1109.5"/>
         </scene>
-        <!--Base Ctrl-->
+        <!--BaseC-->
         <scene sceneID="xFq-7a-eRi">
             <objects>
-                <tabBarController title="Base Ctrl" automaticallyAdjustsScrollViewInsets="NO" id="oer-D6-63B" sceneMemberID="viewController">
+                <tabBarController title="BaseC" automaticallyAdjustsScrollViewInsets="NO" id="oer-D6-63B" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="p74-P8-HPb">
@@ -391,10 +391,10 @@
             </objects>
             <point key="canvasLocation" x="-1416.5" y="246.5"/>
         </scene>
-        <!--Register Ctrl-->
+        <!--RegisterC-->
         <scene sceneID="3P5-HL-lU5">
             <objects>
-                <navigationController title="Register Ctrl" automaticallyAdjustsScrollViewInsets="NO" id="Nrd-zu-TfJ" sceneMemberID="viewController">
+                <navigationController title="RegisterC" automaticallyAdjustsScrollViewInsets="NO" id="Nrd-zu-TfJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XW4-bL-C7s">
