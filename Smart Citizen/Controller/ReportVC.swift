@@ -15,18 +15,32 @@ class ReportVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func captureFromCamera(sender: AnyObject) {
+        self.createImagePickerController(UIImagePickerControllerSourceType.Camera)
+    }
 
-    @IBAction func pickImageAction(sender: AnyObject) {
-        let image = UIImagePickerController()
-        image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-        image.allowsEditing = false
+    @IBAction func pickFromPhotos(sender: AnyObject) {
+        self.createImagePickerController(UIImagePickerControllerSourceType.PhotoLibrary)
+    }
+    
+    @IBAction func pickFromMoments(sender: AnyObject) {
+        self.createImagePickerController(UIImagePickerControllerSourceType.SavedPhotosAlbum)
+    }
+    
+
+    func createImagePickerController(sourceType: UIImagePickerControllerSourceType) -> Void {
         
-        self.presentViewController(image, animated: true, completion: nil)
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        picker.allowsEditing = false
+        
+        self.presentViewController(picker, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        print("Image selected from Photo Library")
+        print("Image selected")
         self.dismissViewControllerAnimated(true, completion: nil)
         self.choosenImage.image = image
     }

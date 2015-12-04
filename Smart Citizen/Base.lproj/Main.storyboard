@@ -270,12 +270,37 @@
                                     <constraint firstAttribute="height" constant="375" id="4st-0A-qag"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-d9-leZ">
-                                <rect key="frame" x="172" y="566" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01o-MK-422">
+                                <rect key="frame" x="45" y="433" width="92" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Sec"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Capture">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="pickImageAction:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="Edm-KU-rWA"/>
+                                    <action selector="captureFromCamera:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="vS7-aH-4xe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QT7-q1-bBC">
+                                <rect key="frame" x="194" y="433" width="131" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.53333333329999999" green="0.054901960780000002" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Pick from Photos">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickFromPhotos:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="zlc-aL-Yfs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgW-81-ab4">
+                                <rect key="frame" x="108" y="495" width="148" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.62053409179839869" green="0.84523237179487176" blue="0.46014996780645062" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Pick from Moments">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickFromMoments:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="3Yg-Uw-sc5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -284,8 +309,6 @@
                         <constraints>
                             <constraint firstItem="zFz-e4-san" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="Bty-Mp-exw"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="8" id="GdJ-g0-bA0"/>
-                            <constraint firstItem="XDV-d9-leZ" firstAttribute="centerX" secondItem="dAQ-BV-9ul" secondAttribute="centerX" id="bgq-M5-gaw"/>
-                            <constraint firstItem="dAD-ZH-L2p" firstAttribute="top" secondItem="XDV-d9-leZ" secondAttribute="bottom" constant="22" id="fot-EH-AAE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zFz-e4-san" secondAttribute="trailing" constant="-20" id="v3v-r9-yp4"/>
                         </constraints>
                     </view>
