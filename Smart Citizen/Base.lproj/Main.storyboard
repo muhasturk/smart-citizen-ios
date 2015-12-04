@@ -254,7 +254,7 @@
         <!--Report-->
         <scene sceneID="nN9-LS-7ua">
             <objects>
-                <viewController title="Report" id="Lbk-ns-F1d" sceneMemberID="viewController">
+                <viewController title="Report" id="Lbk-ns-F1d" customClass="ReportVC" customModule="Smart_Citizen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hTt-bO-EXn"/>
                         <viewControllerLayoutGuide type="bottom" id="dAD-ZH-L2p"/>
@@ -262,11 +262,38 @@
                     <view key="view" contentMode="scaleToFill" id="dAQ-BV-9ul">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zFz-e4-san">
+                                <rect key="frame" x="-4" y="28" width="383" height="375"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="4st-0A-qag"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-d9-leZ">
+                                <rect key="frame" x="172" y="566" width="30" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Sec"/>
+                                <connections>
+                                    <action selector="pickImageAction:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="Edm-KU-rWA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.74983852956206842" green="1" blue="0.78802904081258718" alpha="0.29542025862068966" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zFz-e4-san" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="Bty-Mp-exw"/>
+                            <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="8" id="GdJ-g0-bA0"/>
+                            <constraint firstItem="XDV-d9-leZ" firstAttribute="centerX" secondItem="dAQ-BV-9ul" secondAttribute="centerX" id="bgq-M5-gaw"/>
+                            <constraint firstItem="dAD-ZH-L2p" firstAttribute="top" secondItem="XDV-d9-leZ" secondAttribute="bottom" constant="22" id="fot-EH-AAE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zFz-e4-san" secondAttribute="trailing" constant="-20" id="v3v-r9-yp4"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="3" title="Report" image="Report" id="nC5-89-Bgf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="choosenImage" destination="zFz-e4-san" id="qLn-5Z-com"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-KY-gRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
