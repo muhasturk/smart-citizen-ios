@@ -212,7 +212,7 @@
         <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Map" id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController title="Map" id="BYZ-38-t0r" customClass="MapVC" customModule="Smart_Citizen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -220,11 +220,26 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-yk-aeT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <animations/>
+                            </mapView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HcM-yk-aeT" secondAttribute="trailing" id="60O-Lh-If2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HcM-yk-aeT" secondAttribute="bottom" id="Dmm-0z-8GR"/>
+                            <constraint firstItem="HcM-yk-aeT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kez-vQ-JEA"/>
+                            <constraint firstItem="HcM-yk-aeT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vDT-fZ-SAs"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Map" image="Map" id="L6s-c9-fmB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="mapView" destination="HcM-yk-aeT" id="paZ-Xh-0fQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
