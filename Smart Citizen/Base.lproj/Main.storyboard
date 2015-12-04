@@ -270,21 +270,14 @@
                                     <constraint firstAttribute="height" constant="375" id="4st-0A-qag"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01o-MK-422">
-                                <rect key="frame" x="141" y="378" width="92" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Camera">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="captureFromCamera:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="DP3-N4-LGv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QT7-q1-bBC">
-                                <rect key="frame" x="136" y="427" width="102" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QT7-q1-bBC">
+                                <rect key="frame" x="136" y="403" width="102" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.53333333329999999" green="0.054901960780000002" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LqM-oN-tpP"/>
+                                    <constraint firstAttribute="width" constant="102" id="rPU-0y-xsP"/>
+                                </constraints>
                                 <state key="normal" title="Photos">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -292,29 +285,42 @@
                                     <action selector="pickFromPhotos:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="XsG-kA-rhz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUx-T9-0jZ">
-                                <rect key="frame" x="47" y="431" width="33" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSk-w8-NTF">
-                                <rect key="frame" x="32" y="382" width="62" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgW-81-ab4">
-                                <rect key="frame" x="258" y="427" width="107" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AgW-81-ab4">
+                                <rect key="frame" x="260" y="403" width="107" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.62053409179839869" green="0.84523237179487176" blue="0.46014996780645062" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3iQ-sz-H8r"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="BLi-Z5-7cu"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="107" id="Bch-dX-1FB"/>
+                                    <constraint firstAttribute="width" constant="107" id="nJp-Pv-wTg"/>
+                                </constraints>
                                 <state key="normal" title="Moments">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BLi-Z5-7cu"/>
+                                        <exclude reference="Bch-dX-1FB"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="pickFromMoments:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="Lho-2b-3nV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01o-MK-422">
+                                <rect key="frame" x="16" y="403" width="92" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nuF-qo-LSj"/>
+                                    <constraint firstAttribute="width" constant="92" id="vYy-Ab-Co0"/>
+                                </constraints>
+                                <state key="normal" title="Camera">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="captureFromCamera:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="DP3-N4-LGv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -322,9 +328,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zFz-e4-san" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="Bty-Mp-exw"/>
+                            <constraint firstItem="AgW-81-ab4" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="350" id="GGb-p4-nRB"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" id="GdJ-g0-bA0"/>
+                            <constraint firstItem="AgW-81-ab4" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="350" id="WOZ-yE-kRu"/>
+                            <constraint firstItem="01o-MK-422" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" id="bzx-mU-tjl"/>
+                            <constraint firstItem="01o-MK-422" firstAttribute="top" secondItem="zFz-e4-san" secondAttribute="bottom" constant="8" id="fsE-Cx-Vxo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AgW-81-ab4" secondAttribute="trailing" constant="-8" id="tmn-n4-I5z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zFz-e4-san" secondAttribute="trailing" constant="-20" id="v3v-r9-yp4"/>
+                            <constraint firstItem="QT7-q1-bBC" firstAttribute="top" secondItem="zFz-e4-san" secondAttribute="bottom" constant="8" id="vWQ-kf-K1k"/>
+                            <constraint firstItem="QT7-q1-bBC" firstAttribute="centerX" secondItem="dAQ-BV-9ul" secondAttribute="centerX" id="vxB-ml-oEG"/>
+                            <constraint firstItem="AgW-81-ab4" firstAttribute="top" secondItem="zFz-e4-san" secondAttribute="bottom" constant="8" id="zFt-bT-Uz3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GGb-p4-nRB"/>
+                                <exclude reference="WOZ-yE-kRu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" tag="3" title="Report" image="Report" id="nC5-89-Bgf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
