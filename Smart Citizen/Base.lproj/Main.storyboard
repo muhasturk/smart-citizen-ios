@@ -270,6 +270,21 @@
                                     <constraint firstAttribute="height" constant="375" id="4st-0A-qag"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01o-MK-422">
+                                <rect key="frame" x="16" y="403" width="92" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nuF-qo-LSj"/>
+                                    <constraint firstAttribute="width" constant="92" id="vYy-Ab-Co0"/>
+                                </constraints>
+                                <state key="normal" title="Camera">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="captureFromCamera:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="DP3-N4-LGv"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QT7-q1-bBC">
                                 <rect key="frame" x="136" y="403" width="102" height="30"/>
                                 <animations/>
@@ -308,29 +323,25 @@
                                     <action selector="pickFromMoments:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="Lho-2b-3nV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01o-MK-422">
-                                <rect key="frame" x="16" y="403" width="92" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="Your feedback..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-bn-efM">
+                                <rect key="frame" x="63" y="461" width="248" height="129"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="nuF-qo-LSj"/>
-                                    <constraint firstAttribute="width" constant="92" id="vYy-Ab-Co0"/>
-                                </constraints>
-                                <state key="normal" title="Camera">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="captureFromCamera:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="DP3-N4-LGv"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
+                            </textView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="cwS-bn-efM" secondAttribute="trailing" constant="48" id="3GW-fz-eWd"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="Bty-Mp-exw"/>
+                            <constraint firstItem="cwS-bn-efM" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="47" id="CEa-qp-RxE"/>
+                            <constraint firstItem="dAD-ZH-L2p" firstAttribute="top" secondItem="cwS-bn-efM" secondAttribute="bottom" constant="28" id="DiM-mX-ILZ"/>
                             <constraint firstItem="AgW-81-ab4" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="350" id="GGb-p4-nRB"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" id="GdJ-g0-bA0"/>
                             <constraint firstItem="AgW-81-ab4" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="350" id="WOZ-yE-kRu"/>
+                            <constraint firstItem="cwS-bn-efM" firstAttribute="top" secondItem="AgW-81-ab4" secondAttribute="bottom" constant="28" id="ahm-kp-5vW"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" id="bzx-mU-tjl"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="top" secondItem="zFz-e4-san" secondAttribute="bottom" constant="8" id="fsE-Cx-Vxo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AgW-81-ab4" secondAttribute="trailing" constant="-8" id="tmn-n4-I5z"/>
