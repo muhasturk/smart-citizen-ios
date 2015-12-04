@@ -16,10 +16,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailField.delegate = self
-        passwordField.delegate = self
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
         self.navigationItem.title = "Login"
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +26,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginAction(sender: AnyObject) {
-        print("logine basıldı")
         if emailField.text == "hi@m.com" && passwordField.text == "hi" {
             performSegueWithIdentifier("doLogin", sender: sender)
         }
@@ -36,7 +34,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
     }
 
-    
     // press return
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
