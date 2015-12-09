@@ -13,6 +13,7 @@
 		12471D411BD1810A00B86052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D3F1BD1810A00B86052 /* Main.storyboard */; };
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
+		1252F35F1C187F90007F9314 /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252F35E1C187F90007F9314 /* MapUtil.swift */; };
 		12A423AD1C00D6B800C9744D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A423AC1C00D6B800C9744D /* Util.swift */; };
 		12A423AF1C00DA4400C9744D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A423AE1C00DA4400C9744D /* ProfileVC.swift */; };
 		12A541ED1C10E62500267BB2 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A541EC1C10E62500267BB2 /* MapVC.swift */; };
@@ -32,6 +33,7 @@
 		12471D421BD1810A00B86052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12471D451BD1810B00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
+		1252F35E1C187F90007F9314 /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Core/MapUtil.swift; sourceTree = "<group>"; };
 		12A423AC1C00D6B800C9744D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Core/Util.swift; sourceTree = "<group>"; };
 		12A423AE1C00DA4400C9744D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = Controller/ProfileVC.swift; sourceTree = "<group>"; };
 		12A541EC1C10E62500267BB2 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapVC.swift; path = Controller/MapVC.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				12A423AC1C00D6B800C9744D /* Util.swift */,
+				1252F35E1C187F90007F9314 /* MapUtil.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
 				12A541F31C10E67A00267BB2 /* ReportVC.swift in Sources */,
 				1227E1451C1094E20072D751 /* LoginVC.swift in Sources */,
+				1252F35F1C187F90007F9314 /* MapUtil.swift in Sources */,
 				12A541F11C10E65500267BB2 /* SettingsVC.swift in Sources */,
 				1227E1471C1095200072D751 /* SignUpVC.swift in Sources */,
 				12A423AD1C00D6B800C9744D /* Util.swift in Sources */,
