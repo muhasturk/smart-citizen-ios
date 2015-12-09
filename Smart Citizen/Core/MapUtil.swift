@@ -11,6 +11,7 @@ import MapKit
 
 class MapUtil {
     
+    // MARK: Region
     func getMapRegion(latitude latitude: CLLocationDegrees,
         longitude: CLLocationDegrees,
         latDelta: CLLocationDegrees,
@@ -21,6 +22,16 @@ class MapUtil {
         let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
             
         return region
+    }
+    
+    // MARK: Annotation
+    func getMapAnnotation(coordinate coordinate: CLLocationCoordinate2D, title: String, subtitle: String) -> MKPointAnnotation {
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = title
+        annotation.subtitle = subtitle
+        return annotation
     }
     
 }
