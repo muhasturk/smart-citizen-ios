@@ -26,6 +26,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Konumunuza uygun sorunları göstermek için konumuna ihtiyacım var</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Bu işlemler için konumunuza ihtiyacım var</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
