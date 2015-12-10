@@ -17,9 +17,9 @@ class MapUtil {
         latDelta: CLLocationDegrees,
         lonDelta: CLLocationDegrees) -> MKCoordinateRegion {
         
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
         let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
             
         return region
     }
