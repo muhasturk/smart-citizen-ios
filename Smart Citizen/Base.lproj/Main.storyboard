@@ -264,7 +264,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6L-37-wf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="K24-Ae-YqH" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController">
+                <customObject id="K24-Ae-YqH" customClass="RAMFlipLeftTransitionItemAniamtions" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
                             <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -424,7 +424,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrR-Al-gBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="0Nz-7J-YzW" customClass="RAMFlipTopTransitionItemAniamtions" customModule="RAMAnimatedTabBarController">
+                <customObject id="0Nz-7J-YzW" customClass="RAMFlipRightTransitionItemAniamtions" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
                             <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -501,7 +501,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-uU-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="nON-QR-G59" customClass="RAMFlipBottomTransitionItemAniamtions" customModule="RAMAnimatedTabBarController">
+                <customObject id="nON-QR-G59" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
                             <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
