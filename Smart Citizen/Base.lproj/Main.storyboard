@@ -381,7 +381,7 @@
         <!--Settings-->
         <scene sceneID="FBZ-bT-d30">
             <objects>
-                <viewController title="Settings" id="1hD-Nx-i6y" sceneMemberID="viewController">
+                <viewController title="Settings" id="1hD-Nx-i6y" customClass="SettingsVC" customModule="Smart_Citizen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZAM-Rh-lmI"/>
                         <viewControllerLayoutGuide type="bottom" id="im8-YY-mEq"/>
@@ -403,46 +403,39 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="skv-kb-hkX" userLabel="App Name">
                                 <rect key="frame" x="0.0" y="289" width="375" height="89"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: 0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoG-rO-MYc" userLabel="Version">
-                                <rect key="frame" x="136.5" y="386" width="103" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoG-rO-MYc" userLabel="Version" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                <rect key="frame" x="187.5" y="386" width="0.0" height="0.0"/>
+                                <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="morphingCharacterDelay">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="skv-kb-hkX" firstAttribute="centerX" secondItem="GoG-rO-MYc" secondAttribute="centerX" id="3Ye-XG-sS7"/>
-                            <constraint firstItem="OFm-qY-pVK" firstAttribute="centerX" secondItem="GoG-rO-MYc" secondAttribute="centerX" id="4lO-3X-6iN"/>
                             <constraint firstItem="skv-kb-hkX" firstAttribute="leading" secondItem="aYV-a2-lCF" secondAttribute="leading" id="74W-XZ-tLr"/>
                             <constraint firstItem="OFm-qY-pVK" firstAttribute="centerX" secondItem="aYV-a2-lCF" secondAttribute="centerX" id="NHi-eD-HBc"/>
                             <constraint firstItem="skv-kb-hkX" firstAttribute="top" secondItem="OFm-qY-pVK" secondAttribute="bottom" constant="8" id="OsG-Y8-0Ah"/>
                             <constraint firstItem="bSe-DP-cBX" firstAttribute="top" secondItem="aYV-a2-lCF" secondAttribute="topMargin" id="Xfk-LF-Mdz"/>
-                            <constraint firstItem="skv-kb-hkX" firstAttribute="top" secondItem="OFm-qY-pVK" secondAttribute="bottom" constant="8" symbolic="YES" id="ZN8-nq-u5X"/>
                             <constraint firstItem="GoG-rO-MYc" firstAttribute="top" secondItem="skv-kb-hkX" secondAttribute="bottom" constant="8" id="Zvz-8K-txH"/>
-                            <constraint firstItem="OFm-qY-pVK" firstAttribute="top" secondItem="ZAM-Rh-lmI" secondAttribute="bottom" constant="152" id="afn-PX-Ncy"/>
                             <constraint firstItem="GoG-rO-MYc" firstAttribute="centerX" secondItem="aYV-a2-lCF" secondAttribute="centerX" id="cBP-AB-Ica"/>
                             <constraint firstItem="bSe-DP-cBX" firstAttribute="bottom" secondItem="aYV-a2-lCF" secondAttribute="bottomMargin" id="kXf-cm-sk7"/>
                             <constraint firstItem="skv-kb-hkX" firstAttribute="centerY" secondItem="aYV-a2-lCF" secondAttribute="centerY" id="lyL-kZ-LPW"/>
-                            <constraint firstItem="GoG-rO-MYc" firstAttribute="top" secondItem="skv-kb-hkX" secondAttribute="bottom" constant="8" id="o9b-zk-Sm1"/>
-                            <constraint firstItem="GoG-rO-MYc" firstAttribute="top" secondItem="skv-kb-hkX" secondAttribute="bottom" constant="8" symbolic="YES" id="pHF-kE-UBc"/>
                             <constraint firstItem="bSe-DP-cBX" firstAttribute="leading" secondItem="aYV-a2-lCF" secondAttribute="leadingMargin" constant="-20" id="ppF-zK-6PC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bSe-DP-cBX" secondAttribute="trailing" constant="-20" id="sGN-3n-0qB"/>
                             <constraint firstItem="skv-kb-hkX" firstAttribute="centerX" secondItem="aYV-a2-lCF" secondAttribute="centerX" id="tRS-6a-SMZ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="4lO-3X-6iN"/>
-                                <exclude reference="afn-PX-Ncy"/>
-                                <exclude reference="3Ye-XG-sS7"/>
-                                <exclude reference="ZN8-nq-u5X"/>
-                                <exclude reference="o9b-zk-Sm1"/>
-                                <exclude reference="pHF-kE-UBc"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" tag="5" title="Settings" image="Settings" id="So8-kX-umX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="GoG-rO-MYc" id="pXG-GE-o2Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-uU-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
