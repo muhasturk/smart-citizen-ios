@@ -26,6 +26,7 @@ class SettingsVC: UIViewController {
         if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
             dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
                 if let version = dict["CFBundleShortVersionString"] {
+                    versionLabel.morphingEffect = .Evaporate
                     versionLabel.text = "Version: \(version as! String)"
                 }
                 else {
