@@ -17,15 +17,15 @@ class ReportVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
     }
     
     @IBAction func captureFromCamera(sender: AnyObject) {
-        self.createImagePickerController(UIImagePickerControllerSourceType.Camera)
+        self.createImagePickerController(.Camera)
     }
 
     @IBAction func pickFromPhotos(sender: AnyObject) {
-        self.createImagePickerController(UIImagePickerControllerSourceType.PhotoLibrary)
+        self.createImagePickerController(.PhotoLibrary)
     }
     
     @IBAction func pickFromMoments(sender: AnyObject) {
-        self.createImagePickerController(UIImagePickerControllerSourceType.SavedPhotosAlbum)
+        self.createImagePickerController(.SavedPhotosAlbum)
     }
     
 
