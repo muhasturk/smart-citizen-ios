@@ -1,12 +1,6 @@
-# OSX Specific
-.DS_Store
-
-# Xcode temp
-*~.nib
-
 # Build generated
 build/
-DerivedData/
+DerivedData
 
 # Various settings
 *.pbxuser
@@ -18,7 +12,7 @@ DerivedData/
 !default.mode1v3
 !default.mode2v3
 !default.perspectivev3
-xcuserdata/
+xcuserdata
 
 # Other
 *.moved-aside
@@ -35,3 +29,6 @@ xcuserdata/
 
 # CocoaPods
 Pods/
+
+# Swift Package Manager
+.build/
