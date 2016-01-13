@@ -22,6 +22,7 @@ class MapVC: UIViewController, CLLocationManagerDelegate {
         self.locationManaer.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManaer.requestWhenInUseAuthorization()
         self.locationManaer.startUpdatingLocation()
+        self.mapView.showsUserLocation = true
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
