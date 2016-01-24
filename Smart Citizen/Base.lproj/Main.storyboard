@@ -490,11 +490,7 @@
                             <constraint firstItem="skv-kb-hkX" firstAttribute="centerX" secondItem="aYV-a2-lCF" secondAttribute="centerX" id="tRS-6a-SMZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="5" title="Settings" image="Settings" id="So8-kX-umX" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
-                        <connections>
-                            <outlet property="animation" destination="nON-QR-G59" id="C9p-si-l7q"/>
-                        </connections>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="Z0Y-cQ-CRm"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="versionLabel" destination="GoG-rO-MYc" id="pXG-GE-o2Q"/>
@@ -512,7 +508,7 @@
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="-431.5" y="1109.5"/>
+            <point key="canvasLocation" x="-431.5" y="1915.5"/>
         </scene>
         <!--BaseC-->
         <scene sceneID="xFq-7a-eRi">
@@ -529,7 +525,7 @@
                         <segue destination="nOu-iU-xgZ" kind="relationship" relationship="viewControllers" id="0fV-9A-Ysr"/>
                         <segue destination="Lbk-ns-F1d" kind="relationship" relationship="viewControllers" id="bbj-yH-2Za"/>
                         <segue destination="ZqU-4d-Xem" kind="relationship" relationship="viewControllers" id="9Wb-dn-b4b"/>
-                        <segue destination="1hD-Nx-i6y" kind="relationship" relationship="viewControllers" id="Yqb-BE-Hf3"/>
+                        <segue destination="Ejc-KB-2Ie" kind="relationship" relationship="viewControllers" id="Yqb-BE-Hf3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQj-gg-IXT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -554,6 +550,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIG-Wg-BhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1919.5" y="-604.5"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Ll7-U7-OJ1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ejc-KB-2Ie" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="5" title="Settings" image="Settings" id="So8-kX-umX" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <connections>
+                            <outlet property="animation" destination="nON-QR-G59" id="C9p-si-l7q"/>
+                        </connections>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JZo-G4-n3m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1hD-Nx-i6y" kind="relationship" relationship="rootViewController" id="CxX-3Y-7Th"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYl-R9-6Pc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-431.5" y="1109.5"/>
         </scene>
     </scenes>
     <resources>
