@@ -12,7 +12,17 @@ The main purpose of this project is to provide a easy way to report any kind of 
 This repository uses Swift 2.2+ and lots of open source libraries.
 
 ### Before Start
-```pod install; pod update
+
+Make sure, you have the latest version of the Xcode command line tools installed:
+
+```
+xcode-select --install
+```
+
+Get latest project dependencies:
+
+```
+pod install; pod update
 ```
 
 ### Requirements
@@ -21,7 +31,7 @@ This repository uses Swift 2.2+ and lots of open source libraries.
 * Ruby 2.3+
 * CocoaPods 1.0.0.beta.2+
 
-Minimum deployment target is 9.1
+Minimum deployment target is **9.1**
 
 ### Contributing 
 I need a RESTFull service to communicate backend layer. If you've enough time and you can help me, I can send you databae structure of project needs.
