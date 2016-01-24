@@ -1,22 +1,15 @@
 PODS:
-  - LTMorphingLabel (0.1.0)
-  - RAMAnimatedTabBarController (1.0.4)
+  - LTMorphingLabel (0.1.1)
+  - RAMAnimatedTabBarController (1.0.6)
 
 DEPENDENCIES:
   - LTMorphingLabel
-  - RAMAnimatedTabBarController (from `https://github.com/Ramotion/animated-tab-bar`)
-
-EXTERNAL SOURCES:
-  RAMAnimatedTabBarController:
-    :git: https://github.com/Ramotion/animated-tab-bar
-
-CHECKOUT OPTIONS:
-  RAMAnimatedTabBarController:
-    :commit: f9f0e4b53e660dd99fbd177d0379775977288b18
-    :git: https://github.com/Ramotion/animated-tab-bar
+  - RAMAnimatedTabBarController
 
 SPEC CHECKSUMS:
-  LTMorphingLabel: 36fd7fddcc5cd50d7a464b4ce80d3010a4357234
-  RAMAnimatedTabBarController: 6e7dd2718f7fe8009d17c877fbd394da703fb3c7
+  LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
+  RAMAnimatedTabBarController: 1381b63e8c0a4e4c9c5e2d78472686d26bd006d9
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: a78bbf8cdaa2941cbf1ab9293c697cd5ee2dfa49
+
+COCOAPODS: 1.0.0.beta.2
