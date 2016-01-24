@@ -24,11 +24,18 @@ xcuserdata
 *.hmap
 *.ipa
 
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
 # For JetBrains based IDEs
 .idea/
 
 # CocoaPods
 Pods/
+
+# Carthage
+Carthage/Build
 
 # Swift Package Manager
 .build/
