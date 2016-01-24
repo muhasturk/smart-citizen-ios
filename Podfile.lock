@@ -1,15 +1,22 @@
 PODS:
+  - Crashlytics (3.6.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.4)
   - LTMorphingLabel (0.1.1)
   - RAMAnimatedTabBarController (1.0.6)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - LTMorphingLabel
   - RAMAnimatedTabBarController
 
 SPEC CHECKSUMS:
+  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
+  Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
   LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
   RAMAnimatedTabBarController: 1381b63e8c0a4e4c9c5e2d78472686d26bd006d9
 
-PODFILE CHECKSUM: a78bbf8cdaa2941cbf1ab9293c697cd5ee2dfa49
+PODFILE CHECKSUM: 246be628352bf852d37287f6e32ab71df9eecaeb
 
 COCOAPODS: 1.0.0.beta.2

@@ -171,6 +171,7 @@
 				12471D361BD1810A00B86052 /* Resources */,
 				0C4B34536D4E6CCB82057DF5 /* Embed Pods Frameworks */,
 				CEAA26B8205D6B46E25C9DED /* Copy Pods Resources */,
+				1205DCD61C55177600B93EDC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -258,6 +259,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		1205DCD61C55177600B93EDC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" eacb0295472d98d4f2a073a82aa2e74570715a24 d58452f96f03160d10d4541a837927f64ddce11c95f04e5422ec9fed2157dc4d\n";
 		};
 		CEAA26B8205D6B46E25C9DED /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -402,6 +416,7 @@
 			baseConfigurationReference = 854FCD053DEF9FF5B7F39C13 /* Pods-Smart Citizen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "Smart Citizen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mustafahasturk.Smart-Citizen";
@@ -414,6 +429,7 @@
 			baseConfigurationReference = 8E8905E275882DD137000AC6 /* Pods-Smart Citizen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "Smart Citizen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mustafahasturk.Smart-Citizen";
