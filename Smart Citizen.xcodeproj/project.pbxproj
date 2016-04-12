@@ -14,6 +14,9 @@
 		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; };
 		12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CE1CBD646E00EA154A /* MapUtil.swift */; };
 		12DB29D11CBD646E00EA154A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CF1CBD646E00EA154A /* Util.swift */; };
+		12DB29D51CBD655800EA154A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D41CBD655800EA154A /* User.swift */; };
+		12DB29D71CBD664F00EA154A /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D61CBD664F00EA154A /* Report.swift */; };
+		12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D81CBD66E100EA154A /* AppVC.swift */; };
 		12DE6AEB1CBD5EC2007F1A27 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */; };
 		12DE6AEC1CBD5EC2007F1A27 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */; };
 		12DE6AED1CBD5EC2007F1A27 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */; };
@@ -36,6 +39,9 @@
 		12DB29CC1CBD635100EA154A /* Garden.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Garden.playground; sourceTree = "<group>"; };
 		12DB29CE1CBD646E00EA154A /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Util/MapUtil.swift; sourceTree = "<group>"; };
 		12DB29CF1CBD646E00EA154A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Util/Util.swift; sourceTree = "<group>"; };
+		12DB29D41CBD655800EA154A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		12DB29D61CBD664F00EA154A /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = Model/Report.swift; sourceTree = "<group>"; };
+		12DB29D81CBD66E100EA154A /* AppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVC.swift; path = Controller/AppVC.swift; sourceTree = "<group>"; };
 		12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardVC.swift; path = Controller/VC/DashboardVC.swift; sourceTree = "<group>"; };
 		12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Controller/VC/LoginVC.swift; sourceTree = "<group>"; };
 		12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapVC.swift; path = Controller/VC/MapVC.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 			children = (
 				12DE6AE31CBD5E9F007F1A27 /* CC */,
 				12DE6AE21CBD5E93007F1A27 /* VC */,
+				12DB29D81CBD66E100EA154A /* AppVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -119,6 +126,8 @@
 		12D0EEFB1BD6EB42006A2801 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				12DB29D41CBD655800EA154A /* User.swift */,
+				12DB29D61CBD664F00EA154A /* Report.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -326,11 +335,14 @@
 				12DE6AEE1CBD5EC2007F1A27 /* ProfileVC.swift in Sources */,
 				12DE6AEB1CBD5EC2007F1A27 /* DashboardVC.swift in Sources */,
 				12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */,
+				12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */,
 				12DE6AEF1CBD5EC2007F1A27 /* ReportVC.swift in Sources */,
 				12DE6AEC1CBD5EC2007F1A27 /* LoginVC.swift in Sources */,
 				12DB29D11CBD646E00EA154A /* Util.swift in Sources */,
 				12DE6AF11CBD5EC2007F1A27 /* SignUpVC.swift in Sources */,
 				12DE6AF01CBD5EC2007F1A27 /* SettingsVC.swift in Sources */,
+				12DB29D51CBD655800EA154A /* User.swift in Sources */,
+				12DB29D71CBD664F00EA154A /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
