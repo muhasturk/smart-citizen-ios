@@ -20,22 +20,23 @@ xcuserdata
 *.xcuserstate
 *.xcscmblueprint
 
+## Playgrounds
+*.playground/
+timeline.xctimeline
+playground.xcworkspace
+
 # Obj-C/Swift specific
 *.hmap
 *.ipa
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
-
 # For JetBrains based IDEs
 .idea/
+
+# Brand new Swift Package Manager
+.build/
 
 # CocoaPods
 Pods/
 
 # Carthage
 Carthage/Build
-
-# Swift Package Manager
-.build/
