@@ -7,41 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1227E1451C1094E20072D751 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227E1441C1094E20072D751 /* LoginVC.swift */; };
-		1227E1471C1095200072D751 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227E1461C1095200072D751 /* SignUpVC.swift */; };
 		12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12471D3B1BD1810A00B86052 /* AppDelegate.swift */; };
 		12471D411BD1810A00B86052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D3F1BD1810A00B86052 /* Main.storyboard */; };
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
-		1252F35F1C187F90007F9314 /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252F35E1C187F90007F9314 /* MapUtil.swift */; };
-		12A423AD1C00D6B800C9744D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A423AC1C00D6B800C9744D /* Util.swift */; };
-		12A423AF1C00DA4400C9744D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A423AE1C00DA4400C9744D /* ProfileVC.swift */; };
-		12A541ED1C10E62500267BB2 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A541EC1C10E62500267BB2 /* MapVC.swift */; };
-		12A541EF1C10E63800267BB2 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A541EE1C10E63800267BB2 /* DashboardVC.swift */; };
-		12A541F11C10E65500267BB2 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A541F01C10E65500267BB2 /* SettingsVC.swift */; };
-		12A541F31C10E67A00267BB2 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A541F21C10E67A00267BB2 /* ReportVC.swift */; };
 		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; };
+		12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CE1CBD646E00EA154A /* MapUtil.swift */; };
+		12DB29D11CBD646E00EA154A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CF1CBD646E00EA154A /* Util.swift */; };
+		12DE6AEB1CBD5EC2007F1A27 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */; };
+		12DE6AEC1CBD5EC2007F1A27 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */; };
+		12DE6AED1CBD5EC2007F1A27 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */; };
+		12DE6AEE1CBD5EC2007F1A27 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE71CBD5EC2007F1A27 /* ProfileVC.swift */; };
+		12DE6AEF1CBD5EC2007F1A27 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE81CBD5EC2007F1A27 /* ReportVC.swift */; };
+		12DE6AF01CBD5EC2007F1A27 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE91CBD5EC2007F1A27 /* SettingsVC.swift */; };
+		12DE6AF11CBD5EC2007F1A27 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AEA1CBD5EC2007F1A27 /* SignUpVC.swift */; };
 		9F6C0D5E7299AD84093DAAE2 /* Pods_Smart_Citizen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1227E1441C1094E20072D751 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Controller/LoginVC.swift; sourceTree = "<group>"; };
-		1227E1461C1095200072D751 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = Controller/SignUpVC.swift; sourceTree = "<group>"; };
 		12471D381BD1810A00B86052 /* Smart Citizen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Citizen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12471D3B1BD1810A00B86052 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12471D401BD1810A00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12471D421BD1810A00B86052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12471D451BD1810B00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
-		1252F35E1C187F90007F9314 /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Core/MapUtil.swift; sourceTree = "<group>"; };
-		12A423AC1C00D6B800C9744D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Core/Util.swift; sourceTree = "<group>"; };
-		12A423AE1C00DA4400C9744D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = Controller/ProfileVC.swift; sourceTree = "<group>"; };
-		12A541EC1C10E62500267BB2 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapVC.swift; path = Controller/MapVC.swift; sourceTree = "<group>"; };
-		12A541EE1C10E63800267BB2 /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardVC.swift; path = Controller/DashboardVC.swift; sourceTree = "<group>"; };
-		12A541F01C10E65500267BB2 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = Controller/SettingsVC.swift; sourceTree = "<group>"; };
-		12A541F21C10E67A00267BB2 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportVC.swift; path = Controller/ReportVC.swift; sourceTree = "<group>"; };
 		12D0EEF81BD6EB0B006A2801 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		12D0EEFC1BD6EBA6006A2801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		12DB29CC1CBD635100EA154A /* Garden.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Garden.playground; sourceTree = "<group>"; };
+		12DB29CE1CBD646E00EA154A /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Util/MapUtil.swift; sourceTree = "<group>"; };
+		12DB29CF1CBD646E00EA154A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Util/Util.swift; sourceTree = "<group>"; };
+		12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardVC.swift; path = Controller/VC/DashboardVC.swift; sourceTree = "<group>"; };
+		12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Controller/VC/LoginVC.swift; sourceTree = "<group>"; };
+		12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapVC.swift; path = Controller/VC/MapVC.swift; sourceTree = "<group>"; };
+		12DE6AE71CBD5EC2007F1A27 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = Controller/VC/ProfileVC.swift; sourceTree = "<group>"; };
+		12DE6AE81CBD5EC2007F1A27 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportVC.swift; path = Controller/VC/ReportVC.swift; sourceTree = "<group>"; };
+		12DE6AE91CBD5EC2007F1A27 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = Controller/VC/SettingsVC.swift; sourceTree = "<group>"; };
+		12DE6AEA1CBD5EC2007F1A27 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = Controller/VC/SignUpVC.swift; sourceTree = "<group>"; };
 		50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Citizen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		854FCD053DEF9FF5B7F39C13 /* Pods-Smart Citizen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Citizen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen.debug.xcconfig"; sourceTree = "<group>"; };
 		8E8905E275882DD137000AC6 /* Pods-Smart Citizen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Citizen.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen.release.xcconfig"; sourceTree = "<group>"; };
@@ -80,10 +81,11 @@
 		12471D3A1BD1810A00B86052 /* Smart Citizen */ = {
 			isa = PBXGroup;
 			children = (
-				12D0EEFE1BD6EBC3006A2801 /* Core */,
 				12D0EEFA1BD6EB37006A2801 /* Controller */,
-				125A64531BFFCB7500E955E2 /* Library */,
+				12D0EEFE1BD6EBC3006A2801 /* Core */,
 				12D0EEFB1BD6EB42006A2801 /* Model */,
+				12DB29CD1CBD641A00EA154A /* Util */,
+				12DE6AF21CBD5F28007F1A27 /* View */,
 				12471D3B1BD1810A00B86052 /* AppDelegate.swift */,
 				12471D3F1BD1810A00B86052 /* Main.storyboard */,
 				12471D421BD1810A00B86052 /* Assets.xcassets */,
@@ -93,19 +95,13 @@
 			path = "Smart Citizen";
 			sourceTree = "<group>";
 		};
-		125A64531BFFCB7500E955E2 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Library;
-			sourceTree = "<group>";
-		};
 		12D0EEF71BD6EA34006A2801 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				12D0EEF81BD6EB0B006A2801 /* .gitignore */,
 				12471D471BD1810B00B86052 /* Info.plist */,
 				12D0EEFC1BD6EBA6006A2801 /* README.md */,
+				12DB29CC1CBD635100EA154A /* Garden.playground */,
 			);
 			name = Support;
 			path = ..;
@@ -114,13 +110,8 @@
 		12D0EEFA1BD6EB37006A2801 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1227E1441C1094E20072D751 /* LoginVC.swift */,
-				1227E1461C1095200072D751 /* SignUpVC.swift */,
-				12A541EC1C10E62500267BB2 /* MapVC.swift */,
-				12A541EE1C10E63800267BB2 /* DashboardVC.swift */,
-				12A423AE1C00DA4400C9744D /* ProfileVC.swift */,
-				12A541F01C10E65500267BB2 /* SettingsVC.swift */,
-				12A541F21C10E67A00267BB2 /* ReportVC.swift */,
+				12DE6AE31CBD5E9F007F1A27 /* CC */,
+				12DE6AE21CBD5E93007F1A27 /* VC */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -135,10 +126,45 @@
 		12D0EEFE1BD6EBC3006A2801 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				12A423AC1C00D6B800C9744D /* Util.swift */,
-				1252F35E1C187F90007F9314 /* MapUtil.swift */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		12DB29CD1CBD641A00EA154A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				12DB29CE1CBD646E00EA154A /* MapUtil.swift */,
+				12DB29CF1CBD646E00EA154A /* Util.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		12DE6AE21CBD5E93007F1A27 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */,
+				12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */,
+				12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */,
+				12DE6AE71CBD5EC2007F1A27 /* ProfileVC.swift */,
+				12DE6AE81CBD5EC2007F1A27 /* ReportVC.swift */,
+				12DE6AE91CBD5EC2007F1A27 /* SettingsVC.swift */,
+				12DE6AEA1CBD5EC2007F1A27 /* SignUpVC.swift */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		12DE6AE31CBD5E9F007F1A27 /* CC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CC;
+			sourceTree = "<group>";
+		};
+		12DE6AF21CBD5F28007F1A27 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		7BE7C00C04BEE321EF97A529 /* Frameworks */ = {
@@ -295,16 +321,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12A423AF1C00DA4400C9744D /* ProfileVC.swift in Sources */,
-				12A541ED1C10E62500267BB2 /* MapVC.swift in Sources */,
-				12A541EF1C10E63800267BB2 /* DashboardVC.swift in Sources */,
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
-				12A541F31C10E67A00267BB2 /* ReportVC.swift in Sources */,
-				1227E1451C1094E20072D751 /* LoginVC.swift in Sources */,
-				1252F35F1C187F90007F9314 /* MapUtil.swift in Sources */,
-				12A541F11C10E65500267BB2 /* SettingsVC.swift in Sources */,
-				1227E1471C1095200072D751 /* SignUpVC.swift in Sources */,
-				12A423AD1C00D6B800C9744D /* Util.swift in Sources */,
+				12DE6AED1CBD5EC2007F1A27 /* MapVC.swift in Sources */,
+				12DE6AEE1CBD5EC2007F1A27 /* ProfileVC.swift in Sources */,
+				12DE6AEB1CBD5EC2007F1A27 /* DashboardVC.swift in Sources */,
+				12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */,
+				12DE6AEF1CBD5EC2007F1A27 /* ReportVC.swift in Sources */,
+				12DE6AEC1CBD5EC2007F1A27 /* LoginVC.swift in Sources */,
+				12DB29D11CBD646E00EA154A /* Util.swift in Sources */,
+				12DE6AF11CBD5EC2007F1A27 /* SignUpVC.swift in Sources */,
+				12DE6AF01CBD5EC2007F1A27 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
