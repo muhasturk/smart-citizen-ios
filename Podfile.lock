@@ -1,10 +1,10 @@
 PODS:
-  - Alamofire (3.1.5)
-  - Crashlytics (3.6.0):
+  - Alamofire (3.3.1)
+  - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.4)
-  - LTMorphingLabel (0.1.1)
-  - RAMAnimatedTabBarController (1.0.6)
+  - Fabric (1.6.7)
+  - LTMorphingLabel (0.2.0)
+  - RAMAnimatedTabBarController (1.3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -14,11 +14,11 @@ DEPENDENCIES:
   - RAMAnimatedTabBarController
 
 SPEC CHECKSUMS:
-  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
-  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
-  Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
-  LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
-  RAMAnimatedTabBarController: 1381b63e8c0a4e4c9c5e2d78472686d26bd006d9
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
+  RAMAnimatedTabBarController: f491635c52bfaeaceff6fe74b0d1a5c8cdfa353f
 
 PODFILE CHECKSUM: 3c5dd1b98b940127f1443b9fd0e56488358fce35
 
