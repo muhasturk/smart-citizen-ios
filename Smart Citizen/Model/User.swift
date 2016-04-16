@@ -18,6 +18,10 @@ class User: NSObject, NSCoding {
   var roleName =  "Normal"
   var active =  true
   
+  // Facebook 
+  var fbid: Int = 0
+  var fbToken: String = ""
+  
   required convenience init?(coder aDecoder: NSCoder) {
     self.init()
     self.id = aDecoder.decodeObjectForKey("id") as! Int
