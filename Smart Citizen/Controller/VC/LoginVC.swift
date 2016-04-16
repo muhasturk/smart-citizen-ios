@@ -8,38 +8,42 @@
 
 import UIKit
 
-class LoginVC: AppVC, UITextFieldDelegate {
+class LoginVC: AppVC {
+  
+  @IBOutlet weak var emailField: UITextField!
+  @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var resultLabel: UILabel!
+  
+  private let baseRequestURL = AppAPI.loginServiceURL
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.navigationItem.title = "Login"
+  }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
+  
+  @IBAction func loginAction(sender: AnyObject) {
 
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var resultLabel: UILabel!
+  }
+  
+  private func loginNetworking(networkingParameters params: [String: AnyObject]) {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.title = "Login"
+  }
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    if textField == self.emailField {
+      self.passwordField.becomeFirstResponder()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    else {
+      self.loginAction(textField)
     }
-    
-    @IBAction func loginAction(sender: AnyObject) {
-        if emailField.text == "hi@m.com" && passwordField.text == "hi" {
-            performSegueWithIdentifier("doLogin", sender: sender)
-        }
-        else {
-            resultLabel.text = "Giriş bilgileri hatalı"
-        }
-    }
-
-    // press return
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    // outside of the TextField
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+    return true
+  }
+  
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    self.view.endEditing(true)
+  }
 }

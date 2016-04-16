@@ -9,6 +9,7 @@
 import Foundation
 
 struct AppAPI {
-  static let baseServiceURL = "http://"
-  static let loginServiceURL = ""
+  static let serviceDomain = "http://"
+  static let apiVersion = "v1"
+  static let loginServiceURL = "\(serviceDomain) + \(apiVersion) + login"
 }
