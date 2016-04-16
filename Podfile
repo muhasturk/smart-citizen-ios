@@ -3,9 +3,14 @@ use_frameworks!
 
 target 'Smart Citizen' do
     pod 'Alamofire'
+    pod 'SwiftyJSON'
     pod 'Crashlytics'
     pod 'Fabric'
     pod 'LTMorphingLabel'
     pod 'RAMAnimatedTabBarController'
+    pod 'Bolts'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
 end
 

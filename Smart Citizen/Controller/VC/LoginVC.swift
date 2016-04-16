@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController, UITextFieldDelegate {
+class LoginVC: AppVC, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -16,8 +16,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailField.delegate = self
-        self.passwordField.delegate = self
         self.navigationItem.title = "Login"
     }
 

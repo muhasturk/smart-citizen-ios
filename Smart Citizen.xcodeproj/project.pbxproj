@@ -116,9 +116,9 @@
 		12D0EEFA1BD6EB37006A2801 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				12DB29D81CBD66E100EA154A /* AppVC.swift */,
 				12DE6AE31CBD5E9F007F1A27 /* CC */,
 				12DE6AE21CBD5E93007F1A27 /* VC */,
-				12DB29D81CBD66E100EA154A /* AppVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

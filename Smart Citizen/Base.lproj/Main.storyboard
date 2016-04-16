@@ -48,11 +48,17 @@
                                 <rect key="frame" x="42" y="319" width="294" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Bhx-Xi-OJu" id="uPI-pP-MSd"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xJc-6U-MNF">
                                 <rect key="frame" x="42" y="364" width="294" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Bhx-Xi-OJu" id="2EY-1c-vS1"/>
+                                </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="WL8-ay-HmQ">
                                 <rect key="frame" x="0.0" y="130" width="375" height="69"/>
@@ -589,6 +595,6 @@
         <image name="nighttheme" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="crO-Qz-pqE"/>
+        <segue reference="Z1x-hc-jBw"/>
     </inferredMetricsTieBreakers>
 </document>
