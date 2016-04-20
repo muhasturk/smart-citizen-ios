@@ -9,7 +9,7 @@
 import Foundation
 
 struct AppSegues {
-  
+  static let doLoginSegue = "doLogin"
 }
 
 struct AppColors {
@@ -17,5 +17,4 @@ struct AppColors {
 }
 
 struct AppConstants {
-  
 }

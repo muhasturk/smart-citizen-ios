@@ -9,5 +9,9 @@
 import Foundation
 
 struct AppDebugMessages {
+  static let keyDataIsNotExistOrIsEmpty = "'data' key inside JSON is empty or not exist"
+  
   static let downloadImageFromURLFailed = "Problem when download image from URL:\n"
+  
+  static let serviceConnectionLoginIsOk = "Login servis bağlantısı başarılı"
 }

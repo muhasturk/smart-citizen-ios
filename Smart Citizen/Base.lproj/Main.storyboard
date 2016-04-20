@@ -67,7 +67,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="loginAction:" destination="Bhx-Xi-OJu" eventType="touchUpInside" id="guz-Nn-OVP"/>
+                                            <action selector="loginButtonAction:" destination="Bhx-Xi-OJu" eventType="touchUpInside" id="vLX-9Q-mJr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v2-GL-3pD">

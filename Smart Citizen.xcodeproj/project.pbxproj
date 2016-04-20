@@ -11,13 +11,13 @@
 		12471D411BD1810A00B86052 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D3F1BD1810A00B86052 /* Main.storyboard */; };
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
+		1252C08F1CC7861600264853 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252C08E1CC7861600264853 /* Contants.swift */; };
 		12A2806E1CC28E2700E38EBD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2806D1CC28E2700E38EBD /* Extensions.swift */; };
 		12A280751CC28E5800E38EBD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280731CC28E5800E38EBD /* Protocols.swift */; };
 		12A280761CC28E5800E38EBD /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280741CC28E5800E38EBD /* Services.swift */; };
 		12A2807A1CC28EC500E38EBD /* DebugMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280791CC28EC500E38EBD /* DebugMessages.swift */; };
 		12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2807B1CC28ED200E38EBD /* AlertMessagesFile.swift */; };
 		12A2807E1CC28F3D00E38EBD /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2807D1CC28F3D00E38EBD /* Exceptions.swift */; };
-		12A280821CC2914600E38EBD /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280811CC2914600E38EBD /* Contants.swift */; };
 		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; };
 		12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CE1CBD646E00EA154A /* MapUtil.swift */; };
 		12DB29D11CBD646E00EA154A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CF1CBD646E00EA154A /* Util.swift */; };
@@ -41,13 +41,13 @@
 		12471D421BD1810A00B86052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12471D451BD1810B00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
+		1252C08E1CC7861600264853 /* Contants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contants.swift; path = Core/Contants.swift; sourceTree = "<group>"; };
 		12A2806D1CC28E2700E38EBD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Core/Extensions.swift; sourceTree = "<group>"; };
 		12A280731CC28E5800E38EBD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Core/Protocols.swift; sourceTree = "<group>"; };
 		12A280741CC28E5800E38EBD /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Core/Services.swift; sourceTree = "<group>"; };
 		12A280791CC28EC500E38EBD /* DebugMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugMessages.swift; path = Core/DebugMessages.swift; sourceTree = "<group>"; };
 		12A2807B1CC28ED200E38EBD /* AlertMessagesFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertMessagesFile.swift; path = Core/AlertMessagesFile.swift; sourceTree = "<group>"; };
 		12A2807D1CC28F3D00E38EBD /* Exceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exceptions.swift; path = Core/Exceptions.swift; sourceTree = "<group>"; };
-		12A280811CC2914600E38EBD /* Contants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contants.swift; path = Core/Contants.swift; sourceTree = "<group>"; };
 		12D0EEF81BD6EB0B006A2801 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		12D0EEFC1BD6EBA6006A2801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12DB29CC1CBD635100EA154A /* Garden.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Garden.playground; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				12A2807B1CC28ED200E38EBD /* AlertMessagesFile.swift */,
-				12A280811CC2914600E38EBD /* Contants.swift */,
+				1252C08E1CC7861600264853 /* Contants.swift */,
 				12A280791CC28EC500E38EBD /* DebugMessages.swift */,
 				12A2807D1CC28F3D00E38EBD /* Exceptions.swift */,
 				12A2806D1CC28E2700E38EBD /* Extensions.swift */,
@@ -358,7 +358,7 @@
 				12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */,
 				12DE6AEE1CBD5EC2007F1A27 /* ProfileVC.swift in Sources */,
 				12DE6AEB1CBD5EC2007F1A27 /* DashboardVC.swift in Sources */,
-				12A280821CC2914600E38EBD /* Contants.swift in Sources */,
+				1252C08F1CC7861600264853 /* Contants.swift in Sources */,
 				12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */,
 				12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */,
 				12DE6AEF1CBD5EC2007F1A27 /* ReportVC.swift in Sources */,

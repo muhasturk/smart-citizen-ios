@@ -59,5 +59,32 @@ class AppVC: UIViewController {
     alertController.addAction(okAction)
     self.presentViewController(alertController, animated: true, completion: nil)
   }
-  
+
+  // MARK: - Get Exception Title
+  func getHandledExceptionDebug(exceptionCodeString code: String, elseMessage: String) -> (String, String) {
+    
+    var title: String!
+    var message: String!
+    
+    switch code {
+    case ExceptionCode.EmailOrPasswordWrong.rawValue: // 1
+      title = AppAlertMessages.exceptionLoginWrongCredentialsTitle
+      message = AppAlertMessages.exceptionLoginWrongCredentialsMessage
+      
+    case ExceptionCode.ThereIsNoUserWithEmail.rawValue: // 2
+      title = AppAlertMessages.exceptionLoginThereIsNoUserWithEmailTitle
+      message = AppAlertMessages.exceptionLoginThereIsNoUserWithEmailMessage
+      
+    case ExceptionCode.ThereIsaMemberWithEmail.rawValue: // 3
+      title = AppAlertMessages.exceptionAlreadyRegisteredEmailTitle
+      message = AppAlertMessages.exceptionAlreadyRegisteredEmailMessage
+      
+    default:
+      title = AppAlertMessages.defaultHandleExceptionCodeTitle
+      message = AppAlertMessages.defaultHandleExceptionCodeMessage
+      debugPrint(elseMessage)
+    }
+    
+    return (title, message)
+  }
 }

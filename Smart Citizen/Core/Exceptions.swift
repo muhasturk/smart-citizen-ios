@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+enum ExceptionCode: Int {
+  case EmailOrPasswordWrong = 1
+  case ThereIsNoUserWithEmail
+  case ThereIsaMemberWithEmail
+}
