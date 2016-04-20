@@ -3,7 +3,8 @@
 ![Project Status: Active][Project Status Image]
 
 
-is my dissertation project. 
+
+was my dissertation project. 
 
 <img style="float: right;" src="http://s16.postimg.org/guidb4a85/Simulator_Screen_Shot_24_Jan_2016_23_13_13.png" width="40%"/>
 
@@ -33,7 +34,7 @@ pod install; pod update
 
 Minimum deployment target is **9.1**
 
-### Contributing 
+### Contributing
 I need a RESTFull service to communicate backend layer. If you've enough time and you can help me, I can send you databae structure of project needs.
 
 #### License
@@ -41,4 +42,3 @@ Not decided yet.
 
 
 [Project Status Image]: https://img.shields.io/badge/project-active-green.svg "Project Status: Active"
-
