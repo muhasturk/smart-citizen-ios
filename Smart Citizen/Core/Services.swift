@@ -11,5 +11,7 @@ import Foundation
 struct AppAPI {
   static let serviceDomain = "http://"
   static let apiVersion = "v1"
-  static let loginServiceURL = "\(serviceDomain) + \(apiVersion) + login"
+  
+  static let loginServiceURL = "\(serviceDomain)\(apiVersion)/memberLogin"
+  static let signUpServiceURL = "\(serviceDomain)\(apiVersion)/memberSignUp"
 }

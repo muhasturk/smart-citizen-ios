@@ -74,9 +74,9 @@ class LoginVC: AppVC {
             
           else {
             let exception = json["exception"]
-            let c = json["exceptionCode"].stringValue
+            let c = json["exceptionCode"].intValue
             let m = exception["Message"].stringValue
-            let (title, message) = self.handleExceptionCodes(exceptionCodeString: c, elseMessage: m)
+            let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
             self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
           }
           

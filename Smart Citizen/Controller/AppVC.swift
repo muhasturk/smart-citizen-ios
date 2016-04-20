@@ -61,7 +61,7 @@ class AppVC: UIViewController {
   }
 
   // MARK: - Get Exception Title
-  func getHandledExceptionDebug(exceptionCodeString code: String, elseMessage: String) -> (String, String) {
+  func getHandledExceptionDebug(exceptionCode code: Int, elseMessage: String) -> (String, String) {
     
     var title: String!
     var message: String!
