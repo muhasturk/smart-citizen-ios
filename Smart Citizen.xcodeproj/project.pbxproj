@@ -18,19 +18,19 @@
 		12A2807A1CC28EC500E38EBD /* DebugMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280791CC28EC500E38EBD /* DebugMessages.swift */; };
 		12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2807B1CC28ED200E38EBD /* AlertMessagesFile.swift */; };
 		12A2807E1CC28F3D00E38EBD /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2807D1CC28F3D00E38EBD /* Exceptions.swift */; };
+		12B2AD791CD903100096B8BD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD721CD903100096B8BD /* LoginVC.swift */; };
+		12B2AD7A1CD903100096B8BD /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD731CD903100096B8BD /* DashboardVC.swift */; };
+		12B2AD7B1CD903100096B8BD /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD741CD903100096B8BD /* MapVC.swift */; };
+		12B2AD7C1CD903100096B8BD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD751CD903100096B8BD /* ProfileVC.swift */; };
+		12B2AD7D1CD903100096B8BD /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD761CD903100096B8BD /* ReportVC.swift */; };
+		12B2AD7E1CD903100096B8BD /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD771CD903100096B8BD /* SettingsVC.swift */; };
+		12B2AD7F1CD903100096B8BD /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD781CD903100096B8BD /* SignUpVC.swift */; };
 		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; };
 		12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CE1CBD646E00EA154A /* MapUtil.swift */; };
 		12DB29D11CBD646E00EA154A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CF1CBD646E00EA154A /* Util.swift */; };
 		12DB29D51CBD655800EA154A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D41CBD655800EA154A /* User.swift */; };
 		12DB29D71CBD664F00EA154A /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D61CBD664F00EA154A /* Report.swift */; };
 		12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D81CBD66E100EA154A /* AppVC.swift */; };
-		12DE6AEB1CBD5EC2007F1A27 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */; };
-		12DE6AEC1CBD5EC2007F1A27 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */; };
-		12DE6AED1CBD5EC2007F1A27 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */; };
-		12DE6AEE1CBD5EC2007F1A27 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE71CBD5EC2007F1A27 /* ProfileVC.swift */; };
-		12DE6AEF1CBD5EC2007F1A27 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE81CBD5EC2007F1A27 /* ReportVC.swift */; };
-		12DE6AF01CBD5EC2007F1A27 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AE91CBD5EC2007F1A27 /* SettingsVC.swift */; };
-		12DE6AF11CBD5EC2007F1A27 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DE6AEA1CBD5EC2007F1A27 /* SignUpVC.swift */; };
 		9F6C0D5E7299AD84093DAAE2 /* Pods_Smart_Citizen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +48,13 @@
 		12A280791CC28EC500E38EBD /* DebugMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugMessages.swift; path = Core/DebugMessages.swift; sourceTree = "<group>"; };
 		12A2807B1CC28ED200E38EBD /* AlertMessagesFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertMessagesFile.swift; path = Core/AlertMessagesFile.swift; sourceTree = "<group>"; };
 		12A2807D1CC28F3D00E38EBD /* Exceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exceptions.swift; path = Core/Exceptions.swift; sourceTree = "<group>"; };
+		12B2AD721CD903100096B8BD /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Controller/Presenter/LoginVC.swift; sourceTree = "<group>"; };
+		12B2AD731CD903100096B8BD /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardVC.swift; path = Controller/Presenter/DashboardVC.swift; sourceTree = "<group>"; };
+		12B2AD741CD903100096B8BD /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapVC.swift; path = Controller/Presenter/MapVC.swift; sourceTree = "<group>"; };
+		12B2AD751CD903100096B8BD /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = Controller/Presenter/ProfileVC.swift; sourceTree = "<group>"; };
+		12B2AD761CD903100096B8BD /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportVC.swift; path = Controller/Presenter/ReportVC.swift; sourceTree = "<group>"; };
+		12B2AD771CD903100096B8BD /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = Controller/Presenter/SettingsVC.swift; sourceTree = "<group>"; };
+		12B2AD781CD903100096B8BD /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = Controller/Presenter/SignUpVC.swift; sourceTree = "<group>"; };
 		12D0EEF81BD6EB0B006A2801 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		12D0EEFC1BD6EBA6006A2801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12DB29CC1CBD635100EA154A /* Garden.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Garden.playground; sourceTree = "<group>"; };
@@ -56,13 +63,6 @@
 		12DB29D41CBD655800EA154A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		12DB29D61CBD664F00EA154A /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = Model/Report.swift; sourceTree = "<group>"; };
 		12DB29D81CBD66E100EA154A /* AppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVC.swift; path = Controller/AppVC.swift; sourceTree = "<group>"; };
-		12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardVC.swift; path = Controller/VC/DashboardVC.swift; sourceTree = "<group>"; };
-		12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = Controller/VC/LoginVC.swift; sourceTree = "<group>"; };
-		12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapVC.swift; path = Controller/VC/MapVC.swift; sourceTree = "<group>"; };
-		12DE6AE71CBD5EC2007F1A27 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = Controller/VC/ProfileVC.swift; sourceTree = "<group>"; };
-		12DE6AE81CBD5EC2007F1A27 /* ReportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportVC.swift; path = Controller/VC/ReportVC.swift; sourceTree = "<group>"; };
-		12DE6AE91CBD5EC2007F1A27 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = Controller/VC/SettingsVC.swift; sourceTree = "<group>"; };
-		12DE6AEA1CBD5EC2007F1A27 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = Controller/VC/SignUpVC.swift; sourceTree = "<group>"; };
 		50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Citizen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		854FCD053DEF9FF5B7F39C13 /* Pods-Smart Citizen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Citizen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen.debug.xcconfig"; sourceTree = "<group>"; };
 		8E8905E275882DD137000AC6 /* Pods-Smart Citizen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Citizen.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				12DB29D81CBD66E100EA154A /* AppVC.swift */,
-				12DE6AE31CBD5E9F007F1A27 /* CC */,
-				12DE6AE21CBD5E93007F1A27 /* VC */,
+				12DE6AE31CBD5E9F007F1A27 /* Interactor */,
+				12DE6AE21CBD5E93007F1A27 /* Presenter */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -169,25 +169,25 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
-		12DE6AE21CBD5E93007F1A27 /* VC */ = {
+		12DE6AE21CBD5E93007F1A27 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				12DE6AE41CBD5EC2007F1A27 /* DashboardVC.swift */,
-				12DE6AE51CBD5EC2007F1A27 /* LoginVC.swift */,
-				12DE6AE61CBD5EC2007F1A27 /* MapVC.swift */,
-				12DE6AE71CBD5EC2007F1A27 /* ProfileVC.swift */,
-				12DE6AE81CBD5EC2007F1A27 /* ReportVC.swift */,
-				12DE6AE91CBD5EC2007F1A27 /* SettingsVC.swift */,
-				12DE6AEA1CBD5EC2007F1A27 /* SignUpVC.swift */,
+				12B2AD721CD903100096B8BD /* LoginVC.swift */,
+				12B2AD731CD903100096B8BD /* DashboardVC.swift */,
+				12B2AD741CD903100096B8BD /* MapVC.swift */,
+				12B2AD751CD903100096B8BD /* ProfileVC.swift */,
+				12B2AD761CD903100096B8BD /* ReportVC.swift */,
+				12B2AD771CD903100096B8BD /* SettingsVC.swift */,
+				12B2AD781CD903100096B8BD /* SignUpVC.swift */,
 			);
-			name = VC;
+			name = Presenter;
 			sourceTree = "<group>";
 		};
-		12DE6AE31CBD5E9F007F1A27 /* CC */ = {
+		12DE6AE31CBD5E9F007F1A27 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = CC;
+			name = Interactor;
 			sourceTree = "<group>";
 		};
 		12DE6AF21CBD5F28007F1A27 /* View */ = {
@@ -351,24 +351,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12B2AD7E1CD903100096B8BD /* SettingsVC.swift in Sources */,
 				12A280751CC28E5800E38EBD /* Protocols.swift in Sources */,
+				12B2AD7A1CD903100096B8BD /* DashboardVC.swift in Sources */,
 				12A2807E1CC28F3D00E38EBD /* Exceptions.swift in Sources */,
+				12B2AD791CD903100096B8BD /* LoginVC.swift in Sources */,
+				12B2AD7D1CD903100096B8BD /* ReportVC.swift in Sources */,
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
-				12DE6AED1CBD5EC2007F1A27 /* MapVC.swift in Sources */,
 				12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */,
-				12DE6AEE1CBD5EC2007F1A27 /* ProfileVC.swift in Sources */,
-				12DE6AEB1CBD5EC2007F1A27 /* DashboardVC.swift in Sources */,
+				12B2AD7F1CD903100096B8BD /* SignUpVC.swift in Sources */,
 				1252C08F1CC7861600264853 /* Contants.swift in Sources */,
 				12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */,
 				12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */,
-				12DE6AEF1CBD5EC2007F1A27 /* ReportVC.swift in Sources */,
-				12DE6AEC1CBD5EC2007F1A27 /* LoginVC.swift in Sources */,
 				12DB29D11CBD646E00EA154A /* Util.swift in Sources */,
-				12DE6AF11CBD5EC2007F1A27 /* SignUpVC.swift in Sources */,
 				12A2807A1CC28EC500E38EBD /* DebugMessages.swift in Sources */,
-				12DE6AF01CBD5EC2007F1A27 /* SettingsVC.swift in Sources */,
 				12DB29D51CBD655800EA154A /* User.swift in Sources */,
 				12A280761CC28E5800E38EBD /* Services.swift in Sources */,
+				12B2AD7C1CD903100096B8BD /* ProfileVC.swift in Sources */,
+				12B2AD7B1CD903100096B8BD /* MapVC.swift in Sources */,
 				12DB29D71CBD664F00EA154A /* Report.swift in Sources */,
 				12A2806E1CC28E2700E38EBD /* Extensions.swift in Sources */,
 			);
