@@ -23,6 +23,15 @@ class LoginVC: AppVC {
     self.navigationItem.title = "Login"
   }
   
+  override func viewWillAppear(animated: Bool) {
+    self.navigationController?.navigationBarHidden = true
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.navigationController?.navigationBarHidden = false
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }

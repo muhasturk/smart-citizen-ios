@@ -16,9 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    Fabric.with([Crashlytics.self])
+    
+    self.configureThirdParty()
+    self.prepareDeviceToken()
 
     return true
+  }
+  
+  func configureThirdParty() {
+    Fabric.with([Crashlytics.self])
+  }
+  
+  func prepareDeviceToken() {
+    if NSUserDefaults.standardUserDefaults().valueForKey(AppConstants.DefaultKeys.DEVICE_TOKEN) == nil {
+      let pushNotificationType: UIUserNotificationType = [.Sound, .Alert, .Badge]
+      let pushNotificationSetting = UIUserNotificationSettings(forTypes: pushNotificationType, categories: nil)
+      UIApplication.sharedApplication().registerUserNotificationSettings(pushNotificationSetting)
+      UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
   }
 
   func applicationWillResignActive(application: UIApplication) {
@@ -43,6 +58,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
+  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    print("Device token data: \(deviceToken)")
+    let characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
+    
+    let deviceTokenString: String = ( deviceToken.description as NSString )
+      .stringByTrimmingCharactersInSet( characterSet )
+      .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
+    
+    print("Device token string:  \(deviceTokenString)")
+    
+    NSUserDefaults.standardUserDefaults().setValue(deviceTokenString, forKey: AppConstants.DefaultKeys.DEVICE_TOKEN)
+  }
+  
+  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    print("Couldn’t register for remote notification: \(error)")
+  }
+  
+  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    print(userInfo)
+  }
 
 }
 

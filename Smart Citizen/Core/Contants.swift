@@ -17,4 +17,11 @@ struct AppColors {
 }
 
 struct AppConstants {
+  
+  static var AppUser = User()
+  
+  struct DefaultKeys {
+    static let DEVICE_TOKEN = "KEY_DEVICE_TOKEN"
+  }
+  
 }
