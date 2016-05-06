@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
-  private func decideSceneToOpen() {
+  func decideSceneToOpen() {
     if NSUserDefaults.standardUserDefaults().boolForKey(AppConstants.DefaultKeys.APP_ALIVE) {
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let rootController = storyboard.instantiateViewControllerWithIdentifier("MainTabC") as! MainTabC
