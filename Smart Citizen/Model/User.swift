@@ -14,13 +14,8 @@ class User: NSObject, NSCoding {
   var fullName: String = ""
   var email: String = ""
   var password: String = ""
-  var roleId =  1
-  var roleName =  "Normal"
-  var active =  true
-  
-  // Facebook 
-  var fbid: Int = 0
-  var fbToken: String = ""
+  var roleId = 1
+  var roleName = "Normal"
   
   required convenience init?(coder aDecoder: NSCoder) {
     self.init()
@@ -30,7 +25,6 @@ class User: NSObject, NSCoding {
     self.password = aDecoder.decodeObjectForKey("password") as! String
     self.roleId = aDecoder.decodeObjectForKey("roleId") as! Int
     self.roleName = aDecoder.decodeObjectForKey("roleName") as! String
-    self.active = aDecoder.decodeObjectForKey("active") as! Bool
   }
   
   func encodeWithCoder(aCoder: NSCoder) {
@@ -40,7 +34,6 @@ class User: NSObject, NSCoding {
     aCoder.encodeObject(self.password, forKey: "password")
     aCoder.encodeObject(self.roleId, forKey: "roleId")
     aCoder.encodeObject(self.roleName, forKey: "roleName")
-    aCoder.encodeObject(self.active, forKey: "active")
   }
   
   

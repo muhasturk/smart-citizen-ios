@@ -17,10 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
+    self.prepareApp()
     self.configureThirdParty()
     self.prepareDeviceToken()
 
     return true
+  }
+  
+  private func prepareApp() {
+    if NSUserDefaults.standardUserDefaults().boolForKey(AppConstants.DefaultKeys.APP_ALIVE) {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let rootController = storyboard.instantiateViewControllerWithIdentifier("MainTabC") as! MainTabC
+      self.window?.rootViewController = rootController
+    }
   }
   
   func configureThirdParty() {
@@ -28,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func prepareDeviceToken() {
-    if NSUserDefaults.standardUserDefaults().valueForKey(AppConstants.DefaultKeys.DEVICE_TOKEN) == nil {
+    if NSUserDefaults.standardUserDefaults().stringForKey(AppConstants.DefaultKeys.DEVICE_TOKEN) == nil {
       let pushNotificationType: UIUserNotificationType = [.Sound, .Alert, .Badge]
       let pushNotificationSetting = UIUserNotificationSettings(forTypes: pushNotificationType, categories: nil)
       UIApplication.sharedApplication().registerUserNotificationSettings(pushNotificationSetting)

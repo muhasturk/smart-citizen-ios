@@ -87,4 +87,15 @@ class AppVC: UIViewController {
     
     return (title, message)
   }
+  
+  // MARK: - Mirror
+  func reflectAttributes(reflectingObject o: Any) {
+    let m = Mirror(reflecting: o)
+    for (index, attribute) in m.children.enumerate() {
+      if let property = attribute.label as String! {
+        print("\(index) - \(property) - \(attribute.value)")
+      }
+    }
+  }
+  
 }

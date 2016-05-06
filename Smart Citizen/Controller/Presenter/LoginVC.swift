@@ -51,8 +51,9 @@ class LoginVC: AppVC {
       
     else {
       let parameters = [
-        "email": emailField,
-        "password": password
+        "email": email,
+        "password": password,
+        "deviceToken": NSUserDefaults.standardUserDefaults().stringForKey(AppConstants.DefaultKeys.DEVICE_TOKEN) ?? "5005"
       ]
       self.loginNetworking(networkingParameters: parameters)
     }
@@ -83,8 +84,8 @@ class LoginVC: AppVC {
             
           else {
             let exception = json["exception"]
-            let c = json["exceptionCode"].intValue
-            let m = exception["Message"].stringValue
+            let c = exception["exceptionCode"].intValue
+            let m = exception["exceptionMessage"].stringValue
             let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
             self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
           }
@@ -97,7 +98,21 @@ class LoginVC: AppVC {
   }
   
   private func writeUserDataToModel(dataJsonFromNetworking data: JSON) {
+    AppConstants.AppUser.id = data["id"].intValue
+    AppConstants.AppUser.email = data["email"].stringValue
+    AppConstants.AppUser.fullName = data["fullName"].stringValue
+    AppConstants.AppUser.roleId = data["roleId"].intValue
+    AppConstants.AppUser.roleName = data["roleName"].stringValue
     
+    super.reflectAttributes(reflectingObject: AppConstants.AppUser)
+
+    self.saveLocalSession()
+  }
+  
+  private func saveLocalSession() {
+    NSUserDefaults.standardUserDefaults().setBool(true, forKey: AppConstants.DefaultKeys.APP_ALIVE)
+    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(AppConstants.AppUser)
+    NSUserDefaults.standardUserDefaults().setObject(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
   }
   
   func textFieldShouldReturn(textField: UITextField) -> Bool {

@@ -8,9 +8,6 @@ target 'Smart Citizen' do
     pod 'Fabric'
     pod 'LTMorphingLabel'
     pod 'RAMAnimatedTabBarController'
-    pod 'Bolts'
-    pod 'FBSDKCoreKit'
-    pod 'FBSDKLoginKit'
-    pod 'FBSDKShareKit'
+    pod 'HanekeSwift'
 end
 

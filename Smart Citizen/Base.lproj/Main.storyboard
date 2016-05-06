@@ -468,7 +468,7 @@
         <!--Main Tab-->
         <scene sceneID="xFq-7a-eRi">
             <objects>
-                <tabBarController title="Main Tab" automaticallyAdjustsScrollViewInsets="NO" id="oer-D6-63B" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabC" title="Main Tab" automaticallyAdjustsScrollViewInsets="NO" id="oer-D6-63B" customClass="MainTabC" customModule="Smart_Citizen" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="p74-P8-HPb">
@@ -559,6 +559,6 @@
         <image name="nighttheme" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z1x-hc-jBw"/>
+        <segue reference="crO-Qz-pqE"/>
     </inferredMetricsTieBreakers>
 </document>
