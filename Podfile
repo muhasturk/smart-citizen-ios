@@ -3,11 +3,11 @@ use_frameworks!
 
 target 'Smart Citizen' do
     pod 'Alamofire'
-    pod 'SwiftyJSON'
     pod 'Crashlytics'
+    pod 'HanekeSwift'
     pod 'Fabric'
     pod 'LTMorphingLabel'
     pod 'RAMAnimatedTabBarController'
-    pod 'HanekeSwift'
+    pod 'SwiftyJSON'
 end
 

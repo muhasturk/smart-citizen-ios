@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    self.decideSceneToOpen()
     self.configureThirdParty()
+    self.decideSceneToOpen()
     self.prepareDeviceToken()
 
     return true
