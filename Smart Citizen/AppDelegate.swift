@@ -17,14 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
-    self.prepareApp()
+    self.decideSceneToOpen()
     self.configureThirdParty()
     self.prepareDeviceToken()
 
     return true
   }
   
-  private func prepareApp() {
+  private func decideSceneToOpen() {
     if NSUserDefaults.standardUserDefaults().boolForKey(AppConstants.DefaultKeys.APP_ALIVE) {
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let rootController = storyboard.instantiateViewControllerWithIdentifier("MainTabC") as! MainTabC

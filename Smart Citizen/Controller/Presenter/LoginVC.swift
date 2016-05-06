@@ -37,6 +37,7 @@ class LoginVC: AppVC {
   }
   
   @IBAction func loginButtonAction(sender: AnyObject) {
+    self.view.endEditing(true)
     let email = self.emailField.text!
     let password = self.passwordField.text!
     
@@ -46,7 +47,7 @@ class LoginVC: AppVC {
     }
       
     else if email.isNotEmail {
-      self.createAlertController(title: AppAlertMessages.loginEmailFieldNotValidatedTitle, message: AppAlertMessages.loginEmailFieldNotValidatedMessage, controllerStyle: .Alert, actionStyle: .Default)
+      self.createAlertController(title: AppAlertMessages.emailFieldNotValidatedTitle, message: AppAlertMessages.emailFieldNotValidatedMessage, controllerStyle: .Alert, actionStyle: .Default)
     }
       
     else {
@@ -60,6 +61,7 @@ class LoginVC: AppVC {
   }
   
   private func loginNetworking(networkingParameters params: [String: AnyObject]) {
+    self.startIndicator()
     Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
       .responseJSON { response in
         self.stopIndicator()

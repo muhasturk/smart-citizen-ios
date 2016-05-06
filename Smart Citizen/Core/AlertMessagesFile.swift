@@ -14,8 +14,8 @@ struct AppAlertMessages {
 
   // Login Scene
   static let loginMissingFieldMessage =  "Email veya şifre kısmı boş bırakılamaz."
-  static let loginEmailFieldNotValidatedTitle = "Geçersiz Email"
-  static let loginEmailFieldNotValidatedMessage = "Lütfen geçerli bir mail adresi giriniz."
+  static let emailFieldNotValidatedTitle = "Geçersiz Email"
+  static let emailFieldNotValidatedMessage = "Lütfen geçerli bir mail adresi giriniz."
   
   static let exceptionLoginThereIsNoUserWithEmailTitle = "Üye Bulunamadı"
   static let exceptionLoginThereIsNoUserWithEmailMessage = "Girmiş olduğunuz mail adresi ile kayıtlı bir kullanıcı bulunamadı."

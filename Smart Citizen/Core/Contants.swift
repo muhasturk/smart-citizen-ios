@@ -10,6 +10,7 @@ import Foundation
 
 struct AppSegues {
   static let doLoginSegue = "doLogin"
+  static let doSignUpSegue = "doSignUp"
 }
 
 struct AppColors {

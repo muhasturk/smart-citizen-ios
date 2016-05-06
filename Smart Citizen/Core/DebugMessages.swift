@@ -14,4 +14,6 @@ struct AppDebugMessages {
   static let downloadImageFromURLFailed = "Problem when download image from URL:\n"
   
   static let serviceConnectionLoginIsOk = "Login servis bağlantısı başarılı"
+  
+  static let serviceConnectionSignUpIsOk = "Sign servisi bağlantısı başarılı"
 }
