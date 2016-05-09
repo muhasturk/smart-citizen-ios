@@ -9,8 +9,7 @@
 import Foundation
 
 struct AppAPI {
-  static let serviceDomain = "http://159.203.219.208"
-  static let servicePort = ":80/"
+  static let serviceDomain = "http://smart-citizen.mustafahasturk.com"
   
   static let loginServiceURL = "\(serviceDomain)/memberLogin"
   static let signUpServiceURL = "\(serviceDomain)/memberSignUp"
