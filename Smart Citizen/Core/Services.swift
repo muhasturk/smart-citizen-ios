@@ -12,5 +12,10 @@ struct AppAPI {
   static let serviceDomain = "http://smart-citizen.mustafahasturk.com"
   
   static let loginServiceURL = "\(serviceDomain)/memberLogin"
+  
   static let signUpServiceURL = "\(serviceDomain)/memberSignUp"
+  
+  static let dashboardServiceURL = "\(serviceDomain)/getReportsByType?reportType="
+  
+  static let reportServiceURL = "\(serviceDomain)/sendReport"
 }

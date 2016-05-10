@@ -13,9 +13,13 @@ struct AppDebugMessages {
   
   static let downloadImageFromURLFailed = "Problem when download image from URL:\n"
   
+  // MARK: - Service Connection
   static let serviceConnectionLoginIsOk = "Login servis bağlantısı başarılı"
   
   static let serviceConnectionSignUpIsOk = "Sign servisi bağlantısı başarılı"
+  
+  static let serviceConnectionDashboardIsOk = "Dashboard servisi bağlantısı başarılı"
+  
   
   static let cameraDeviceNotAvailableTitle = "Kamera Bulunamadı"
   static let cameraDeviceNotAvailableMessage = "Mobil cihaz üzerinde kamera bulunamadı"

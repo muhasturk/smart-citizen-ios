@@ -73,7 +73,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     }
   }
 
-  
   func createImagePickerController(sourceType: UIImagePickerControllerSourceType) -> Void {
     
     let picker = UIImagePickerController()
