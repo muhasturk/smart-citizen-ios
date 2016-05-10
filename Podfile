@@ -9,5 +9,7 @@ target 'Smart Citizen' do
     pod 'LTMorphingLabel'
     pod 'RAMAnimatedTabBarController'
     pod 'SwiftyJSON'
+    pod 'AWSS3'
+
 end
 

@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (3.3.1)
+  - AWSCore (2.4.1)
+  - AWSS3 (2.4.1):
+    - AWSCore (= 2.4.1)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.7)
@@ -10,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AWSS3
   - Crashlytics
   - Fabric
   - HanekeSwift
@@ -19,6 +23,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  AWSCore: 9bfd632f04aaf12053e639d2a9120372844beb0d
+  AWSS3: d7a3a694ffc4010e90b14755b5b9dbf70989c117
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
@@ -26,6 +32,6 @@ SPEC CHECKSUMS:
   RAMAnimatedTabBarController: 71478294be88a5b870064c7980880caeb9ce2655
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: a627485666c6df2e718ae644aab701c14c73ae06
+PODFILE CHECKSUM: 96f69107f937ccea6fc66ff1ea77ba6e8cdbdeee
 
 COCOAPODS: 1.0.0.rc.1
