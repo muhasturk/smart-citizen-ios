@@ -14,18 +14,26 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   @IBOutlet weak var choosenImage: UIImageView!
   let picker = UIImagePickerController()
 
+  // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configurePickerController()
   }
   
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
+  
   private func configurePickerController() {
     self.picker.delegate = self
-    self.picker.allowsEditing = false
+//    self.picker.allowsEditing = true
+//    if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera) {
+//      self.picker.mediaTypes = mediaTypes
+//    }
   }
   
   @IBAction func chooseMediaAction(sender: AnyObject) {
-    let actionSheet = UIAlertController(title: "Medya Kaynağı", message: nil, preferredStyle: .ActionSheet)
+    let actionSheet = UIAlertController(title: "Medya Kaynağı", message: "Medya eklemek için bir kaynak seçiniz.", preferredStyle: .ActionSheet)
     
     let cameraAction = UIAlertAction(title: "Camera", style: .Default) { (UIAlertAction) in
       self.captureFromCamera()
@@ -50,9 +58,11 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     self.presentViewController(actionSheet, animated: true, completion: nil)
   }
   
+  
   private func captureFromCamera() {
     if UIImagePickerController.isSourceTypeAvailable(.Camera) {
       self.picker.sourceType = .Camera
+      self.picker.modalPresentationStyle = .CurrentContext
       self.presentViewController(self.picker, animated: true, completion: nil)
     }
     else {
@@ -82,19 +92,22 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       print(AppDebugMessages.momentsNotAvailable)
     }
   }
-
-  func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-    print("Image selected")
+  
+  // MARK: - Picker Delegate
+  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+      UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
+      self.choosenImage.image = pickedImage
+    }
     self.dismissViewControllerAnimated(true, completion: nil)
-    self.choosenImage.image = image
   }
   
   func imagePickerControllerDidCancel(picker: UIImagePickerController) {
     self.dismissViewControllerAnimated(true, completion: nil)
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
+  
+  
+  
   
 }
