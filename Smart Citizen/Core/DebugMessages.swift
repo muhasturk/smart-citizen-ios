@@ -16,4 +16,16 @@ struct AppDebugMessages {
   static let serviceConnectionLoginIsOk = "Login servis bağlantısı başarılı"
   
   static let serviceConnectionSignUpIsOk = "Sign servisi bağlantısı başarılı"
+  
+  static let cameraDeviceNotAvailableTitle = "Kamera Bulunamadı"
+  static let cameraDeviceNotAvailableMessage = "Mobil cihaz üzerinde kamera bulunamadı"
+  static let cameraDeviceNotAvailable = "Cihaz üzerinde UIImagePickerControllerSourceType.Camera bulunamadı."
+  
+  static let photosNotAvailable = "Cihaz üzerinde UIImagePickerControllerSourceType.PhotoLibrary bulunamadı."
+  static let photosNotAvailableTitle = "Photos Bulunamadı"
+  static let photosNotAvailableMessage = "Mobil cihaz üzerinde Photoss uygulaması bulunamadı."
+  
+  static let momentsNotAvailable = "Cihaz üzerinde UIImagePickerControllerSourceType.SavedPhotosAlbum buunamadı"
+  static let momentsNotAvailableTitle = "Moments Erişilemedi"
+  static let momentsNotAvailableMessage = "Mobil cihaz üerinde Moments erişilemedi."
 }

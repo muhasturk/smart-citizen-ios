@@ -15,6 +15,9 @@ class IntroVC: AppVC {
     super.viewDidLoad()
   }
   
+  @IBAction func imageUpload(sender: AnyObject) {
+  }
+  
   override func viewWillAppear(animated: Bool) {
     self.navigationController?.navigationBarHidden = true
   }
