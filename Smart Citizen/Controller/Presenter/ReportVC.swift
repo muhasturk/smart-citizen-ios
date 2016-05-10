@@ -12,13 +12,20 @@ import Alamofire
 class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   
   @IBOutlet weak var choosenImage: UIImageView!
-  
+  let picker = UIImagePickerController()
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.configurePickerController()
+  }
+  
+  private func configurePickerController() {
+    self.picker.delegate = self
+    self.picker.allowsEditing = false
   }
   
   @IBAction func chooseMediaAction(sender: AnyObject) {
-    let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    let actionSheet = UIAlertController(title: "Medya Kaynağı", message: nil, preferredStyle: .ActionSheet)
     
     let cameraAction = UIAlertAction(title: "Camera", style: .Default) { (UIAlertAction) in
       self.captureFromCamera()
@@ -45,7 +52,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   private func captureFromCamera() {
     if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-      self.createImagePickerController(.Camera)
+      self.picker.sourceType = .Camera
+      self.presentViewController(self.picker, animated: true, completion: nil)
     }
     else {
       self.createAlertController(title: AppDebugMessages.cameraDeviceNotAvailableTitle, message: AppDebugMessages.cameraDeviceNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
@@ -55,7 +63,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   private func pickFromPhotos() {
     if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-      self.createImagePickerController(.PhotoLibrary)
+      self.picker.sourceType = .PhotoLibrary
+      self.presentViewController(self.picker, animated: true, completion: nil)
     }
     else {
       self.createAlertController(title: AppDebugMessages.photosNotAvailableTitle, message: AppDebugMessages.photosNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
@@ -65,7 +74,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
 
   private func pickFromMoments() {
     if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) {
-      self.createImagePickerController(.SavedPhotosAlbum)
+      self.picker.sourceType = .SavedPhotosAlbum
+      self.presentViewController(self.picker, animated: true, completion: nil)
     }
     else {
       self.createAlertController(title: AppDebugMessages.momentsNotAvailableTitle, message: AppDebugMessages.momentsNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
@@ -73,23 +83,14 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     }
   }
 
-  func createImagePickerController(sourceType: UIImagePickerControllerSourceType) -> Void {
-    
-    let picker = UIImagePickerController()
-    picker.delegate = self
-    picker.sourceType = sourceType
-    picker.allowsEditing = false
-    
-    self.presentViewController(picker, animated: true, completion: nil)
-  }
-  
   func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
     print("Image selected")
     self.dismissViewControllerAnimated(true, completion: nil)
     self.choosenImage.image = image
-    for (a, b) in editingInfo! {
-      print("a: \(a) ----- \(b)")
-    }
+  }
+  
+  func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    self.dismissViewControllerAnimated(true, completion: nil)
   }
   
   override func didReceiveMemoryWarning() {
