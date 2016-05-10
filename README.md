@@ -1,6 +1,7 @@
 ## Smart Citizen
 
 ![Project Status: Active][Project Status Image]
+[![codebeat badge](https://codebeat.co/badges/bc6f2aba-56ae-4cec-8e38-969e4ca31960)](https://codebeat.co/projects/github-com-muhasturk-smart-citizen-ios)
 
 
 is my dissertation project. 
