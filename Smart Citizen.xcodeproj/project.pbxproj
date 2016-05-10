@@ -12,6 +12,8 @@
 		12471D431BD1810A00B86052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12471D421BD1810A00B86052 /* Assets.xcassets */; };
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
 		1252C08F1CC7861600264853 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252C08E1CC7861600264853 /* Contants.swift */; };
+		1266379F1CE15DD500E0EE72 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1266379E1CE15DD500E0EE72 /* LICENSE */; };
+		126637A11CE15DDF00E0EE72 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126637A01CE15DDF00E0EE72 /* Package.swift */; };
 		12A2806E1CC28E2700E38EBD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2806D1CC28E2700E38EBD /* Extensions.swift */; };
 		12A280751CC28E5800E38EBD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280731CC28E5800E38EBD /* Protocols.swift */; };
 		12A280761CC28E5800E38EBD /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280741CC28E5800E38EBD /* Services.swift */; };
@@ -44,6 +46,8 @@
 		12471D451BD1810B00B86052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
 		1252C08E1CC7861600264853 /* Contants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contants.swift; path = Core/Contants.swift; sourceTree = "<group>"; };
+		1266379E1CE15DD500E0EE72 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		126637A01CE15DDF00E0EE72 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		12A2806D1CC28E2700E38EBD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Core/Extensions.swift; sourceTree = "<group>"; };
 		12A280731CC28E5800E38EBD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Core/Protocols.swift; sourceTree = "<group>"; };
 		12A280741CC28E5800E38EBD /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Core/Services.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 			children = (
 				12D0EEF81BD6EB0B006A2801 /* .gitignore */,
 				12471D471BD1810B00B86052 /* Info.plist */,
+				1266379E1CE15DD500E0EE72 /* LICENSE */,
+				126637A01CE15DDF00E0EE72 /* Package.swift */,
 				12D0EEFC1BD6EBA6006A2801 /* README.md */,
 				12DB29CC1CBD635100EA154A /* Garden.playground */,
 			);
@@ -286,6 +292,7 @@
 				12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */,
 				12471D431BD1810A00B86052 /* Assets.xcassets in Resources */,
 				12471D411BD1810A00B86052 /* Main.storyboard in Resources */,
+				1266379F1CE15DD500E0EE72 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +371,7 @@
 				12B2AD791CD903100096B8BD /* LoginVC.swift in Sources */,
 				12B2AD811CD927FE0096B8BD /* IntroVC.swift in Sources */,
 				12B2AD7D1CD903100096B8BD /* ReportVC.swift in Sources */,
+				126637A11CE15DDF00E0EE72 /* Package.swift in Sources */,
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
 				12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */,
 				12B2AD7F1CD903100096B8BD /* SignUpVC.swift in Sources */,
