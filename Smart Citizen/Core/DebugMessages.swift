@@ -18,6 +18,8 @@ struct AppDebugMessages {
   
   static let serviceConnectionSignUpIsOk = "Sign servisi bağlantısı başarılı"
   
+  static let serviceConnectionMapIsOk = "Map servisi bağlantısı başarılı"
+  
   static let serviceConnectionDashboardIsOk = "Dashboard servisi bağlantısı başarılı"
   
   
