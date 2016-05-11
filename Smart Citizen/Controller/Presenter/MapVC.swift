@@ -29,9 +29,6 @@ class MapVC: AppVC, CLLocationManagerDelegate {
     self.mapNetworking()
   }
   
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(true)
-  }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -56,12 +53,12 @@ class MapVC: AppVC, CLLocationManagerDelegate {
       let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
       let span: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
       let region: MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
+      
       self.mapView.setRegion(region, animated: true)
     }
     else {
       print("Konum alınamadı")
     }
-    self.locationManaer.stopUpdatingLocation()
   }
   
   // MARK: - Networking
@@ -109,7 +106,8 @@ class MapVC: AppVC, CLLocationManagerDelegate {
     for r: Report in self.mapReports {
       let latitude: CLLocationDegrees = r.latitude
       let longitude: CLLocationDegrees = r.longitude
-      let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)      
+      let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+      // TODO: Needs custom annotation
       let annotation = MKPointAnnotation()
       annotation.coordinate = coordinate
       annotation.title = r.title

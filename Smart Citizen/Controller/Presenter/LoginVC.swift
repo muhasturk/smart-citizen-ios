@@ -51,6 +51,7 @@ class LoginVC: AppVC {
     }
   }
   
+  // MARK: - Networking
   private func loginNetworking(networkingParameters params: [String: AnyObject]) {
     self.startIndicator()
     Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
@@ -90,6 +91,7 @@ class LoginVC: AppVC {
     }
   }
   
+  // MARK: - Model
   private func writeUserDataToModel(dataJsonFromNetworking data: JSON) {
     AppConstants.AppUser.id = data["id"].intValue
     AppConstants.AppUser.email = data["email"].stringValue
