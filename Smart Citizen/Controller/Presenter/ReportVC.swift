@@ -13,10 +13,13 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   @IBOutlet weak var choosenImage: UIImageView!
   let picker = UIImagePickerController()
-
+  
+  @IBOutlet weak var descriptionView: UITextView!
+  
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.addKeyboardObserver()
     self.configurePickerController()
   }
   
@@ -24,12 +27,16 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     super.didReceiveMemoryWarning()
   }
   
+  override func viewDidDisappear(animated: Bool) {
+    self.removeKeyboardObserver()
+  }
+  
   private func configurePickerController() {
     self.picker.delegate = self
-//    self.picker.allowsEditing = true
-//    if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera) {
-//      self.picker.mediaTypes = mediaTypes
-//    }
+    //    self.picker.allowsEditing = true
+    //    if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera) {
+    //      self.picker.mediaTypes = mediaTypes
+    //    }
   }
   
   @IBAction func chooseMediaAction(sender: AnyObject) {
@@ -81,7 +88,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       print(AppDebugMessages.photosNotAvailable)
     }
   }
-
+  
   private func pickFromMoments() {
     if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) {
       self.picker.sourceType = .SavedPhotosAlbum
@@ -106,8 +113,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     self.dismissViewControllerAnimated(true, completion: nil)
   }
   
-  
-  
-  
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    self.view.endEditing(true)
+  }
   
 }

@@ -347,7 +347,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" text="Your feedback..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-bn-efM">
-                                <rect key="frame" x="0.0" y="408" width="375" height="172"/>
+                                <rect key="frame" x="0.0" y="408" width="375" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="172" id="flE-ek-yd4"/>
@@ -384,6 +384,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="choosenImage" destination="zFz-e4-san" id="qLn-5Z-com"/>
+                        <outlet property="descriptionView" destination="cwS-bn-efM" id="aMC-ru-LeT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-KY-gRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
