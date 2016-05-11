@@ -20,12 +20,13 @@ class MapVC: AppVC, CLLocationManagerDelegate {
   var locationManaer = CLLocationManager()
   var mapReports = [Report]()
   
-  lazy var requestBaseURL = AppAPI.serviceDomain + AppAPI.mapServiceURL
+  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.mapServiceURL
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configureMap()
+    self.mapNetworking()
   }
   
   override func viewDidDisappear(animated: Bool) {
@@ -64,9 +65,9 @@ class MapVC: AppVC, CLLocationManagerDelegate {
   }
   
   // MARK: - Networking
-  private func mapNetworking(networkingParameters params: [String: AnyObject]) {
+  private func mapNetworking() {
     self.startIndicator()
-    Alamofire.request(.GET, self.requestBaseURL, parameters: params, encoding: .JSON)
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in
         self.stopIndicator()
         

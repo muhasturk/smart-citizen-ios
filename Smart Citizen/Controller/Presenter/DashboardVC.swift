@@ -14,7 +14,7 @@ class DashboardVC: AppVC {
   
   @IBOutlet weak var dashboardTableView: UITableView!
   
-  private var requestBaseURL = AppAPI.dashboardServiceURL + String(AppConstants.AppUser.roleId)
+  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.dashboardServiceURL + String(AppConstants.AppUser.roleId)
   
   private var reporstDict: [String: [String: Any]] = [String: [String: Any]]()
   

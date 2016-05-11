@@ -14,6 +14,8 @@ class Report {
   var description = ""
   var latitude = 0.0
   var longitude = 0.0
+  var type = ""
+  var typeId = 0
   var status = ""
   var statusId = 0
   var count = 0

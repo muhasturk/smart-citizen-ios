@@ -16,7 +16,7 @@ class SignUpVC: AppVC {
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
   
-  private let requestBaseURL = AppAPI.signUpServiceURL
+  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.signUpServiceURL
 
   
   // MARK: - LC

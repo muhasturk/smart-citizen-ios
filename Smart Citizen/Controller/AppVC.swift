@@ -82,7 +82,7 @@ class AppVC: UIViewController {
     default:
       title = AppAlertMessages.defaultHandleExceptionCodeTitle
       message = AppAlertMessages.defaultHandleExceptionCodeMessage
-      debugPrint(elseMessage)
+      print("ExceptionCode: \(code)\nExceptionMessage: \(elseMessage)")
     }
     
     return (title, message)

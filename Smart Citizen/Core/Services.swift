@@ -11,13 +11,13 @@ import Foundation
 struct AppAPI {
   static let serviceDomain = "http://smart-citizen.mustafahasturk.com"
   
-  static let loginServiceURL = "\(serviceDomain)/memberLogin"
+  static let loginServiceURL = "/memberLogin"
   
-  static let signUpServiceURL = "\(serviceDomain)/memberSignUp"
+  static let signUpServiceURL = "/memberSignUp"
   
-  static let mapServiceURL = "\(serviceDomain)/getUnorderedReportsByType?reportType=0"
+  static let mapServiceURL = "/getUnorderedReportsByType?reportType=0"
   
-  static let dashboardServiceURL = "\(serviceDomain)/getReportsByType?reportType="
+  static let dashboardServiceURL = "/getReportsByType?reportType="
   
-  static let reportServiceURL = "\(serviceDomain)/sendReport"
+  static let reportServiceURL = "/sendReport"
 }

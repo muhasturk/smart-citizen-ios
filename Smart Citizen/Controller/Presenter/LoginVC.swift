@@ -16,7 +16,7 @@ class LoginVC: AppVC {
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var resultLabel: UILabel!
   
-  private let requestBaseURL = AppAPI.loginServiceURL
+  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.loginServiceURL
   
   override func viewDidLoad() {
     super.viewDidLoad()
