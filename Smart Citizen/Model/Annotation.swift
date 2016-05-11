@@ -10,7 +10,5 @@ import Foundation
 import MapKit
 
 class SmartAnnotation: MKPointAnnotation {
-  class func configureSegue() {
-    
-  }
+  var id = 0
 }

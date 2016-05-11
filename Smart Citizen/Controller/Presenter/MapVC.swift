@@ -11,7 +11,7 @@ import MapKit
 import Alamofire
 import SwiftyJSON
 
-class MapVC: AppVC, CLLocationManagerDelegate {
+class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
@@ -53,20 +53,30 @@ class MapVC: AppVC, CLLocationManagerDelegate {
       let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
       let span: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
       let region: MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
-      
       self.mapView.setRegion(region, animated: true)
     }
     else {
       print("Konum alınamadı")
     }
+    self.locationManaer.stopUpdatingLocation()
+  }
+  
+  // MARK: Map
+  func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+    // değeri al
+    let deger = view.annotation?.title!
+    let tap = UITapGestureRecognizer(target: self, action: #selector(goReportDetailView))
+    view.addGestureRecognizer(tap)
+  }
+  
+  func goReportDetailView() {
+    print("annotation selected")
   }
   
   // MARK: - Networking
   private func mapNetworking() {
-    self.startIndicator()
     Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in
-        self.stopIndicator()
         
         switch response.result {
         case .Success(let value):
@@ -79,6 +89,7 @@ class MapVC: AppVC, CLLocationManagerDelegate {
             if data.isExists() && data.isNotEmpty{
               self.writeReportsDataToModel(dataJsonFromNetworking: data)
               self.addReportsAnnotationToMap()
+              print("Toplam annotation \(self.mapReports.count)")
             }
             else {
               print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
@@ -108,10 +119,11 @@ class MapVC: AppVC, CLLocationManagerDelegate {
       let longitude: CLLocationDegrees = r.longitude
       let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
       // TODO: Needs custom annotation
-      let annotation = MKPointAnnotation()
+      let annotation = SmartAnnotation()
       annotation.coordinate = coordinate
       annotation.title = r.title
-      annotation.subtitle = r.description //refactor
+      annotation.subtitle = r.description
+      annotation.id = r.id
       self.mapView.addAnnotation(annotation)
     }
   }
