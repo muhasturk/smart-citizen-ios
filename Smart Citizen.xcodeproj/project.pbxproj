@@ -14,6 +14,7 @@
 		1252C08F1CC7861600264853 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252C08E1CC7861600264853 /* Contants.swift */; };
 		1266379F1CE15DD500E0EE72 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1266379E1CE15DD500E0EE72 /* LICENSE */; };
 		126637A11CE15DDF00E0EE72 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126637A01CE15DDF00E0EE72 /* Package.swift */; };
+		127B2B291CE33ABF00515465 /* ReportDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127B2B281CE33ABF00515465 /* ReportDetailVC.swift */; };
 		12A2806E1CC28E2700E38EBD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2806D1CC28E2700E38EBD /* Extensions.swift */; };
 		12A280751CC28E5800E38EBD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280731CC28E5800E38EBD /* Protocols.swift */; };
 		12A280761CC28E5800E38EBD /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280741CC28E5800E38EBD /* Services.swift */; };
@@ -48,6 +49,7 @@
 		1252C08E1CC7861600264853 /* Contants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contants.swift; path = Core/Contants.swift; sourceTree = "<group>"; };
 		1266379E1CE15DD500E0EE72 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		126637A01CE15DDF00E0EE72 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		127B2B281CE33ABF00515465 /* ReportDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportDetailVC.swift; path = Controller/Presenter/ReportDetailVC.swift; sourceTree = "<group>"; };
 		12A2806D1CC28E2700E38EBD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Core/Extensions.swift; sourceTree = "<group>"; };
 		12A280731CC28E5800E38EBD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Core/Protocols.swift; sourceTree = "<group>"; };
 		12A280741CC28E5800E38EBD /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Core/Services.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				12B2AD751CD903100096B8BD /* ProfileVC.swift */,
 				12B2AD761CD903100096B8BD /* ReportVC.swift */,
 				12B2AD771CD903100096B8BD /* SettingsVC.swift */,
+				127B2B281CE33ABF00515465 /* ReportDetailVC.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				12B2AD791CD903100096B8BD /* LoginVC.swift in Sources */,
 				12B2AD811CD927FE0096B8BD /* IntroVC.swift in Sources */,
 				12B2AD7D1CD903100096B8BD /* ReportVC.swift in Sources */,
+				127B2B291CE33ABF00515465 /* ReportDetailVC.swift in Sources */,
 				126637A11CE15DDF00E0EE72 /* Package.swift in Sources */,
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
 				12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */,
