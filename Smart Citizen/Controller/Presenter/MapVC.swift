@@ -64,7 +64,6 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   // MARK: Map
   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
     // değeri al
-    let deger = view.annotation?.title!
     let tap = UITapGestureRecognizer(target: self, action: #selector(goReportDetailView))
     view.addGestureRecognizer(tap)
   }
@@ -115,15 +114,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   // MARK: - Annotation
   private func addReportsAnnotationToMap() {
     for r: Report in self.mapReports {
-      let latitude: CLLocationDegrees = r.latitude
-      let longitude: CLLocationDegrees = r.longitude
-      let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-      // TODO: Needs custom annotation
-      let annotation = SmartAnnotation()
-      annotation.coordinate = coordinate
-      annotation.title = r.title
-      annotation.subtitle = r.description
-      annotation.id = r.id
+      let annotation = SmartAnnotation(reportObject: r)      
       self.mapView.addAnnotation(annotation)
     }
   }
