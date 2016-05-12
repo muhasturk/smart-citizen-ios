@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class DashboardVC: AppVC {
+class DashboardVC: AppVC, UITableViewDataSource {
   
   @IBOutlet weak var dashboardTableView: UITableView!
   
@@ -35,7 +35,41 @@ class DashboardVC: AppVC {
   
   // MARK: - Table Delegate
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    let index = self.reportsDict.startIndex.advancedBy(section)
+    let key: String = self.reportsDict.keys[index]
+    if let arrayOfReportsOfTypes = self.reportsDict[key] {
+      return arrayOfReportsOfTypes.count
+    }
+    else {
+      print("warning on \(#function)")
+      return 1
+    }
+  }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    let index = self.reportsDict.startIndex.advancedBy(section)
+    let key = self.reportsDict.keys[index]
+    print("Title for header: \(key)")
+    return key
+  }
+  
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return self.reportsDict.keys.count
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("dashboardCell", forIndexPath: indexPath)
+    let sectionIndex = self.reportsDict.startIndex.advancedBy(indexPath.section)
+    let key = self.reportsDict.keys[sectionIndex]
+    if let reportsArray = self.reportsDict[key] {
+      // Configure cell
+      cell.textLabel?.text = reportsArray[indexPath.row].title
+      return cell
+    }
+    else {
+      print("warning there is no key inside dict \(#function)")
+      return UITableViewCell()
+    }
   }
   
   // MARK: - Networkng
@@ -56,7 +90,7 @@ class DashboardVC: AppVC {
             if data.isExists() && data.isNotEmpty{
               self.writeDashboardDataToModel(dataJsonFromNetworking: data)
               self.dashboardTableView.reloadData()
-              //self.debugReportsDict()
+              self.debugReportsDict()
             }
             else {
               print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)

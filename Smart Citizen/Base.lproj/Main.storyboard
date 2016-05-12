@@ -283,10 +283,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-Db-a2H">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="618"/>
+                                <rect key="frame" x="-4" y="20" width="383" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vkR-No-uzr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dashboardCell" id="vkR-No-uzr">
                                         <rect key="frame" x="0.0" y="28" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vkR-No-uzr" id="imX-W0-mod">
@@ -296,13 +296,17 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nOu-iU-xgZ" id="wjE-A7-tid"/>
+                                    <outlet property="delegate" destination="nOu-iU-xgZ" id="5OT-lu-3wT"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.97304188174785533" green="0.91228315791841519" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="dfJ-Db-a2H" secondAttribute="trailing" constant="-20" id="D5l-iY-tCP"/>
-                            <constraint firstItem="dfJ-Db-a2H" firstAttribute="top" secondItem="4cE-eC-Ycc" secondAttribute="topMargin" id="G14-Im-pPz"/>
                             <constraint firstItem="dfJ-Db-a2H" firstAttribute="leading" secondItem="4cE-eC-Ycc" secondAttribute="leadingMargin" constant="-20" id="PS7-CK-BLU"/>
+                            <constraint firstItem="dfJ-Db-a2H" firstAttribute="top" secondItem="AAM-Os-DAB" secondAttribute="bottom" id="mae-Z0-jiL"/>
                             <constraint firstItem="qdG-s5-Ef5" firstAttribute="top" secondItem="dfJ-Db-a2H" secondAttribute="bottom" id="wvO-Hc-6J6"/>
                         </constraints>
                     </view>
