@@ -20,10 +20,20 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   @IBAction func sendReportAction(sender: AnyObject) {
     let ext = "jpg"
-    let imageURL = NSBundle.mainBundle().URLForResource("engın", withExtension: ext)!
+    let pickedImage: UIImage = self.choosenImage.image!
+    let temporaryDirectoryURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
+    let imageURL: NSURL = temporaryDirectoryURL.URLByAppendingPathComponent("pickedImage.png")
+    let pathString = imageURL.absoluteString // has file:// prefix
+    let onlyPathString = pathString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "file://"))
+    //let imageData: NSData = UIImagePNGRepresentation(pickedImage)!
+    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 1.0)!
+    imageData.writeToFile(onlyPathString, atomically: true)
     
     let uploadRequest = AWSS3TransferManagerUploadRequest()
     uploadRequest.body = imageURL
+    /**
+     Use for uploaded image url to do that be unique
+     */
     uploadRequest.key = NSProcessInfo.processInfo().globallyUniqueString + "." + ext
     uploadRequest.bucket = self.AWSS3BucketName
     uploadRequest.contentType = "image/" + ext
@@ -40,15 +50,12 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
         print("Upload failed ❌ (\(exception))")
       }
       
-      if task.result != nil {
-        print(task.result?.url)
-        let s3URL = NSURL(string: "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest.key!)")!
-        print("Uploaded to:\n\(s3URL)")
+      guard let result = task.result else {
+        return ""
       }
-      else {
-        print("Unexpected empty result.")
-      }
-      
+      print(result)
+      let uploadedImageURL = "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest.key!)"
+      print(uploadedImageURL)
       return ""
     }
   }

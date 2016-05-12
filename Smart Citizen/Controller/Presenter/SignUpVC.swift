@@ -96,6 +96,7 @@ class SignUpVC: AppVC {
     AppConstants.AppUser.id = data["id"].intValue
     AppConstants.AppUser.email = data["email"].stringValue
     AppConstants.AppUser.fullName = data["fullName"].stringValue
+    AppConstants.AppUser.password = data["password"].stringValue
     AppConstants.AppUser.roleId = data["roleId"].intValue
     AppConstants.AppUser.roleName = data["roleName"].stringValue
     

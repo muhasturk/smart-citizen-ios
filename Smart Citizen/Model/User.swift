@@ -13,7 +13,7 @@ class User: NSObject, NSCoding {
   var id: Int = 0
   var fullName: String = ""
   var email: String = ""
-  var password: String = ""
+  var password: String = "" // hash this value
   var roleId = 10
   var roleName = "Normal"
   
