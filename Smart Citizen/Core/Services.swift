@@ -15,7 +15,7 @@ struct AppAPI {
   
   static let signUpServiceURL = "/memberSignUp"
   
-  static let mapServiceURL = "/getUnorderedReportsByType?reportType=0"
+  static let mapServiceURL = "/getUnorderedReportsByType?reportType="
   
   static let dashboardServiceURL = "/getReportsByType?reportType="
   

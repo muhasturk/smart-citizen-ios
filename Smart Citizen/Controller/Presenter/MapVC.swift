@@ -20,7 +20,11 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   var locationManaer = CLLocationManager()
   var mapReports = [Report]()
   
-  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.mapServiceURL
+  private var requestBaseURL: String {
+    let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
+    let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
+    return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(user.roleId)
+  }
   
   // MARK: - LC
   override func viewDidLoad() {

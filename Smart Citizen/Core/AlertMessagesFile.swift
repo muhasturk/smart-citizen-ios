@@ -33,4 +33,8 @@ struct AppAlertMessages {
   static let networkingFailuredTitle = "Bağlantı Hatası"
   static let networkingFailuredMessage = "Hizmete bağlanmakta sorun yaşıyoruz."
   
+  // MARK: Report
+  static let parameterMissingTitle = "Parametre Eksik"
+  static let parameterMissingMessage = "Servisin istediği parametreler eksik girilmiş."
+  
 }

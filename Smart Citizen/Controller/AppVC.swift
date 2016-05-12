@@ -79,6 +79,10 @@ class AppVC: UIViewController {
       title = AppAlertMessages.exceptionAlreadyRegisteredEmailTitle
       message = AppAlertMessages.exceptionAlreadyRegisteredEmailMessage
       
+    case ExceptionCode.BadRequest.rawValue:
+      title = AppAlertMessages.parameterMissingTitle
+      message = AppAlertMessages.parameterMissingMessage
+      
     default:
       title = AppAlertMessages.defaultHandleExceptionCodeTitle
       message = AppAlertMessages.defaultHandleExceptionCodeMessage

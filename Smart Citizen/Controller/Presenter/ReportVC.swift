@@ -8,17 +8,48 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 import AWSS3
 
 class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   
+  // MARK: - IBOutlet
   @IBOutlet weak var choosenImage: UIImageView!
-  let picker = UIImagePickerController()
-  
   @IBOutlet weak var descriptionView: UITextView!
+
+  // MARK: Properties
+  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
+  private let picker = UIImagePickerController()
   private let AWSS3BucketName = "smart-citizen"
+  private var uploadDoneForAWSS3 = false
   
+  // MARK: - LC
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    print(AppConstants.AppUser.email)
+    self.configurePickerController()
+  }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(true)
+    super.addKeyboardObserver()
+  }
+  override func viewDidDisappear(animated: Bool) {
+    self.removeKeyboardObserver()
+  }
+  
+  // MARK: - Action
   @IBAction func sendReportAction(sender: AnyObject) {
+    self.startIndicator()
+    self.uploadImageForAWSS3()
+  }
+  
+  // MARK: - Networking
+  func uploadImageForAWSS3() {
     let ext = "jpg"
     let pickedImage: UIImage = self.choosenImage.image!
     let temporaryDirectoryURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
@@ -26,8 +57,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     let pathString = imageURL.absoluteString // has file:// prefix
     let onlyPathString = pathString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "file://"))
     //let imageData: NSData = UIImagePNGRepresentation(pickedImage)!
-    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 1.0)!
-    imageData.writeToFile(onlyPathString, atomically: true)
+    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 0.5)!
+    imageData.writeToFile(onlyPathString, atomically: true) // change onlypathstring
     
     let uploadRequest = AWSS3TransferManagerUploadRequest()
     uploadRequest.body = imageURL
@@ -50,35 +81,63 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
         print("Upload failed ❌ (\(exception))")
       }
       
-      guard let result = task.result else {
+      guard task.result != nil else {
+        self.createAlertController(title: "Yükleme Başarısız", message: "Seçtiğiniz resim AWS servise yüklenemedi.", controllerStyle: .Alert, actionStyle: .Destructive)
+        print("Seçtiğiniz resim AWS servise yüklenemedi.")
         return ""
       }
-      print(result)
       let uploadedImageURL = "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest.key!)"
       print(uploadedImageURL)
+      let params = self.configureReportNetworkingParameters()
+      self.reportNetworking(networkingParameters: params)
       return ""
     }
   }
 
-  
-  // MARK: - LC
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.configurePickerController()
+  private func configureReportNetworkingParameters() -> [String: AnyObject] {
+    let params = [
+      
+    ]
+    return [String: AnyObject]()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
+  private func reportNetworking(networkingParameters params: [String: AnyObject]) {
+    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
+      .responseJSON { response in
+        self.stopIndicator()
+        switch response.result {
+        case .Success(let value):
+          print(AppDebugMessages.serviceConnectionReportIsOk, self.requestBaseURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+          let data = json["data"]
+          
+          if serviceCode == 0 {
+            if data.isExists() && data.isNotEmpty{
+              print("done")
+            }
+            else {
+              print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
+              debugPrint(data)
+            }
+          }
+            
+          else {
+            let exception = json["exception"]
+            let c = exception["exceptionCode"].intValue
+            let m = exception["exceptionMessage"].stringValue
+            let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+            self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
   }
-  
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(true)
-    super.addKeyboardObserver()
-  }
-  override func viewDidDisappear(animated: Bool) {
-    self.removeKeyboardObserver()
-  }
-  
+
+  // MARK: - Picker
   private func configurePickerController() {
     self.picker.delegate = self
     //    self.picker.allowsEditing = true
@@ -91,7 +150,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     let actionSheet = UIAlertController(title: "Medya Kaynağı", message: "Medya eklemek için bir kaynak seçiniz.", preferredStyle: .ActionSheet)
     
     let cameraAction = UIAlertAction(title: "Camera", style: .Default) { (UIAlertAction) in
-      self.captureFromCamera()
+      self.pickFromCamera()
     }
     
     let photosAction = UIAlertAction(title: "Photos", style: .Default) { (UIAlertAction) in
@@ -114,7 +173,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   }
   
   
-  private func captureFromCamera() {
+  private func pickFromCamera() {
     if UIImagePickerController.isSourceTypeAvailable(.Camera) {
       self.picker.sourceType = .Camera
       self.picker.modalPresentationStyle = .CurrentContext
