@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import AWSS3
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func configureThirdParty() {
     Fabric.with([Crashlytics.self])
+    self.configureAWS()
+  }
+  
+  private func configureAWS() {
+    let S3BucketName = "smart-citizen"
+    
+    let CognitoPoolID = "us-east-1:d91b018b-71d6-4831-9b05-6ca53bb92725"
+    
+    let Region = AWSRegionType.USEast1
+    
+    let credentialsProvider = AWSCognitoCredentialsProvider(regionType: Region,
+                                                            identityPoolId: CognitoPoolID)
+    
+    let configuration = AWSServiceConfiguration(region: AWSRegionType.USWest2, credentialsProvider: credentialsProvider)
+    
+    AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
   }
   
   func prepareDeviceToken() {

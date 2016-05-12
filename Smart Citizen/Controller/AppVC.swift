@@ -59,7 +59,7 @@ class AppVC: UIViewController {
     alertController.addAction(okAction)
     self.presentViewController(alertController, animated: true, completion: nil)
   }
-
+  
   // MARK: - Get Exception Title
   func getHandledExceptionDebug(exceptionCode code: Int, elseMessage: String) -> (String, String) {
     
@@ -133,5 +133,4 @@ class AppVC: UIViewController {
     self.view.frame.origin.y += keyboardSize.height
   }
 
-  
 }

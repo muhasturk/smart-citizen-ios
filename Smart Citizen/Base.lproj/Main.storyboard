@@ -372,11 +372,11 @@
                                     <action selector="chooseMediaAction:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="kPK-kY-Bgl"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" text="Your feedback..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-bn-efM">
-                                <rect key="frame" x="0.0" y="408" width="375" height="31"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="Your feedback..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cwS-bn-efM">
+                                <rect key="frame" x="-4" y="408" width="383" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="172" id="flE-ek-yd4"/>
+                                    <constraint firstAttribute="height" constant="31" id="fhQ-pO-dJv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
@@ -384,15 +384,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cwS-bn-efM" firstAttribute="top" secondItem="01o-MK-422" secondAttribute="bottom" constant="8" id="7FC-dN-90H"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="height" secondItem="dAQ-BV-9ul" secondAttribute="height" multiplier="0.5" id="7dp-Gf-bpm"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="width" secondItem="dAQ-BV-9ul" secondAttribute="width" multiplier="0.2" id="83S-vZ-RFR"/>
+                            <constraint firstItem="cwS-bn-efM" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="B0d-az-SYN"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" id="GdJ-g0-bA0"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="top" secondItem="zFz-e4-san" secondAttribute="bottom" constant="8" id="H1A-G6-VII"/>
-                            <constraint firstItem="cwS-bn-efM" firstAttribute="top" secondItem="01o-MK-422" secondAttribute="bottom" constant="8" id="HDW-yC-mci"/>
-                            <constraint firstItem="cwS-bn-efM" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="NjV-mM-vSg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cwS-bn-efM" secondAttribute="trailing" constant="-20" id="JTd-Dc-0Qm"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="UOT-SU-yCd"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="8" id="aUs-Hv-tMP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cwS-bn-efM" secondAttribute="trailing" constant="-20" id="bnz-Tf-Jsf"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="width" secondItem="dAQ-BV-9ul" secondAttribute="width" multiplier="0.3" id="cq5-bw-O6b"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="centerX" secondItem="dAQ-BV-9ul" secondAttribute="centerX" id="lPD-Vz-p5Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zFz-e4-san" secondAttribute="trailing" constant="-20" id="o1c-Zq-4Lz"/>
