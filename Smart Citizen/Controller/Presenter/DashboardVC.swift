@@ -72,6 +72,17 @@ class DashboardVC: AppVC, UITableViewDataSource {
     }
   }
   
+  func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    let index = self.reportsDict.startIndex.advancedBy(section)
+    let key = self.reportsDict.keys[index]
+    if let count = self.reportsDict[key]?.count {
+      return "\(key) kategorisinde \(count) rapor var."
+    }
+    else {
+      return ""
+    }
+  }
+  
   // MARK: - Networkng
   private func dashboardNetworking() {
     self.startIndicator()
