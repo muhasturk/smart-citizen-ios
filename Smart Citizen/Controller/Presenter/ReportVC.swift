@@ -88,17 +88,24 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       }
       let uploadedImageURL = "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest.key!)"
       print(uploadedImageURL)
-      let params = self.configureReportNetworkingParameters()
+      let params = self.configureReportNetworkingParameters(imageUrl: uploadedImageURL)
       self.reportNetworking(networkingParameters: params)
       return ""
     }
   }
 
-  private func configureReportNetworkingParameters() -> [String: AnyObject] {
+  private func configureReportNetworkingParameters(imageUrl url: String) -> [String: AnyObject] {
     let params = [
-      
+      "email": readOnlyUser.email,
+      "password": readOnlyUser.password,
+      "latitude": 40.983203,
+      "longitude": 28.728038,
+      "title": "İnternet Yok",
+      "description": "Fiber bağlantımız sürekli kopuyor.",
+      "category": 5,
+      "imageUrl": url
     ]
-    return [String: AnyObject]()
+    return params as! [String : AnyObject]
   }
   
   private func reportNetworking(networkingParameters params: [String: AnyObject]) {
@@ -110,16 +117,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
           print(AppDebugMessages.serviceConnectionReportIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
-          let data = json["data"]
           
           if serviceCode == 0 {
-            if data.isExists() && data.isNotEmpty{
-              print("done")
-            }
-            else {
-              print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
-              debugPrint(data)
-            }
+            print("done")
           }
             
           else {

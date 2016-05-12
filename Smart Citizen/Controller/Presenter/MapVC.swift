@@ -21,18 +21,20 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   var mapReports = [Report]()
   
   private var requestBaseURL: String {
-    let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
-    let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
-    return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(user.roleId)
+    return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(readOnlyUser.roleId)
   }
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configureMap()
-    self.mapNetworking()
   }
   
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(true)
+    self.mapView.removeAnnotations(self.mapView.annotations)
+    self.mapNetworking()
+  }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -125,6 +127,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   
   // MARK: - Model
   private func writeReportsDataToModel(dataJsonFromNetworking data: JSON) {
+    self.mapReports = []
     for (_, reportJSON): (String, JSON) in data {
       let r = Report()
       r.id = reportJSON["id"].intValue

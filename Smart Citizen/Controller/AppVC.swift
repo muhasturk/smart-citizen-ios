@@ -13,6 +13,13 @@ class AppVC: UIViewController {
   // MARK: App Object
   var appIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
   var appBlurEffectView: UIVisualEffectView = UIVisualEffectView()
+  var readOnlyUser: User {
+    get {
+      let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
+      let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
+      return user
+    }
+  }
   
   // MARK: - LC
   override func viewDidLoad() {

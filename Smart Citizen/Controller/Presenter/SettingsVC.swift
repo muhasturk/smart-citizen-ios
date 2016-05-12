@@ -13,9 +13,9 @@ class SettingsVC: UIViewController {
   
   @IBOutlet weak var versionLabel: LTMorphingLabel!
   
-
   @IBAction func logoutApplication(sender: AnyObject) {
     AppConstants.AppUser = User()
+    NSUserDefaults.standardUserDefaults().setBool(false, forKey: AppConstants.DefaultKeys.APP_ALIVE)
     performSegueWithIdentifier(AppSegues.doLogoutSegue, sender: sender)
   }
   

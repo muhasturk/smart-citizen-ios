@@ -15,9 +15,7 @@ class DashboardVC: AppVC, UITableViewDataSource {
   @IBOutlet weak var dashboardTableView: UITableView!
   
   private var requestBaseURL: String {
-    let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
-    let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
-    return AppAPI.serviceDomain + AppAPI.dashboardServiceURL + String(user.roleId)
+    return AppAPI.serviceDomain + AppAPI.dashboardServiceURL + String(readOnlyUser.roleId)
   }
   
   private var reportsDict: [String: [Report]] = [String: [Report]]()
