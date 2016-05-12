@@ -19,7 +19,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.addKeyboardObserver()
     self.configurePickerController()
   }
   
@@ -27,6 +26,10 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     super.didReceiveMemoryWarning()
   }
   
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(true)
+    super.addKeyboardObserver()
+  }
   override func viewDidDisappear(animated: Bool) {
     self.removeKeyboardObserver()
   }
