@@ -36,6 +36,7 @@
 		12DB29D51CBD655800EA154A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D41CBD655800EA154A /* User.swift */; };
 		12DB29D71CBD664F00EA154A /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D61CBD664F00EA154A /* Report.swift */; };
 		12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D81CBD66E100EA154A /* AppVC.swift */; };
+		12DCF5311CE4DA5600D8C8AD /* engın.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 12DCF5301CE4DA5600D8C8AD /* engın.jpg */; };
 		12F18D8A1CDCF72500DF9D52 /* MainTabC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F18D891CDCF72500DF9D52 /* MainTabC.swift */; };
 		9F6C0D5E7299AD84093DAAE2 /* Pods_Smart_Citizen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		12DB29D41CBD655800EA154A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		12DB29D61CBD664F00EA154A /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = Model/Report.swift; sourceTree = "<group>"; };
 		12DB29D81CBD66E100EA154A /* AppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVC.swift; path = Controller/AppVC.swift; sourceTree = "<group>"; };
+		12DCF5301CE4DA5600D8C8AD /* engın.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "engın.jpg"; sourceTree = "<group>"; };
 		12F18D891CDCF72500DF9D52 /* MainTabC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabC.swift; path = Controller/Interactor/MainTabC.swift; sourceTree = "<group>"; };
 		50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Citizen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		854FCD053DEF9FF5B7F39C13 /* Pods-Smart Citizen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Citizen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		12471D3A1BD1810A00B86052 /* Smart Citizen */ = {
 			isa = PBXGroup;
 			children = (
+				12DCF5301CE4DA5600D8C8AD /* engın.jpg */,
 				12D0EEFA1BD6EB37006A2801 /* Controller */,
 				12D0EEFE1BD6EBC3006A2801 /* Core */,
 				12D0EEFB1BD6EB42006A2801 /* Model */,
@@ -299,6 +302,7 @@
 				12471D431BD1810A00B86052 /* Assets.xcassets in Resources */,
 				12471D411BD1810A00B86052 /* Main.storyboard in Resources */,
 				1266379F1CE15DD500E0EE72 /* LICENSE in Resources */,
+				12DCF5311CE4DA5600D8C8AD /* engın.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

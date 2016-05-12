@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AWSS3
 
 class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   
@@ -15,6 +16,43 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   let picker = UIImagePickerController()
   
   @IBOutlet weak var descriptionView: UITextView!
+  private let AWSS3BucketName = "smart-citizen"
+  
+  @IBAction func sendReportAction(sender: AnyObject) {
+    let ext = "jpg"
+    let imageURL = NSBundle.mainBundle().URLForResource("engın", withExtension: ext)!
+    
+    let uploadRequest = AWSS3TransferManagerUploadRequest()
+    uploadRequest.body = imageURL
+    uploadRequest.key = NSProcessInfo.processInfo().globallyUniqueString + "." + ext
+    uploadRequest.bucket = self.AWSS3BucketName
+    uploadRequest.contentType = "image/" + ext
+    uploadRequest.ACL = .PublicRead
+    
+    let transferManager = AWSS3TransferManager.defaultS3TransferManager()
+    transferManager.upload(uploadRequest).continueWithBlock { (task) -> AnyObject! in
+      
+      if let error = task.error {
+        print("Upload failed ❌ (\(error))")
+      }
+      
+      if let exception = task.exception {
+        print("Upload failed ❌ (\(exception))")
+      }
+      
+      if task.result != nil {
+        print(task.result?.url)
+        let s3URL = NSURL(string: "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest.key!)")!
+        print("Uploaded to:\n\(s3URL)")
+      }
+      else {
+        print("Unexpected empty result.")
+      }
+      
+      return ""
+    }
+  }
+
   
   // MARK: - LC
   override func viewDidLoad() {
@@ -119,5 +157,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     self.view.endEditing(true)
   }
+
   
 }

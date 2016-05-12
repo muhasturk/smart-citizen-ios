@@ -38,16 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.configureAWS()
   }
   
-  private func configureAWS() {
-    let S3BucketName = "smart-citizen"
-    
+  private func configureAWS() {    
     let CognitoPoolID = "us-east-1:d91b018b-71d6-4831-9b05-6ca53bb92725"
     
-    let Region = AWSRegionType.USEast1
+    let Region = AWSRegionType.USEast1 // Cognito Region
     
     let credentialsProvider = AWSCognitoCredentialsProvider(regionType: Region,
                                                             identityPoolId: CognitoPoolID)
-    
+    // S3 Region
     let configuration = AWSServiceConfiguration(region: AWSRegionType.USWest2, credentialsProvider: credentialsProvider)
     
     AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration

@@ -381,6 +381,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuF-2D-D9V">
+                                <rect key="frame" x="169" y="580" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendReportAction:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="aIY-sf-hwF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -391,9 +398,11 @@
                             <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" id="GdJ-g0-bA0"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="top" secondItem="zFz-e4-san" secondAttribute="bottom" constant="8" id="H1A-G6-VII"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cwS-bn-efM" secondAttribute="trailing" constant="-20" id="JTd-Dc-0Qm"/>
+                            <constraint firstItem="QuF-2D-D9V" firstAttribute="centerX" secondItem="dAQ-BV-9ul" secondAttribute="centerX" id="O9a-BV-bUN"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="leading" secondItem="dAQ-BV-9ul" secondAttribute="leadingMargin" constant="-20" id="UOT-SU-yCd"/>
                             <constraint firstItem="zFz-e4-san" firstAttribute="top" secondItem="hTt-bO-EXn" secondAttribute="bottom" constant="8" id="aUs-Hv-tMP"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="width" secondItem="dAQ-BV-9ul" secondAttribute="width" multiplier="0.3" id="cq5-bw-O6b"/>
+                            <constraint firstItem="dAD-ZH-L2p" firstAttribute="top" secondItem="QuF-2D-D9V" secondAttribute="bottom" constant="8" id="ifx-2i-u5M"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="centerX" secondItem="dAQ-BV-9ul" secondAttribute="centerX" id="lPD-Vz-p5Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zFz-e4-san" secondAttribute="trailing" constant="-20" id="o1c-Zq-4Lz"/>
                             <constraint firstItem="01o-MK-422" firstAttribute="top" secondItem="zFz-e4-san" secondAttribute="bottom" constant="8" id="pLi-Wu-95G"/>
