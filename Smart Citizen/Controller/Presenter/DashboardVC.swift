@@ -14,14 +14,19 @@ class DashboardVC: AppVC {
   
   @IBOutlet weak var dashboardTableView: UITableView!
   
-  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.dashboardServiceURL + String(AppConstants.AppUser.roleId)
+  private var requestBaseURL: String {
+    let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
+    let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
+    return AppAPI.serviceDomain + AppAPI.dashboardServiceURL + String(user.roleId)
+  }
   
-  private var reporstDict: [String: [String: Any]] = [String: [String: Any]]()
+  private var reportsDict: [String: [Report]] = [String: [Report]]()
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
-    print(self.requestBaseURL)
+    self.dashboardNetworking()
+    //print(self.requestBaseURL)
   }
   
   override func didReceiveMemoryWarning() {
@@ -34,9 +39,9 @@ class DashboardVC: AppVC {
   }
   
   // MARK: - Networkng
-  private func dashboardNetworking(networkingParameters params: [String: AnyObject]) {
+  private func dashboardNetworking() {
     self.startIndicator()
-    Alamofire.request(.GET, self.requestBaseURL, parameters: params, encoding: .JSON)
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in
         self.stopIndicator()
         
@@ -51,6 +56,7 @@ class DashboardVC: AppVC {
             if data.isExists() && data.isNotEmpty{
               self.writeDashboardDataToModel(dataJsonFromNetworking: data)
               self.dashboardTableView.reloadData()
+              //self.debugReportsDict()
             }
             else {
               print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
@@ -75,10 +81,31 @@ class DashboardVC: AppVC {
   
   // MARK: Write Model
   private func writeDashboardDataToModel(dataJsonFromNetworking data: JSON) {
+    self.reportsDict = [:]
     for (reportTypeName, reportTypeJSON): (String, JSON) in data {
-      print(reportTypeName)
+      self.reportsDict[reportTypeName] = []
+      for (_, reportData): (String, JSON) in reportTypeJSON {
+        let r = Report()
+        r.id = reportData["id"].intValue
+        r.title = reportData["title"].stringValue
+        r.description = reportData["description"].stringValue
+        r.count = reportData["count"].intValue
+        r.type = reportData["reportType"].stringValue // change key name
+        r.status = reportData["status"].stringValue
+        r.statusId = reportData["statusId"].intValue
+        self.reportsDict[reportTypeName]?.append(r)
+      }
     }
   }
   
+  func debugReportsDict() {
+    for (h, rd) in self.reportsDict {
+      print("Header: \(h)")
+      for r in rd {
+        super.reflectAttributes(reflectingObject: r)
+        print("---------------------------")
+      }
+    }
+  }
   
 }

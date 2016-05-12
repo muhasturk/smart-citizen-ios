@@ -14,7 +14,7 @@ class User: NSObject, NSCoding {
   var fullName: String = ""
   var email: String = ""
   var password: String = ""
-  var roleId = 1
+  var roleId = 10
   var roleName = "Normal"
   
   required convenience init?(coder aDecoder: NSCoder) {
