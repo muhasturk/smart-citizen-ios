@@ -474,11 +474,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZu-ad-1o7">
+                                <rect key="frame" x="163" y="580" width="48" height="30"/>
+                                <color key="backgroundColor" red="0.84191651469999995" green="0.98122754310000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aZu-ad-1o7" secondAttribute="height" multiplier="8:5" id="TpL-FE-UDW"/>
+                                    <constraint firstAttribute="width" constant="48" id="U8z-lU-8aS"/>
+                                </constraints>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.53333333329999999" green="0.054901960780000002" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutApplication:" destination="1hD-Nx-i6y" eventType="touchUpInside" id="T18-Uw-Opa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="skv-kb-hkX" firstAttribute="leading" secondItem="aYV-a2-lCF" secondAttribute="leading" id="74W-XZ-tLr"/>
+                            <constraint firstItem="aZu-ad-1o7" firstAttribute="centerX" secondItem="aYV-a2-lCF" secondAttribute="centerX" id="DfD-82-yYQ"/>
                             <constraint firstItem="OFm-qY-pVK" firstAttribute="centerX" secondItem="aYV-a2-lCF" secondAttribute="centerX" id="NHi-eD-HBc"/>
+                            <constraint firstItem="im8-YY-mEq" firstAttribute="top" secondItem="aZu-ad-1o7" secondAttribute="bottom" constant="8" id="NYe-XD-OiY"/>
                             <constraint firstItem="skv-kb-hkX" firstAttribute="top" secondItem="OFm-qY-pVK" secondAttribute="bottom" constant="8" id="OsG-Y8-0Ah"/>
                             <constraint firstItem="bSe-DP-cBX" firstAttribute="top" secondItem="aYV-a2-lCF" secondAttribute="topMargin" id="Xfk-LF-Mdz"/>
                             <constraint firstItem="GoG-rO-MYc" firstAttribute="top" secondItem="skv-kb-hkX" secondAttribute="bottom" constant="8" id="Zvz-8K-txH"/>
@@ -494,6 +510,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="versionLabel" destination="GoG-rO-MYc" id="pXG-GE-o2Q"/>
+                        <segue destination="2Lv-U9-LVV" kind="show" identifier="doLogout" id="kFP-cJ-GS1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-uU-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
