@@ -16,6 +16,27 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - IBOutlet
   @IBOutlet weak var choosenImage: UIImageView!
   @IBOutlet weak var descriptionView: UITextView!
+  @IBOutlet weak var categoryButton: UIButton!
+  
+  var categoryTitle: String? {
+    didSet {
+      self.categoryButton.setTitle(categoryTitle, forState: .Normal)
+    }
+  }
+  
+  var categoryId: Int?
+  
+  // MARK: Unwind
+  @IBAction func unwindToReportScene(segue: UIStoryboardSegue) {
+    if segue.identifier == "saveReportCategory"{
+      if let sourceVC = segue.sourceViewController as? ReportCategoryVC {
+        self.categoryTitle = sourceVC.selectedCategoryTitle!
+        print(sourceVC.selectedCategoryId)
+        self.categoryId = sourceVC.selectedCategoryId
+      }
+    }
+  }
+  
 
   // MARK: Properties
   private let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
@@ -228,5 +249,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     self.view.endEditing(true)
   }
 
+  @IBAction func selectCategory(sender: AnyObject) {
+    self.performSegueWithIdentifier(AppSegues.pushReportCategory, sender: sender)
+  }
   
 }

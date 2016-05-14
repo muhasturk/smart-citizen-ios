@@ -36,6 +36,7 @@
 		12DB29D51CBD655800EA154A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D41CBD655800EA154A /* User.swift */; };
 		12DB29D71CBD664F00EA154A /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D61CBD664F00EA154A /* Report.swift */; };
 		12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D81CBD66E100EA154A /* AppVC.swift */; };
+		12EBAE941CE7394700CC832A /* ReportCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EBAE931CE7394700CC832A /* ReportCategoryVC.swift */; };
 		12F18D8A1CDCF72500DF9D52 /* MainTabC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F18D891CDCF72500DF9D52 /* MainTabC.swift */; };
 		9F6C0D5E7299AD84093DAAE2 /* Pods_Smart_Citizen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		12DB29D41CBD655800EA154A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		12DB29D61CBD664F00EA154A /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = Model/Report.swift; sourceTree = "<group>"; };
 		12DB29D81CBD66E100EA154A /* AppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppVC.swift; path = Controller/AppVC.swift; sourceTree = "<group>"; };
+		12EBAE931CE7394700CC832A /* ReportCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCategoryVC.swift; path = Controller/Presenter/ReportCategoryVC.swift; sourceTree = "<group>"; };
 		12F18D891CDCF72500DF9D52 /* MainTabC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabC.swift; path = Controller/Interactor/MainTabC.swift; sourceTree = "<group>"; };
 		50D34D1A2E796953B07DDBF5 /* Pods_Smart_Citizen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_Citizen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		854FCD053DEF9FF5B7F39C13 /* Pods-Smart Citizen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart Citizen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smart Citizen/Pods-Smart Citizen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				12B2AD761CD903100096B8BD /* ReportVC.swift */,
 				12B2AD771CD903100096B8BD /* SettingsVC.swift */,
 				127B2B281CE33ABF00515465 /* ReportDetailVC.swift */,
+				12EBAE931CE7394700CC832A /* ReportCategoryVC.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				127B2B2B1CE3670400515465 /* Annotation.swift in Sources */,
 				12A280751CC28E5800E38EBD /* Protocols.swift in Sources */,
 				12B2AD7A1CD903100096B8BD /* DashboardVC.swift in Sources */,
+				12EBAE941CE7394700CC832A /* ReportCategoryVC.swift in Sources */,
 				12A2807E1CC28F3D00E38EBD /* Exceptions.swift in Sources */,
 				12B2AD791CD903100096B8BD /* LoginVC.swift in Sources */,
 				12B2AD811CD927FE0096B8BD /* IntroVC.swift in Sources */,

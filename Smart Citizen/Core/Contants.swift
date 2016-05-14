@@ -12,10 +12,15 @@ struct AppSegues {
   static let doLoginSegue = "doLogin"
   static let doSignUpSegue = "doSignUp"
   static let doLogoutSegue = "doLogout"
+  static let pushReportCategory = "pushReportCategory"
 }
 
 struct AppColors {
   
+}
+
+struct AppCell {
+  static let reportCategoryCell = "reportCategoryCell"
 }
 
 struct AppConstants {

@@ -339,6 +339,63 @@
             </objects>
             <point key="canvasLocation" x="-1424.5" y="2003.5"/>
         </scene>
+        <!--ReportCategory-->
+        <scene sceneID="sc2-sp-WwS">
+            <objects>
+                <viewController title="ReportCategory" id="8jc-Bc-hP5" customClass="ReportCategoryVC" customModule="Smart_Citizen" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hax-0W-E9n"/>
+                        <viewControllerLayoutGuide type="bottom" id="M6t-fI-FN6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="et6-Fs-kmg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="tGS-Pf-4s8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCategoryCell" id="WyZ-dT-uAH">
+                                        <rect key="frame" x="0.0" y="49.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WyZ-dT-uAH" id="CX2-xU-UAL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="u2T-5S-Dvc" kind="unwind" identifier="saveReportCategory" unwindAction="unwindToReportScene:" id="4sF-LA-gE5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8jc-Bc-hP5" id="DAA-zq-31w"/>
+                                    <outlet property="delegate" destination="8jc-Bc-hP5" id="Pde-E1-HNS"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vT5-0E-eOj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="6nm-RE-3ly">
+                                        <connections>
+                                            <action selector="cancelSelection:" destination="8jc-Bc-hP5" id="gri-Dj-atV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="20v-Vp-wR6"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="categoryTable" destination="tGS-Pf-4s8" id="pJV-fx-DqY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kG0-L7-Egb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="u2T-5S-Dvc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-938.5" y="2003.5"/>
+        </scene>
         <!--Report-->
         <scene sceneID="nN9-LS-7ua">
             <objects>
@@ -381,11 +438,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuF-2D-D9V">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuF-2D-D9V">
                                 <rect key="frame" x="169" y="580" width="36" height="30"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="sendReportAction:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="aIY-sf-hwF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4b1-ge-k2b">
+                                <rect key="frame" x="114" y="447" width="147" height="30"/>
+                                <state key="normal" title="Kategori"/>
+                                <connections>
+                                    <action selector="selectCategory:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="2lX-oB-eia"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -418,8 +482,10 @@
                     <tabBarItem key="tabBarItem" tag="3" title="Report" image="Report" id="nC5-89-Bgf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="categoryButton" destination="4b1-ge-k2b" id="bq5-mV-tKG"/>
                         <outlet property="choosenImage" destination="zFz-e4-san" id="qLn-5Z-com"/>
                         <outlet property="descriptionView" destination="cwS-bn-efM" id="aMC-ru-LeT"/>
+                        <segue destination="8jc-Bc-hP5" kind="show" identifier="pushReportCategory" id="aK9-aI-f7B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-KY-gRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
