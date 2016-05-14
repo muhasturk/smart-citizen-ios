@@ -139,9 +139,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       "password": readOnlyUser.password,
       "latitude": 40.983203,
       "longitude": 28.728038,
-      "title": "başlık",
-      "description": "Fiber bağlantımız sürekli kopuyor.",
-      "category": 5,
+      "title": self.titleField.text!,
+      "description": self.descriptionField.text!,
+      "category": categoryId!,
       "imageUrl": url
     ]
     return params as! [String : AnyObject]
