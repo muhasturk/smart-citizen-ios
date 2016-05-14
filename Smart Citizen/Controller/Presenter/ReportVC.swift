@@ -15,29 +15,22 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   // MARK: - IBOutlet
   @IBOutlet weak var choosenImage: UIImageView!
-  @IBOutlet weak var descriptionView: UITextView!
+  @IBOutlet weak var descriptionField: UITextView!
   @IBOutlet weak var categoryButton: UIButton!
+  @IBOutlet weak var titleField: UITextField!
   
+  var categoryId: Int?
+
   var categoryTitle: String? {
     didSet {
       self.categoryButton.setTitle(categoryTitle, forState: .Normal)
     }
   }
   
-  var categoryId: Int?
+  var categorySelected = false
   
-  // MARK: Unwind
-  @IBAction func unwindToReportScene(segue: UIStoryboardSegue) {
-    if segue.identifier == "saveReportCategory"{
-      if let sourceVC = segue.sourceViewController as? ReportCategoryVC {
-        self.categoryTitle = sourceVC.selectedCategoryTitle!
-        print(sourceVC.selectedCategoryId)
-        self.categoryId = sourceVC.selectedCategoryId
-      }
-    }
-  }
+  private var imagePicked = false
   
-
   // MARK: Properties
   private let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
   private let imagePicker = UIImagePickerController()
@@ -64,8 +57,33 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   // MARK: - Action
   @IBAction func sendReportAction(sender: AnyObject) {
-    self.startIndicator()
-    self.uploadImageForAWSS3()
+    if self.isAllFieldCompleted(){
+      self.startIndicator()
+      self.uploadImageForAWSS3()
+    }
+    else {
+      super.createAlertController(title: AppAlertMessages.missingFieldTitle, message: AppAlertMessages.loginMissingFieldMessage, controllerStyle: .Alert, actionStyle: .Default)
+    }
+  }
+  
+  private func isAllFieldCompleted() -> Bool {
+    return self.imagePicked && self.titleField.text!.isNotEmpty && self.descriptionField.text.isNotEmpty && self.categorySelected
+  }
+  
+  @IBAction func clearFieldAction(sender: AnyObject) {
+    self.clearFields()
+  }
+  
+  @IBAction func selectCategory(sender: AnyObject) {
+    self.performSegueWithIdentifier(AppSegues.pushReportCategory, sender: sender)
+  }
+  
+  func clearFields() {
+    self.choosenImage.image = UIImage(named: "Placeholder")
+    self.categorySelected = false
+    self.titleField.text = ""
+    self.descriptionField.text = ""
+    self.categoryButton.setTitle("Kategori Seçin", forState: .Normal)
   }
   
   // MARK: - Networking
@@ -102,6 +120,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       }
       
       guard task.result != nil else {
+        super.stopIndicator()
         self.createAlertController(title: "Yükleme Başarısız", message: "Seçtiğiniz resim AWS servise yüklenemedi.", controllerStyle: .Alert, actionStyle: .Destructive)
         print("Seçtiğiniz resim AWS servise yüklenemedi.")
         return ""
@@ -120,7 +139,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       "password": readOnlyUser.password,
       "latitude": 40.983203,
       "longitude": 28.728038,
-      "title": "İnternet Yok",
+      "title": "başlık",
       "description": "Fiber bağlantımız sürekli kopuyor.",
       "category": 5,
       "imageUrl": url
@@ -156,10 +175,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
           debugPrint(error)
         }
     }
-  }
-  
-  private func clearFields() {
-    
   }
 
   // MARK: - Image Picker
@@ -235,6 +250,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
       UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
       self.choosenImage.image = pickedImage
+      self.imagePicked = true
     }
     self.dismissViewControllerAnimated(true, completion: nil)
   }
@@ -247,8 +263,18 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     self.view.endEditing(true)
   }
 
-  @IBAction func selectCategory(sender: AnyObject) {
-    self.performSegueWithIdentifier(AppSegues.pushReportCategory, sender: sender)
+  
+  // MARK: Unwind
+  @IBAction func unwindToReportScene(segue: UIStoryboardSegue) {
+    if segue.identifier == "saveReportCategory"{
+      if let sourceVC = segue.sourceViewController as? ReportCategoryVC {
+        self.categoryTitle = sourceVC.selectedCategoryTitle!
+        self.categorySelected = true
+        print("category: \(self.categorySelected)")
+        print(sourceVC.selectedCategoryId)
+        self.categoryId = sourceVC.selectedCategoryId
+      }
+    }
   }
   
 }
