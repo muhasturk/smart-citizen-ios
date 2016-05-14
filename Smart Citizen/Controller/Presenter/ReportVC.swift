@@ -19,7 +19,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
 
   // MARK: Properties
   private let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
-  private let picker = UIImagePickerController()
+  private let imagePicker = UIImagePickerController()
   private let AWSS3BucketName = "smart-citizen"
   private var uploadDoneForAWSS3 = false
   
@@ -27,7 +27,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   override func viewDidLoad() {
     super.viewDidLoad()
     print(AppConstants.AppUser.email)
-    self.configurePickerController()
+    self.configureImagePickerController()
   }
   
   override func didReceiveMemoryWarning() {
@@ -35,7 +35,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   }
   
   override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(true)
     super.addKeyboardObserver()
   }
   override func viewDidDisappear(animated: Bool) {
@@ -119,7 +118,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
           let serviceCode = json["serviceCode"].intValue
           
           if serviceCode == 0 {
-            print("done")
+            super.createAlertController(title: "Rapor Gönderildi", message: "Raporunuz sistemimize kaydedildi.", controllerStyle: .Alert, actionStyle: .Default)
+            self.clearFields()
           }
             
           else {
@@ -136,10 +136,14 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
         }
     }
   }
+  
+  private func clearFields() {
+    
+  }
 
-  // MARK: - Picker
-  private func configurePickerController() {
-    self.picker.delegate = self
+  // MARK: - Image Picker
+  private func configureImagePickerController() {
+    self.imagePicker.delegate = self
     //    self.picker.allowsEditing = true
     //    if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera) {
     //      self.picker.mediaTypes = mediaTypes
@@ -175,9 +179,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   private func pickFromCamera() {
     if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-      self.picker.sourceType = .Camera
-      self.picker.modalPresentationStyle = .CurrentContext
-      self.presentViewController(self.picker, animated: true, completion: nil)
+      self.imagePicker.sourceType = .Camera
+      self.imagePicker.modalPresentationStyle = .CurrentContext
+      self.presentViewController(self.imagePicker, animated: true, completion: nil)
     }
     else {
       self.createAlertController(title: AppDebugMessages.cameraDeviceNotAvailableTitle, message: AppDebugMessages.cameraDeviceNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
@@ -187,8 +191,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   private func pickFromPhotos() {
     if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-      self.picker.sourceType = .PhotoLibrary
-      self.presentViewController(self.picker, animated: true, completion: nil)
+      self.imagePicker.sourceType = .PhotoLibrary
+      self.presentViewController(self.imagePicker, animated: true, completion: nil)
     }
     else {
       self.createAlertController(title: AppDebugMessages.photosNotAvailableTitle, message: AppDebugMessages.photosNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
@@ -198,8 +202,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   private func pickFromMoments() {
     if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) {
-      self.picker.sourceType = .SavedPhotosAlbum
-      self.presentViewController(self.picker, animated: true, completion: nil)
+      self.imagePicker.sourceType = .SavedPhotosAlbum
+      self.presentViewController(self.imagePicker, animated: true, completion: nil)
     }
     else {
       self.createAlertController(title: AppDebugMessages.momentsNotAvailableTitle, message: AppDebugMessages.momentsNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
@@ -207,7 +211,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     }
   }
   
-  // MARK: - Picker Delegate
+  // MARK: - Image Picker Delegate
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
       UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)

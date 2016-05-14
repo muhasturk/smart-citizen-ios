@@ -19,4 +19,5 @@ class Report {
   var status = ""
   var statusId = 0
   var count = 0
+  var imageUrl = ""
 }

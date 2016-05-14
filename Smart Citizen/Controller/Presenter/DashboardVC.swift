@@ -133,7 +133,7 @@ class DashboardVC: AppVC, UITableViewDataSource {
         r.title = reportData["title"].stringValue
         r.description = reportData["description"].stringValue
         r.count = reportData["count"].intValue
-        r.type = reportData["reportType"].stringValue // change key name
+        r.type = reportData["type"].stringValue
         r.status = reportData["status"].stringValue
         r.statusId = reportData["statusId"].intValue
         self.reportsDict[reportTypeName]?.append(r)
