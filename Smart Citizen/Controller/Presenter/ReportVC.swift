@@ -186,9 +186,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       self.pickFromMoments()
     }
     
-    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (UIAlertAction) in
-      self.dismissViewControllerAnimated(true, completion: nil)
-    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
     
     actionSheet.addAction(momentsAction)
     actionSheet.addAction(photosAction)

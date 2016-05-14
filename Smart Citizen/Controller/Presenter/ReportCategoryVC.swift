@@ -11,7 +11,7 @@ import UIKit
 class ReportCategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var categoryTable: UITableView!
-  
+    
   private var reportCategories = [
     [0, "Elektrik", "url"],
     [1, "Su", "url"],
@@ -29,7 +29,7 @@ class ReportCategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-  
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }

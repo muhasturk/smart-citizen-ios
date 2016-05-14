@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Util {
+class AppUtil {
     func getCustomBorderLayer(object: AnyObject, width: CGFloat, color: CGColor) -> CALayer {
         let layer = CALayer()
         layer.borderColor = color
@@ -21,7 +21,7 @@ class Util {
         return layer
     }
     
-    func getRGBAUIColor(red red: Int, green: Int, blue: Int, alpha: Float = 1.0) -> UIColor {
+    class func getRGBAUIColor(red red: Int, green: Int, blue: Int, alpha: Float = 1.0) -> UIColor {
         
         let rgbaColor = UIColor(red: CGFloat(red)/255,
             green: CGFloat(green)/255,
