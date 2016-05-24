@@ -121,6 +121,9 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     }
   }
   
+  func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    self.goReportDetailView()
+  }
   
   func goReportDetailView() {
     self.performSegueWithIdentifier(AppSegues.mapReportDetail, sender: nil)
