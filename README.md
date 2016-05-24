@@ -6,7 +6,7 @@
 
 is my dissertation project. 🔶
 
-<img alt="Project Screenshot" align="right" src="http://s16.postimg.org/guidb4a85/Simulator_Screen_Shot_24_Jan_2016_23_13_13.png" width="36%"/>
+<img alt="Project Screenshot" align="right" src="http://s33.postimg.org/6e2yjq61r/Simulator_Screen_Shot_24_May_2016_23_50_34.png" width="36%"/>
 
 The main purpose of this project is to provide a easy way to report any kind of trouble around citizens’ living space by using their iOS based mobile devices.
 
@@ -27,12 +27,12 @@ pod install
 ```
 
 ### ⚙ Requirements
-* OSX 10.11.4+
+* OSX 10.11.5+
 * Xcode 7.3+
 * Ruby 2.3+
-* CocoaPods 1.0.0.rc.1+
+* CocoaPods 1.0.0+
 
-Minimum deployment target is **9.3+**
+Minimum deployment target is **9.1+**
 
 ### 🚀 Contributing 
 Any PR is welcome. You can also look at [service layer][Smart Citizen API]  
