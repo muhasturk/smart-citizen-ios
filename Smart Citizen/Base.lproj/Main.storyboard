@@ -285,15 +285,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-Db-a2H">
-                                <rect key="frame" x="-4" y="20" width="383" height="598"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-Db-a2H">
+                                <rect key="frame" x="-8" y="0.0" width="391" height="618"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dashboardCell" id="vkR-No-uzr">
-                                        <rect key="frame" x="0.0" y="113.5" width="383" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="391" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vkR-No-uzr" id="imX-W0-mod">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="391" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -307,9 +307,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97304188174785533" green="0.91228315791841519" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="dfJ-Db-a2H" secondAttribute="trailing" constant="-20" id="D5l-iY-tCP"/>
-                            <constraint firstItem="dfJ-Db-a2H" firstAttribute="leading" secondItem="4cE-eC-Ycc" secondAttribute="leadingMargin" constant="-20" id="PS7-CK-BLU"/>
-                            <constraint firstItem="dfJ-Db-a2H" firstAttribute="top" secondItem="AAM-Os-DAB" secondAttribute="bottom" id="mae-Z0-jiL"/>
+                            <constraint firstItem="dfJ-Db-a2H" firstAttribute="top" secondItem="4cE-eC-Ycc" secondAttribute="topMargin" id="6TV-Rk-YvS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dfJ-Db-a2H" secondAttribute="trailing" constant="-24" id="D5l-iY-tCP"/>
+                            <constraint firstItem="dfJ-Db-a2H" firstAttribute="leading" secondItem="4cE-eC-Ycc" secondAttribute="leadingMargin" constant="-24" id="PS7-CK-BLU"/>
                             <constraint firstItem="qdG-s5-Ef5" firstAttribute="top" secondItem="dfJ-Db-a2H" secondAttribute="bottom" id="wvO-Hc-6J6"/>
                         </constraints>
                     </view>
@@ -382,6 +382,7 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="8jc-Bc-hP5" id="DAA-zq-31w"/>
                                     <outlet property="delegate" destination="8jc-Bc-hP5" id="Pde-E1-HNS"/>
@@ -411,7 +412,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="j9J-40-nWh" firstAttribute="centerX" secondItem="vT5-0E-eOj" secondAttribute="centerX" id="3f4-pI-6Ba"/>
                             <constraint firstItem="tGS-Pf-4s8" firstAttribute="top" secondItem="vT5-0E-eOj" secondAttribute="bottom" id="6iS-NQ-qp2"/>
