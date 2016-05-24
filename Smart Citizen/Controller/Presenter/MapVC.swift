@@ -192,6 +192,8 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
       r.status = reportJSON["status"].stringValue
       r.statusId = reportJSON["statusId"].intValue
       r.count = reportJSON["count"].intValue
+      r.type = reportJSON["type"].stringValue
+      r.typeId = reportJSON["typeId"].intValue
       self.mapReports.append(r)
       super.reflectAttributes(reflectingObject: r)
     }
