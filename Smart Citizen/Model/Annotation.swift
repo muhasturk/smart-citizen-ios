@@ -16,19 +16,13 @@ class SmartAnnotation: NSObject, MKAnnotation {
   var coordinate: CLLocationCoordinate2D
   var id: Int
   
-  init(reportObject r: Report) {
+  init(report r: Report) {
     let latitude = r.latitude
     let longitude = r.longitude
     self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
     self.id = r.id
     self.title = r.title
-    if r.description.characters.count > 10 {
-      self.subtitle = r.description.substringToIndex(r.description.startIndex.advancedBy(10))
-    }
-    else {
-      self.subtitle = r.description
-    }
-    
+    self.subtitle = r.description
     super.init()
   }
 }

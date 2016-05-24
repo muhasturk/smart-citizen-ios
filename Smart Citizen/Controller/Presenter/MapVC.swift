@@ -32,8 +32,12 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(true)
-    self.mapView.removeAnnotations(self.mapView.annotations)
     self.mapNetworking()
+  }
+
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.mapView.removeAnnotations(self.mapView.annotations)
   }
   
   override func didReceiveMemoryWarning() {
@@ -67,15 +71,20 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     self.locationManaer.stopUpdatingLocation()
   }
   
+  var selectedReportId: Int?
+  
   // MARK: Map
   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-    // değeri al
-    let tap = UITapGestureRecognizer(target: self, action: #selector(goReportDetailView))
-    view.addGestureRecognizer(tap)
+    if let annotation = view.annotation as? SmartAnnotation {
+      let tap = UITapGestureRecognizer(target: self, action: #selector(goReportDetailView))
+      view.addGestureRecognizer(tap)
+      self.selectedReportId = annotation.id
+    }
   }
   
   func goReportDetailView() {
-    print("annotation selected")
+    self.performSegueWithIdentifier(AppSegues.mapReportDetail, sender: nil)
+    print("annotation selected id: \(self.selectedReportId)")
   }
   
   // MARK: - Networking
@@ -120,7 +129,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   // MARK: - Annotation
   private func addReportsAnnotationToMap() {
     for r: Report in self.mapReports {
-      let annotation = SmartAnnotation(reportObject: r)      
+      let annotation = SmartAnnotation(report: r)
       self.mapView.addAnnotation(annotation)
     }
   }
@@ -143,6 +152,13 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     }
   }
 
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == AppSegues.mapReportDetail {
+      if let detailVC = segue.destinationViewController as? ReportDetailVC {
+        detailVC.reportId = self.selectedReportId
+      }
+    }
+  }
   
   
 }

@@ -13,6 +13,7 @@ struct AppSegues {
   static let doSignUpSegue = "doSignUp"
   static let doLogoutSegue = "doLogout"
   static let pushReportCategory = "pushReportCategory"
+  static let mapReportDetail = "mapReportDetail"
 }
 
 struct AppColors {
