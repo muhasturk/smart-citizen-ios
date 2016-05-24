@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Haneke
 
 class ReportDetailVC: AppVC {
 
   @IBOutlet weak var reportedImageView: UIImageView!
   @IBOutlet weak var reportDescriptionView: UITextView!
+  
+  @IBOutlet weak var reportCategoryLabel: UILabel!
+  
   // MARK: Properties
   var reportId: Int?
   var report: Report?
@@ -23,6 +27,26 @@ class ReportDetailVC: AppVC {
   }
   
   private func configureUI() {
+    guard let r = self.report else {
+      print(AppDebugMessages.reportNotPassed)
+      return
+    }
+    self.navigationItem.title = r.title
+    self.reportCategoryLabel.text = r.type
+    self.reportDescriptionView.text = r.description
+    
+    if r.imageUrl.isNotEmpty {
+      if let url = NSURL(string: r.imageUrl) {
+        self.reportedImageView.hnk_setImageFromURL(url)
+      }
+      else {
+        print("Report id: \(r.id) has invalid image URL as you see: \(r.imageUrl)")
+      }
+    }
+      
+    else {
+      print("Report id: \(r.id) has empty image URL")
+    }
     
   }
   

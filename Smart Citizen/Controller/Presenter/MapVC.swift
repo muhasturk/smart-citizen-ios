@@ -73,11 +73,13 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   }
   
   var selectedReportId: Int?
+  var selectedReport: Report?
   
   // MARK: Map
   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
     if let annotation = view.annotation as? SmartAnnotation {
       self.selectedReportId = annotation.knowledge.id
+      self.selectedReport = annotation.knowledge
       let tap = UITapGestureRecognizer(target: self, action: #selector(goReportDetailView))
       view.addGestureRecognizer(tap)
     }
@@ -199,6 +201,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     if segue.identifier == AppSegues.mapReportDetail {
       if let detailVC = segue.destinationViewController as? ReportDetailVC {
         detailVC.reportId = self.selectedReportId
+        detailVC.report = self.selectedReport
       }
     }
   }

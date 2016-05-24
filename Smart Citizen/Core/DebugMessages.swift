@@ -36,4 +36,6 @@ struct AppDebugMessages {
   static let momentsNotAvailable = "Cihaz üzerinde UIImagePickerControllerSourceType.SavedPhotosAlbum buunamadı"
   static let momentsNotAvailableTitle = "Moments Erişilemedi"
   static let momentsNotAvailableMessage = "Mobil cihaz üerinde Moments erişilemedi."
+  
+  static let reportNotPassed = "Report object not passed from segue"
 }

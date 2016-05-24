@@ -82,10 +82,7 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
     performSegueWithIdentifier(AppSegues.dashboardReportDetail, sender: indexPath)
-
-
   }
   
   var selectedReportId: Int?
@@ -167,7 +164,8 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
           let index = self.reportsDict.startIndex.advancedBy(indexPath.section)
           let key = self.reportsDict.keys[index]
           if let reports = self.reportsDict[key] {
-              detailVC.reportId = reports[indexPath.row].id
+            detailVC.reportId = reports[indexPath.row].id
+            detailVC.report = reports[indexPath.row]
           }
         }
       }
