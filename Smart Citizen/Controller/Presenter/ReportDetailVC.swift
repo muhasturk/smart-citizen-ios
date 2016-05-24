@@ -10,20 +10,26 @@ import UIKit
 
 class ReportDetailVC: AppVC {
 
+  @IBOutlet weak var reportedImageView: UIImageView!
+  @IBOutlet weak var reportDescriptionView: UITextView!
+  // MARK: Properties
   var reportId: Int?
+  var report: Report?
   
-  @IBOutlet weak var label: UILabel!
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
-    if let a = reportId {
-      self.label.text = String(a)
-    }
+    self.configureUI()
+  }
+  
+  private func configureUI() {
+    
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
+  
   
   
 }
