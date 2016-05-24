@@ -15,6 +15,7 @@ struct AppSegues {
   static let pushReportCategory = "pushReportCategory"
   static let mapReportDetail = "mapReportDetail"
   static let dashboardReportDetail = "dashboardReportDetail"
+  static let profileReportDetail = "profileReportDetail"
 }
 
 struct AppReuseIdentifier {

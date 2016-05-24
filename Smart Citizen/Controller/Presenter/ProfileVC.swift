@@ -40,6 +40,17 @@ class ProfileVC: AppVC {
     super.didReceiveMemoryWarning()
   }
   
+  override func viewWillAppear(animated: Bool) {
+    self.navigationController?.navigationBarHidden = true
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    if (self.navigationController?.topViewController != self) {
+      self.navigationController?.navigationBarHidden = false
+    }
+  }
+  
   // MARK: - Networking
   private func profileNetworking() {
     self.startIndicator()

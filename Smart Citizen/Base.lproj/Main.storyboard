@@ -590,22 +590,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5a-yb-cxB" userLabel="Top View">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5a-yb-cxB" userLabel="Top View">
                                 <rect key="frame" x="0.0" y="0.5" width="375" height="351"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mustafa Hastürk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-jx-4ZH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mustafa Hastürk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-jx-4ZH">
                                         <rect key="frame" x="124" y="205.5" width="126.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.60699118590000001" green="0.063860033080000003" blue="0.35779530139999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citizen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbz-Qo-Ba5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Citizen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbz-Qo-Ba5">
                                         <rect key="frame" x="161" y="234.5" width="53" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.74067133665084839" blue="0.61067491769790649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e0D-Pd-9UZ">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e0D-Pd-9UZ">
                                         <rect key="frame" x="18.5" y="313" width="337.5" height="29"/>
                                         <segments>
                                             <segment title="New"/>
@@ -638,7 +638,7 @@
                                     <outlet property="delegate" destination="ZqU-4d-Xem" id="V0y-JO-kD5"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy-profile" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-bV-nM9" customClass="CircleImageView" customModule="Smart_Citizen" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dummy-profile" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-bV-nM9" customClass="CircleImageView" customModule="Smart_Citizen" customModuleProvider="target">
                                 <rect key="frame" x="100" y="20" width="175.5" height="176"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PNa-bV-nM9" secondAttribute="height" id="uZy-4h-6He"/>
@@ -671,7 +671,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="4" title="Profile" image="Profile" id="OEB-Q4-Kbd"/>
+                    <navigationItem key="navigationItem" id="R5e-78-x8L"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="profileImageView" destination="PNa-bV-nM9" id="r5R-lZ-hUX"/>
@@ -679,11 +679,12 @@
                         <outlet property="profileTable" destination="7BX-L5-7EW" id="ljc-fl-yVf"/>
                         <outlet property="role" destination="pbz-Qo-Ba5" id="w2Z-BG-4ns"/>
                         <outlet property="userName" destination="UPj-jx-4ZH" id="OxX-q4-JtZ"/>
+                        <segue destination="jeb-pt-xdp" kind="show" identifier="profileReportDetail" id="jeG-Je-8Mi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrR-Al-gBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-938.5" y="1109.5"/>
+            <point key="canvasLocation" x="-938.5" y="1911.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="FBZ-bT-d30">
@@ -764,7 +765,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-uU-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-431.5" y="1109.5"/>
+            <point key="canvasLocation" x="-468.5" y="1109.5"/>
         </scene>
         <!--Main Tab-->
         <scene sceneID="xFq-7a-eRi">
@@ -780,7 +781,7 @@
                         <segue destination="hvy-lp-pdI" kind="relationship" relationship="viewControllers" id="JPb-1s-u9z"/>
                         <segue destination="JGp-3z-TwK" kind="relationship" relationship="viewControllers" id="0fV-9A-Ysr"/>
                         <segue destination="Lbk-ns-F1d" kind="relationship" relationship="viewControllers" id="bbj-yH-2Za"/>
-                        <segue destination="ZqU-4d-Xem" kind="relationship" relationship="viewControllers" id="9Wb-dn-b4b"/>
+                        <segue destination="qVF-iU-KgV" kind="relationship" relationship="viewControllers" id="9Wb-dn-b4b"/>
                         <segue destination="1hD-Nx-i6y" kind="relationship" relationship="viewControllers" id="Eep-Zq-tls"/>
                     </connections>
                 </tabBarController>
@@ -875,6 +876,25 @@
             </objects>
             <point key="canvasLocation" x="-1919.5" y="1109.5"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="MNq-s6-jtD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qVF-iU-KgV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="4" title="Profile" image="Profile" id="OEB-Q4-Kbd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bZn-cI-t28">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZqU-4d-Xem" kind="relationship" relationship="rootViewController" id="LMJ-Bl-Vw3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qtg-eW-YHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-938.5" y="1109.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Ahoy Pattern" width="320" height="568"/>
@@ -891,7 +911,7 @@
         <image name="nighttheme" width="640" height="1136"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jeG-Je-8Mi"/>
         <segue reference="Ms0-Rp-4a9"/>
-        <segue reference="qgL-ly-CfF"/>
     </inferredMetricsTieBreakers>
 </document>
