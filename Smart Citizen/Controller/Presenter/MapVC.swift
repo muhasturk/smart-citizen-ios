@@ -103,12 +103,12 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
       }
 
       switch smartAnnotation.knowledge.statusId {
+      case 0:
+        view.pinTintColor = UIColor.redColor()
       case 1:
-        view.pinTintColor = UIColor.cyanColor()
-      case 2:
         view.pinTintColor = UIColor.blueColor()
       default:
-        view.pinTintColor = UIColor.redColor()
+        view.pinTintColor = UIColor.greenColor()
       }
       
       return view
