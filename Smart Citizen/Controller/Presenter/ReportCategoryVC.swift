@@ -39,10 +39,14 @@ class ReportCategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(AppCell.reportCategoryCell, forIndexPath: indexPath)
+    if let cell = tableView.dequeueReusableCellWithIdentifier(AppCell.reportCategoryCell, forIndexPath: indexPath) as? CategoryCell {
+      cell.textLabel?.text = self.reportCategories[indexPath.row][1] as? String
+      return cell
+    }
     
-    cell.textLabel?.text = self.reportCategories[indexPath.row][1] as? String
-    return cell
+    else {
+      return CategoryCell()
+    }
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

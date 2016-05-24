@@ -16,6 +16,7 @@
 		126637A11CE15DDF00E0EE72 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126637A01CE15DDF00E0EE72 /* Package.swift */; };
 		127B2B291CE33ABF00515465 /* ReportDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127B2B281CE33ABF00515465 /* ReportDetailVC.swift */; };
 		127B2B2B1CE3670400515465 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127B2B2A1CE3670400515465 /* Annotation.swift */; };
+		127FB0CF1CF42E9400B6E0CC /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FB0CE1CF42E9400B6E0CC /* CategoryCell.swift */; };
 		12A2806E1CC28E2700E38EBD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2806D1CC28E2700E38EBD /* Extensions.swift */; };
 		12A280751CC28E5800E38EBD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280731CC28E5800E38EBD /* Protocols.swift */; };
 		12A280761CC28E5800E38EBD /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280741CC28E5800E38EBD /* Services.swift */; };
@@ -53,6 +54,7 @@
 		126637A01CE15DDF00E0EE72 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		127B2B281CE33ABF00515465 /* ReportDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportDetailVC.swift; path = Controller/Presenter/ReportDetailVC.swift; sourceTree = "<group>"; };
 		127B2B2A1CE3670400515465 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Annotation.swift; path = Model/Annotation.swift; sourceTree = "<group>"; };
+		127FB0CE1CF42E9400B6E0CC /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = View/CategoryCell.swift; sourceTree = "<group>"; };
 		12A2806D1CC28E2700E38EBD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Core/Extensions.swift; sourceTree = "<group>"; };
 		12A280731CC28E5800E38EBD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Core/Protocols.swift; sourceTree = "<group>"; };
 		12A280741CC28E5800E38EBD /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Core/Services.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 		12DE6AF21CBD5F28007F1A27 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				127FB0CE1CF42E9400B6E0CC /* CategoryCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				12F18D8A1CDCF72500DF9D52 /* MainTabC.swift in Sources */,
 				12A280761CC28E5800E38EBD /* Services.swift in Sources */,
 				12B2AD7C1CD903100096B8BD /* ProfileVC.swift in Sources */,
+				127FB0CF1CF42E9400B6E0CC /* CategoryCell.swift in Sources */,
 				12B2AD7B1CD903100096B8BD /* MapVC.swift in Sources */,
 				12DB29D71CBD664F00EA154A /* Report.swift in Sources */,
 				12A2806E1CC28E2700E38EBD /* Extensions.swift in Sources */,
