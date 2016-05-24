@@ -40,6 +40,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    super.locationManager.startUpdatingLocation()
     print(AppConstants.AppUser.email)
     self.configureImagePickerController()
   }
@@ -51,8 +52,10 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   override func viewDidAppear(animated: Bool) {
     super.addKeyboardObserver()
   }
+  
   override func viewDidDisappear(animated: Bool) {
     self.removeKeyboardObserver()
+    super.locationManager.stopUpdatingLocation()
   }
   
   // MARK: - Action
@@ -95,7 +98,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     let pathString = imageURL.absoluteString // has file:// prefix
     let onlyPathString = pathString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "file://"))
     //let imageData: NSData = UIImagePNGRepresentation(pickedImage)!
-    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 0.5)!
+    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 0.4)!
     imageData.writeToFile(onlyPathString, atomically: true) // change onlypathstring
     
     let uploadRequest = AWSS3TransferManagerUploadRequest()

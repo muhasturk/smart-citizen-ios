@@ -30,18 +30,15 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     self.configureMap()
   }
   
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(true)
-  }
-  
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(true)
     self.mapNetworking()
   }
   
-  override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(animated)
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(true)
     self.mapView.removeAnnotations(self.mapView.annotations)
+    super.locationManager.stopUpdatingLocation()
   }
   
   override func didReceiveMemoryWarning() {
@@ -70,25 +67,6 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
       self.mapView.setRegion(region, animated: true)
     }
   }
-  
-  // MARK: - Location Manager
-//  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//    if let location = locations.last {
-//      let latitude: CLLocationDegrees = location.coordinate.latitude
-//      let longitude: CLLocationDegrees = location.coordinate.longitude
-//      let latitudeDelta: CLLocationDegrees = 0.009
-//      let longitudeDelta: CLLocationDegrees = 0.009
-//      let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-//      let span: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
-//      let region: MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
-//      self.mapView.setRegion(region, animated: true)
-//    }
-//    else {
-//      print("Konum alınamadı")
-//    }
-//    print(locations.last?.coordinate)
-//    //self.locationManaer.stopUpdatingLocation()
-//  }
   
   var selectedReportId: Int?
   var selectedReport: Report?
