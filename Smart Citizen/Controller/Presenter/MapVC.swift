@@ -17,7 +17,6 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   @IBOutlet weak var mapView: MKMapView!
   
   // MARK: Properties
-  var locationManaer = CLLocationManager()
   var mapReports = [Report]()
   
   private var requestBaseURL: String {
@@ -29,6 +28,10 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     super.viewDidLoad()
     //self.navigationItem.titleView = UIImageView(image: UIImage(named: "Camera")) as UIView
     self.configureMap()
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(true)
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -47,16 +50,16 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   
   // MARK: Configure Map
   private func configureMap() {
-    self.locationManaer.requestWhenInUseAuthorization()
-    self.locationManaer.delegate = self
-    self.locationManaer.desiredAccuracy = kCLLocationAccuracyBest
-    self.locationManaer.startUpdatingLocation()
+    super.locationManager.requestWhenInUseAuthorization()
+    super.locationManager.delegate = self
+    super.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    super.locationManager.startUpdatingLocation()
     self.mapView.showsUserLocation = true
+    self.updateMapRegion()
   }
   
-  // MARK: - Location Manager
-  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    if let location = locations.last {
+  private func updateMapRegion() {
+    if let location = super.locationManager.location {
       let latitude: CLLocationDegrees = location.coordinate.latitude
       let longitude: CLLocationDegrees = location.coordinate.longitude
       let latitudeDelta: CLLocationDegrees = 0.009
@@ -66,11 +69,26 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
       let region: MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
       self.mapView.setRegion(region, animated: true)
     }
-    else {
-      print("Konum alınamadı")
-    }
-    self.locationManaer.stopUpdatingLocation()
   }
+  
+  // MARK: - Location Manager
+//  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//    if let location = locations.last {
+//      let latitude: CLLocationDegrees = location.coordinate.latitude
+//      let longitude: CLLocationDegrees = location.coordinate.longitude
+//      let latitudeDelta: CLLocationDegrees = 0.009
+//      let longitudeDelta: CLLocationDegrees = 0.009
+//      let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+//      let span: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
+//      let region: MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
+//      self.mapView.setRegion(region, animated: true)
+//    }
+//    else {
+//      print("Konum alınamadı")
+//    }
+//    print(locations.last?.coordinate)
+//    //self.locationManaer.stopUpdatingLocation()
+//  }
   
   var selectedReportId: Int?
   var selectedReport: Report?

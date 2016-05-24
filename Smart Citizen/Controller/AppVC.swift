@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AppVC: UIViewController {
   
   // MARK: App Object
   var appIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
   var appBlurEffectView: UIVisualEffectView = UIVisualEffectView()
+  var locationManager = CLLocationManager()
+
   var readOnlyUser: User {
     get {
       let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData

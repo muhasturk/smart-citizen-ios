@@ -134,11 +134,20 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   }
 
   private func configureReportNetworkingParameters(imageUrl url: String) -> [String: AnyObject] {
+    var latitude: Double?
+    var longitude: Double?
+    
+    if let location = super.locationManager.location?.coordinate {
+      latitude = location.latitude
+      longitude = location.longitude
+    }
+    
+    print("Raporun ekleneceği:\nlatitude: \(latitude)\nlongitude: \(longitude)")
     let params = [
       "email": readOnlyUser.email,
       "password": readOnlyUser.password,
-      "latitude": 40.983203,
-      "longitude": 28.728038,
+      "latitude": latitude ?? 40.984312,
+      "longitude": longitude ?? 28.753676,
       "title": self.titleField.text!,
       "description": self.descriptionField.text!,
       "category": categoryId!,
