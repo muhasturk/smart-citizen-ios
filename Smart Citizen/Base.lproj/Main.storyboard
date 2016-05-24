@@ -271,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1825.5" y="1919.5"/>
+            <point key="canvasLocation" x="-2436.5" y="1911.5"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="Bgl-2e-12h">
@@ -285,12 +285,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-Db-a2H">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-Db-a2H">
                                 <rect key="frame" x="-4" y="20" width="383" height="598"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dashboardCell" id="vkR-No-uzr">
-                                        <rect key="frame" x="0.0" y="49.5" width="383" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vkR-No-uzr" id="imX-W0-mod">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
@@ -313,15 +313,16 @@
                             <constraint firstItem="qdG-s5-Ef5" firstAttribute="top" secondItem="dfJ-Db-a2H" secondAttribute="bottom" id="wvO-Hc-6J6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="Dashboard" image="Dashboard" id="Ff0-kC-ym4"/>
+                    <navigationItem key="navigationItem" id="vU4-EA-KMt"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="dashboardTableView" destination="dfJ-Db-a2H" id="PkC-u5-efo"/>
+                        <segue destination="jeb-pt-xdp" kind="show" identifier="dashboardReportDetail" id="qgL-ly-CfF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6L-37-wf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1332.5" y="1109.5"/>
+            <point key="canvasLocation" x="-1919.5" y="1911.5"/>
         </scene>
         <!--ReportDetail-->
         <scene sceneID="It6-NY-Xon">
@@ -351,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yph-4P-K7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1332.5" y="1919.5"/>
+            <point key="canvasLocation" x="-1416.5" y="2759.5"/>
         </scene>
         <!--ReportCategory-->
         <scene sceneID="sc2-sp-WwS">
@@ -431,7 +432,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kG0-L7-Egb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="u2T-5S-Dvc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-504.5" y="2153.5"/>
+            <point key="canvasLocation" x="-1416.5" y="1911.5"/>
         </scene>
         <!--Report-->
         <scene sceneID="nN9-LS-7ua">
@@ -574,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-KY-gRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-829.5" y="1109.5"/>
+            <point key="canvasLocation" x="-1416.5" y="1109.5"/>
         </scene>
         <!--Profile-->
         <scene sceneID="qvN-PV-fSq">
@@ -657,7 +658,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrR-Al-gBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-351.5" y="1109.5"/>
+            <point key="canvasLocation" x="-938.5" y="1109.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="FBZ-bT-d30">
@@ -738,7 +739,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KL-uU-SCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="155.5" y="1109.5"/>
+            <point key="canvasLocation" x="-431.5" y="1109.5"/>
         </scene>
         <!--Main Tab-->
         <scene sceneID="xFq-7a-eRi">
@@ -752,7 +753,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="hvy-lp-pdI" kind="relationship" relationship="viewControllers" id="JPb-1s-u9z"/>
-                        <segue destination="nOu-iU-xgZ" kind="relationship" relationship="viewControllers" id="0fV-9A-Ysr"/>
+                        <segue destination="JGp-3z-TwK" kind="relationship" relationship="viewControllers" id="0fV-9A-Ysr"/>
                         <segue destination="Lbk-ns-F1d" kind="relationship" relationship="viewControllers" id="bbj-yH-2Za"/>
                         <segue destination="ZqU-4d-Xem" kind="relationship" relationship="viewControllers" id="9Wb-dn-b4b"/>
                         <segue destination="1hD-Nx-i6y" kind="relationship" relationship="viewControllers" id="Eep-Zq-tls"/>
@@ -828,7 +829,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYu-d0-pkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1825.5" y="1109.5"/>
+            <point key="canvasLocation" x="-2436.5" y="1109.5"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="dx4-Zg-1AI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JGp-3z-TwK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="Dashboard" image="Dashboard" id="Ff0-kC-ym4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3hY-NY-CyR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nOu-iU-xgZ" kind="relationship" relationship="rootViewController" id="E69-Ge-2yz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xkq-LK-kn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1919.5" y="1109.5"/>
         </scene>
     </scenes>
     <resources>
@@ -847,5 +867,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ms0-Rp-4a9"/>
+        <segue reference="qgL-ly-CfF"/>
     </inferredMetricsTieBreakers>
 </document>

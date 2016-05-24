@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class DashboardVC: AppVC, UITableViewDataSource {
+class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var dashboardTableView: UITableView!
   
@@ -81,6 +81,15 @@ class DashboardVC: AppVC, UITableViewDataSource {
     }
   }
   
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+    performSegueWithIdentifier(AppSegues.dashboardReportDetail, sender: indexPath)
+
+
+  }
+  
+  var selectedReportId: Int?
+
   // MARK: - Networkng
   private func dashboardNetworking() {
     self.startIndicator()
@@ -147,6 +156,20 @@ class DashboardVC: AppVC, UITableViewDataSource {
       for r in rd {
         super.reflectAttributes(reflectingObject: r)
         print("---------------------------")
+      }
+    }
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == AppSegues.dashboardReportDetail {
+      if let detailVC = segue.destinationViewController as? ReportDetailVC {
+        if let indexPath = sender as? NSIndexPath {
+          let index = self.reportsDict.startIndex.advancedBy(indexPath.section)
+          let key = self.reportsDict.keys[index]
+          if let reports = self.reportsDict[key] {
+              detailVC.reportId = reports[indexPath.row].id
+          }
+        }
       }
     }
   }

@@ -14,6 +14,7 @@ struct AppSegues {
   static let doLogoutSegue = "doLogout"
   static let pushReportCategory = "pushReportCategory"
   static let mapReportDetail = "mapReportDetail"
+  static let dashboardReportDetail = "dashboardReportDetail"
 }
 
 struct AppReuseIdentifier {
