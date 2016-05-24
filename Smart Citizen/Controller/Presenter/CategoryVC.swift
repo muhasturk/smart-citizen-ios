@@ -1,5 +1,5 @@
 //
-//  ReportCategoryVC.swift
+//  CategoryVC
 //  Smart Citizen
 //
 //  Created by Mustafa Hastürk on 14/05/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReportCategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
+class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var categoryTable: UITableView!
     
@@ -39,7 +39,7 @@ class ReportCategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if let cell = tableView.dequeueReusableCellWithIdentifier(AppCell.reportCategoryCell, forIndexPath: indexPath) as? CategoryCell {
+    if let cell = tableView.dequeueReusableCellWithIdentifier(AppCell.categoryCell, forIndexPath: indexPath) as? CategoryCell {
       cell.textLabel?.text = self.reportCategories[indexPath.row][1] as? String
       return cell
     }

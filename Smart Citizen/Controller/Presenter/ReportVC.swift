@@ -267,7 +267,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: Unwind
   @IBAction func unwindToReportScene(segue: UIStoryboardSegue) {
     if segue.identifier == "saveReportCategory"{
-      if let sourceVC = segue.sourceViewController as? ReportCategoryVC {
+      if let sourceVC = segue.sourceViewController as? CategoryVC {
         self.categoryTitle = sourceVC.selectedCategoryTitle!
         self.categorySelected = true
         print("category: \(self.categorySelected)")

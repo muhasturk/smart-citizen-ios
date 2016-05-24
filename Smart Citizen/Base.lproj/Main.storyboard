@@ -354,10 +354,10 @@
             </objects>
             <point key="canvasLocation" x="-1416.5" y="2759.5"/>
         </scene>
-        <!--ReportCategory-->
+        <!--Category-->
         <scene sceneID="sc2-sp-WwS">
             <objects>
-                <viewController title="ReportCategory" id="8jc-Bc-hP5" customClass="ReportCategoryVC" customModule="Smart_Citizen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Category" id="8jc-Bc-hP5" customClass="CategoryVC" customModule="Smart_Citizen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hax-0W-E9n"/>
                         <viewControllerLayoutGuide type="bottom" id="M6t-fI-FN6"/>
@@ -370,7 +370,7 @@
                                 <rect key="frame" x="-4" y="64" width="383" height="603"/>
                                 <color key="backgroundColor" red="0.84313725490196079" green="0.96862745098039216" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCategoryCell" id="WyZ-dT-uAH" customClass="CategoryCell" customModule="Smart_Citizen" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categoryCell" id="WyZ-dT-uAH" customClass="CategoryCell" customModule="Smart_Citizen" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49.5" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WyZ-dT-uAH" id="CX2-xU-UAL">
