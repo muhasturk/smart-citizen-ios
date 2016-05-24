@@ -16,6 +16,10 @@ struct AppSegues {
   static let mapReportDetail = "mapReportDetail"
 }
 
+struct AppReuseIdentifier {
+  static let mapCustomAnnotationView = "SmartAnnotationView"
+}
+
 struct AppColors {
   
 }

@@ -27,6 +27,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    //self.navigationItem.titleView = UIImageView(image: UIImage(named: "Camera")) as UIView
     self.configureMap()
   }
   
@@ -34,7 +35,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     super.viewDidAppear(true)
     self.mapNetworking()
   }
-
+  
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     self.mapView.removeAnnotations(self.mapView.annotations)
@@ -76,11 +77,50 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
   // MARK: Map
   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
     if let annotation = view.annotation as? SmartAnnotation {
+      self.selectedReportId = annotation.knowledge.id
       let tap = UITapGestureRecognizer(target: self, action: #selector(goReportDetailView))
       view.addGestureRecognizer(tap)
-      self.selectedReportId = annotation.id
     }
   }
+  
+  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    if annotation.isKindOfClass(SmartAnnotation) {
+      let smartAnnotation = annotation as! SmartAnnotation
+      var view: MKPinAnnotationView
+      
+      if let dequeuedView = self.mapView.dequeueReusableAnnotationViewWithIdentifier(AppReuseIdentifier.mapCustomAnnotationView) as? MKPinAnnotationView {
+        dequeuedView.annotation = smartAnnotation
+        view = dequeuedView
+      }
+      
+      else {
+        view = MKPinAnnotationView(annotation: smartAnnotation, reuseIdentifier: AppReuseIdentifier.mapCustomAnnotationView)
+        view.canShowCallout = true
+        view.calloutOffset = CGPoint(x: -5, y: 5)
+        view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+      }
+
+      switch smartAnnotation.knowledge.statusId {
+      case 1:
+        view.pinTintColor = UIColor.cyanColor()
+      case 2:
+        view.pinTintColor = UIColor.blueColor()
+      default:
+        view.pinTintColor = UIColor.redColor()
+      }
+      
+      return view
+    }
+      
+    else if annotation.isKindOfClass(MKUserLocation) {
+      return nil
+    }
+      
+    else {
+      return nil
+    }
+  }
+  
   
   func goReportDetailView() {
     self.performSegueWithIdentifier(AppSegues.mapReportDetail, sender: nil)
@@ -125,7 +165,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
   }
-
+  
   // MARK: - Annotation
   private func addReportsAnnotationToMap() {
     for r: Report in self.mapReports {
@@ -151,7 +191,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
       super.reflectAttributes(reflectingObject: r)
     }
   }
-
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == AppSegues.mapReportDetail {
       if let detailVC = segue.destinationViewController as? ReportDetailVC {

@@ -260,7 +260,9 @@
                             <constraint firstItem="HcM-yk-aeT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vDT-fZ-SAs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0ka-2H-7tA"/>
+                    <navigationItem key="navigationItem" title="Smart Citizen" id="0ka-2H-7tA">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="zcV-3j-ayU"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mapView" destination="HcM-yk-aeT" id="paZ-Xh-0fQ"/>
@@ -336,7 +338,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rapor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5M-AI-7OC">
                                 <rect key="frame" x="162" y="305" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

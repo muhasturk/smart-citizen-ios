@@ -14,15 +14,15 @@ class SmartAnnotation: NSObject, MKAnnotation {
   var title: String?
   var subtitle: String?
   var coordinate: CLLocationCoordinate2D
-  var id: Int
+  var knowledge: Report
   
   init(report r: Report) {
     let latitude = r.latitude
     let longitude = r.longitude
     self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-    self.id = r.id
     self.title = r.title
     self.subtitle = r.description
+    self.knowledge = r
     super.init()
   }
 }
