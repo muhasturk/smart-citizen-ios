@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class ProfileVC: AppVC {
   
-  @IBOutlet weak var profilePictureView: UIImageView!
+  @IBOutlet weak var profileImageView: CircleImageView!
   @IBOutlet weak var userName: UILabel!
   @IBOutlet weak var role: UILabel!
   @IBOutlet weak var profileSegment: UISegmentedControl!
@@ -27,6 +27,7 @@ class ProfileVC: AppVC {
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.configureProfileUI()
     print("default selected segment: \(self.profileSegment.selectedSegmentIndex)")
   }
   
@@ -139,6 +140,13 @@ class ProfileVC: AppVC {
       return cell
     }
   }
+  
+  private func configureProfileUI() {
+    print("is it callde?")
+    self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.height) / 2
+    self.profileImageView.clipsToBounds = true
+  }
+  
 }
 
 

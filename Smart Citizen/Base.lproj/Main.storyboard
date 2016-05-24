@@ -590,23 +590,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dummy-profile" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-bV-nM9">
-                                <rect key="frame" x="112" y="20" width="150" height="150"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mustafa Hastürk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-jx-4ZH">
-                                <rect key="frame" x="107" y="178" width="160" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.60699118590000001" green="0.063860033080000003" blue="0.35779530139999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Citizen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbz-Qo-Ba5">
-                                <rect key="frame" x="112" y="207" width="150" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.74067133665084839" blue="0.61067491769790649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5a-yb-cxB" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="0.5" width="375" height="351"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mustafa Hastürk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-jx-4ZH">
+                                        <rect key="frame" x="124" y="205.5" width="126.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.60699118590000001" green="0.063860033080000003" blue="0.35779530139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citizen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbz-Qo-Ba5">
+                                        <rect key="frame" x="161" y="234.5" width="53" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.74067133665084839" blue="0.61067491769790649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e0D-Pd-9UZ">
+                                        <rect key="frame" x="18.5" y="313" width="337.5" height="29"/>
+                                        <segments>
+                                            <segment title="New"/>
+                                            <segment title="Accepted"/>
+                                            <segment title="Working"/>
+                                            <segment title="Done"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pbz-Qo-Ba5" firstAttribute="top" secondItem="UPj-jx-4ZH" secondAttribute="bottom" constant="8" id="Noc-dc-Ix6"/>
+                                    <constraint firstAttribute="bottom" secondItem="e0D-Pd-9UZ" secondAttribute="bottom" constant="10" id="gOd-Hx-f5N"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7BX-L5-7EW">
-                                <rect key="frame" x="-4" y="267" width="383" height="351"/>
+                                <rect key="frame" x="-4" y="351" width="383" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="profileCell" id="7ZG-Kk-FSh">
@@ -623,34 +638,43 @@
                                     <outlet property="delegate" destination="ZqU-4d-Xem" id="V0y-JO-kD5"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e0D-Pd-9UZ">
-                                <rect key="frame" x="16" y="231" width="343" height="29"/>
-                                <segments>
-                                    <segment title="New"/>
-                                    <segment title="Accepted"/>
-                                    <segment title="Working"/>
-                                    <segment title="Done"/>
-                                </segments>
-                            </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy-profile" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-bV-nM9" customClass="CircleImageView" customModule="Smart_Citizen" customModuleProvider="target">
+                                <rect key="frame" x="100" y="20" width="175.5" height="176"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PNa-bV-nM9" secondAttribute="height" id="uZy-4h-6He"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97249168157577515" green="0.97746187448501587" blue="0.92324960231781006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PNa-bV-nM9" firstAttribute="centerX" secondItem="XOM-SN-y8A" secondAttribute="centerX" id="0qh-vD-I0c"/>
-                            <constraint firstItem="PNa-bV-nM9" firstAttribute="top" secondItem="M1L-9H-bSQ" secondAttribute="bottom" id="5Uz-fg-Vqf"/>
-                            <constraint firstItem="7BX-L5-7EW" firstAttribute="top" secondItem="e0D-Pd-9UZ" secondAttribute="bottom" constant="8" id="Ef1-Hr-5D1"/>
+                            <constraint firstItem="PNa-bV-nM9" firstAttribute="centerX" secondItem="XOM-SN-y8A" secondAttribute="centerX" id="0m6-3Q-2oY"/>
+                            <constraint firstItem="I5a-yb-cxB" firstAttribute="width" secondItem="XOM-SN-y8A" secondAttribute="width" id="5Ar-gF-alR"/>
+                            <constraint firstItem="PNa-bV-nM9" firstAttribute="height" secondItem="I5a-yb-cxB" secondAttribute="height" multiplier="0.5" id="7mB-MB-Izg"/>
+                            <constraint firstItem="I5a-yb-cxB" firstAttribute="top" secondItem="M1L-9H-bSQ" secondAttribute="bottom" constant="-20" id="952-rY-a66"/>
+                            <constraint firstItem="e0D-Pd-9UZ" firstAttribute="centerX" secondItem="XOM-SN-y8A" secondAttribute="centerX" id="E0D-4w-Npm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7BX-L5-7EW" secondAttribute="trailing" constant="-20" id="FnZ-52-2kW"/>
+                            <constraint firstItem="UPj-jx-4ZH" firstAttribute="centerX" secondItem="XOM-SN-y8A" secondAttribute="centerX" id="GN1-0T-z9G"/>
                             <constraint firstItem="7BX-L5-7EW" firstAttribute="leading" secondItem="XOM-SN-y8A" secondAttribute="leadingMargin" constant="-20" id="KVi-7i-6Fk"/>
+                            <constraint firstItem="pbz-Qo-Ba5" firstAttribute="centerX" secondItem="XOM-SN-y8A" secondAttribute="centerX" id="LLh-6K-KRU"/>
+                            <constraint firstItem="7BX-L5-7EW" firstAttribute="height" secondItem="XOM-SN-y8A" secondAttribute="height" multiplier="0.4" id="QbB-hC-h27"/>
                             <constraint firstItem="7BX-L5-7EW" firstAttribute="top" secondItem="XOM-SN-y8A" secondAttribute="centerY" multiplier="0.8" id="SMm-ae-jPk"/>
-                            <constraint firstItem="e0D-Pd-9UZ" firstAttribute="leading" secondItem="XOM-SN-y8A" secondAttribute="leadingMargin" id="ebB-id-Hmw"/>
-                            <constraint firstItem="e0D-Pd-9UZ" firstAttribute="trailing" secondItem="XOM-SN-y8A" secondAttribute="trailingMargin" id="gpr-4m-lyv"/>
-                            <constraint firstItem="e0D-Pd-9UZ" firstAttribute="centerX" secondItem="XOM-SN-y8A" secondAttribute="centerX" id="m5h-bO-Das"/>
+                            <constraint firstItem="UPj-jx-4ZH" firstAttribute="top" secondItem="PNa-bV-nM9" secondAttribute="bottom" constant="9.5" id="Weh-HF-yMu"/>
+                            <constraint firstItem="PNa-bV-nM9" firstAttribute="top" secondItem="M1L-9H-bSQ" secondAttribute="bottom" id="WxY-ik-Znk"/>
+                            <constraint firstItem="I5a-yb-cxB" firstAttribute="centerX" secondItem="XOM-SN-y8A" secondAttribute="centerX" id="YEo-mz-vWj"/>
+                            <constraint firstItem="e0D-Pd-9UZ" firstAttribute="width" secondItem="XOM-SN-y8A" secondAttribute="width" multiplier="0.9" id="qdh-jK-M12"/>
                             <constraint firstItem="Gfq-Vg-SDY" firstAttribute="top" secondItem="7BX-L5-7EW" secondAttribute="bottom" id="tGf-zw-ohp"/>
+                            <constraint firstItem="7BX-L5-7EW" firstAttribute="top" secondItem="I5a-yb-cxB" secondAttribute="bottom" id="wRt-ns-uHs"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SMm-ae-jPk"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" tag="4" title="Profile" image="Profile" id="OEB-Q4-Kbd"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="profilePictureView" destination="PNa-bV-nM9" id="HBg-8Y-QJQ"/>
+                        <outlet property="profileImageView" destination="PNa-bV-nM9" id="r5R-lZ-hUX"/>
                         <outlet property="profileSegment" destination="e0D-Pd-9UZ" id="Iu0-Yn-qFs"/>
                         <outlet property="profileTable" destination="7BX-L5-7EW" id="ljc-fl-yVf"/>
                         <outlet property="role" destination="pbz-Qo-Ba5" id="w2Z-BG-4ns"/>
