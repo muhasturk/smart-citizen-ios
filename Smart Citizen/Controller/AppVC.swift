@@ -29,7 +29,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   var appIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
   var appBlurEffectView: UIVisualEffectView = UIVisualEffectView()
   lazy var locationManager: CLLocationManager = self.makeLocationManager()
-
+  
   private func makeLocationManager() -> CLLocationManager {
     let manager = CLLocationManager()
     manager.delegate = self
@@ -39,20 +39,14 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   }
   
   var readOnlyUser: User {
-    get {
-      let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
-      let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
-      return user
-    }
+    let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
+    let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
+    return user
   }
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: Add Blur Effect View
@@ -168,5 +162,5 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue().size
     self.view.frame.origin.y += keyboardSize.height
   }
-
+  
 }

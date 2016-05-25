@@ -23,7 +23,7 @@
 //import PackageDescription
 //
 //let package = Package(
-//    name: "Smart",
+//    name: "SmartCitizen",
 //        dependencies: [
 //        //.Package(url: "https://github.com/", majorVersion: 1)
 //    ]

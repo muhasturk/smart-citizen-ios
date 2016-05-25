@@ -23,13 +23,15 @@
 import UIKit
 import LTMorphingLabel
 
-class SettingsVC: UIViewController {
+class SettingsVC: AppVC {
   
   @IBOutlet weak var versionLabel: LTMorphingLabel!
   
   @IBAction func logoutApplication(sender: AnyObject) {
     AppConstants.AppUser = User()
     NSUserDefaults.standardUserDefaults().setBool(false, forKey: AppConstants.DefaultKeys.APP_ALIVE)
+    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(AppConstants.AppUser)
+    NSUserDefaults.standardUserDefaults().setObject(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
     performSegueWithIdentifier(AppSegues.doLogoutSegue, sender: sender)
   }
   
@@ -44,20 +46,14 @@ class SettingsVC: UIViewController {
   
   // MARK: - Version Label
   func setVersionLabelDynamically() -> Void {
-    if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
-      dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
-      if let version = dict["CFBundleShortVersionString"] {
-        versionLabel.morphingEffect = .Evaporate
-        versionLabel.text = "Version: \(version as! String)"
-      }
-      else {
-        print("CFBundleShortVersionString is missing on info.plist!")
-      }
+    guard let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
+          let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject],
+          let version = dict["CFBundleShortVersionString"] else {
+            print("CFBundleShortVersionString is missing on info.plist!")
+            return
     }
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
+    versionLabel.morphingEffect = .Evaporate
+    versionLabel.text = "Version: \(version as! String)"
   }
   
 }

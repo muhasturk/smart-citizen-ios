@@ -9,6 +9,7 @@ PODS:
   - HanekeSwift (0.10.1)
   - LTMorphingLabel (0.2.0)
   - RAMAnimatedTabBarController (1.3.1)
+  - SwiftyGif (1.2.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - HanekeSwift
   - LTMorphingLabel
   - RAMAnimatedTabBarController
+  - SwiftyGif
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -30,8 +32,9 @@ SPEC CHECKSUMS:
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
   RAMAnimatedTabBarController: 71478294be88a5b870064c7980880caeb9ce2655
+  SwiftyGif: 4a21c7d71d44fe74aa4e4d6b5972712c6a8ff52d
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 96f69107f937ccea6fc66ff1ea77ba6e8cdbdeee
+PODFILE CHECKSUM: 8c2657d2430c111570f33e215c82821ec41642d9
 
-COCOAPODS: 1.0.0.rc.1
+COCOAPODS: 1.0.0

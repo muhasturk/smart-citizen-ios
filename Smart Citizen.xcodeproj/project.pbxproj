@@ -18,6 +18,7 @@
 		127B2B2B1CE3670400515465 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127B2B2A1CE3670400515465 /* Annotation.swift */; };
 		127FB0CF1CF42E9400B6E0CC /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FB0CE1CF42E9400B6E0CC /* CategoryCell.swift */; };
 		127FB0F11CF43DB400B6E0CC /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FB0F01CF43DB400B6E0CC /* CircleImageView.swift */; };
+		128C62361CF5D94D00C3593C /* intro.gif in Resources */ = {isa = PBXBuildFile; fileRef = 128C62351CF5D94D00C3593C /* intro.gif */; };
 		12A2806E1CC28E2700E38EBD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A2806D1CC28E2700E38EBD /* Extensions.swift */; };
 		12A280751CC28E5800E38EBD /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280731CC28E5800E38EBD /* Protocols.swift */; };
 		12A280761CC28E5800E38EBD /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A280741CC28E5800E38EBD /* Services.swift */; };
@@ -56,6 +57,7 @@
 		127B2B2A1CE3670400515465 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Annotation.swift; path = Model/Annotation.swift; sourceTree = "<group>"; };
 		127FB0CE1CF42E9400B6E0CC /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = View/CategoryCell.swift; sourceTree = "<group>"; };
 		127FB0F01CF43DB400B6E0CC /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleImageView.swift; path = View/CircleImageView.swift; sourceTree = "<group>"; };
+		128C62351CF5D94D00C3593C /* intro.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = intro.gif; path = Resource/intro.gif; sourceTree = "<group>"; };
 		12A2806D1CC28E2700E38EBD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Core/Extensions.swift; sourceTree = "<group>"; };
 		12A280731CC28E5800E38EBD /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Core/Protocols.swift; sourceTree = "<group>"; };
 		12A280741CC28E5800E38EBD /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Services.swift; path = Core/Services.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				12D0EEFA1BD6EB37006A2801 /* Controller */,
 				12D0EEFE1BD6EBC3006A2801 /* Core */,
 				12D0EEFB1BD6EB42006A2801 /* Model */,
+				128C62341CF5D89700C3593C /* Resource */,
 				12DB29CD1CBD641A00EA154A /* Util */,
 				12DE6AF21CBD5F28007F1A27 /* View */,
 				12471D3B1BD1810A00B86052 /* AppDelegate.swift */,
@@ -129,6 +132,14 @@
 				12D0EEF71BD6EA34006A2801 /* Support */,
 			);
 			path = "Smart Citizen";
+			sourceTree = "<group>";
+		};
+		128C62341CF5D89700C3593C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				128C62351CF5D94D00C3593C /* intro.gif */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 		12D0EEF71BD6EA34006A2801 /* Support */ = {
@@ -305,6 +316,7 @@
 				12471D431BD1810A00B86052 /* Assets.xcassets in Resources */,
 				12471D411BD1810A00B86052 /* Main.storyboard in Resources */,
 				1266379F1CE15DD500E0EE72 /* LICENSE in Resources */,
+				128C62361CF5D94D00C3593C /* intro.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

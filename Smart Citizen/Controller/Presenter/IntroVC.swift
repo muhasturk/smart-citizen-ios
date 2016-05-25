@@ -21,12 +21,22 @@
  */
 
 import UIKit
+import SwiftyGif
 
 class IntroVC: AppVC {
+  
+  @IBOutlet weak var backgroundImage: UIImageView!
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.configureUI()
+  }
+  
+  private func configureUI() {
+    let gifManager = SwiftyGifManager(memoryLimit:20)
+    let gifImage = UIImage(gifName: "intro")
+    self.backgroundImage.setGifImage(gifImage, manager: gifManager, loopCount: -1)
   }
   
   @IBAction func imageUpload(sender: AnyObject) {
@@ -43,8 +53,5 @@ class IntroVC: AppVC {
     }
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
 
 }

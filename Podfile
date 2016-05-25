@@ -10,6 +10,6 @@ target 'Smart Citizen' do
     pod 'RAMAnimatedTabBarController'
     pod 'SwiftyJSON'
     pod 'AWSS3'
-
+    pod 'SwiftyGif'
 end
 
