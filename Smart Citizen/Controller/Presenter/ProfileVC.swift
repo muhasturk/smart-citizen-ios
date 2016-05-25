@@ -26,7 +26,7 @@ import SwiftyJSON
 
 class ProfileVC: AppVC {
   
-  @IBOutlet weak var profileImageView: CircleImageView!
+  @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var userName: UILabel!
   @IBOutlet weak var role: UILabel!
   @IBOutlet weak var profileSegment: UISegmentedControl!
@@ -36,13 +36,12 @@ class ProfileVC: AppVC {
     return AppAPI.serviceDomain + AppAPI.profileServiceURL + String(23)
   }
   
-  var reportsDict = [String: [Report]]()
+  var reportsDict: [String: [Report]] = [:]
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.configureProfileUI()
-    print("default selected segment: \(self.profileSegment.selectedSegmentIndex)")
+    self.configureUI()
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -121,21 +120,21 @@ class ProfileVC: AppVC {
     for (statusName, statusArrayJSON): (String, JSON) in data {
       self.reportsDict[statusName] = []
       for (_, statusArrayJSON): (String, JSON) in statusArrayJSON {
-      let r = Report()
-      r.id = statusArrayJSON["id"].intValue
-      r.title = statusArrayJSON["title"].stringValue
-      r.description = statusArrayJSON["description"].stringValue
-      r.count = statusArrayJSON["count"].intValue
-      r.type = statusArrayJSON["type"].stringValue
-      r.typeId = statusArrayJSON["typeId"].intValue
-      r.status = statusArrayJSON["status"].stringValue
-      r.statusId = statusArrayJSON["statusId"].intValue
-      r.imageUrl = statusArrayJSON["imageUrl"].stringValue
-      self.reportsDict[statusName]?.append(r)
+        let r = Report()
+        r.id = statusArrayJSON["id"].intValue
+        r.title = statusArrayJSON["title"].stringValue
+        r.description = statusArrayJSON["description"].stringValue
+        r.count = statusArrayJSON["count"].intValue
+        r.type = statusArrayJSON["type"].stringValue
+        r.typeId = statusArrayJSON["typeId"].intValue
+        r.status = statusArrayJSON["status"].stringValue
+        r.statusId = statusArrayJSON["statusId"].intValue
+        r.imageUrl = statusArrayJSON["imageUrl"].stringValue
+        self.reportsDict[statusName]?.append(r)
       }
     }
   }
-
+  
   
   // MARK: - Table
   
@@ -176,44 +175,18 @@ class ProfileVC: AppVC {
     }
   }
   
-  private func configureProfileUI() {
-    print("is it callde?")
+  override func viewWillLayoutSubviews() {
     self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.height) / 2
     self.profileImageView.clipsToBounds = true
   }
   
+  private func configureUI() {
+    //    if readOnlyUser.profileImageURL.isNotEmpty() {
+    //      let url = NSURL(string: readOnlyUser.profileImageURL)
+    //        self.profileImageView.hnk_setImageFromURL(url)
+    //    }
+    self.userName.text = readOnlyUser.fullName
+    self.role.text = readOnlyUser.roleName
+  }
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

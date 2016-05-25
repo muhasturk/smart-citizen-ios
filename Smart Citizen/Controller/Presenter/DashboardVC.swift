@@ -44,19 +44,16 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let index = self.reportsDict.startIndex.advancedBy(section)
     let key: String = self.reportsDict.keys[index]
-    if let arrayOfReportsOfTypes = self.reportsDict[key] {
-      return arrayOfReportsOfTypes.count
-    }
-    else {
-      print("warning on \(#function)")
+    guard let reports = self.reportsDict[key] else {
+      print("warning there is no '\(key)' key inside dict \(#function)")
       return 1
     }
+    return reports.count
   }
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     let index = self.reportsDict.startIndex.advancedBy(section)
     let key = self.reportsDict.keys[index]
-    print("Title for header: \(key)")
     return key
   }
   
@@ -68,26 +65,22 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     let cell = tableView.dequeueReusableCellWithIdentifier("dashboardCell", forIndexPath: indexPath)
     let sectionIndex = self.reportsDict.startIndex.advancedBy(indexPath.section)
     let key = self.reportsDict.keys[sectionIndex]
-    if let reportsArray = self.reportsDict[key] {
-      // Configure cell
-      cell.textLabel?.text = reportsArray[indexPath.row].title
-      return cell
-    }
-    else {
-      print("warning there is no key inside dict \(#function)")
+    guard let reportsArray = self.reportsDict[key] else {
+      print("warning there is no '\(key)' key inside dict \(#function)")
       return UITableViewCell()
     }
+    cell.textLabel?.text = reportsArray[indexPath.row].title
+    return cell
   }
   
   func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
     let index = self.reportsDict.startIndex.advancedBy(section)
     let key = self.reportsDict.keys[index]
-    if let count = self.reportsDict[key]?.count {
-      return "\(key) kategorisinde \(count) rapor var."
+    guard let reports = self.reportsDict[key] else {
+      return nil
     }
-    else {
-      return ""
-    }
+    let count = reports.count
+    return "\(key) kategorisinde \(count) rapor var."
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
