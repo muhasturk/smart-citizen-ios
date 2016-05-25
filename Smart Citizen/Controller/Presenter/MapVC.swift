@@ -24,6 +24,7 @@ import UIKit
 import MapKit
 import Alamofire
 import SwiftyJSON
+import Dodo
 
 class MapVC: AppVC, MKMapViewDelegate {
   
@@ -34,6 +35,7 @@ class MapVC: AppVC, MKMapViewDelegate {
   // MARK: Properties
   var mapReports = [Report]()
   
+  var firstNetworking = true
   private var requestBaseURL: String {
     return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(AppReadOnlyUser.roleId)
   }
@@ -45,10 +47,14 @@ class MapVC: AppVC, MKMapViewDelegate {
     self.configureMap()
     self.configureUI()
     self.mapNetworking()
+    view.dodo.topLayoutGuide = topLayoutGuide
+    view.dodo.style.bar.hideOnTap = true
+    view.dodo.style.bar.hideAfterDelaySeconds = 2
+    view.dodo.success("Hoşgeldin \(AppReadOnlyUser.fullName)")
   }
   
   @IBAction func refreshButtonAction(sender: AnyObject) {
-    self.mapView.removeAnnotations(self.mapView.annotations)
+    self.view.dodo.info("Raporlar alınıyor...")
     self.mapNetworking()
   }
   
@@ -155,7 +161,12 @@ class MapVC: AppVC, MKMapViewDelegate {
           if serviceCode == 0 {
             if data.isExists() && data.isNotEmpty{
               self.writeReportsDataToModel(dataJsonFromNetworking: data)
+              self.mapView.removeAnnotations(self.mapView.annotations)
               self.addReportsAnnotationToMap()
+              if !self.firstNetworking {
+                self.view.dodo.success("Raporlar alındı.")
+              }
+              self.firstNetworking = false
               print("Toplam annotation \(self.mapReports.count)")
             }
             else {

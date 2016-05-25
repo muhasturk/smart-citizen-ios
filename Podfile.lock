@@ -5,6 +5,7 @@ PODS:
     - AWSCore (= 2.4.2)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
+  - Dodo (2.2.1)
   - Fabric (1.6.7)
   - HanekeSwift (0.10.1)
   - LTMorphingLabel (0.2.0)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - Alamofire
   - AWSS3
   - Crashlytics
+  - Dodo (~> 2.2)
   - Fabric
   - HanekeSwift
   - LTMorphingLabel
@@ -28,6 +30,7 @@ SPEC CHECKSUMS:
   AWSCore: 08cc4318682a518ad73e452900336ba54e823e03
   AWSS3: 21bbd5d41eb175bf2fd371dc8af5339752f7f5b7
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Dodo: 9c9a368ec6c869928429c691eecc926889882a2d
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
@@ -35,6 +38,6 @@ SPEC CHECKSUMS:
   SwiftyGif: ede36725afc8fe16273ffc3418818d51af681a95
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 8c2657d2430c111570f33e215c82821ec41642d9
+PODFILE CHECKSUM: d1a10bbff71369109a3d94e0600e596ba52088a5
 
 COCOAPODS: 1.0.0

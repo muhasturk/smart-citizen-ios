@@ -11,5 +11,6 @@ target 'Smart Citizen' do
     pod 'SwiftyJSON'
     pod 'AWSS3'
     pod 'SwiftyGif'
+    pod 'Dodo', '~> 2.2'
 end
 
