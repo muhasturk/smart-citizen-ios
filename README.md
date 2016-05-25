@@ -6,7 +6,7 @@
 
 is my dissertation project. 🔶
 
-<img alt="Project Screenshot" align="right" src="http://s33.postimg.org/6e2yjq61r/Simulator_Screen_Shot_24_May_2016_23_50_34.png" width="36%"/>
+<img alt="Project Screenshot" align="right" src="http://s33.postimg.org/meiou3v1r/IMG_1271.png" width="36%"/>
 
 The main purpose of this project is to provide a easy way to report any kind of trouble around citizens’ living space by using their iOS based mobile devices.
 
