@@ -24,11 +24,6 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.dashboardNetworking()
-    //print(self.requestBaseURL)
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: - Table Delegate
@@ -105,7 +100,7 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
             if data.isExists() && data.isNotEmpty{
               self.writeDashboardDataToModel(dataJsonFromNetworking: data)
               self.dashboardTableView.reloadData()
-              self.debugReportsDict()
+              //self.debugReportsDict()
             }
             else {
               print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
@@ -152,7 +147,6 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
       print("Header: \(h)")
       for r in rd {
         super.reflectAttributes(reflectingObject: r)
-        print("---------------------------")
       }
     }
   }

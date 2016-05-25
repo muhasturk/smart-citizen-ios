@@ -9,13 +9,21 @@
 import UIKit
 import CoreLocation
 
-class AppVC: UIViewController {
+class AppVC: UIViewController, CLLocationManagerDelegate {
   
   // MARK: App Object
   var appIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
   var appBlurEffectView: UIVisualEffectView = UIVisualEffectView()
-  var locationManager = CLLocationManager()
+  lazy var locationManager: CLLocationManager = self.makeLocationManager()
 
+  private func makeLocationManager() -> CLLocationManager {
+    let manager = CLLocationManager()
+    manager.delegate = self
+    manager.desiredAccuracy = kCLLocationAccuracyBest
+    manager.requestWhenInUseAuthorization()
+    return manager
+  }
+  
   var readOnlyUser: User {
     get {
       let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData

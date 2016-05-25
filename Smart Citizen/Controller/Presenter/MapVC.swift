@@ -11,7 +11,7 @@ import MapKit
 import Alamofire
 import SwiftyJSON
 
-class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapVC: AppVC, MKMapViewDelegate {
   
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
@@ -41,15 +41,8 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
     super.locationManager.stopUpdatingLocation()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
   // MARK: Configure Map
   private func configureMap() {
-    super.locationManager.requestWhenInUseAuthorization()
-    super.locationManager.delegate = self
-    super.locationManager.desiredAccuracy = kCLLocationAccuracyBest
     super.locationManager.startUpdatingLocation()
     self.mapView.showsUserLocation = true
     self.updateMapRegion()
@@ -191,7 +184,7 @@ class MapVC: AppVC, CLLocationManagerDelegate, MKMapViewDelegate {
       r.type = reportJSON["type"].stringValue
       r.typeId = reportJSON["typeId"].intValue
       self.mapReports.append(r)
-      super.reflectAttributes(reflectingObject: r)
+      //super.reflectAttributes(reflectingObject: r)
     }
   }
   

@@ -70,7 +70,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   }
   
   private func isAllFieldCompleted() -> Bool {
-    return self.imagePicked && self.titleField.text!.isNotEmpty && self.descriptionField.text.isNotEmpty && self.categorySelected
+    return self.imagePicked && self.titleField.text!.isNotEmpty &&
+      self.descriptionField.text.isNotEmpty && self.categorySelected
   }
   
   @IBAction func clearFieldAction(sender: AnyObject) {
@@ -86,7 +87,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     self.categorySelected = false
     self.titleField.text = ""
     self.descriptionField.text = ""
-    self.categoryButton.setTitle("Kategori Seçin", forState: .Normal)
+    self.categoryButton.setTitle("Kategori", forState: .Normal)
   }
   
   // MARK: - Networking
