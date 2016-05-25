@@ -27,17 +27,27 @@ import SwiftyJSON
 class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var dashboardTableView: UITableView!
+  var refreshControl: UIRefreshControl!
   
   private var requestBaseURL: String {
     return AppAPI.serviceDomain + AppAPI.dashboardServiceURL + String(readOnlyUser.roleId)
   }
   
-  private var reportsDict: [String: [Report]] = [String: [Report]]()
+  private var reportsDict: [String: [Report]] = [:]
+  private var firstNetworking = true
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.configureTableView()
     self.dashboardNetworking()
+  }
+  
+  private func configureTableView() {
+    refreshControl = UIRefreshControl()
+    refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+    refreshControl.addTarget(self, action: #selector(self.dashboardNetworking), forControlEvents: UIControlEvents.ValueChanged)
+    self.dashboardTableView.addSubview(refreshControl)
   }
   
   // MARK: - Table Delegate
@@ -90,12 +100,16 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   var selectedReportId: Int?
 
   // MARK: - Networkng
-  private func dashboardNetworking() {
-    self.startIndicator()
+  func dashboardNetworking() {
+    if firstNetworking {
+      self.startIndicator()
+    }
     Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in
-        self.stopIndicator()
-        
+        if self.firstNetworking {
+          self.stopIndicator()
+          self.firstNetworking = false
+        }
         switch response.result {
         case .Success(let value):
           print(AppDebugMessages.serviceConnectionDashboardIsOk, self.requestBaseURL, separator: "\n")
@@ -107,6 +121,9 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
             if data.isExists() && data.isNotEmpty{
               self.writeDashboardDataToModel(dataJsonFromNetworking: data)
               self.dashboardTableView.reloadData()
+              if self.refreshControl.refreshing {
+                self.refreshControl.endRefreshing()
+              }
               //self.debugReportsDict()
             }
             else {
