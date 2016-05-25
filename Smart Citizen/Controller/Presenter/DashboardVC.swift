@@ -100,53 +100,7 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   
   var selectedReportId: Int?
 
-  // MARK: - Networkng
-  func dashboardNetworking() {
-    if firstNetworking {
-      self.startIndicator()
-    }
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
-      .responseJSON { response in
-        if self.firstNetworking {
-          self.stopIndicator()
-          self.firstNetworking = false
-        }
-        switch response.result {
-        case .Success(let value):
-          print(AppDebugMessages.serviceConnectionDashboardIsOk, self.requestBaseURL, separator: "\n")
-          let json = JSON(value)
-          let serviceCode = json["serviceCode"].intValue
-          let data = json["data"]
-          
-          if serviceCode == 0 {
-            if data.isExists() && data.isNotEmpty{
-              self.writeDashboardDataToModel(dataJsonFromNetworking: data)
-              self.dashboardTableView.reloadData()
-              if self.refreshControl.refreshing {
-                self.refreshControl.endRefreshing()
-              }
-              //self.debugReportsDict()
-            }
-            else {
-              print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
-              debugPrint(data)
-            }
-          }
-            
-          else {
-            let exception = json["exception"]
-            let c = exception["exceptionCode"].intValue
-            let m = exception["exceptionMessage"].stringValue
-            let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-            self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
-          }
-          
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
-          debugPrint(error)
-        }
-    }
-  }
+  
   
   // MARK: Write Model
   private func writeDashboardDataToModel(dataJsonFromNetworking data: JSON) {
@@ -189,6 +143,59 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
         }
       }
     }
+  }
+  
+}
+
+// MARK: - Networkng
+extension DashboardVC {
+  func dashboardNetworking() {
+    if firstNetworking {
+      self.startIndicator()
+    }
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+      .responseJSON { response in
+        if self.firstNetworking {
+          self.stopIndicator()
+          self.firstNetworking = false
+        }
+        switch response.result {
+        case .Success(let value):
+          print(AppDebugMessages.serviceConnectionDashboardIsOk, self.requestBaseURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+                    
+          if serviceCode == 0 {
+            let data = json["data"]
+            self.dashboardNetworkingSuccessful(data)
+          }
+            
+          else {
+            let exception = json["exception"]
+            self.dashboardNetworkingUnsuccessful(exception)
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
+  }
+  
+  private func dashboardNetworkingSuccessful(data: JSON) {
+    self.writeDashboardDataToModel(dataJsonFromNetworking: data)
+    self.dashboardTableView.reloadData()
+    if self.refreshControl.refreshing {
+      self.refreshControl.endRefreshing()
+    }
+    //self.debugReportsDict()
+  }
+  
+  private func dashboardNetworkingUnsuccessful(exception: JSON) {
+    let c = exception["exceptionCode"].intValue
+    let m = exception["exceptionMessage"].stringValue
+    let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
   }
   
 }

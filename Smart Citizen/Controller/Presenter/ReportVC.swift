@@ -195,38 +195,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     return params
   }
   
-  private func reportNetworking(networkingParameters params: [String: AnyObject]) {
-    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
-      .responseJSON { response in
-        self.stopIndicator()
-        switch response.result {
-        case .Success(let value):
-          print(AppDebugMessages.serviceConnectionReportIsOk, self.requestBaseURL, separator: "\n")
-          let json = JSON(value)
-          let serviceCode = json["serviceCode"].intValue
-          self.view.dodo.style.bar.hideAfterDelaySeconds = 2
-          if serviceCode == 0 {
-            self.view.dodo.success("Raporunuz sistemimize kaydedildi.")
-            super.createAlertController(title: "Rapor Gönderildi", message: "Raporunuz sistemimize kaydedildi.", controllerStyle: .Alert, actionStyle: .Default)
-            self.clearFields()
-          }
-            
-          else {
-            let exception = json["exception"]
-            let c = exception["exceptionCode"].intValue
-            let m = exception["exceptionMessage"].stringValue
-            let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-            self.view.dodo.error("Rapor yüklemesi başarısız oldu.")
-            self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
-          }
-          
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
-          debugPrint(error)
-        }
-    }
-  }
-
+  
   // MARK: - Image Picker
   private func configureImagePickerController() {
     self.imagePicker.delegate = self
@@ -323,6 +292,52 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
         self.categoryId = sourceVC.selectedCategoryId
       }
     }
+  }
+  
+}
+
+// MARK: - Networking
+extension ReportVC {
+  
+  private func reportNetworking(networkingParameters params: [String: AnyObject]) {
+    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
+      .responseJSON { response in
+        self.stopIndicator()
+        switch response.result {
+        case .Success(let value):
+          print(AppDebugMessages.serviceConnectionReportIsOk, self.requestBaseURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+          self.view.dodo.style.bar.hideAfterDelaySeconds = 2
+          
+          if serviceCode == 0 {
+            self.reportNetworkingSuccessful()
+          }
+            
+          else {
+            let exception = json["exception"]
+            self.reportNetworkingUnsuccessful(exception)
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
+  }
+
+  private func reportNetworkingSuccessful() {
+    self.view.dodo.success("Raporunuz sistemimize kaydedildi.")
+    super.createAlertController(title: "Rapor Gönderildi", message: "Raporunuz sistemimize kaydedildi.", controllerStyle: .Alert, actionStyle: .Default)
+    self.clearFields()
+  }
+  
+  private func reportNetworkingUnsuccessful(exception: JSON) {
+    self.view.dodo.error("Rapor yüklemesi başarısız oldu.")
+    let c = exception["exceptionCode"].intValue
+    let m = exception["exceptionMessage"].stringValue
+    let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
   }
   
 }

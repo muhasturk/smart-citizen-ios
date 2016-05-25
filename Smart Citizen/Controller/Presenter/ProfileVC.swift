@@ -85,55 +85,7 @@ class ProfileVC: AppVC {
     appIndicator.startAnimating()
   }
   
-  // MARK: - Networking
-  func profileNetworking() {
-    if firstNetworking {
-      self.tableViewIndicator()
-    }
-    
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
-      .responseJSON { response in
-        if self.firstNetworking {
-          self.appIndicator.stopAnimating()
-          self.firstNetworking = false
-        }
-        
-        switch response.result {
-        case .Success(let value):
-          print(AppDebugMessages.serviceConnectionProfileIsOk, self.requestBaseURL, separator: "\n")
-          let json = JSON(value)
-          let serviceCode = json["serviceCode"].intValue
-          let data = json["data"]
-          
-          if serviceCode == 0 {
-            if data.isExists() && data.isNotEmpty{
-              self.writeUserDataToModel(dataJsonFromNetworking: data)
-              self.profileTable.reloadData()
-              if self.refreshControl.refreshing {
-                self.refreshControl.endRefreshing()
-              }
-              
-            }
-            else {
-              print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
-              debugPrint(data)
-            }
-          }
-            
-          else {
-            let exception = json["exception"]
-            let c = exception["exceptionCode"].intValue
-            let m = exception["exceptionMessage"].stringValue
-            let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-            self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
-          }
-          
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
-          debugPrint(error)
-        }
-    }
-  }
+  
   
   // MARK: - Model
   private func writeUserDataToModel(dataJsonFromNetworking data: JSON) {
@@ -210,4 +162,58 @@ class ProfileVC: AppVC {
     self.role.text = AppReadOnlyUser.roleName
   }
   
+}
+
+// MARK: - Networking
+extension ProfileVC {
+  func profileNetworking() {
+    if firstNetworking {
+      self.tableViewIndicator()
+    }
+    
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+      .responseJSON { response in
+        if self.firstNetworking {
+          self.appIndicator.stopAnimating()
+          self.firstNetworking = false
+        }
+        
+        switch response.result {
+        case .Success(let value):
+          print(AppDebugMessages.serviceConnectionProfileIsOk, self.requestBaseURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+          
+          if serviceCode == 0 {
+            let data = json["data"]
+            self.profileNetworkingSuccessful(data)
+          }
+            
+          else {
+            let exception = json["exception"]
+            self.profileNetworkingUnsuccessful(exception)
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
+  }
+  
+  private func profileNetworkingSuccessful(data: JSON) {
+    self.writeUserDataToModel(dataJsonFromNetworking: data)
+    self.profileTable.reloadData()
+    if self.refreshControl.refreshing {
+      self.refreshControl.endRefreshing()
+    }
+  }
+  
+  private func profileNetworkingUnsuccessful(exception: JSON) {
+    let c = exception["exceptionCode"].intValue
+    let m = exception["exceptionMessage"].stringValue
+    let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+  }
+
 }

@@ -35,7 +35,7 @@ class MapVC: AppVC, MKMapViewDelegate {
   // MARK: Properties
   var mapReports = [Report]()
   
-  var firstNetworking = true
+  var refreshRequest = false
   private var requestBaseURL: String {
     return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(AppReadOnlyUser.roleId)
   }
@@ -49,12 +49,14 @@ class MapVC: AppVC, MKMapViewDelegate {
     self.mapNetworking()
     view.dodo.topLayoutGuide = topLayoutGuide
     view.dodo.style.bar.hideOnTap = true
-    view.dodo.style.bar.hideAfterDelaySeconds = 2
+    view.dodo.style.bar.hideAfterDelaySeconds = 2.5
     view.dodo.success("Hoşgeldin \(AppReadOnlyUser.fullName)")
   }
   
   @IBAction func refreshButtonAction(sender: AnyObject) {
+    view.dodo.style.bar.hideAfterDelaySeconds = 0
     self.view.dodo.info("Raporlar alınıyor...")
+    self.refreshRequest = true
     self.mapNetworking()
   }
   
@@ -146,49 +148,6 @@ class MapVC: AppVC, MKMapViewDelegate {
     print("annotation selected id: \(self.selectedReportId)")
   }
   
-  // MARK: - Networking
-  private func mapNetworking() {
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
-      .responseJSON { response in
-        
-        switch response.result {
-        case .Success(let value):
-          print(AppDebugMessages.serviceConnectionMapIsOk, self.requestBaseURL, separator: "\n")
-          let json = JSON(value)
-          let serviceCode = json["serviceCode"].intValue
-          let data = json["data"]
-          
-          if serviceCode == 0 {
-            if data.isExists() && data.isNotEmpty{
-              self.writeReportsDataToModel(dataJsonFromNetworking: data)
-              self.mapView.removeAnnotations(self.mapView.annotations)
-              self.addReportsAnnotationToMap()
-              if !self.firstNetworking {
-                self.view.dodo.success("Raporlar alındı.")
-              }
-              self.firstNetworking = false
-              print("Toplam annotation \(self.mapReports.count)")
-            }
-            else {
-              print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
-              debugPrint(data)
-            }
-          }
-            
-          else {
-            let exception = json["exception"]
-            let c = exception["exceptionCode"].intValue
-            let m = exception["exceptionMessage"].stringValue
-            let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-            self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
-          }
-          
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
-          debugPrint(error)
-        }
-    }
-  }
   
   // MARK: - Annotation
   private func addReportsAnnotationToMap() {
@@ -228,4 +187,51 @@ class MapVC: AppVC, MKMapViewDelegate {
   }
   
   
+}
+
+// MARK: - Networking
+extension MapVC {
+  private func mapNetworking() {
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+      .responseJSON { response in
+        
+        switch response.result {
+        case .Success(let value):
+          print(AppDebugMessages.serviceConnectionMapIsOk, self.requestBaseURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+          
+          if serviceCode == 0 {
+            let data = json["data"]
+            self.mapNetworkingSuccessful(data)
+          }
+            
+          else {
+            let exception = json["exception"]
+            self.mapNetworkingUnsuccessful(exception)
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
+  }
+  
+  private func mapNetworkingSuccessful(data: JSON) {
+    self.writeReportsDataToModel(dataJsonFromNetworking: data)
+    self.mapView.removeAnnotations(self.mapView.annotations)
+    self.addReportsAnnotationToMap()
+    if self.refreshRequest {
+      view.dodo.style.bar.hideAfterDelaySeconds = 2
+      self.view.dodo.success("Raporlar alındı.")
+    }
+  }
+  
+  private func mapNetworkingUnsuccessful(exception: JSON) {
+    let c = exception["exceptionCode"].intValue
+    let m = exception["exceptionMessage"].stringValue
+    let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+  }
 }

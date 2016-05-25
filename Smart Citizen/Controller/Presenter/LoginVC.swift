@@ -37,10 +37,6 @@ class LoginVC: AppVC {
     self.navigationItem.title = "Login"
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
   @IBAction func loginButtonAction(sender: AnyObject) {
     self.view.endEditing(true)
     let email = self.emailField.text!
@@ -62,46 +58,6 @@ class LoginVC: AppVC {
         "deviceToken": NSUserDefaults.standardUserDefaults().stringForKey(AppConstants.DefaultKeys.DEVICE_TOKEN) ?? "5005"
       ]
       self.loginNetworking(networkingParameters: parameters)
-    }
-  }
-  
-  // MARK: - Networking
-  private func loginNetworking(networkingParameters params: [String: AnyObject]) {
-    self.startIndicator()
-    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
-      .responseJSON { response in
-        self.stopIndicator()
-        
-        switch response.result {
-        case .Success(let value):
-          print(AppDebugMessages.serviceConnectionLoginIsOk, self.requestBaseURL, separator: "\n")
-          let json = JSON(value)
-          let serviceCode = json["serviceCode"].intValue
-          let data = json["data"]
-          
-          if serviceCode == 0 {
-            if data.isExists() && data.isNotEmpty{
-              self.writeUserDataToModel(dataJsonFromNetworking: data)
-              self.performSegueWithIdentifier(AppSegues.doLoginSegue, sender: nil)
-            }
-            else {
-              print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)
-              debugPrint(data)
-            }
-          }
-            
-          else {
-            let exception = json["exception"]
-            let c = exception["exceptionCode"].intValue
-            let m = exception["exceptionMessage"].stringValue
-            let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-            self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
-          }
-          
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
-          debugPrint(error)
-        }
     }
   }
   
@@ -139,4 +95,50 @@ class LoginVC: AppVC {
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     self.view.endEditing(true)
   }
+}
+
+// MARK: - Networking
+extension LoginVC {
+  
+  private func loginNetworking(networkingParameters params: [String: AnyObject]) {
+    self.startIndicator()
+    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
+      .responseJSON { response in
+        self.stopIndicator()
+        
+        switch response.result {
+        case .Success(let value):
+          print(AppDebugMessages.serviceConnectionLoginIsOk, self.requestBaseURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+          
+          if serviceCode == 0 {
+            let data = json["data"]
+            self.loginNetworkingSuccessful(data)
+          }
+            
+          else {
+            let exception = json["exception"]
+            self.loginNetworkingUnsuccessful(exception)
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
+  }
+  
+  private func loginNetworkingSuccessful(data: JSON) {
+    self.writeUserDataToModel(dataJsonFromNetworking: data)
+    self.performSegueWithIdentifier(AppSegues.doLoginSegue, sender: nil)
+  }
+  
+  private func loginNetworkingUnsuccessful(exception: JSON) {
+    let c = exception["exceptionCode"].intValue
+    let m = exception["exceptionMessage"].stringValue
+    let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+  }
+  
 }
