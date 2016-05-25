@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class SmartAnnotation: NSObject, MKAnnotation {
+final class SmartAnnotation: NSObject, MKAnnotation {
   
   var title: String?
   var subtitle: String?

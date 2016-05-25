@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User: NSObject, NSCoding {
+final class User: NSObject, NSCoding {
   
   var id: Int = 0
   var fullName: String = ""

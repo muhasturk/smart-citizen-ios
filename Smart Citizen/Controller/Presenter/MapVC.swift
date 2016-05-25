@@ -54,9 +54,9 @@ class MapVC: AppVC, MKMapViewDelegate {
       let longitude: CLLocationDegrees = location.coordinate.longitude
       let latitudeDelta: CLLocationDegrees = 0.009
       let longitudeDelta: CLLocationDegrees = 0.009
-      let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-      let span: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
-      let region: MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
+      let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+      let span = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+      let region = MKCoordinateRegion(center: coordinate, span: span)
       self.mapView.setRegion(region, animated: true)
     }
   }
