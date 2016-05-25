@@ -39,10 +39,8 @@ class IntroVC: AppVC {
     self.backgroundImage.setGifImage(gifImage, manager: gifManager, loopCount: -1)
   }
   
-  @IBAction func imageUpload(sender: AnyObject) {
-  }
-  
   override func viewWillAppear(animated: Bool) {
+    super.viewDidAppear(animated)
     self.navigationController?.navigationBarHidden = true
   }
   
@@ -53,5 +51,4 @@ class IntroVC: AppVC {
     }
   }
   
-
 }

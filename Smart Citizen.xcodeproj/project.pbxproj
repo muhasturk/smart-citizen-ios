@@ -199,9 +199,9 @@
 		12DE6AE21CBD5E93007F1A27 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				12EBAE931CE7394700CC832A /* CategoryVC.swift */,
 				12B2AD801CD927FE0096B8BD /* IntroVC.swift */,
 				12B2AD721CD903100096B8BD /* LoginVC.swift */,
-				12EBAE931CE7394700CC832A /* CategoryVC.swift */,
 				12B2AD781CD903100096B8BD /* SignUpVC.swift */,
 				12B2AD731CD903100096B8BD /* DashboardVC.swift */,
 				12B2AD741CD903100096B8BD /* MapVC.swift */,

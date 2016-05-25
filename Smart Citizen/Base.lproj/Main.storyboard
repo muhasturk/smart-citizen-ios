@@ -898,7 +898,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="imageUpload:" destination="m5F-gn-y1p" eventType="touchUpInside" id="IiH-2X-aHQ"/>
                                     <segue destination="Bhx-Xi-OJu" kind="show" id="NAp-vi-c4s"/>
                                 </connections>
                             </button>
