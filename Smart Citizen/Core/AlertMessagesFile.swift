@@ -51,4 +51,6 @@ struct AppAlertMessages {
   static let parameterMissingTitle = "Parametre Eksik"
   static let parameterMissingMessage = "Servisin istediği parametreler eksik girilmiş."
   
+  static let reportMissingFieldMessage = "Raporlama sayfasındaki tüm alanların girilmesi zorunludur"
+  
 }

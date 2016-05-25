@@ -79,7 +79,7 @@ class ProfileVC: AppVC {
     self.tableViewIndicator()
     Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in
-        super.appIndicator.stopAnimating()
+        self.appIndicator.stopAnimating()
         
         switch response.result {
         case .Success(let value):

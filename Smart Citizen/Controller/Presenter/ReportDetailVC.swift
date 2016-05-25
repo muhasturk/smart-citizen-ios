@@ -27,7 +27,6 @@ class ReportDetailVC: AppVC {
 
   @IBOutlet weak var reportedImageView: UIImageView!
   @IBOutlet weak var reportDescriptionView: UITextView!
-  
   @IBOutlet weak var reportCategoryLabel: UILabel!
   
   // MARK: Properties
@@ -63,11 +62,5 @@ class ReportDetailVC: AppVC {
     }
     
   }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
-  
   
 }

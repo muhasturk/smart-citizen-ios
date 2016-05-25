@@ -85,12 +85,23 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - Action
   @IBAction func sendReportAction(sender: AnyObject) {
     if self.isAllFieldCompleted(){
+      self.makeDialogForSend()
+    }
+    else {
+      super.createAlertController(title: AppAlertMessages.missingFieldTitle, message: AppAlertMessages.reportMissingFieldMessage, controllerStyle: .Alert, actionStyle: .Default)
+    }
+  }
+  
+  private func makeDialogForSend() {
+    let ac = UIAlertController(title: "Raporu Onaylayın", message: "Raporunuz sistemimize yüklenecektir.\nOnaylıyor musunuz?", preferredStyle: .Alert)
+    let okAction = UIAlertAction(title: "Yükle", style: .Default) { (UIAlertAction) in
       self.startIndicator()
       self.uploadImageForAWSS3()
     }
-    else {
-      super.createAlertController(title: AppAlertMessages.missingFieldTitle, message: AppAlertMessages.loginMissingFieldMessage, controllerStyle: .Alert, actionStyle: .Default)
-    }
+    let cancelAction = UIAlertAction(title: "İptal Et", style: .Cancel, handler: nil)
+    ac.addAction(okAction)
+    ac.addAction(cancelAction)
+    self.presentViewController(ac, animated: true, completion: nil)
   }
   
   private func isAllFieldCompleted() -> Bool {
