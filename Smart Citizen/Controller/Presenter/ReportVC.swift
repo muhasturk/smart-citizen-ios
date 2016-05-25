@@ -64,6 +64,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.dodo.style.bar.hideOnTap = true
+    self.view.dodo.topLayoutGuide = topLayoutGuide
+
     super.locationManager.startUpdatingLocation()
     self.configureImagePickerController()
   }
@@ -94,7 +97,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   private func makeDialogForSend() {
     let ac = UIAlertController(title: "Raporu Onaylayın", message: "Raporunuz sistemimize yüklenecektir.\nOnaylıyor musunuz?", preferredStyle: .Alert)
     let okAction = UIAlertAction(title: "Yükle", style: .Default) { (UIAlertAction) in
-      self.startIndicator()
+      
+      self.view.dodo.info("Rapor yükleniyor...")
       self.uploadImageForAWSS3()
     }
     let cancelAction = UIAlertAction(title: "İptal Et", style: .Cancel, handler: nil)
@@ -177,18 +181,18 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       longitude = location.longitude
     }
     
-    print("Raporun ekleneceği:\nlatitude: \(latitude)\nlongitude: \(longitude)")
-    let params = [
+    let params: [String: AnyObject] = [
       "email": AppReadOnlyUser.email,
       "password": AppReadOnlyUser.password,
       "latitude": latitude ?? 40.984312,
       "longitude": longitude ?? 28.753676,
       "title": self.titleField.text!,
       "description": self.descriptionField.text!,
-      "category": categoryId!,
+      "categoryId": categoryId!,
       "imageUrl": url
     ]
-    return params as! [String : AnyObject]
+    
+    return params
   }
   
   private func reportNetworking(networkingParameters params: [String: AnyObject]) {
@@ -200,8 +204,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
           print(AppDebugMessages.serviceConnectionReportIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
-          
+          self.view.dodo.style.bar.hideAfterDelaySeconds = 2
           if serviceCode == 0 {
+            self.view.dodo.success("Raporunuz sistemimize kaydedildi.")
             super.createAlertController(title: "Rapor Gönderildi", message: "Raporunuz sistemimize kaydedildi.", controllerStyle: .Alert, actionStyle: .Default)
             self.clearFields()
           }
@@ -211,6 +216,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
             let c = exception["exceptionCode"].intValue
             let m = exception["exceptionMessage"].stringValue
             let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+            self.view.dodo.error("Rapor yüklemesi başarısız oldu.")
             self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
           }
           
@@ -312,10 +318,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   @IBAction func unwindToReportScene(segue: UIStoryboardSegue) {
     if segue.identifier == "saveReportCategory"{
       if let sourceVC = segue.sourceViewController as? CategoryVC {
-        self.categoryTitle = sourceVC.selectedCategoryTitle!
         self.categorySelected = true
-        print("category: \(self.categorySelected)")
-        print(sourceVC.selectedCategoryId)
+        self.categoryTitle = sourceVC.selectedCategoryTitle
         self.categoryId = sourceVC.selectedCategoryId
       }
     }
