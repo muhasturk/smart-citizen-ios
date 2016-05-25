@@ -28,9 +28,8 @@ class SettingsVC: AppVC {
   @IBOutlet weak var versionLabel: LTMorphingLabel!
   
   @IBAction func logoutApplication(sender: AnyObject) {
-    AppConstants.AppUser = User()
     NSUserDefaults.standardUserDefaults().setBool(false, forKey: AppConstants.DefaultKeys.APP_ALIVE)
-    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(AppConstants.AppUser)
+    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(User())
     NSUserDefaults.standardUserDefaults().setObject(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
     performSegueWithIdentifier(AppSegues.doLogoutSegue, sender: sender)
   }

@@ -33,7 +33,7 @@ class ProfileVC: AppVC {
   @IBOutlet weak var profileTable: UITableView!
   
   private var requestBaseURL: String {
-    return AppAPI.serviceDomain + AppAPI.profileServiceURL + String(23)
+    return AppAPI.serviceDomain + AppAPI.profileServiceURL + String(AppReadOnlyUser.id)
   }
   
   var reportsDict: [String: [Report]] = [:]
@@ -181,12 +181,12 @@ class ProfileVC: AppVC {
   }
   
   private func configureUI() {
-    //    if readOnlyUser.profileImageURL.isNotEmpty() {
-    //      let url = NSURL(string: readOnlyUser.profileImageURL)
+    //    if AppReadOnlyUser.profileImageURL.isNotEmpty() {
+    //      let url = NSURL(string: AppReadOnlyUser.profileImageURL)
     //        self.profileImageView.hnk_setImageFromURL(url)
     //    }
-    self.userName.text = readOnlyUser.fullName
-    self.role.text = readOnlyUser.roleName
+    self.userName.text = AppReadOnlyUser.fullName
+    self.role.text = AppReadOnlyUser.roleName
   }
   
 }

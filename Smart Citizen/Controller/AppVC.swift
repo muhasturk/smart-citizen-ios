@@ -38,12 +38,6 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     return manager
   }
   
-  var readOnlyUser: User {
-    let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
-    let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
-    return user
-  }
-  
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()

@@ -22,6 +22,12 @@
 
 import Foundation
 
+var AppReadOnlyUser: User {
+  let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
+  let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
+  return user
+}
+
 struct AppSegues {
   static let doLoginSegue = "doLogin"
   static let doSignUpSegue = "doSignUp"
@@ -45,9 +51,7 @@ struct AppCell {
 }
 
 struct AppConstants {
-  
-  static var AppUser = User()
-  
+    
   struct DefaultKeys {
     static let DEVICE_TOKEN = "KEY_DEVICE_TOKEN"
     static let APP_ALIVE = "KEY_APP_ALIVE"

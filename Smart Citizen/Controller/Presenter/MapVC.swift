@@ -35,7 +35,7 @@ class MapVC: AppVC, MKMapViewDelegate {
   var mapReports = [Report]()
   
   private var requestBaseURL: String {
-    return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(readOnlyUser.roleId)
+    return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(AppReadOnlyUser.roleId)
   }
   
   // MARK: - LC
@@ -57,8 +57,6 @@ class MapVC: AppVC, MKMapViewDelegate {
   }
   
   override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(true)
-    self.mapView.removeAnnotations(self.mapView.annotations)
     super.locationManager.stopUpdatingLocation()
   }
   

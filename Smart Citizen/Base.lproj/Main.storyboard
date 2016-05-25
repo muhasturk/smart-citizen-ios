@@ -725,7 +725,7 @@
                                     <outlet property="delegate" destination="ZqU-4d-Xem" id="V0y-JO-kD5"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy-profile" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-bV-nM9" customClass="CircleImageView" customModule="Smart_Citizen" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummy-profile" translatesAutoresizingMaskIntoConstraints="NO" id="PNa-bV-nM9">
                                 <rect key="frame" x="111" y="64" width="153.5" height="154"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PNa-bV-nM9" secondAttribute="height" id="uZy-4h-6He"/>
@@ -1025,6 +1025,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ms0-Rp-4a9"/>
-        <segue reference="1d4-Dn-wqb"/>
+        <segue reference="jeG-Je-8Mi"/>
     </inferredMetricsTieBreakers>
 </document>

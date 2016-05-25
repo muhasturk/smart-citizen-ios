@@ -65,7 +65,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   override func viewDidLoad() {
     super.viewDidLoad()
     super.locationManager.startUpdatingLocation()
-    print(AppConstants.AppUser.email)
     self.configureImagePickerController()
   }
   
@@ -180,8 +179,8 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     
     print("Raporun ekleneceği:\nlatitude: \(latitude)\nlongitude: \(longitude)")
     let params = [
-      "email": readOnlyUser.email,
-      "password": readOnlyUser.password,
+      "email": AppReadOnlyUser.email,
+      "password": AppReadOnlyUser.password,
       "latitude": latitude ?? 40.984312,
       "longitude": longitude ?? 28.753676,
       "title": self.titleField.text!,

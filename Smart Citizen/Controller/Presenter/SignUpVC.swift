@@ -107,21 +107,22 @@ class SignUpVC: AppVC {
   }
   
   private func writeUserDataToModel(dataJsonFromNetworking data: JSON) {
-    AppConstants.AppUser.id = data["id"].intValue
-    AppConstants.AppUser.email = data["email"].stringValue
-    AppConstants.AppUser.fullName = data["fullName"].stringValue
-    AppConstants.AppUser.password = data["password"].stringValue
-    AppConstants.AppUser.roleId = data["roleId"].intValue
-    AppConstants.AppUser.roleName = data["roleName"].stringValue
+    let user = User()
+    user.id = data["id"].intValue
+    user.email = data["email"].stringValue
+    user.fullName = data["fullName"].stringValue
+    user.password = data["password"].stringValue
+    user.roleId = data["roleId"].intValue
+    user.roleName = data["roleName"].stringValue
     
-    super.reflectAttributes(reflectingObject: AppConstants.AppUser)
+    super.reflectAttributes(reflectingObject: user)
     
-    self.saveLocalSession()
+    self.saveLocalSession(user)
   }
 
-  private func saveLocalSession() {
+  private func saveLocalSession(user: User) {
     NSUserDefaults.standardUserDefaults().setBool(true, forKey: AppConstants.DefaultKeys.APP_ALIVE)
-    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(AppConstants.AppUser)
+    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(user)
     NSUserDefaults.standardUserDefaults().setObject(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
   }
   
