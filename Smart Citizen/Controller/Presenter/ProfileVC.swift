@@ -65,16 +65,26 @@ class ProfileVC: AppVC {
     }
   }
   
+  // MARK: Indicator
+  func tableViewIndicator() {
+    appIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
+    appIndicator.center = self.profileTable.center
+    appIndicator.hidesWhenStopped = true
+    appIndicator.activityIndicatorViewStyle = .Gray
+    self.view.addSubview(appIndicator)
+    appIndicator.startAnimating()
+  }
+  
   // MARK: - Networking
   private func profileNetworking() {
-    self.startIndicator()
+    self.tableViewIndicator()
     Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in
-        self.stopIndicator()
+        super.appIndicator.stopAnimating()
         
         switch response.result {
         case .Success(let value):
-          print(AppDebugMessages.serviceConnectionLoginIsOk, self.requestBaseURL, separator: "\n")
+          print(AppDebugMessages.serviceConnectionProfileIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
           let data = json["data"]

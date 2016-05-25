@@ -26,8 +26,8 @@ import CoreLocation
 class AppVC: UIViewController, CLLocationManagerDelegate {
   
   // MARK: App Object
-  var appIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-  var appBlurEffectView: UIVisualEffectView = UIVisualEffectView()
+  var appIndicator = UIActivityIndicatorView()
+  var appBlurEffectView = UIVisualEffectView()
   lazy var locationManager: CLLocationManager = self.makeLocationManager()
   
   private func makeLocationManager() -> CLLocationManager {

@@ -102,7 +102,6 @@
                             <constraint firstItem="vv4-aN-aB1" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leading" id="FjB-1z-jYi"/>
                             <constraint firstAttribute="centerY" secondItem="RRz-UI-7io" secondAttribute="bottom" constant="5" id="GVp-ZC-JwL"/>
                             <constraint firstAttribute="trailing" secondItem="vv4-aN-aB1" secondAttribute="trailing" id="NXG-Pa-x0R"/>
-                            <constraint firstItem="WL8-ay-HmQ" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leadingMargin" constant="-20" id="Qga-JM-dTZ"/>
                             <constraint firstItem="RRz-UI-7io" firstAttribute="centerX" secondItem="gOb-kB-ZgG" secondAttribute="centerX" id="TSt-Wd-7XR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P7g-BR-D7F" secondAttribute="trailing" constant="-20" id="Uq6-wT-bkg"/>
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="width" secondItem="gOb-kB-ZgG" secondAttribute="width" multiplier="0.9" id="WCN-kv-Ysr"/>
@@ -110,22 +109,11 @@
                             <constraint firstItem="WL8-ay-HmQ" firstAttribute="top" secondItem="gOb-kB-ZgG" secondAttribute="centerY" multiplier="0.3" id="cwO-Nu-WuM"/>
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="trailing" secondItem="RRz-UI-7io" secondAttribute="trailing" id="hWs-ud-Oks"/>
                             <constraint firstItem="vv4-aN-aB1" firstAttribute="top" secondItem="gOb-kB-ZgG" secondAttribute="top" id="ic0-As-Erv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="WL8-ay-HmQ" secondAttribute="trailing" constant="-20" id="jB9-gR-qLw"/>
-                            <constraint firstAttribute="top" secondItem="WL8-ay-HmQ" secondAttribute="centerY" multiplier="2" id="kEj-cE-Ngq"/>
                             <constraint firstItem="P7g-BR-D7F" firstAttribute="leading" secondItem="gOb-kB-ZgG" secondAttribute="leadingMargin" constant="-20" id="kRR-kG-S1u"/>
                             <constraint firstItem="RRz-UI-7io" firstAttribute="width" secondItem="gOb-kB-ZgG" secondAttribute="width" multiplier="0.8" id="oz8-Cz-Oi3"/>
-                            <constraint firstItem="WL8-ay-HmQ" firstAttribute="top" secondItem="9fz-PA-F6O" secondAttribute="bottom" constant="50" id="pua-dY-dhM"/>
                             <constraint firstItem="xJc-6U-MNF" firstAttribute="width" secondItem="RRz-UI-7io" secondAttribute="width" id="sKR-re-Xww"/>
                             <constraint firstItem="H45-S1-IHs" firstAttribute="top" secondItem="vv4-aN-aB1" secondAttribute="bottom" id="xhp-RN-YHi"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Qga-JM-dTZ"/>
-                                <exclude reference="jB9-gR-qLw"/>
-                                <exclude reference="kEj-cE-Ngq"/>
-                                <exclude reference="pua-dY-dhM"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="erP-Sl-TBk"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -919,8 +907,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cf0-7K-41W" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNN-EO-feK">
-                                <rect key="frame" x="113" y="546" width="148" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNN-EO-feK">
+                                <rect key="frame" x="127.5" y="547" width="119" height="30"/>
                                 <color key="backgroundColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Kullanmaya Başla">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

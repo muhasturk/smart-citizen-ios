@@ -38,6 +38,8 @@ struct AppDebugMessages {
   
   static let serviceConnectionReportIsOk = "Report servisi bağlantısı başarılı"
   
+  static let serviceConnectionProfileIsOk = "Profile servis bağlantısı başarılı"
+
   
   static let cameraDeviceNotAvailableTitle = "Kamera Bulunamadı"
   static let cameraDeviceNotAvailableMessage = "Mobil cihaz üzerinde kamera bulunamadı"
