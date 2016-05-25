@@ -39,13 +39,12 @@ class IntroVC: AppVC {
     self.backgroundImage.setGifImage(gifImage, manager: gifManager, loopCount: -1)
   }
   
+  // FIX: https://github.com/muhasturk/smart-citizen-ios/issues/4
   override func viewWillAppear(animated: Bool) {
-    super.viewDidAppear(animated)
     self.navigationController?.navigationBarHidden = true
   }
   
   override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(animated)
     if (self.navigationController?.topViewController != self) {
       self.navigationController?.navigationBarHidden = false
     }
