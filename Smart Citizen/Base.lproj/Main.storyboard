@@ -236,12 +236,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="FBU-aD-Ilq"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9G-c7-6T1">
+                                <rect key="frame" x="16" y="72" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ny9-d3-R9Y"/>
+                                    <constraint firstAttribute="width" constant="30" id="wkE-wr-X7s"/>
+                                </constraints>
+                                <state key="normal" image="refresh-map"/>
+                                <connections>
+                                    <action selector="refreshButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oXX-UY-Rba"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.8398442268371582" green="0.95333582162857056" blue="0.95809882879257202" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HcM-yk-aeT" secondAttribute="trailing" id="60O-Lh-If2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HcM-yk-aeT" secondAttribute="bottom" id="Dmm-0z-8GR"/>
                             <constraint firstItem="HcM-yk-aeT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kez-vQ-JEA"/>
+                            <constraint firstItem="a9G-c7-6T1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="brR-Yu-CY2"/>
+                            <constraint firstItem="a9G-c7-6T1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="kq7-5N-uuA"/>
                             <constraint firstItem="HcM-yk-aeT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vDT-fZ-SAs"/>
                         </constraints>
                     </view>
@@ -251,6 +264,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mapView" destination="HcM-yk-aeT" id="paZ-Xh-0fQ"/>
+                        <outlet property="refreshButton" destination="a9G-c7-6T1" id="Vgy-d8-2KX"/>
                         <segue destination="jeb-pt-xdp" kind="show" identifier="mapReportDetail" id="1d4-Dn-wqb"/>
                     </connections>
                 </viewController>
@@ -1007,9 +1021,10 @@
         <image name="logo" width="775" height="89"/>
         <image name="nighttheme" width="640" height="1136"/>
         <image name="no_entry_filled" width="100" height="100"/>
+        <image name="refresh-map" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ms0-Rp-4a9"/>
-        <segue reference="jeG-Je-8Mi"/>
+        <segue reference="1d4-Dn-wqb"/>
     </inferredMetricsTieBreakers>
 </document>

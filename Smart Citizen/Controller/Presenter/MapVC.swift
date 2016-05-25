@@ -29,6 +29,7 @@ class MapVC: AppVC, MKMapViewDelegate {
   
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var refreshButton: UIButton!
   
   // MARK: Properties
   var mapReports = [Report]()
@@ -42,11 +43,17 @@ class MapVC: AppVC, MKMapViewDelegate {
     super.viewDidLoad()
     //self.navigationItem.titleView = UIImageView(image: UIImage(named: "Camera")) as UIView
     self.configureMap()
+    self.configureUI()
+    self.mapNetworking()
   }
   
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(true)
+  @IBAction func refreshButtonAction(sender: AnyObject) {
+    self.mapView.removeAnnotations(self.mapView.annotations)
     self.mapNetworking()
+  }
+  
+  private func configureUI() {
+    self.refreshButton.contentMode = .ScaleAspectFit
   }
   
   override func viewDidDisappear(animated: Bool) {
