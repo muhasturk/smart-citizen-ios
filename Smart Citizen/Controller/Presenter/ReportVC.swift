@@ -32,6 +32,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   @IBOutlet weak var descriptionField: UITextView!
   @IBOutlet weak var categoryButton: UIButton!
   @IBOutlet weak var titleField: UITextField!
+  @IBOutlet weak var mediaButton: UIButton!
   
   var categoryId: Int?
 
@@ -43,7 +44,16 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   var categorySelected = false
   
-  private var imagePicked = false
+  private var imagePicked = false {
+    willSet {
+      if newValue {
+        self.mediaButton.setTitle("Resmi Değiştir", forState: .Normal)
+      }
+      else {
+        self.mediaButton.setTitle("Resim Ekle", forState: .Normal)
+      }
+    }
+  }
   
   // MARK: Properties
   private let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
@@ -118,9 +128,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     
     let uploadRequest = AWSS3TransferManagerUploadRequest()
     uploadRequest.body = imageURL
-    /**
-     Use for uploaded image url to do that be unique
-     */
     uploadRequest.key = NSProcessInfo.processInfo().globallyUniqueString + "." + ext
     uploadRequest.bucket = self.AWSS3BucketName
     uploadRequest.contentType = "image/" + ext

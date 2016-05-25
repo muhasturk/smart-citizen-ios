@@ -562,7 +562,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="01o-MK-422" secondAttribute="height" multiplier="113:30" id="Xct-Af-E0U"/>
                                 </constraints>
-                                <state key="normal" title="Medya Ekle">
+                                <state key="normal" title="Resim Ekle">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -595,12 +595,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D75-TP-iZQ">
                                 <rect key="frame" x="92" y="580" width="66" height="30"/>
                                 <color key="backgroundColor" red="0.60699118590000001" green="0.063860033080000003" blue="0.35779530139999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sıfırla">
+                                <state key="normal" title="Clear">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="clearFieldAction:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="z2P-Sa-oBG"/>
-                                    <action selector="sendReportAction:" destination="Lbk-ns-F1d" eventType="touchUpInside" id="ga7-d8-cPs"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nH6-ti-QQU">
@@ -673,6 +672,7 @@
                         <outlet property="categoryButton" destination="4b1-ge-k2b" id="bq5-mV-tKG"/>
                         <outlet property="choosenImage" destination="zFz-e4-san" id="qLn-5Z-com"/>
                         <outlet property="descriptionField" destination="cwS-bn-efM" id="ex4-cb-YSs"/>
+                        <outlet property="mediaButton" destination="01o-MK-422" id="wJO-fi-ReM"/>
                         <outlet property="titleField" destination="nH6-ti-QQU" id="Qql-1W-9oK"/>
                         <segue destination="8jc-Bc-hP5" kind="show" identifier="pushReportCategory" id="aK9-aI-f7B"/>
                     </connections>
