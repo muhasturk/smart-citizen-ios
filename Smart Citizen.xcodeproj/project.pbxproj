@@ -33,7 +33,6 @@
 		12B2AD7F1CD903100096B8BD /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD781CD903100096B8BD /* SignUpVC.swift */; };
 		12B2AD811CD927FE0096B8BD /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2AD801CD927FE0096B8BD /* IntroVC.swift */; };
 		12D0EEF91BD6EB0B006A2801 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12D0EEF81BD6EB0B006A2801 /* .gitignore */; };
-		12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CE1CBD646E00EA154A /* MapUtil.swift */; };
 		12DB29D11CBD646E00EA154A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29CF1CBD646E00EA154A /* Util.swift */; };
 		12DB29D51CBD655800EA154A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D41CBD655800EA154A /* User.swift */; };
 		12DB29D71CBD664F00EA154A /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DB29D61CBD664F00EA154A /* Report.swift */; };
@@ -74,7 +73,6 @@
 		12D0EEF81BD6EB0B006A2801 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		12D0EEFC1BD6EBA6006A2801 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12DB29CC1CBD635100EA154A /* Garden.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Garden.playground; sourceTree = "<group>"; };
-		12DB29CE1CBD646E00EA154A /* MapUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapUtil.swift; path = Util/MapUtil.swift; sourceTree = "<group>"; };
 		12DB29CF1CBD646E00EA154A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Util/Util.swift; sourceTree = "<group>"; };
 		12DB29D41CBD655800EA154A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		12DB29D61CBD664F00EA154A /* Report.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Report.swift; path = Model/Report.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 		12DB29CD1CBD641A00EA154A /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				12DB29CE1CBD646E00EA154A /* MapUtil.swift */,
 				12DB29CF1CBD646E00EA154A /* Util.swift */,
 			);
 			name = Util;
@@ -395,7 +392,6 @@
 				12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */,
 				12B2AD7F1CD903100096B8BD /* SignUpVC.swift in Sources */,
 				1252C08F1CC7861600264853 /* Contants.swift in Sources */,
-				12DB29D01CBD646E00EA154A /* MapUtil.swift in Sources */,
 				12DB29D91CBD66E100EA154A /* AppVC.swift in Sources */,
 				12DB29D11CBD646E00EA154A /* Util.swift in Sources */,
 				12A2807A1CC28EC500E38EBD /* DebugMessages.swift in Sources */,
