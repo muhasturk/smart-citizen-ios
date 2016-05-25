@@ -32,16 +32,27 @@ class ProfileVC: AppVC {
   @IBOutlet weak var profileSegment: UISegmentedControl!
   @IBOutlet weak var profileTable: UITableView!
   
+  var firstNetworking = true
   private var requestBaseURL: String {
     return AppAPI.serviceDomain + AppAPI.profileServiceURL + String(AppReadOnlyUser.id)
   }
   
   var reportsDict: [String: [Report]] = [:]
+  var refreshControl: UIRefreshControl!
+  
+  private func configureTableView() {
+    refreshControl = UIRefreshControl()
+    refreshControl.tintColor = UIColor.redColor()
+    refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+    refreshControl.addTarget(self, action: #selector(self.profileNetworking), forControlEvents: UIControlEvents.ValueChanged)
+    self.profileTable.addSubview(refreshControl)
+  }
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configureUI()
+    self.configureTableView()
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -75,11 +86,17 @@ class ProfileVC: AppVC {
   }
   
   // MARK: - Networking
-  private func profileNetworking() {
-    self.tableViewIndicator()
+  func profileNetworking() {
+    if firstNetworking {
+      self.tableViewIndicator()
+    }
+    
     Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in
-        self.appIndicator.stopAnimating()
+        if self.firstNetworking {
+          self.appIndicator.stopAnimating()
+          self.firstNetworking = false
+        }
         
         switch response.result {
         case .Success(let value):
@@ -92,6 +109,10 @@ class ProfileVC: AppVC {
             if data.isExists() && data.isNotEmpty{
               self.writeUserDataToModel(dataJsonFromNetworking: data)
               self.profileTable.reloadData()
+              if self.refreshControl.refreshing {
+                self.refreshControl.endRefreshing()
+              }
+              
             }
             else {
               print(AppDebugMessages.keyDataIsNotExistOrIsEmpty)

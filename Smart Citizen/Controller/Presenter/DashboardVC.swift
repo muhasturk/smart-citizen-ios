@@ -44,7 +44,8 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   }
   
   private func configureTableView() {
-    refreshControl = UIRefreshControl()    
+    refreshControl = UIRefreshControl()
+    refreshControl.tintColor = UIColor.redColor()
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
     refreshControl.addTarget(self, action: #selector(self.dashboardNetworking), forControlEvents: UIControlEvents.ValueChanged)
     self.dashboardTableView.addSubview(refreshControl)
