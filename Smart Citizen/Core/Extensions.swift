@@ -47,6 +47,38 @@ extension UIImageView {
   }
 }
 
+// MARK: UImage
+extension UIImage {
+  func scaleWithCGSize(targetSize: CGSize) -> UIImage {
+    
+    let widthRatio: CGFloat = targetSize.width / self.size.width
+    let heightRatio: CGFloat = targetSize.height / self.size.height
+    
+    var aspectRatio: CGFloat
+    if widthRatio > heightRatio {
+      aspectRatio = heightRatio
+    }
+    else {
+      aspectRatio = widthRatio
+    }
+
+    let scaledWidth = self.size.width * aspectRatio
+    let scaledHeight = self.size.height * aspectRatio
+    
+    let scaledSize = CGSize(width: scaledWidth, height: scaledHeight)
+    let scaledImageRect = CGRect(x: 0, y: 0,
+                                 width: scaledWidth, height: scaledHeight)
+    
+    
+    UIGraphicsBeginImageContextWithOptions(scaledSize, false, 0)
+    self.drawInRect(scaledImageRect)
+    let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return scaledImage
+  }
+}
+
 // MARK: - String
 extension String {
   var isEmail: Bool {

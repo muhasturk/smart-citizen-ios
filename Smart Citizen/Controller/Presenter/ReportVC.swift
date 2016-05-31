@@ -59,7 +59,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   private let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
   private let imagePicker = UIImagePickerController()
   private let AWSS3BucketName = "smart-citizen"
-  private var uploadDoneForAWSS3 = false
   
   // MARK: - LC
   override func viewDidLoad() {
@@ -131,13 +130,14 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - Networking
   func uploadImageForAWSS3() {
     let ext = "jpg"
-    let pickedImage: UIImage = self.choosenImage.image!
+    let t: UIImage = self.choosenImage.image!
+    let pickedImage = t.scaleWithCGSize(CGSize(width: 500, height: 500))
     let temporaryDirectoryURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
     let imageURL: NSURL = temporaryDirectoryURL.URLByAppendingPathComponent("pickedImage.png")
     let pathString = imageURL.absoluteString // has file:// prefix
     let onlyPathString = pathString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "file://"))
     //let imageData: NSData = UIImagePNGRepresentation(pickedImage)!
-    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 0.4)!
+    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 0.7)!
     imageData.writeToFile(onlyPathString, atomically: true) // change onlypathstring
     
     let uploadRequest = AWSS3TransferManagerUploadRequest()
@@ -159,7 +159,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       }
       
       guard task.result != nil else {
-        super.stopIndicator()
+        self.view.dodo.error("Seçtiğiniz resim AWS servise yüklenemedi.")
         self.createAlertController(title: "Yükleme Başarısız", message: "Seçtiğiniz resim AWS servise yüklenemedi.", controllerStyle: .Alert, actionStyle: .Destructive)
         print("Seçtiğiniz resim AWS servise yüklenemedi.")
         return ""
@@ -308,7 +308,7 @@ extension ReportVC {
           print(AppDebugMessages.serviceConnectionReportIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
-          self.view.dodo.style.bar.hideAfterDelaySeconds = 2
+          self.view.dodo.style.bar.hideAfterDelaySeconds = 3
           
           if serviceCode == 0 {
             self.reportNetworkingSuccessful()
@@ -334,10 +334,6 @@ extension ReportVC {
   
   private func reportNetworkingUnsuccessful(exception: JSON) {
     self.view.dodo.error("Rapor yüklemesi başarısız oldu.")
-    let c = exception["exceptionCode"].intValue
-    let m = exception["exceptionMessage"].stringValue
-    let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
   }
   
 }
