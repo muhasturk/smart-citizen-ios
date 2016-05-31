@@ -21,15 +21,25 @@
  */
 
 final class Report {
-  var id = 0
-  var title = ""
+  
+  var authorizedUser: String?
+  var category = ""
+  var categoryId = 0
+  var city = ""
+  var count = 0
+  var createdBy = ""
+  var createdById = 0
+  var createdDate = ""
   var description = ""
-  var latitude = 0.0
-  var longitude = 0.0
-  var type = ""
-  var typeId = 0
+  var district = ""
+  var imageUrl = ""
+  var latitude: Double = 0
+  var longitude: Double = 0
+  var neighborhood = ""
+  var id = 0
   var status = ""
   var statusId = 0
-  var count = 0
-  var imageUrl = ""
+  var title = ""
+  var updatedDate = ""
+  
 }

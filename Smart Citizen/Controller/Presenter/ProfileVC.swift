@@ -98,8 +98,8 @@ class ProfileVC: AppVC {
         r.title = statusArrayJSON["title"].stringValue
         r.description = statusArrayJSON["description"].stringValue
         r.count = statusArrayJSON["count"].intValue
-        r.type = statusArrayJSON["type"].stringValue
-        r.typeId = statusArrayJSON["typeId"].intValue
+        r.category = statusArrayJSON["category"].stringValue
+        r.categoryId = statusArrayJSON["categoryId"].intValue
         r.status = statusArrayJSON["status"].stringValue
         r.statusId = statusArrayJSON["statusId"].intValue
         r.imageUrl = statusArrayJSON["imageUrl"].stringValue

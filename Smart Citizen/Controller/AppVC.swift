@@ -22,6 +22,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftyJSON
 
 class AppVC: UIViewController, CLLocationManagerDelegate {
   
@@ -157,4 +158,31 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     self.view.frame.origin.y += keyboardSize.height
   }
   
+}
+
+// MARK: Parse
+extension AppVC {
+  func parseReportJSON(reportJSON: JSON) -> Report {
+    let r = Report()
+    r.authorizedUser = reportJSON["authorizedUser"].stringValue
+    r.category = reportJSON["category"].stringValue
+    r.categoryId = reportJSON["categoryId"].intValue
+    r.city = reportJSON["city"].stringValue
+    r.count = reportJSON["count"].intValue
+    r.createdBy = reportJSON["createdBy"].stringValue
+    r.createdById = reportJSON["createdById"].intValue
+    r.createdDate = reportJSON["createdDate"].stringValue
+    r.description = reportJSON["description"].stringValue
+    r.district = reportJSON["district"].stringValue
+    r.id = reportJSON["id"].intValue
+    r.imageUrl = reportJSON["imageUrl"].stringValue
+    r.latitude = reportJSON["latitude"].doubleValue
+    r.longitude = reportJSON["longitude"].doubleValue
+    r.neighborhood = reportJSON["neighborhood"].stringValue
+    r.status = reportJSON["status"].stringValue
+    r.statusId = reportJSON["statusId"].intValue
+    r.title = reportJSON["title"].stringValue
+    r.updatedDate = reportJSON["updatedDate"].stringValue
+    return r
+  }
 }

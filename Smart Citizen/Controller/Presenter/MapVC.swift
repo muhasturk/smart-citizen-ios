@@ -161,22 +161,13 @@ class MapVC: AppVC, MKMapViewDelegate {
   private func writeReportsDataToModel(dataJsonFromNetworking data: JSON) {
     self.mapReports = []
     for (_, reportJSON): (String, JSON) in data {
-      let r = Report()
-      r.id = reportJSON["id"].intValue
-      r.title = reportJSON["title"].stringValue
-      r.description = reportJSON["description"].stringValue
-      r.latitude = reportJSON["latitude"].doubleValue
-      r.longitude = reportJSON["longitude"].doubleValue
-      r.status = reportJSON["status"].stringValue
-      r.statusId = reportJSON["statusId"].intValue
-      r.count = reportJSON["count"].intValue
-      r.type = reportJSON["type"].stringValue
-      r.typeId = reportJSON["typeId"].intValue
+      let r = super.parseReportJSON(reportJSON)
       self.mapReports.append(r)
-      //super.reflectAttributes(reflectingObject: r)
+      super.reflectAttributes(reflectingObject: r)
     }
   }
   
+  // MARK: - Segue
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == AppSegues.mapReportDetail {
       if let detailVC = segue.destinationViewController as? ReportDetailVC {

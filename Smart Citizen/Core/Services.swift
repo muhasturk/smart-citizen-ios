@@ -36,4 +36,6 @@ struct AppAPI {
   static let reportServiceURL = "/sendReport"
   
   static let profileServiceURL = "/getReportsByUserId?userId="
+  
+  static let getReportById = "/getReportDetailsById?reportId="
 }

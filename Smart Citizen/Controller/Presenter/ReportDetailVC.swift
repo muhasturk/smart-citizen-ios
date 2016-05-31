@@ -45,7 +45,7 @@ class ReportDetailVC: AppVC {
       return
     }
     self.navigationItem.title = r.title
-    self.reportCategoryLabel.text = r.type
+    self.reportCategoryLabel.text = r.category
     self.reportDescriptionView.text = r.description
     
     if r.imageUrl.isNotEmpty {
