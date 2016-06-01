@@ -34,7 +34,7 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
   
   var firstNetworking = true
   private var requestBaseURL: String {
-    return AppAPI.serviceDomain + AppAPI.profileServiceURL + "32"
+    return AppAPI.serviceDomain + AppAPI.profileServiceURL + String(AppReadOnlyUser.id)
   }
   
   var reportsDict: [String: [Report]] = [:]
@@ -53,12 +53,7 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.profileNetworking()
-
     self.configureUI()
-  }
-  
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(true)
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -96,16 +91,16 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath)
     
-    switch self.profileSegment.selectedSegmentIndex {
-    case 0:
-      self.tabReports = self.reportsDict["0"]!
-    case 1:
-      self.tabReports = self.reportsDict["1"]!
-    case 2:
-      self.tabReports = self.reportsDict["2"]!
-    default:
-      self.tabReports = self.reportsDict["3"]!
-    }
+//    switch self.profileSegment.selectedSegmentIndex {
+//    case 0:
+//      self.tabReports = self.reportsDict["0"]!
+//    case 1:
+//      self.tabReports = self.reportsDict["1"]!
+//    case 2:
+//      self.tabReports = self.reportsDict["2"]!
+//    default:
+//      self.tabReports = self.reportsDict["3"]!
+//    }
     
     let ra = self.reportsDict["\(self.profileSegment.selectedSegmentIndex)"]
     cell.textLabel?.text = ra![indexPath.row].title
@@ -208,7 +203,7 @@ extension ProfileVC {
   
   private func profileNetworkingSuccessful(data: JSON) {
     self.writeReportDataToModel(dataJsonFromNetworking: data)
-    self.tabReports = self.reportsDict["0"]?.count
+    self.tabReports = self.reportsDict["0"]!
     self.profileTable.reloadData()
     if self.refreshControl.refreshing {
       self.refreshControl.endRefreshing()
