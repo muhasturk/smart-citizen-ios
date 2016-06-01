@@ -335,7 +335,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-HB-UYN">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-HB-UYN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="751"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDS-Yg-06f" userLabel="Content View">
@@ -555,6 +555,8 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
@@ -562,6 +564,8 @@
                         <outlet property="createdBy" destination="zgq-35-Bn1" id="BYH-UH-0ET"/>
                         <outlet property="createdDate" destination="bq6-zc-4Dr" id="uut-We-x3r"/>
                         <outlet property="mapView" destination="zKY-Z3-whl" id="FHY-Ga-zip"/>
+                        <outlet property="negativeButton" destination="WE6-XR-UQK" id="sbo-Ss-ygR"/>
+                        <outlet property="positiveButton" destination="Eke-F3-NWz" id="tlW-SQ-lwp"/>
                         <outlet property="reportCategoryLabel" destination="XJj-06-2Jh" id="tcz-xv-N1t"/>
                         <outlet property="reportDescriptionView" destination="rGC-5e-Gtt" id="HOH-pS-VNm"/>
                         <outlet property="reportedImageView" destination="7n0-9f-tdC" id="QwI-o6-Yz0"/>

@@ -58,12 +58,17 @@ class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCellWithIdentifier(AppCell.categoryCell, forIndexPath: indexPath) as? CategoryCell {
       cell.textLabel?.text = self.reportCategories[indexPath.row][1] as? String
+      
       return cell
     }
     
     else {
       return CategoryCell()
     }
+  }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return "Lütfen bir kategori seçiniz..."
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -47,6 +47,7 @@ class MapVC: AppVC, MKMapViewDelegate {
     self.configureMap()
     self.configureUI()
     self.mapNetworking()
+    view.dodo.style.bar.hideAfterDelaySeconds = 2.5
     view.dodo.success("Hoşgeldin \(AppReadOnlyUser.fullName)")
   }
   

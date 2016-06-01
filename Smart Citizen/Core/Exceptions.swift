@@ -25,4 +25,5 @@ enum ExceptionCode: Int {
   case ThereIsNoUserWithEmail
   case ThereIsaMemberWithEmail
   case BadRequest = 400
+  case NoReportThisType = 6
 }

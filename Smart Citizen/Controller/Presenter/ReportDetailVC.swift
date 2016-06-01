@@ -39,6 +39,8 @@ class ReportDetailVC: AppVC {
   @IBOutlet weak var authorized: UILabel!
   @IBOutlet weak var updatedDate: UILabel!
   @IBOutlet weak var status: UILabel!
+  @IBOutlet weak var positiveButton: UIButton!
+  @IBOutlet weak var negativeButton: UIButton!
   
   // MARK: Properties
   var reportId: Int?
@@ -52,11 +54,22 @@ class ReportDetailVC: AppVC {
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.configureUIForRoleId()
     self.reportDetailNetworking()
   }
   
   // MARK: UI
-  private func configureUI() {
+  private func configureUIForRoleId() {
+    if AppReadOnlyUser.roleId != 0 {
+      let positiveAuthorizedImage = UIImage(named: "workingAuthorized")
+      self.positiveButton.setImage(positiveAuthorizedImage, forState: .Normal)
+      
+      let completedAuthorizedImage = UIImage(named: "completedAuthorized")
+      self.negativeButton.setImage(completedAuthorizedImage, forState: .Normal)
+    }
+  }
+  
+  private func configureUIAfterNetworking() {
     guard let r = self.report else {
       print(AppDebugMessages.reportNotPassed)
       return
@@ -102,7 +115,12 @@ class ReportDetailVC: AppVC {
   
   // MARK: Action
   @IBAction func confirmAction(sender: AnyObject) {
-    self.voteNetworking(voteType: 1)
+    if AppReadOnlyUser.roleId != 0 {
+      self.voteNetworking(voteType: 1)
+    }
+    else {
+      self.voteNetworking(voteType: 2)
+    }
   }
   
   @IBAction func denyAction(sender: AnyObject) {
@@ -177,7 +195,7 @@ extension ReportDetailVC {
   
   private func reportDetailNetworkingSuccessful(data: JSON) {
     self.writeReportDetailToModel(dataJsonFromNetworking: data)
-    self.configureUI()
+    self.configureUIAfterNetworking()
   }
   
   private func reportDetailNetworkingUnsuccessful(exception: JSON) {

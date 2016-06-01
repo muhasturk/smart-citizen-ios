@@ -44,7 +44,6 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     super.viewDidLoad()
     view.dodo.topLayoutGuide = topLayoutGuide
     view.dodo.style.bar.hideOnTap = true
-    view.dodo.style.bar.hideAfterDelaySeconds = 2.5
   }
   
   // MARK: Add Blur Effect View
@@ -106,6 +105,10 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     case ExceptionCode.BadRequest.rawValue:
       title = AppAlertMessages.parameterMissingTitle
       message = AppAlertMessages.parameterMissingMessage
+      
+    case ExceptionCode.NoReportThisType.rawValue:
+      title = "Rapor Yok"
+      message = "Sizin ilgilenebileceğiniz kategoride rapor eklenmemiş"
       
     default:
       title = AppAlertMessages.defaultHandleExceptionCodeTitle
