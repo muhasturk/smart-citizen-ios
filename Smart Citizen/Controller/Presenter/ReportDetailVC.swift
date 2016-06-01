@@ -34,6 +34,11 @@ class ReportDetailVC: AppVC {
   @IBOutlet weak var reportDescriptionView: UITextView!
   @IBOutlet weak var reportCategoryLabel: UILabel!
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var createdBy: UILabel!
+  @IBOutlet weak var createdDate: UILabel!
+  @IBOutlet weak var authorized: UILabel!
+  @IBOutlet weak var updatedDate: UILabel!
+  @IBOutlet weak var status: UILabel!
   
   // MARK: Properties
   var reportId: Int?
@@ -56,19 +61,19 @@ class ReportDetailVC: AppVC {
     self.navigationItem.title = r.title
     self.reportCategoryLabel.text = r.category
     self.reportDescriptionView.text = r.description
+    self.status.text = "Status: \(r.status)"
+    self.createdBy.text = "Created By: \(r.createdBy)"
+    self.createdDate.text = "Created Date: \(r.createdDate)"
+    self.authorized.text = "Authorized: \(r.authorizedUser)"
+    self.updatedDate.text = "Updated Date: \(r.updatedDate)"
+    
     
     if r.imageUrl.isNotEmpty {
       if let url = NSURL(string: r.imageUrl) {
         self.reportedImageView.hnk_setImageFromURL(url)
       }
-      else {
-        print("Report id: \(r.id) has invalid image URL as you see: \(r.imageUrl)")
-      }
     }
-      
-    else {
-      print("Report id: \(r.id) has empty image URL")
-    }
+    
     self.configureMapView(report: r)
   }
   

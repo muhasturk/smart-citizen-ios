@@ -411,12 +411,12 @@
                                                 </variation>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-35-Bn1">
-                                                <rect key="frame" x="8" y="496" width="359" height="19.5"/>
+                                                <rect key="frame" x="8" y="496" width="359" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="LZa-ET-Xm6"/>
                                                     <constraint firstAttribute="width" constant="97" id="of7-D9-6n2"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -431,28 +431,28 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="rjt-Gf-iRL"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bq6-zc-4Dr">
-                                                <rect key="frame" x="8" y="523.5" width="359" height="19.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <rect key="frame" x="8" y="521" width="359" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36b-mi-Bzb">
-                                                <rect key="frame" x="8" y="580" width="359" height="19.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <rect key="frame" x="8" y="572" width="359" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorized:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOx-ao-Iay">
-                                                <rect key="frame" x="8" y="551" width="359" height="21"/>
+                                                <rect key="frame" x="8" y="546" width="359" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="7zo-a8-sIg"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -462,7 +462,7 @@
                                                 </variation>
                                             </label>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zKY-Z3-whl">
-                                                <rect key="frame" x="0.0" y="609.5" width="375" height="120"/>
+                                                <rect key="frame" x="0.0" y="599" width="375" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="JXv-cp-s4b"/>
                                                 </constraints>
@@ -552,10 +552,15 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="authorized" destination="jOx-ao-Iay" id="Tzw-83-onB"/>
+                        <outlet property="createdBy" destination="zgq-35-Bn1" id="BYH-UH-0ET"/>
+                        <outlet property="createdDate" destination="bq6-zc-4Dr" id="uut-We-x3r"/>
                         <outlet property="mapView" destination="zKY-Z3-whl" id="FHY-Ga-zip"/>
                         <outlet property="reportCategoryLabel" destination="XJj-06-2Jh" id="tcz-xv-N1t"/>
                         <outlet property="reportDescriptionView" destination="rGC-5e-Gtt" id="HOH-pS-VNm"/>
                         <outlet property="reportedImageView" destination="7n0-9f-tdC" id="QwI-o6-Yz0"/>
+                        <outlet property="status" destination="g6T-i5-9gp" id="vj4-zf-uO2"/>
+                        <outlet property="updatedDate" destination="36b-mi-Bzb" id="Xct-oZ-fNH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yph-4P-K7t" userLabel="First Responder" sceneMemberID="firstResponder"/>
