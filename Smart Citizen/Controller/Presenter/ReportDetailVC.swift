@@ -47,12 +47,15 @@ class ReportDetailVC: AppVC {
     return AppAPI.serviceDomain + AppAPI.getReportById + String(self.reportId!)
   }
   
+  private let voteRequestURL = AppAPI.serviceDomain + AppAPI.voteReport
+  
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
     self.reportDetailNetworking()
   }
   
+  // MARK: UI
   private func configureUI() {
     guard let r = self.report else {
       print(AppDebugMessages.reportNotPassed)
@@ -64,7 +67,13 @@ class ReportDetailVC: AppVC {
     self.status.text = "Status: \(r.status)"
     self.createdBy.text = "Created By: \(r.createdBy)"
     self.createdDate.text = "Created Date: \(r.createdDate)"
-    self.authorized.text = "Authorized: \(r.authorizedUser)"
+    if let authorizedUser = r.authorizedUser {
+        self.authorized.text = "Authorized: \(authorizedUser)"
+    }
+    else {
+      self.authorized.text = "Authorized: Henüz bir yetkili atanmamış!"
+    }
+    
     self.updatedDate.text = "Updated Date: \(r.updatedDate)"
     
     
@@ -91,10 +100,54 @@ class ReportDetailVC: AppVC {
     self.mapView.addAnnotation(annotation)
   }
   
+  // MARK: Action
+  @IBAction func confirmAction(sender: AnyObject) {
+    self.voteNetworking(voteType: 1)
+  }
+  
+  @IBAction func denyAction(sender: AnyObject) {
+    self.voteNetworking(voteType: 0)
+  }
+  
 }
 
 // MARK: Networking
 extension ReportDetailVC {
+  
+  private func voteNetworking(voteType type: Int) {
+    let params: [String: AnyObject] = [
+      "email": AppReadOnlyUser.email,
+      "password": AppReadOnlyUser.password,
+      "reportId": self.reportId!,
+      "type": type
+    ]
+    
+    Alamofire.request(.POST, self.voteRequestURL, parameters: params, encoding: ParameterEncoding.JSON)
+      .responseJSON { response in
+        
+        switch response.result {
+        case .Success(let value):
+          print("vote başarılı", self.voteRequestURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+          
+          if serviceCode == 0 {
+            self.view.dodo.success("Rapor değerlendirme başarılı.")
+            print("Rapor değerlendirme başarılı.")
+          }
+            
+          else {
+            self.view.dodo.error("Raporu değerlendirme başarısız.")
+            print("Raporu değerlendirme başarısız.")
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
+  }
+  
   private func reportDetailNetworking() {
     Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
       .responseJSON { response in

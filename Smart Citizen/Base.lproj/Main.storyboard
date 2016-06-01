@@ -376,10 +376,16 @@
                                                                 <exclude reference="V4w-pZ-EUq"/>
                                                             </mask>
                                                         </variation>
+                                                        <connections>
+                                                            <action selector="confirmAction:" destination="jeb-pt-xdp" eventType="touchUpInside" id="IEF-t2-aJE"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WE6-XR-UQK" userLabel="No Button">
                                                         <rect key="frame" x="140" y="0.0" width="50" height="50"/>
                                                         <state key="normal" title="Button" image="no_entry_filled"/>
+                                                        <connections>
+                                                            <action selector="denyAction:" destination="jeb-pt-xdp" eventType="touchUpInside" id="iZH-lQ-G2H"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

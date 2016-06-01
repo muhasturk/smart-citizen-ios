@@ -42,6 +42,9 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.dodo.topLayoutGuide = topLayoutGuide
+    view.dodo.style.bar.hideOnTap = true
+    view.dodo.style.bar.hideAfterDelaySeconds = 2.5
   }
   
   // MARK: Add Blur Effect View
@@ -164,7 +167,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
 extension AppVC {
   func parseReportJSON(reportJSON: JSON) -> Report {
     let r = Report()
-    r.authorizedUser = reportJSON["authorizedUser"].stringValue
+    r.authorizedUser = reportJSON["authorizedUser"].string
     r.category = reportJSON["category"].stringValue
     r.categoryId = reportJSON["categoryId"].intValue
     r.city = reportJSON["city"].stringValue

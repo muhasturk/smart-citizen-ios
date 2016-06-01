@@ -47,9 +47,6 @@ class MapVC: AppVC, MKMapViewDelegate {
     self.configureMap()
     self.configureUI()
     self.mapNetworking()
-    view.dodo.topLayoutGuide = topLayoutGuide
-    view.dodo.style.bar.hideOnTap = true
-    view.dodo.style.bar.hideAfterDelaySeconds = 2.5
     view.dodo.success("Hoşgeldin \(AppReadOnlyUser.fullName)")
   }
   
@@ -123,7 +120,7 @@ class MapVC: AppVC, MKMapViewDelegate {
         view.pinTintColor = UIColor.redColor()
       case 1:
         view.pinTintColor = UIColor.blueColor()
-      default:
+      default: // Working - 2
         view.pinTintColor = UIColor.greenColor()
       }
       
