@@ -27,9 +27,16 @@ class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   @IBOutlet weak var categoryTable: UITableView!
     
   private var reportCategories = [
-    [0, "Elektrik", "url"],
-    [1, "Su", "url"],
-    [2, "Telefon", "url"]
+    [1, "Elektrik", "url"],
+    [2, "Su", "url"],
+    [3, "Kanalizasyon", "url"],
+    [4, "Doğalgaz", "url"],
+    [5, "Telefon", "url"],
+    [6, "Yol Sorunu", "url"],
+    [7, "Çevre Kirliliği", "url"],
+    [8, "İllegal Park", "url"],
+    [9, "Evsiz İnsan", "url"],
+    [10, "Sokak Hayvanı", "url"],
   ]
   
   var selectedCategoryId: Int?
