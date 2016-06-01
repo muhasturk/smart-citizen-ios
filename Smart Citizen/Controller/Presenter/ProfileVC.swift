@@ -24,7 +24,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ProfileVC: AppVC {
+class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
   
   @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var userName: UILabel!
@@ -34,36 +34,33 @@ class ProfileVC: AppVC {
   
   var firstNetworking = true
   private var requestBaseURL: String {
-    return AppAPI.serviceDomain + AppAPI.profileServiceURL + String(AppReadOnlyUser.id)
+    return AppAPI.serviceDomain + AppAPI.profileServiceURL + "32"
   }
   
   var reportsDict: [String: [Report]] = [:]
-  var refreshControl: UIRefreshControl!
   
-  private func configureTableView() {
-    refreshControl = UIRefreshControl()
-    refreshControl.tintColor = UIColor.redColor()
-    refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-    refreshControl.addTarget(self, action: #selector(self.profileNetworking), forControlEvents: UIControlEvents.ValueChanged)
-    self.profileTable.addSubview(refreshControl)
+  var tabReports: [Report] = [] {
+    didSet {
+      self.tableSegmentRow = self.tabReports.count
+    }
   }
+  
+  var tableSegmentRow = 0
+  
+  var refreshControl: UIRefreshControl!
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.profileNetworking()
+
     self.configureUI()
-    self.configureTableView()
   }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(true)
-    self.profileNetworking()
   }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
+
   override func viewWillAppear(animated: Bool) {
     self.navigationController?.navigationBarHidden = true
   }
@@ -73,6 +70,11 @@ class ProfileVC: AppVC {
     if (self.navigationController?.topViewController != self) {
       self.navigationController?.navigationBarHidden = false
     }
+  }
+  
+  override func viewWillLayoutSubviews() {
+    self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.height) / 2
+    self.profileImageView.clipsToBounds = true
   }
   
   // MARK: Indicator
@@ -85,81 +87,84 @@ class ProfileVC: AppVC {
     appIndicator.startAnimating()
   }
   
-  
-  
-  // MARK: - Model
-  private func writeUserDataToModel(dataJsonFromNetworking data: JSON) {
-    self.reportsDict = [:]
-    for (statusName, statusArrayJSON): (String, JSON) in data {
-      self.reportsDict[statusName] = []
-      for (_, statusArrayJSON): (String, JSON) in statusArrayJSON {
-        let r = Report()
-        r.id = statusArrayJSON["id"].intValue
-        r.title = statusArrayJSON["title"].stringValue
-        r.description = statusArrayJSON["description"].stringValue
-        r.count = statusArrayJSON["count"].intValue
-        r.category = statusArrayJSON["category"].stringValue
-        r.categoryId = statusArrayJSON["categoryId"].intValue
-        r.status = statusArrayJSON["status"].stringValue
-        r.statusId = statusArrayJSON["statusId"].intValue
-        r.imageUrl = statusArrayJSON["imageUrl"].stringValue
-        self.reportsDict[statusName]?.append(r)
-      }
-    }
-  }
-  
-  
   // MARK: - Table
-  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    print("Row count: \(self.tableSegmentRow)")
+    return self.tableSegmentRow
   }
-  
+
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath)
     
-    var tabReports = [Report]()
     switch self.profileSegment.selectedSegmentIndex {
     case 0:
-      if let reports = self.reportsDict["1"] {
-        tabReports = reports
-      }
+      self.tabReports = self.reportsDict["0"]!
     case 1:
-      if let reports = self.reportsDict["2"] {
-        tabReports = reports
-      }
+      self.tabReports = self.reportsDict["1"]!
     case 2:
-      if let reports = self.reportsDict["3"] {
-        tabReports = reports
-      }
-    case 3:
-      if let reports = self.reportsDict["4"] {
-        tabReports = reports
-      }
+      self.tabReports = self.reportsDict["2"]!
     default:
-      break
+      self.tabReports = self.reportsDict["3"]!
     }
-    if tabReports.isEmpty {
-      return UITableViewCell()
-    }
-    else {
-      cell.textLabel?.text = tabReports[indexPath.row].title
-      return cell
-    }
+    
+    let ra = self.reportsDict["\(self.profileSegment.selectedSegmentIndex)"]
+    cell.textLabel?.text = ra![indexPath.row].title
+
+    return cell
   }
   
-  override func viewWillLayoutSubviews() {
-    self.profileImageView.layer.cornerRadius = (self.profileImageView.frame.height) / 2
-    self.profileImageView.clipsToBounds = true
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    performSegueWithIdentifier(AppSegues.profileReportDetail, sender: indexPath)
   }
   
+  // MARK: Action
+  @IBAction func segmentAction(sender: AnyObject) {
+    print("Selected segment index: \(self.profileSegment.selectedSegmentIndex)")
+    switch self.profileSegment.selectedSegmentIndex {
+    case 0:
+      self.tabReports = self.reportsDict["0"]!
+    case 1:
+      self.tabReports = self.reportsDict["1"]!
+    case 2:
+      self.tabReports = self.reportsDict["2"]!
+    default:
+      self.tabReports = self.reportsDict["3"]!
+    }
+    self.profileTable.reloadData()
+  }
+  
+  // MARK: UI Bind
   private func configureUI() {
+    self.configureTopView()
+    self.configureTableView()
+  }
+  
+  private func configureTopView() {
     //    if AppReadOnlyUser.profileImageURL.isNotEmpty() {
     //      let url = NSURL(string: AppReadOnlyUser.profileImageURL)
     //        self.profileImageView.hnk_setImageFromURL(url)
     //    }
     self.userName.text = AppReadOnlyUser.fullName
     self.role.text = AppReadOnlyUser.roleName
+  }
+  
+  private func configureTableView() {
+    refreshControl = UIRefreshControl()
+    refreshControl.tintColor = UIColor.redColor()
+    refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+    refreshControl.addTarget(self, action: #selector(self.profileNetworking), forControlEvents: UIControlEvents.ValueChanged)
+    self.profileTable.addSubview(refreshControl)
+  }
+  
+  // MARK: Segue
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == AppSegues.profileReportDetail {
+      if let detailVC = segue.destinationViewController as? ReportDetailVC {
+        if let path = sender as? NSIndexPath {
+          detailVC.reportId = self.tabReports[path.row].id
+        }
+      }
+    }
   }
   
 }
@@ -202,7 +207,8 @@ extension ProfileVC {
   }
   
   private func profileNetworkingSuccessful(data: JSON) {
-    self.writeUserDataToModel(dataJsonFromNetworking: data)
+    self.writeReportDataToModel(dataJsonFromNetworking: data)
+    self.tabReports = self.reportsDict["0"]?.count
     self.profileTable.reloadData()
     if self.refreshControl.refreshing {
       self.refreshControl.endRefreshing()
@@ -214,6 +220,31 @@ extension ProfileVC {
     let m = exception["exceptionMessage"].stringValue
     let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
     self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+  }
+
+}
+
+// MARK: - Model
+extension ProfileVC {
+  
+  private func writeReportDataToModel(dataJsonFromNetworking data: JSON) {
+    self.reportsDict = [:]
+    for (statusName, statusArrayJSON): (String, JSON) in data {
+      self.reportsDict[statusName] = []
+      for (_, statusArrayJSON): (String, JSON) in statusArrayJSON {
+        let r = Report()
+        r.id = statusArrayJSON["id"].intValue
+        r.title = statusArrayJSON["title"].stringValue
+        r.description = statusArrayJSON["description"].stringValue
+        //r.count = statusArrayJSON["count"].intValue
+        //r.category = statusArrayJSON["category"].stringValue
+        //r.categoryId = statusArrayJSON["categoryId"].intValue
+        r.status = statusArrayJSON["status"].stringValue
+        r.statusId = statusArrayJSON["statusId"].intValue
+        //r.imageUrl = statusArrayJSON["imageUrl"].stringValue
+        self.reportsDict[statusName]?.append(r)
+      }
+    }
   }
 
 }

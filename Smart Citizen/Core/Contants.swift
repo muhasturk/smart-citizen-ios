@@ -48,6 +48,7 @@ struct AppColors {
 
 struct AppCell {
   static let categoryCell = "categoryCell"
+  static let reportCell = "profileCell"
 }
 
 struct AppConstants {

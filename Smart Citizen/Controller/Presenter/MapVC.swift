@@ -163,7 +163,7 @@ class MapVC: AppVC, MKMapViewDelegate {
     for (_, reportJSON): (String, JSON) in data {
       let r = super.parseReportJSON(reportJSON)
       self.mapReports.append(r)
-      super.reflectAttributes(reflectingObject: r)
+      //super.reflectAttributes(reflectingObject: r)
     }
   }
   
