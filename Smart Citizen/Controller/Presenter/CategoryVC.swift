@@ -44,10 +44,6 @@ class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     super.viewDidLoad()
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.reportCategories.count
   }

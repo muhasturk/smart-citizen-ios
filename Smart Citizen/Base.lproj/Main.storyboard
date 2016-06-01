@@ -341,7 +341,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDS-Yg-06f" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="928"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nighttheme" translatesAutoresizingMaskIntoConstraints="NO" id="7n0-9f-tdC">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7n0-9f-tdC">
                                                 <rect key="frame" x="8" y="2" width="359" height="320"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJj-06-2Jh">
@@ -410,6 +410,15 @@
                                                     </mask>
                                                 </variation>
                                             </view>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zKY-Z3-whl">
+                                                <rect key="frame" x="0.0" y="512" width="375" height="120"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="JXv-cp-s4b"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="delegate" destination="jeb-pt-xdp" id="U6y-fa-OEw"/>
+                                                </connections>
+                                            </mapView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -417,9 +426,12 @@
                                             <constraint firstItem="XJj-06-2Jh" firstAttribute="top" secondItem="7n0-9f-tdC" secondAttribute="bottom" constant="8" id="38r-Lj-FQx"/>
                                             <constraint firstItem="rGC-5e-Gtt" firstAttribute="leading" secondItem="sDS-Yg-06f" secondAttribute="leading" constant="8" id="EYA-ld-OI9"/>
                                             <constraint firstAttribute="trailing" secondItem="rGC-5e-Gtt" secondAttribute="trailing" constant="8" id="Ekx-0O-uAj"/>
+                                            <constraint firstItem="zKY-Z3-whl" firstAttribute="leading" secondItem="sDS-Yg-06f" secondAttribute="leading" id="GP1-Jb-okh"/>
                                             <constraint firstItem="7n0-9f-tdC" firstAttribute="leading" secondItem="sDS-Yg-06f" secondAttribute="leading" constant="8" id="GkC-r2-5g0"/>
                                             <constraint firstItem="rGC-5e-Gtt" firstAttribute="top" secondItem="XJj-06-2Jh" secondAttribute="bottom" constant="8" id="IAi-yx-91A"/>
+                                            <constraint firstItem="zKY-Z3-whl" firstAttribute="top" secondItem="yFR-M0-IvB" secondAttribute="bottom" constant="15" id="Spg-bE-mqi"/>
                                             <constraint firstAttribute="trailing" secondItem="7n0-9f-tdC" secondAttribute="trailing" constant="8" id="Y1X-MQ-sSB"/>
+                                            <constraint firstAttribute="trailing" secondItem="zKY-Z3-whl" secondAttribute="trailing" id="ZRJ-6W-SUO"/>
                                             <constraint firstItem="yFR-M0-IvB" firstAttribute="top" secondItem="rGC-5e-Gtt" secondAttribute="bottom" constant="8" id="dNv-nV-doM"/>
                                             <constraint firstItem="7n0-9f-tdC" firstAttribute="top" secondItem="sDS-Yg-06f" secondAttribute="top" constant="128" id="gtN-lA-Azt"/>
                                             <constraint firstItem="7n0-9f-tdC" firstAttribute="top" secondItem="sDS-Yg-06f" secondAttribute="top" constant="2" id="m4U-Wr-2F9"/>
@@ -462,6 +474,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="mapView" destination="zKY-Z3-whl" id="FHY-Ga-zip"/>
                         <outlet property="reportCategoryLabel" destination="XJj-06-2Jh" id="tcz-xv-N1t"/>
                         <outlet property="reportDescriptionView" destination="rGC-5e-Gtt" id="HOH-pS-VNm"/>
                         <outlet property="reportedImageView" destination="7n0-9f-tdC" id="QwI-o6-Yz0"/>

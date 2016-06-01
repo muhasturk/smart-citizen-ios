@@ -22,21 +22,30 @@
 
 import UIKit
 import Haneke
+import MapKit
+import Alamofire
+import SwiftyJSON
 
 class ReportDetailVC: AppVC {
+  
+  typealias JSON = SwiftyJSON.JSON
 
   @IBOutlet weak var reportedImageView: UIImageView!
   @IBOutlet weak var reportDescriptionView: UITextView!
   @IBOutlet weak var reportCategoryLabel: UILabel!
+  @IBOutlet weak var mapView: MKMapView!
   
   // MARK: Properties
   var reportId: Int?
   var report: Report?
+  private var requestBaseURL: String {
+    return AppAPI.serviceDomain + AppAPI.getReportById + String(self.reportId!)
+  }
   
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.configureUI()
+    self.reportDetailNetworking()
   }
   
   private func configureUI() {
@@ -60,7 +69,72 @@ class ReportDetailVC: AppVC {
     else {
       print("Report id: \(r.id) has empty image URL")
     }
-    
+    self.configureMapView(report: r)
+  }
+  
+  private func configureMapView(report r: Report) {
+    let latitude: CLLocationDegrees = r.latitude
+    let longitude: CLLocationDegrees = r.longitude
+    let latitudeDelta: CLLocationDegrees = 0.009
+    let longitudeDelta: CLLocationDegrees = 0.009
+    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    let span = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+    let region = MKCoordinateRegion(center: coordinate, span: span)
+    self.mapView.setRegion(region, animated: true)
+    self.mapView.removeAnnotations(self.mapView.annotations)
+    let annotation = SmartAnnotation(report: r)
+    self.mapView.addAnnotation(annotation)
+  }
+  
+}
+
+// MARK: Networking
+extension ReportDetailVC {
+  private func reportDetailNetworking() {
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+      .responseJSON { response in
+        
+        switch response.result {
+        case .Success(let value):
+          print("başarılı detay", self.requestBaseURL, separator: "\n")
+          let json = JSON(value)
+          let serviceCode = json["serviceCode"].intValue
+          
+          if serviceCode == 0 {
+            let data = json["data"]
+            self.reportDetailNetworkingSuccessful(data)
+          }
+            
+          else {
+            let exception = json["exception"]
+            self.reportDetailNetworkingUnsuccessful(exception)
+          }
+          
+        case .Failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+          debugPrint(error)
+        }
+    }
+  }
+  
+  private func reportDetailNetworkingSuccessful(data: JSON) {
+    self.writeReportDetailToModel(dataJsonFromNetworking: data)
+    self.configureUI()
+  }
+  
+  private func reportDetailNetworkingUnsuccessful(exception: JSON) {
+    let c = exception["exceptionCode"].intValue
+    let m = exception["exceptionMessage"].stringValue
+    let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
+    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+  }
+
+}
+
+extension ReportDetailVC {
+  private func writeReportDetailToModel(dataJsonFromNetworking data: JSON) {
+    self.report = super.parseReportJSON(data)
+    super.reflectAttributes(reflectingObject: super.parseReportJSON(data))
   }
   
 }
