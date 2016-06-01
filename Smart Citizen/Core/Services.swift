@@ -40,4 +40,6 @@ struct AppAPI {
   static let getReportById = "/getReportDetailsById?reportId="
   
   static let voteReport = "/voteReport"
+  
+  static let authorizedReaction = "/authorizedReaction"
 }

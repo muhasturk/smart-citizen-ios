@@ -49,7 +49,8 @@ class ReportDetailVC: AppVC {
     return AppAPI.serviceDomain + AppAPI.getReportById + String(self.reportId!)
   }
   
-  private let voteRequestURL = AppAPI.serviceDomain + AppAPI.voteReport
+  private let userVoteRequestURL = AppAPI.serviceDomain + AppAPI.voteReport
+  private let authorizedReactionRequestURL = AppAPI.serviceDomain + AppAPI.authorizedReaction
   
   // MARK: - LC
   override func viewDidLoad() {
@@ -77,7 +78,7 @@ class ReportDetailVC: AppVC {
     self.navigationItem.title = r.title
     self.reportCategoryLabel.text = r.category
     self.reportDescriptionView.text = r.description
-    self.status.text = "Status: \(r.status)"
+    self.status.text = "Status: \(r.status) Count: \(r.count)"
     self.createdBy.text = "Created By: \(r.createdBy)"
     self.createdDate.text = "Created Date: \(r.createdDate)"
     if let authorizedUser = r.authorizedUser {
@@ -115,16 +116,21 @@ class ReportDetailVC: AppVC {
   
   // MARK: Action
   @IBAction func confirmAction(sender: AnyObject) {
-    if AppReadOnlyUser.roleId != 0 {
-      self.voteNetworking(voteType: 1)
+    if AppReadOnlyUser.roleId != 0 { // Authorized
+      self.voteNetworking(networkingUrl: self.authorizedReactionRequestURL, actionType: 2)
     }
     else {
-      self.voteNetworking(voteType: 2)
+      self.voteNetworking(networkingUrl: self.userVoteRequestURL,actionType: 1)
     }
   }
   
   @IBAction func denyAction(sender: AnyObject) {
-    self.voteNetworking(voteType: 0)
+    if AppReadOnlyUser.roleId != 0 { // Authorized
+      self.voteNetworking(networkingUrl: self.authorizedReactionRequestURL, actionType: 3)
+    }
+    else {
+      self.voteNetworking(networkingUrl: self.userVoteRequestURL, actionType: 0)
+    }
   }
   
 }
@@ -132,7 +138,7 @@ class ReportDetailVC: AppVC {
 // MARK: Networking
 extension ReportDetailVC {
   
-  private func voteNetworking(voteType type: Int) {
+  private func voteNetworking(networkingUrl url: String, actionType type: Int) {
     let params: [String: AnyObject] = [
       "email": AppReadOnlyUser.email,
       "password": AppReadOnlyUser.password,
@@ -140,12 +146,12 @@ extension ReportDetailVC {
       "type": type
     ]
     
-    Alamofire.request(.POST, self.voteRequestURL, parameters: params, encoding: ParameterEncoding.JSON)
+    Alamofire.request(.POST, url, parameters: params, encoding: ParameterEncoding.JSON)
       .responseJSON { response in
         
         switch response.result {
         case .Success(let value):
-          print("vote başarılı", self.voteRequestURL, separator: "\n")
+          print("vote başarılı", url, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
           
