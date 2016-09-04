@@ -36,7 +36,7 @@ class MapVC: AppVC, MKMapViewDelegate {
   var mapReports = [Report]()
   
   var refreshRequest = false
-  private var requestBaseURL: String {
+  fileprivate var requestBaseURL: String {
     return  AppAPI.serviceDomain + AppAPI.mapServiceURL + String(AppReadOnlyUser.roleId)
   }
   
@@ -51,29 +51,29 @@ class MapVC: AppVC, MKMapViewDelegate {
     view.dodo.success("Hoşgeldin \(AppReadOnlyUser.fullName)")
   }
   
-  @IBAction func refreshButtonAction(sender: AnyObject) {
+  @IBAction func refreshButtonAction(_ sender: AnyObject) {
     view.dodo.style.bar.hideAfterDelaySeconds = 0
     self.view.dodo.info("Raporlar alınıyor...")
     self.refreshRequest = true
     self.mapNetworking()
   }
   
-  private func configureUI() {
-    self.refreshButton.contentMode = .ScaleAspectFit
+  fileprivate func configureUI() {
+    self.refreshButton.contentMode = .scaleAspectFit
   }
   
-  override func viewDidDisappear(animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     super.locationManager.stopUpdatingLocation()
   }
   
   // MARK: Configure Map
-  private func configureMap() {
+  fileprivate func configureMap() {
     super.locationManager.startUpdatingLocation()
     self.mapView.showsUserLocation = true
     self.updateMapRegion()
   }
   
-  private func updateMapRegion() {
+  fileprivate func updateMapRegion() {
     if let location = super.locationManager.location {
       let latitude: CLLocationDegrees = location.coordinate.latitude
       let longitude: CLLocationDegrees = location.coordinate.longitude
@@ -90,7 +90,7 @@ class MapVC: AppVC, MKMapViewDelegate {
   var selectedReport: Report?
   
   // MARK: Map
-  func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     if let annotation = view.annotation as? SmartAnnotation {
       self.selectedReportId = annotation.knowledge.id
       self.selectedReport = annotation.knowledge
@@ -99,12 +99,12 @@ class MapVC: AppVC, MKMapViewDelegate {
     }
   }
   
-  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-    if annotation.isKindOfClass(SmartAnnotation) {
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    if annotation.isKind(of: SmartAnnotation.self) {
       let smartAnnotation = annotation as! SmartAnnotation
       var view: MKPinAnnotationView
       
-      if let dequeuedView = self.mapView.dequeueReusableAnnotationViewWithIdentifier(AppReuseIdentifier.mapCustomAnnotationView) as? MKPinAnnotationView {
+      if let dequeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: AppReuseIdentifier.mapCustomAnnotationView) as? MKPinAnnotationView {
         dequeuedView.annotation = smartAnnotation
         view = dequeuedView
       }
@@ -113,22 +113,22 @@ class MapVC: AppVC, MKMapViewDelegate {
         view = MKPinAnnotationView(annotation: smartAnnotation, reuseIdentifier: AppReuseIdentifier.mapCustomAnnotationView)
         view.canShowCallout = true
         view.calloutOffset = CGPoint(x: -5, y: 5)
-        view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+        view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
       }
 
       switch smartAnnotation.knowledge.statusId {
       case 0:
-        view.pinTintColor = UIColor.redColor()
+        view.pinTintColor = UIColor.red
       case 1:
-        view.pinTintColor = UIColor.blueColor()
+        view.pinTintColor = UIColor.blue
       default: // Working - 2
-        view.pinTintColor = UIColor.greenColor()
+        view.pinTintColor = UIColor.green
       }
       
       return view
     }
       
-    else if annotation.isKindOfClass(MKUserLocation) {
+    else if annotation.isKind(of: MKUserLocation.self) {
       return nil
     }
       
@@ -137,18 +137,18 @@ class MapVC: AppVC, MKMapViewDelegate {
     }
   }
   
-  func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     self.goReportDetailView()
   }
   
   func goReportDetailView() {
-    self.performSegueWithIdentifier(AppSegues.mapReportDetail, sender: nil)
+    self.performSegue(withIdentifier: AppSegues.mapReportDetail, sender: nil)
     print("annotation selected id: \(self.selectedReportId)")
   }
   
   
   // MARK: - Annotation
-  private func addReportsAnnotationToMap() {
+  fileprivate func addReportsAnnotationToMap() {
     for r: Report in self.mapReports {
       let annotation = SmartAnnotation(report: r)
       self.mapView.addAnnotation(annotation)
@@ -156,7 +156,7 @@ class MapVC: AppVC, MKMapViewDelegate {
   }
   
   // MARK: - Model
-  private func writeReportsDataToModel(dataJsonFromNetworking data: JSON) {
+  fileprivate func writeReportsDataToModel(dataJsonFromNetworking data: JSON) {
     self.mapReports = []
     for (_, reportJSON): (String, JSON) in data {
       let r = super.parseReportJSON(reportJSON)
@@ -166,9 +166,9 @@ class MapVC: AppVC, MKMapViewDelegate {
   }
   
   // MARK: - Segue
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == AppSegues.mapReportDetail {
-      if let detailVC = segue.destinationViewController as? ReportDetailVC {
+      if let detailVC = segue.destination as? ReportDetailVC {
         detailVC.reportId = self.selectedReportId
         detailVC.report = self.selectedReport
       }
@@ -180,12 +180,12 @@ class MapVC: AppVC, MKMapViewDelegate {
 
 // MARK: - Networking
 extension MapVC {
-  private func mapNetworking() {
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+  fileprivate func mapNetworking() {
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
       .responseJSON { response in
         
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print(AppDebugMessages.serviceConnectionMapIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
@@ -200,14 +200,14 @@ extension MapVC {
             self.mapNetworkingUnsuccessful(exception)
           }
           
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+        case .failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .alert, actionStyle: .destructive)
           debugPrint(error)
         }
     }
   }
   
-  private func mapNetworkingSuccessful(data: JSON) {
+  fileprivate func mapNetworkingSuccessful(_ data: JSON) {
     self.writeReportsDataToModel(dataJsonFromNetworking: data)
     self.mapView.removeAnnotations(self.mapView.annotations)
     self.addReportsAnnotationToMap()
@@ -217,10 +217,10 @@ extension MapVC {
     }
   }
   
-  private func mapNetworkingUnsuccessful(exception: JSON) {
+  fileprivate func mapNetworkingUnsuccessful(_ exception: JSON) {
     let c = exception["exceptionCode"].intValue
     let m = exception["exceptionMessage"].stringValue
     let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+    self.createAlertController(title: title, message: message, controllerStyle: .alert, actionStyle: .default)
   }
 }

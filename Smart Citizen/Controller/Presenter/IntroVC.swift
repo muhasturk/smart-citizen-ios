@@ -33,20 +33,20 @@ class IntroVC: AppVC {
     self.configureUI()
   }
   
-  private func configureUI() {
+  fileprivate func configureUI() {
     let gifManager = SwiftyGifManager(memoryLimit:20)
     let gifImage = UIImage(gifName: "intro")
     self.backgroundImage.setGifImage(gifImage, manager: gifManager, loopCount: -1)
   }
   
   // FIX: https://github.com/muhasturk/smart-citizen-ios/issues/4
-  override func viewWillAppear(animated: Bool) {
-    self.navigationController?.navigationBarHidden = true
+  override func viewWillAppear(_ animated: Bool) {
+    self.navigationController?.isNavigationBarHidden = true
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     if (self.navigationController?.topViewController != self) {
-      self.navigationController?.navigationBarHidden = false
+      self.navigationController?.isNavigationBarHidden = false
     }
   }
   

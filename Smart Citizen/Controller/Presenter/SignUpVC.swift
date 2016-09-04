@@ -30,7 +30,7 @@ class SignUpVC: AppVC {
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
   
-  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.signUpServiceURL
+  fileprivate let requestBaseURL = AppAPI.serviceDomain + AppAPI.signUpServiceURL
 
   
   // MARK: - LC
@@ -39,7 +39,7 @@ class SignUpVC: AppVC {
     self.navigationItem.title = "Sign Up"
   }
   
-  @IBAction func signUpAction(sender: AnyObject) {
+  @IBAction func signUpAction(_ sender: AnyObject) {
     self.view.endEditing(true)
     let fullName = self.fullNameField.text!
     let email = self.emailField.text!
@@ -47,11 +47,11 @@ class SignUpVC: AppVC {
     
     if fullName.isEmpty || email.isEmpty || password.isEmpty {
       self.createAlertController(title: AppAlertMessages.missingFieldTitle,
-                                 message: AppAlertMessages.loginMissingFieldMessage, controllerStyle: .Alert, actionStyle: .Default)
+                                 message: AppAlertMessages.loginMissingFieldMessage, controllerStyle: .alert, actionStyle: .default)
     }
       
     else if email.isNotEmail {
-      self.createAlertController(title: AppAlertMessages.emailFieldNotValidatedTitle, message: AppAlertMessages.emailFieldNotValidatedMessage, controllerStyle: .Alert, actionStyle: .Default)
+      self.createAlertController(title: AppAlertMessages.emailFieldNotValidatedTitle, message: AppAlertMessages.emailFieldNotValidatedMessage, controllerStyle: .alert, actionStyle: .default)
     }
       
     else {
@@ -59,16 +59,16 @@ class SignUpVC: AppVC {
         "fullName": fullName,
         "email": email,
         "password": password,
-        "deviceToken": NSUserDefaults.standardUserDefaults().stringForKey(AppConstants.DefaultKeys.DEVICE_TOKEN) ?? "5005"
+        "deviceToken": UserDefaults.standard.string(forKey: AppConstants.DefaultKeys.DEVICE_TOKEN) ?? "5005"
       ]
-      self.signUpNetworking(networkingParameters: parameters)
+      self.signUpNetworking(networkingParameters: parameters as [String : AnyObject])
     }
     
   }
   
   
   
-  private func writeUserDataToModel(dataJsonFromNetworking data: JSON) {
+  fileprivate func writeUserDataToModel(dataJsonFromNetworking data: JSON) {
     let user = User()
     user.id = data["id"].intValue
     user.email = data["email"].stringValue
@@ -82,17 +82,17 @@ class SignUpVC: AppVC {
     self.saveLocalSession(user)
   }
 
-  private func saveLocalSession(user: User) {
-    NSUserDefaults.standardUserDefaults().setBool(true, forKey: AppConstants.DefaultKeys.APP_ALIVE)
-    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(user)
-    NSUserDefaults.standardUserDefaults().setObject(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
+  fileprivate func saveLocalSession(_ user: User) {
+    UserDefaults.standard.set(true, forKey: AppConstants.DefaultKeys.APP_ALIVE)
+    let encodedUser = NSKeyedArchiver.archivedData(withRootObject: user)
+    UserDefaults.standard.set(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
   
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == self.fullNameField {
       self.emailField.becomeFirstResponder()
     }
@@ -105,22 +105,22 @@ class SignUpVC: AppVC {
     return true
   }
   
-  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
 }
 
 // MARK: - Networking
 extension SignUpVC {
-  private func signUpNetworking(networkingParameters params: [String: AnyObject]) {
+  fileprivate func signUpNetworking(networkingParameters params: [String: AnyObject]) {
     self.startIndicator()
     
-    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
+    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .json)
       .responseJSON { response in
         self.stopIndicator()
         
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print(AppDebugMessages.serviceConnectionSignUpIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
@@ -135,22 +135,22 @@ extension SignUpVC {
             self.signUpNetworkingUnuccessful(exception)
           }
           
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+        case .failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .alert, actionStyle: .destructive)
           debugPrint(error)
         }
     }
   }
   
-  private func signUpNetworkingSuccessful(data: JSON) {
+  fileprivate func signUpNetworkingSuccessful(_ data: JSON) {
     self.writeUserDataToModel(dataJsonFromNetworking: data)
-    self.performSegueWithIdentifier(AppSegues.doSignUpSegue, sender: nil)
+    self.performSegue(withIdentifier: AppSegues.doSignUpSegue, sender: nil)
   }
   
-  private func signUpNetworkingUnuccessful(exception: JSON) {
+  fileprivate func signUpNetworkingUnuccessful(_ exception: JSON) {
     let c = exception["exceptionCode"].intValue
     let m = exception["exceptionMessage"].stringValue
     let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+    self.createAlertController(title: title, message: message, controllerStyle: .alert, actionStyle: .default)
   }
 }

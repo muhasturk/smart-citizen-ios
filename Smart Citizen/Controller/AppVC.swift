@@ -31,7 +31,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   var appBlurEffectView = UIVisualEffectView()
   lazy var locationManager: CLLocationManager = self.makeLocationManager()
   
-  private func makeLocationManager() -> CLLocationManager {
+  fileprivate func makeLocationManager() -> CLLocationManager {
     let manager = CLLocationManager()
     manager.delegate = self
     manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -48,20 +48,20 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   
   // MARK: Add Blur Effect View
   func addBlurEffectView() -> Void {
-    let blurEffect = UIBlurEffect(style: .Light)
+    let blurEffect = UIBlurEffect(style: .light)
     appBlurEffectView = UIVisualEffectView(effect: blurEffect)
     appBlurEffectView.frame = self.view.bounds
-    appBlurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    appBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     self.view.addSubview(appBlurEffectView)
   }
   
   // MARK: - Start Indicator
   func startIndicator() -> Void {
     self.addBlurEffectView()
-    appIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
+    appIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     appIndicator.center = self.view.center
     appIndicator.hidesWhenStopped = true
-    appIndicator.activityIndicatorViewStyle = .Gray
+    appIndicator.activityIndicatorViewStyle = .gray
     self.view.addSubview(appIndicator)
     appIndicator.startAnimating()
     //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
@@ -75,12 +75,12 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   }
   
   // MARK: - Create Alert Controller
-  func createAlertController(title title: String, message: String, controllerStyle: UIAlertControllerStyle, actionStyle: UIAlertActionStyle) -> Void {
+  func createAlertController(title: String, message: String, controllerStyle: UIAlertControllerStyle, actionStyle: UIAlertActionStyle) -> Void {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: controllerStyle)
     
     let okAction = UIAlertAction(title: "Tamam", style: actionStyle, handler: nil)
     alertController.addAction(okAction)
-    self.presentViewController(alertController, animated: true, completion: nil)
+    self.present(alertController, animated: true, completion: nil)
   }
   
   // MARK: - Get Exception Title
@@ -90,23 +90,23 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     var message: String!
     
     switch code {
-    case ExceptionCode.EmailOrPasswordWrong.rawValue: // 1
+    case ExceptionCode.emailOrPasswordWrong.rawValue: // 1
       title = AppAlertMessages.exceptionLoginWrongCredentialsTitle
       message = AppAlertMessages.exceptionLoginWrongCredentialsMessage
       
-    case ExceptionCode.ThereIsNoUserWithEmail.rawValue: // 2
+    case ExceptionCode.thereIsNoUserWithEmail.rawValue: // 2
       title = AppAlertMessages.exceptionLoginThereIsNoUserWithEmailTitle
       message = AppAlertMessages.exceptionLoginThereIsNoUserWithEmailMessage
       
-    case ExceptionCode.ThereIsaMemberWithEmail.rawValue: // 3
+    case ExceptionCode.thereIsaMemberWithEmail.rawValue: // 3
       title = AppAlertMessages.exceptionAlreadyRegisteredEmailTitle
       message = AppAlertMessages.exceptionAlreadyRegisteredEmailMessage
       
-    case ExceptionCode.BadRequest.rawValue:
+    case ExceptionCode.badRequest.rawValue:
       title = AppAlertMessages.parameterMissingTitle
       message = AppAlertMessages.parameterMissingMessage
       
-    case ExceptionCode.NoReportThisType.rawValue:
+    case ExceptionCode.noReportThisType.rawValue:
       title = "Rapor Yok"
       message = "Sizin ilgilenebileceğiniz kategoride rapor eklenmemiş"
       
@@ -122,7 +122,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   // MARK: - Mirror
   func reflectAttributes(reflectingObject o: Any) {
     let m = Mirror(reflecting: o)
-    for (index, attribute) in m.children.enumerate() {
+    for (index, attribute) in m.children.enumerated() {
       if let property = attribute.label as String! {
         print("\(index) - \(property) - \(attribute.value)")
       }
@@ -131,36 +131,36 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   
   // MARK: - Keyboard Observer
   func addKeyboardObserver() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow), name: UIKeyboardWillShowNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
   }
   
   func removeKeyboardObserver() {
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
-    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
   }
   
-  func keyboardWillShow(sender: NSNotification) {
-    let userInfo: [NSObject : AnyObject] = sender.userInfo!
-    let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
-    let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+  func keyboardWillShow(_ sender: Notification) {
+    let userInfo: [NSObject : AnyObject] = (sender as NSNotification).userInfo!
+    let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue.size
+    let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
     
     if keyboardSize.height == offset.height {
       if self.view.frame.origin.y == 0 {
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
           self.view.frame.origin.y -= keyboardSize.height
         })
       }
     } else {
-      UIView.animateWithDuration(0.1, animations: { () -> Void in
+      UIView.animate(withDuration: 0.1, animations: { () -> Void in
         self.view.frame.origin.y += keyboardSize.height - offset.height
       })
     }
   }
   
-  func keyboardWillHide(sender: NSNotification) {
-    let userInfo: [NSObject : AnyObject] = sender.userInfo!
-    let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue().size
+  func keyboardWillHide(_ sender: Notification) {
+    let userInfo: [NSObject : AnyObject] = (sender as NSNotification).userInfo!
+    let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
     self.view.frame.origin.y += keyboardSize.height
   }
   
@@ -168,7 +168,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
 
 // MARK: Parse
 extension AppVC {
-  func parseReportJSON(reportJSON: JSON) -> Report {
+  func parseReportJSON(_ reportJSON: JSON) -> Report {
     let r = Report()
     r.authorizedUser = reportJSON["authorizedUser"].string
     r.category = reportJSON["category"].stringValue

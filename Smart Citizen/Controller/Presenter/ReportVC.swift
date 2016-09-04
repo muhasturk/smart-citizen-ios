@@ -38,27 +38,27 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
 
   var categoryTitle: String? {
     didSet {
-      self.categoryButton.setTitle(categoryTitle, forState: .Normal)
+      self.categoryButton.setTitle(categoryTitle, for: UIControlState())
     }
   }
   
   var categorySelected = false
   
-  private var imagePicked = false {
+  fileprivate var imagePicked = false {
     willSet {
       if newValue {
-        self.mediaButton.setTitle("Resmi Değiştir", forState: .Normal)
+        self.mediaButton.setTitle("Resmi Değiştir", for: UIControlState())
       }
       else {
-        self.mediaButton.setTitle("Resim Ekle", forState: .Normal)
+        self.mediaButton.setTitle("Resim Ekle", for: UIControlState())
       }
     }
   }
   
   // MARK: Properties
-  private let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
-  private let imagePicker = UIImagePickerController()
-  private let AWSS3BucketName = "smart-citizen"
+  fileprivate let requestBaseURL = AppAPI.serviceDomain + AppAPI.reportServiceURL
+  fileprivate let imagePicker = UIImagePickerController()
+  fileprivate let AWSS3BucketName = "smart-citizen"
   
   // MARK: - LC
   override func viewDidLoad() {
@@ -74,49 +74,49 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     super.didReceiveMemoryWarning()
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.addKeyboardObserver()
   }
   
-  override func viewDidDisappear(animated: Bool) {
+  override func viewDidDisappear(_ animated: Bool) {
     self.removeKeyboardObserver()
     super.locationManager.stopUpdatingLocation()
   }
   
   // MARK: - Action
-  @IBAction func sendReportAction(sender: AnyObject) {
+  @IBAction func sendReportAction(_ sender: AnyObject) {
     if self.isAllFieldCompleted(){
       self.makeDialogForSend()
     }
     else {
-      super.createAlertController(title: AppAlertMessages.missingFieldTitle, message: AppAlertMessages.reportMissingFieldMessage, controllerStyle: .Alert, actionStyle: .Default)
+      super.createAlertController(title: AppAlertMessages.missingFieldTitle, message: AppAlertMessages.reportMissingFieldMessage, controllerStyle: .alert, actionStyle: .default)
     }
   }
   
-  private func makeDialogForSend() {
-    let ac = UIAlertController(title: "Raporu Onaylayın", message: "Raporunuz sistemimize yüklenecektir.\nOnaylıyor musunuz?", preferredStyle: .Alert)
-    let okAction = UIAlertAction(title: "Yükle", style: .Default) { (UIAlertAction) in
+  fileprivate func makeDialogForSend() {
+    let ac = UIAlertController(title: "Raporu Onaylayın", message: "Raporunuz sistemimize yüklenecektir.\nOnaylıyor musunuz?", preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "Yükle", style: .default) { (UIAlertAction) in
       
       self.view.dodo.info("Rapor yükleniyor...")
       self.uploadImageForAWSS3()
     }
-    let cancelAction = UIAlertAction(title: "İptal Et", style: .Cancel, handler: nil)
+    let cancelAction = UIAlertAction(title: "İptal Et", style: .cancel, handler: nil)
     ac.addAction(okAction)
     ac.addAction(cancelAction)
-    self.presentViewController(ac, animated: true, completion: nil)
+    self.present(ac, animated: true, completion: nil)
   }
   
-  private func isAllFieldCompleted() -> Bool {
+  fileprivate func isAllFieldCompleted() -> Bool {
     return self.imagePicked && self.titleField.text!.isNotEmpty &&
       self.descriptionField.text.isNotEmpty && self.categorySelected
   }
   
-  @IBAction func clearFieldAction(sender: AnyObject) {
+  @IBAction func clearFieldAction(_ sender: AnyObject) {
     self.clearFields()
   }
   
-  @IBAction func selectCategory(sender: AnyObject) {
-    self.performSegueWithIdentifier(AppSegues.pushReportCategory, sender: sender)
+  @IBAction func selectCategory(_ sender: AnyObject) {
+    self.performSegue(withIdentifier: AppSegues.pushReportCategory, sender: sender)
   }
   
   func clearFields() {
@@ -124,7 +124,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     self.categorySelected = false
     self.titleField.text = ""
     self.descriptionField.text = ""
-    self.categoryButton.setTitle("Kategori", forState: .Normal)
+    self.categoryButton.setTitle("Kategori", for: UIControlState())
   }
   
   // MARK: - Networking
@@ -132,23 +132,23 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     let ext = "jpg"
     let t: UIImage = self.choosenImage.image!
     let pickedImage = t.scaleWithCGSize(CGSize(width: 500, height: 500))
-    let temporaryDirectoryURL = NSURL(fileURLWithPath: NSTemporaryDirectory())
-    let imageURL: NSURL = temporaryDirectoryURL.URLByAppendingPathComponent("pickedImage.png")
+    let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
+    let imageURL: URL = temporaryDirectoryURL.appendingPathComponent("pickedImage.png")
     let pathString = imageURL.absoluteString // has file:// prefix
-    let onlyPathString = pathString.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "file://"))
+    let onlyPathString = pathString.trimmingCharacters(in: CharacterSet(charactersIn: "file://"))
     //let imageData: NSData = UIImagePNGRepresentation(pickedImage)!
-    let imageData: NSData = UIImageJPEGRepresentation(pickedImage, 0.7)!
-    imageData.writeToFile(onlyPathString, atomically: true) // change onlypathstring
+    let imageData: Data = UIImageJPEGRepresentation(pickedImage, 0.7)!
+    try? imageData.write(to: URL(fileURLWithPath: onlyPathString), options: [.atomic]) // change onlypathstring
     
     let uploadRequest = AWSS3TransferManagerUploadRequest()
-    uploadRequest.body = imageURL
-    uploadRequest.key = NSProcessInfo.processInfo().globallyUniqueString + "." + ext
-    uploadRequest.bucket = self.AWSS3BucketName
-    uploadRequest.contentType = "image/" + ext
-    uploadRequest.ACL = .PublicRead
+    uploadRequest?.body = imageURL
+    uploadRequest?.key = ProcessInfo.processInfo.globallyUniqueString + "." + ext
+    uploadRequest?.bucket = self.AWSS3BucketName
+    uploadRequest?.contentType = "image/" + ext
+    uploadRequest?.acl = .publicRead
     
-    let transferManager = AWSS3TransferManager.defaultS3TransferManager()
-    transferManager.upload(uploadRequest).continueWithBlock { (task) -> AnyObject! in
+    let transferManager = AWSS3TransferManager.default()
+    transferManager.upload(uploadRequest).continue { (task) -> AnyObject! in
       
       if let error = task.error {
         print("Upload failed ❌ (\(error))")
@@ -160,7 +160,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       
       guard task.result != nil else {
         self.view.dodo.error("Seçtiğiniz resim AWS servise yüklenemedi.")
-        self.createAlertController(title: "Yükleme Başarısız", message: "Seçtiğiniz resim AWS servise yüklenemedi.", controllerStyle: .Alert, actionStyle: .Destructive)
+        self.createAlertController(title: "Yükleme Başarısız", message: "Seçtiğiniz resim AWS servise yüklenemedi.", controllerStyle: .alert, actionStyle: .destructive)
         print("Seçtiğiniz resim AWS servise yüklenemedi.")
         return ""
       }
@@ -172,7 +172,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     }
   }
 
-  private func configureReportNetworkingParameters(imageUrl url: String) -> [String: AnyObject] {
+  fileprivate func configureReportNetworkingParameters(imageUrl url: String) -> [String: AnyObject] {
     var latitude: Double?
     var longitude: Double?
     
@@ -182,10 +182,10 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     }
     
     let params: [String: AnyObject] = [
-      "email": AppReadOnlyUser.email,
-      "password": AppReadOnlyUser.password,
-      "latitude": latitude ?? 40.984312,
-      "longitude": longitude ?? 28.753676,
+      "email": AppReadOnlyUser.email as AnyObject,
+      "password": AppReadOnlyUser.password as AnyObject,
+      "latitude": latitude as AnyObject? ?? 40.984312 as AnyObject,
+      "longitude": longitude as AnyObject? ?? 28.753676,
       "title": self.titleField.text!,
       "description": self.descriptionField.text!,
       "categoryId": categoryId!,
@@ -197,7 +197,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   
   
   // MARK: - Image Picker
-  private func configureImagePickerController() {
+  fileprivate func configureImagePickerController() {
     self.imagePicker.delegate = self
     //    self.picker.allowsEditing = true
     //    if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera) {
@@ -205,88 +205,88 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     //    }
   }
   
-  @IBAction func chooseMediaAction(sender: AnyObject) {
-    let actionSheet = UIAlertController(title: "Medya Kaynağı", message: "Medya eklemek için bir kaynak seçiniz.", preferredStyle: .ActionSheet)
+  @IBAction func chooseMediaAction(_ sender: AnyObject) {
+    let actionSheet = UIAlertController(title: "Medya Kaynağı", message: "Medya eklemek için bir kaynak seçiniz.", preferredStyle: .actionSheet)
     
-    let cameraAction = UIAlertAction(title: "Camera", style: .Default) { (UIAlertAction) in
+    let cameraAction = UIAlertAction(title: "Camera", style: .default) { (UIAlertAction) in
       self.pickFromCamera()
     }
     
-    let photosAction = UIAlertAction(title: "Photos", style: .Default) { (UIAlertAction) in
+    let photosAction = UIAlertAction(title: "Photos", style: .default) { (UIAlertAction) in
       self.pickFromPhotos()
     }
     
-    let momentsAction = UIAlertAction(title: "Momemts", style: .Default) { (UIAlertAction) in
+    let momentsAction = UIAlertAction(title: "Momemts", style: .default) { (UIAlertAction) in
       self.pickFromMoments()
     }
     
-    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     
     actionSheet.addAction(momentsAction)
     actionSheet.addAction(photosAction)
     actionSheet.addAction(cameraAction)
     actionSheet.addAction(cancelAction)
-    self.presentViewController(actionSheet, animated: true, completion: nil)
+    self.present(actionSheet, animated: true, completion: nil)
   }
   
   
-  private func pickFromCamera() {
-    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-      self.imagePicker.sourceType = .Camera
-      self.imagePicker.modalPresentationStyle = .CurrentContext
-      self.presentViewController(self.imagePicker, animated: true, completion: nil)
+  fileprivate func pickFromCamera() {
+    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+      self.imagePicker.sourceType = .camera
+      self.imagePicker.modalPresentationStyle = .currentContext
+      self.present(self.imagePicker, animated: true, completion: nil)
     }
     else {
-      self.createAlertController(title: AppDebugMessages.cameraDeviceNotAvailableTitle, message: AppDebugMessages.cameraDeviceNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+      self.createAlertController(title: AppDebugMessages.cameraDeviceNotAvailableTitle, message: AppDebugMessages.cameraDeviceNotAvailableMessage, controllerStyle: .alert, actionStyle: .destructive)
       print(AppDebugMessages.cameraDeviceNotAvailable)
     }
   }
   
-  private func pickFromPhotos() {
-    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-      self.imagePicker.sourceType = .PhotoLibrary
-      self.presentViewController(self.imagePicker, animated: true, completion: nil)
+  fileprivate func pickFromPhotos() {
+    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+      self.imagePicker.sourceType = .photoLibrary
+      self.present(self.imagePicker, animated: true, completion: nil)
     }
     else {
-      self.createAlertController(title: AppDebugMessages.photosNotAvailableTitle, message: AppDebugMessages.photosNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+      self.createAlertController(title: AppDebugMessages.photosNotAvailableTitle, message: AppDebugMessages.photosNotAvailableMessage, controllerStyle: .alert, actionStyle: .destructive)
       print(AppDebugMessages.photosNotAvailable)
     }
   }
   
-  private func pickFromMoments() {
-    if UIImagePickerController.isSourceTypeAvailable(.SavedPhotosAlbum) {
-      self.imagePicker.sourceType = .SavedPhotosAlbum
-      self.presentViewController(self.imagePicker, animated: true, completion: nil)
+  fileprivate func pickFromMoments() {
+    if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+      self.imagePicker.sourceType = .savedPhotosAlbum
+      self.present(self.imagePicker, animated: true, completion: nil)
     }
     else {
-      self.createAlertController(title: AppDebugMessages.momentsNotAvailableTitle, message: AppDebugMessages.momentsNotAvailableMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+      self.createAlertController(title: AppDebugMessages.momentsNotAvailableTitle, message: AppDebugMessages.momentsNotAvailableMessage, controllerStyle: .alert, actionStyle: .destructive)
       print(AppDebugMessages.momentsNotAvailable)
     }
   }
   
   // MARK: - Image Picker Delegate
-  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
       UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
       self.choosenImage.image = pickedImage
       self.imagePicked = true
     }
-    self.dismissViewControllerAnimated(true, completion: nil)
+    self.dismiss(animated: true, completion: nil)
   }
   
-  func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-    self.dismissViewControllerAnimated(true, completion: nil)
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    self.dismiss(animated: true, completion: nil)
   }
   
-  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
 
   
   // MARK: Unwind
-  @IBAction func unwindToReportScene(segue: UIStoryboardSegue) {
+  @IBAction func unwindToReportScene(_ segue: UIStoryboardSegue) {
     if segue.identifier == "saveReportCategory"{
-      if let sourceVC = segue.sourceViewController as? CategoryVC {
+      if let sourceVC = segue.source as? CategoryVC {
         self.categorySelected = true
         self.categoryTitle = sourceVC.selectedCategoryTitle
         self.categoryId = sourceVC.selectedCategoryId
@@ -299,12 +299,12 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
 // MARK: - Networking
 extension ReportVC {
   
-  private func reportNetworking(networkingParameters params: [String: AnyObject]) {
-    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .JSON)
+  fileprivate func reportNetworking(networkingParameters params: [String: AnyObject]) {
+    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .json)
       .responseJSON { response in
         self.stopIndicator()
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print(AppDebugMessages.serviceConnectionReportIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
@@ -319,20 +319,20 @@ extension ReportVC {
             self.reportNetworkingUnsuccessful(exception)
           }
           
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+        case .failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .alert, actionStyle: .destructive)
           debugPrint(error)
         }
     }
   }
 
-  private func reportNetworkingSuccessful() {
+  fileprivate func reportNetworkingSuccessful() {
     self.view.dodo.success("Raporunuz sistemimize kaydedildi.")
-    super.createAlertController(title: "Rapor Gönderildi", message: "Raporunuz sistemimize kaydedildi.", controllerStyle: .Alert, actionStyle: .Default)
+    super.createAlertController(title: "Rapor Gönderildi", message: "Raporunuz sistemimize kaydedildi.", controllerStyle: .alert, actionStyle: .default)
     self.clearFields()
   }
   
-  private func reportNetworkingUnsuccessful(exception: JSON) {
+  fileprivate func reportNetworkingUnsuccessful(_ exception: JSON) {
     self.view.dodo.error("Rapor yüklemesi başarısız oldu.")
   }
   

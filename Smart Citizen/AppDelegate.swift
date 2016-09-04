@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
     
     self.configureThirdParty()
     self.decideSceneToOpen()
@@ -40,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func decideSceneToOpen() {
-    if NSUserDefaults.standardUserDefaults().boolForKey(AppConstants.DefaultKeys.APP_ALIVE) {
+    if UserDefaults.standard.bool(forKey: AppConstants.DefaultKeys.APP_ALIVE) {
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
-      let rootController = storyboard.instantiateViewControllerWithIdentifier("MainTabC") as! MainTabC
+      let rootController = storyboard.instantiateViewController(withIdentifier: "MainTabC") as! MainTabC
       self.window?.rootViewController = rootController
     }
   }
@@ -52,68 +52,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.configureAWS()
   }
   
-  private func configureAWS() {    
+  fileprivate func configureAWS() {    
     let CognitoPoolID = "us-east-1:d91b018b-71d6-4831-9b05-6ca53bb92725"
     
-    let Region = AWSRegionType.USEast1 // Cognito Region
+    let Region = AWSRegionType.usEast1 // Cognito Region
     
     let credentialsProvider = AWSCognitoCredentialsProvider(regionType: Region,
                                                             identityPoolId: CognitoPoolID)
     // S3 Region
-    let configuration = AWSServiceConfiguration(region: AWSRegionType.USWest2, credentialsProvider: credentialsProvider)
+    let configuration = AWSServiceConfiguration(region: AWSRegionType.usWest2, credentialsProvider: credentialsProvider)
     
-    AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+    AWSServiceManager.default().defaultServiceConfiguration = configuration
   }
   
   func prepareDeviceToken() {
-    if NSUserDefaults.standardUserDefaults().stringForKey(AppConstants.DefaultKeys.DEVICE_TOKEN) == nil {
-      let pushNotificationType: UIUserNotificationType = [.Sound, .Alert, .Badge]
-      let pushNotificationSetting = UIUserNotificationSettings(forTypes: pushNotificationType, categories: nil)
-      UIApplication.sharedApplication().registerUserNotificationSettings(pushNotificationSetting)
-      UIApplication.sharedApplication().registerForRemoteNotifications()
+    if UserDefaults.standard.string(forKey: AppConstants.DefaultKeys.DEVICE_TOKEN) == nil {
+      let pushNotificationType: UIUserNotificationType = [.sound, .alert, .badge]
+      let pushNotificationSetting = UIUserNotificationSettings(types: pushNotificationType, categories: nil)
+      UIApplication.shared.registerUserNotificationSettings(pushNotificationSetting)
+      UIApplication.shared.registerForRemoteNotifications()
     }
   }
 
-  func applicationWillResignActive(application: UIApplication) {
+  func applicationWillResignActive(_ application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
   }
 
-  func applicationDidEnterBackground(application: UIApplication) {
+  func applicationDidEnterBackground(_ application: UIApplication) {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
   }
 
-  func applicationWillEnterForeground(application: UIApplication) {
+  func applicationWillEnterForeground(_ application: UIApplication) {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
   }
 
-  func applicationDidBecomeActive(application: UIApplication) {
+  func applicationDidBecomeActive(_ application: UIApplication) {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
   }
 
-  func applicationWillTerminate(application: UIApplication) {
+  func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     print("Device token data: \(deviceToken)")
-    let characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
+    let characterSet: CharacterSet = CharacterSet( charactersIn: "<>" )
     
     let deviceTokenString: String = ( deviceToken.description as NSString )
-      .stringByTrimmingCharactersInSet( characterSet )
-      .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
+      .trimmingCharacters( in: characterSet )
+      .replacingOccurrences( of: " ", with: "" ) as String
     
     print("Device token string:  \(deviceTokenString)")
     
-    NSUserDefaults.standardUserDefaults().setValue(deviceTokenString, forKey: AppConstants.DefaultKeys.DEVICE_TOKEN)
+    UserDefaults.standard.setValue(deviceTokenString, forKey: AppConstants.DefaultKeys.DEVICE_TOKEN)
   }
   
-  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+  func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
     print("Couldn’t register for remote notification: \(error)")
   }
   
-  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : Any]) {
     print(userInfo)
   }
 

@@ -23,8 +23,8 @@
 import Foundation
 
 var AppReadOnlyUser: User {
-  let userData = NSUserDefaults.standardUserDefaults().objectForKey(AppConstants.DefaultKeys.APP_USER) as! NSData
-  let user = NSKeyedUnarchiver.unarchiveObjectWithData(userData) as! User
+  let userData = UserDefaults.standard.object(forKey: AppConstants.DefaultKeys.APP_USER) as! Data
+  let user = NSKeyedUnarchiver.unarchiveObject(with: userData) as! User
   return user
 }
 

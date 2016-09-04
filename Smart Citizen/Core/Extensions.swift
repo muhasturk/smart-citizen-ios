@@ -25,22 +25,22 @@ import SwiftyJSON
 
 // MARK: UIImageView
 extension UIImageView {
-  func downloadedFrom(imageURL link:String, contentMode mode: UIViewContentMode = .ScaleAspectFill) {
+  func downloadedFrom(imageURL link:String, contentMode mode: UIViewContentMode = .scaleAspectFill) {
     guard
-      let url = NSURL(string: link)
+      let url = URL(string: link)
       else {return}
     contentMode = mode
-    NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
       guard
-        let httpURLResponse = response as? NSHTTPURLResponse where httpURLResponse.statusCode == 200,
-        let mimeType = response?.MIMEType where mimeType.hasPrefix("image"),
-        let data = data where error == nil,
+        let httpURLResponse = response as? HTTPURLResponse , httpURLResponse.statusCode == 200,
+        let mimeType = response?.mimeType , mimeType.hasPrefix("image"),
+        let data = data , error == nil,
         let imageData = UIImage(data: data)
         else {
           print(AppDebugMessages.downloadImageFromURLFailed + String(url));
           return
       }
-      dispatch_async(dispatch_get_main_queue()) { () -> Void in
+      DispatchQueue.main.async { () -> Void in
         self.image = imageData
       }
     }).resume()
@@ -49,7 +49,7 @@ extension UIImageView {
 
 // MARK: UImage
 extension UIImage {
-  func scaleWithCGSize(targetSize: CGSize) -> UIImage {
+  func scaleWithCGSize(_ targetSize: CGSize) -> UIImage {
     
     let widthRatio: CGFloat = targetSize.width / self.size.width
     let heightRatio: CGFloat = targetSize.height / self.size.height
@@ -71,11 +71,11 @@ extension UIImage {
     
     
     UIGraphicsBeginImageContextWithOptions(scaledSize, false, 0)
-    self.drawInRect(scaledImageRect)
+    self.draw(in: scaledImageRect)
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     
-    return scaledImage
+    return scaledImage!
   }
 }
 
@@ -84,7 +84,7 @@ extension String {
   var isEmail: Bool {
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     let emailTest  = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-    return emailTest.evaluateWithObject(self)
+    return emailTest.evaluate(with: self)
   }
   
   var isNotEmail: Bool {

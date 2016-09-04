@@ -21,9 +21,9 @@
  */
 
 enum ExceptionCode: Int {
-  case EmailOrPasswordWrong = 1
-  case ThereIsNoUserWithEmail
-  case ThereIsaMemberWithEmail
-  case BadRequest = 400
-  case NoReportThisType = 6
+  case emailOrPasswordWrong = 1
+  case thereIsNoUserWithEmail
+  case thereIsaMemberWithEmail
+  case badRequest = 400
+  case noReportThisType = 6
 }

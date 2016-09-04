@@ -45,12 +45,12 @@ class ReportDetailVC: AppVC {
   // MARK: Properties
   var reportId: Int?
   var report: Report?
-  private var requestBaseURL: String {
+  fileprivate var requestBaseURL: String {
     return AppAPI.serviceDomain + AppAPI.getReportById + String(self.reportId!)
   }
   
-  private let userVoteRequestURL = AppAPI.serviceDomain + AppAPI.voteReport
-  private let authorizedReactionRequestURL = AppAPI.serviceDomain + AppAPI.authorizedReaction
+  fileprivate let userVoteRequestURL = AppAPI.serviceDomain + AppAPI.voteReport
+  fileprivate let authorizedReactionRequestURL = AppAPI.serviceDomain + AppAPI.authorizedReaction
   
   // MARK: - LC
   override func viewDidLoad() {
@@ -60,17 +60,17 @@ class ReportDetailVC: AppVC {
   }
   
   // MARK: UI
-  private func configureUIForRoleId() {
+  fileprivate func configureUIForRoleId() {
     if AppReadOnlyUser.roleId != 0 {
       let positiveAuthorizedImage = UIImage(named: "workingAuthorized")
-      self.positiveButton.setImage(positiveAuthorizedImage, forState: .Normal)
+      self.positiveButton.setImage(positiveAuthorizedImage, for: UIControlState())
       
       let completedAuthorizedImage = UIImage(named: "completedAuthorized")
-      self.negativeButton.setImage(completedAuthorizedImage, forState: .Normal)
+      self.negativeButton.setImage(completedAuthorizedImage, for: UIControlState())
     }
   }
   
-  private func configureUIAfterNetworking() {
+  fileprivate func configureUIAfterNetworking() {
     guard let r = self.report else {
       print(AppDebugMessages.reportNotPassed)
       return
@@ -92,7 +92,7 @@ class ReportDetailVC: AppVC {
     
     
     if r.imageUrl.isNotEmpty {
-      if let url = NSURL(string: r.imageUrl) {
+      if let url = URL(string: r.imageUrl) {
         self.reportedImageView.hnk_setImageFromURL(url)
       }
     }
@@ -100,7 +100,7 @@ class ReportDetailVC: AppVC {
     self.configureMapView(report: r)
   }
   
-  private func configureMapView(report r: Report) {
+  fileprivate func configureMapView(report r: Report) {
     let latitude: CLLocationDegrees = r.latitude
     let longitude: CLLocationDegrees = r.longitude
     let latitudeDelta: CLLocationDegrees = 0.009
@@ -115,7 +115,7 @@ class ReportDetailVC: AppVC {
   }
   
   // MARK: Action
-  @IBAction func confirmAction(sender: AnyObject) {
+  @IBAction func confirmAction(_ sender: AnyObject) {
     if AppReadOnlyUser.roleId != 0 { // Authorized
       self.voteNetworking(networkingUrl: self.authorizedReactionRequestURL, actionType: 2)
     }
@@ -124,7 +124,7 @@ class ReportDetailVC: AppVC {
     }
   }
   
-  @IBAction func denyAction(sender: AnyObject) {
+  @IBAction func denyAction(_ sender: AnyObject) {
     if AppReadOnlyUser.roleId != 0 { // Authorized
       self.voteNetworking(networkingUrl: self.authorizedReactionRequestURL, actionType: 3)
     }
@@ -138,19 +138,19 @@ class ReportDetailVC: AppVC {
 // MARK: Networking
 extension ReportDetailVC {
   
-  private func voteNetworking(networkingUrl url: String, actionType type: Int) {
+  fileprivate func voteNetworking(networkingUrl url: String, actionType type: Int) {
     let params: [String: AnyObject] = [
-      "email": AppReadOnlyUser.email,
-      "password": AppReadOnlyUser.password,
-      "reportId": self.reportId!,
-      "type": type
+      "email": AppReadOnlyUser.email as AnyObject,
+      "password": AppReadOnlyUser.password as AnyObject,
+      "reportId": self.reportId! as AnyObject,
+      "type": type as AnyObject
     ]
     
-    Alamofire.request(.POST, url, parameters: params, encoding: ParameterEncoding.JSON)
+    Alamofire.request(.POST, url, parameters: params, encoding: ParameterEncoding.json)
       .responseJSON { response in
         
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print("vote başarılı", url, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
@@ -165,19 +165,19 @@ extension ReportDetailVC {
             print("Raporu değerlendirme başarısız.")
           }
           
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+        case .failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .alert, actionStyle: .destructive)
           debugPrint(error)
         }
     }
   }
   
-  private func reportDetailNetworking() {
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+  fileprivate func reportDetailNetworking() {
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
       .responseJSON { response in
         
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print("başarılı detay", self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
@@ -192,29 +192,29 @@ extension ReportDetailVC {
             self.reportDetailNetworkingUnsuccessful(exception)
           }
           
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+        case .failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .alert, actionStyle: .destructive)
           debugPrint(error)
         }
     }
   }
   
-  private func reportDetailNetworkingSuccessful(data: JSON) {
+  fileprivate func reportDetailNetworkingSuccessful(_ data: JSON) {
     self.writeReportDetailToModel(dataJsonFromNetworking: data)
     self.configureUIAfterNetworking()
   }
   
-  private func reportDetailNetworkingUnsuccessful(exception: JSON) {
+  fileprivate func reportDetailNetworkingUnsuccessful(_ exception: JSON) {
     let c = exception["exceptionCode"].intValue
     let m = exception["exceptionMessage"].stringValue
     let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+    self.createAlertController(title: title, message: message, controllerStyle: .alert, actionStyle: .default)
   }
 
 }
 
 extension ReportDetailVC {
-  private func writeReportDetailToModel(dataJsonFromNetworking data: JSON) {
+  fileprivate func writeReportDetailToModel(dataJsonFromNetworking data: JSON) {
     self.report = super.parseReportJSON(data)
     super.reflectAttributes(reflectingObject: super.parseReportJSON(data))
   }

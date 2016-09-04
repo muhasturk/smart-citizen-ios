@@ -29,12 +29,12 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   @IBOutlet weak var dashboardTableView: UITableView!
   var refreshControl: UIRefreshControl!
   
-  private var requestBaseURL: String {
+  fileprivate var requestBaseURL: String {
     return AppAPI.serviceDomain + AppAPI.dashboardServiceURL + String(AppReadOnlyUser.roleId)
   }
   
-  private var reportsDict: [String: [Report]] = [:]
-  private var firstNetworking = true
+  fileprivate var reportsDict: [String: [Report]] = [:]
+  fileprivate var firstNetworking = true
   
   // MARK: - LC
   override func viewDidLoad() {
@@ -43,17 +43,17 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     self.dashboardNetworking()
   }
   
-  private func configureTableView() {
+  fileprivate func configureTableView() {
     refreshControl = UIRefreshControl()
-    refreshControl.tintColor = UIColor.redColor()
+    refreshControl.tintColor = UIColor.red
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-    refreshControl.addTarget(self, action: #selector(self.dashboardNetworking), forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl.addTarget(self, action: #selector(self.dashboardNetworking), for: UIControlEvents.valueChanged)
     self.dashboardTableView.addSubview(refreshControl)
   }
   
   // MARK: - Table Delegate
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let index = self.reportsDict.startIndex.advancedBy(section)
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    let index = self.reportsDict.index(self.reportsDict.startIndex, offsetBy: section)
     let key: String = self.reportsDict.keys[index]
     guard let reports = self.reportsDict[key] else {
       print("warning there is no '\(key)' key inside dict \(#function)")
@@ -62,30 +62,30 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     return reports.count
   }
   
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    let index = self.reportsDict.startIndex.advancedBy(section)
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    let index = self.reportsDict.index(self.reportsDict.startIndex, offsetBy: section)
     let key = self.reportsDict.keys[index]
     return key
   }
   
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return self.reportsDict.keys.count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("dashboardCell", forIndexPath: indexPath)
-    let sectionIndex = self.reportsDict.startIndex.advancedBy(indexPath.section)
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell", for: indexPath)
+    let sectionIndex = self.reportsDict.index(self.reportsDict.startIndex, offsetBy: (indexPath as NSIndexPath).section)
     let key = self.reportsDict.keys[sectionIndex]
     guard let reportsArray = self.reportsDict[key] else {
       print("warning there is no '\(key)' key inside dict \(#function)")
       return UITableViewCell()
     }
-    cell.textLabel?.text = reportsArray[indexPath.row].title
+    cell.textLabel?.text = reportsArray[(indexPath as NSIndexPath).row].title
     return cell
   }
   
-  func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-    let index = self.reportsDict.startIndex.advancedBy(section)
+  func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    let index = self.reportsDict.index(self.reportsDict.startIndex, offsetBy: section)
     let key = self.reportsDict.keys[index]
     guard let reports = self.reportsDict[key] else {
       return nil
@@ -94,8 +94,8 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     return "\(key) kategorisinde \(count) rapor var."
   }
   
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    performSegueWithIdentifier(AppSegues.dashboardReportDetail, sender: indexPath)
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: AppSegues.dashboardReportDetail, sender: indexPath)
   }
   
   var selectedReportId: Int?
@@ -103,7 +103,7 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   
   
   // MARK: Write Model
-  private func writeDashboardDataToModel(dataJsonFromNetworking data: JSON) {
+  fileprivate func writeDashboardDataToModel(dataJsonFromNetworking data: JSON) {
     self.reportsDict = [:]
     for (reportTypeName, reportTypeJSON): (String, JSON) in data {
       self.reportsDict[reportTypeName] = []
@@ -130,15 +130,15 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     }
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == AppSegues.dashboardReportDetail {
-      if let detailVC = segue.destinationViewController as? ReportDetailVC {
-        if let indexPath = sender as? NSIndexPath {
-          let index = self.reportsDict.startIndex.advancedBy(indexPath.section)
+      if let detailVC = segue.destination as? ReportDetailVC {
+        if let indexPath = sender as? IndexPath {
+          let index = self.reportsDict.index(self.reportsDict.startIndex, offsetBy: (indexPath as NSIndexPath).section)
           let key = self.reportsDict.keys[index]
           if let reports = self.reportsDict[key] {
-            detailVC.reportId = reports[indexPath.row].id
-            detailVC.report = reports[indexPath.row]
+            detailVC.reportId = reports[(indexPath as NSIndexPath).row].id
+            detailVC.report = reports[(indexPath as NSIndexPath).row]
           }
         }
       }
@@ -153,14 +153,14 @@ extension DashboardVC {
     if firstNetworking {
       self.startIndicator()
     }
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
       .responseJSON { response in
         if self.firstNetworking {
           self.stopIndicator()
           self.firstNetworking = false
         }
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print(AppDebugMessages.serviceConnectionDashboardIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
@@ -175,27 +175,27 @@ extension DashboardVC {
             self.dashboardNetworkingUnsuccessful(exception)
           }
           
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+        case .failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .alert, actionStyle: .destructive)
           debugPrint(error)
         }
     }
   }
   
-  private func dashboardNetworkingSuccessful(data: JSON) {
+  fileprivate func dashboardNetworkingSuccessful(_ data: JSON) {
     self.writeDashboardDataToModel(dataJsonFromNetworking: data)
     self.dashboardTableView.reloadData()
-    if self.refreshControl.refreshing {
+    if self.refreshControl.isRefreshing {
       self.refreshControl.endRefreshing()
     }
     //self.debugReportsDict()
   }
   
-  private func dashboardNetworkingUnsuccessful(exception: JSON) {
+  fileprivate func dashboardNetworkingUnsuccessful(_ exception: JSON) {
     let c = exception["exceptionCode"].intValue
     let m = exception["exceptionMessage"].stringValue
     let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+    self.createAlertController(title: title, message: message, controllerStyle: .alert, actionStyle: .default)
   }
   
 }

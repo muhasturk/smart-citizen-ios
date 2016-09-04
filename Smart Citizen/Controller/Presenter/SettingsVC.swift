@@ -27,11 +27,11 @@ class SettingsVC: AppVC {
   
   @IBOutlet weak var versionLabel: LTMorphingLabel!
   
-  @IBAction func logoutApplication(sender: AnyObject) {
-    NSUserDefaults.standardUserDefaults().setBool(false, forKey: AppConstants.DefaultKeys.APP_ALIVE)
-    let encodedUser = NSKeyedArchiver.archivedDataWithRootObject(User())
-    NSUserDefaults.standardUserDefaults().setObject(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
-    performSegueWithIdentifier(AppSegues.doLogoutSegue, sender: sender)
+  @IBAction func logoutApplication(_ sender: AnyObject) {
+    UserDefaults.standard.set(false, forKey: AppConstants.DefaultKeys.APP_ALIVE)
+    let encodedUser = NSKeyedArchiver.archivedData(withRootObject: User())
+    UserDefaults.standard.set(encodedUser, forKey: AppConstants.DefaultKeys.APP_USER)
+    performSegue(withIdentifier: AppSegues.doLogoutSegue, sender: sender)
   }
   
   // MARK: - LC
@@ -39,19 +39,19 @@ class SettingsVC: AppVC {
     super.viewDidLoad()
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     self.setVersionLabelDynamically()
   }
   
   // MARK: - Version Label
   func setVersionLabelDynamically() -> Void {
-    guard let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist"),
+    guard let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
           let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject],
           let version = dict["CFBundleShortVersionString"] else {
             print("CFBundleShortVersionString is missing on info.plist!")
             return
     }
-    versionLabel.morphingEffect = .Evaporate
+    versionLabel.morphingEffect = .evaporate
     versionLabel.text = "Version: \(version as! String)"
   }
   

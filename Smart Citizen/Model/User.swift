@@ -33,21 +33,21 @@ final class User: NSObject, NSCoding {
   
   required convenience init?(coder aDecoder: NSCoder) {
     self.init()
-    self.id = aDecoder.decodeObjectForKey("id") as! Int
-    self.fullName = aDecoder.decodeObjectForKey("fullName") as! String
-    self.email = aDecoder.decodeObjectForKey("email") as! String
-    self.password = aDecoder.decodeObjectForKey("password") as! String
-    self.roleId = aDecoder.decodeObjectForKey("roleId") as! Int
-    self.roleName = aDecoder.decodeObjectForKey("roleName") as! String
+    self.id = aDecoder.decodeObject(forKey: "id") as! Int
+    self.fullName = aDecoder.decodeObject(forKey: "fullName") as! String
+    self.email = aDecoder.decodeObject(forKey: "email") as! String
+    self.password = aDecoder.decodeObject(forKey: "password") as! String
+    self.roleId = aDecoder.decodeObject(forKey: "roleId") as! Int
+    self.roleName = aDecoder.decodeObject(forKey: "roleName") as! String
   }
   
-  func encodeWithCoder(aCoder: NSCoder) {
-    aCoder.encodeObject(self.id, forKey: "id")
-    aCoder.encodeObject(self.fullName, forKey: "fullName")
-    aCoder.encodeObject(self.email, forKey: "email")
-    aCoder.encodeObject(self.password, forKey: "password")
-    aCoder.encodeObject(self.roleId, forKey: "roleId")
-    aCoder.encodeObject(self.roleName, forKey: "roleName")
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.id, forKey: "id")
+    aCoder.encode(self.fullName, forKey: "fullName")
+    aCoder.encode(self.email, forKey: "email")
+    aCoder.encode(self.password, forKey: "password")
+    aCoder.encode(self.roleId, forKey: "roleId")
+    aCoder.encode(self.roleName, forKey: "roleName")
   }
   
 }

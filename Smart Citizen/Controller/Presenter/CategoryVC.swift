@@ -26,7 +26,7 @@ class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var categoryTable: UITableView!
     
-  private var reportCategories = [
+  fileprivate var reportCategories = [
     [1, "Elektrik", "url"],
     [2, "Su", "url"],
     [3, "Kanalizasyon", "url"],
@@ -42,8 +42,8 @@ class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
   var selectedCategoryId: Int?
   var selectedCategoryTitle: String?
   
-  @IBAction func cancelSelection(sender: AnyObject) {
-    self.dismissViewControllerAnimated(true, completion: nil)
+  @IBAction func cancelSelection(_ sender: AnyObject) {
+    self.dismiss(animated: true, completion: nil)
   }
   
   // MARK: - LC
@@ -51,13 +51,13 @@ class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     super.viewDidLoad()
   }
 
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.reportCategories.count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if let cell = tableView.dequeueReusableCellWithIdentifier(AppCell.categoryCell, forIndexPath: indexPath) as? CategoryCell {
-      cell.textLabel?.text = self.reportCategories[indexPath.row][1] as? String
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: AppCell.categoryCell, for: indexPath) as? CategoryCell {
+      cell.textLabel?.text = self.reportCategories[(indexPath as NSIndexPath).row][1] as? String
       
       return cell
     }
@@ -67,16 +67,16 @@ class CategoryVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     }
   }
   
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return "Lütfen bir kategori seçiniz..."
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "saveReportCategory" {
       if let cell = sender as? UITableViewCell {
-        let indexPath = self.categoryTable.indexPathForCell(cell)
-        self.selectedCategoryId = self.reportCategories[indexPath!.row][0] as? Int
-        self.selectedCategoryTitle = self.reportCategories[indexPath!.row][1] as? String
+        let indexPath = self.categoryTable.indexPath(for: cell)
+        self.selectedCategoryId = self.reportCategories[(indexPath! as NSIndexPath).row][0] as? Int
+        self.selectedCategoryTitle = self.reportCategories[(indexPath! as NSIndexPath).row][1] as? String
       }
     }
   }

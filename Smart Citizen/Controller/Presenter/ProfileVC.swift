@@ -33,7 +33,7 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
   @IBOutlet weak var profileTable: UITableView!
   
   var firstNetworking = true
-  private var requestBaseURL: String {
+  fileprivate var requestBaseURL: String {
     return AppAPI.serviceDomain + AppAPI.profileServiceURL + String(AppReadOnlyUser.id)
   }
   
@@ -56,14 +56,14 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
     self.configureUI()
   }
 
-  override func viewWillAppear(animated: Bool) {
-    self.navigationController?.navigationBarHidden = true
+  override func viewWillAppear(_ animated: Bool) {
+    self.navigationController?.isNavigationBarHidden = true
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     if (self.navigationController?.topViewController != self) {
-      self.navigationController?.navigationBarHidden = false
+      self.navigationController?.isNavigationBarHidden = false
     }
   }
   
@@ -74,22 +74,22 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
   
   // MARK: Indicator
   func tableViewIndicator() {
-    appIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
+    appIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     appIndicator.center = self.profileTable.center
     appIndicator.hidesWhenStopped = true
-    appIndicator.activityIndicatorViewStyle = .Gray
+    appIndicator.activityIndicatorViewStyle = .gray
     self.view.addSubview(appIndicator)
     appIndicator.startAnimating()
   }
   
   // MARK: - Table
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     print("Row count: \(self.tableSegmentRow)")
     return self.tableSegmentRow
   }
 
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath)
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
     
 //    switch self.profileSegment.selectedSegmentIndex {
 //    case 0:
@@ -103,17 +103,17 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
 //    }
     
     let ra = self.reportsDict["\(self.profileSegment.selectedSegmentIndex)"]
-    cell.textLabel?.text = ra![indexPath.row].title
+    cell.textLabel?.text = ra![(indexPath as NSIndexPath).row].title
 
     return cell
   }
   
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    performSegueWithIdentifier(AppSegues.profileReportDetail, sender: indexPath)
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: AppSegues.profileReportDetail, sender: indexPath)
   }
   
   // MARK: Action
-  @IBAction func segmentAction(sender: AnyObject) {
+  @IBAction func segmentAction(_ sender: AnyObject) {
     print("Selected segment index: \(self.profileSegment.selectedSegmentIndex)")
     switch self.profileSegment.selectedSegmentIndex {
     case 0:
@@ -129,12 +129,12 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
   }
   
   // MARK: UI Bind
-  private func configureUI() {
+  fileprivate func configureUI() {
     self.configureTopView()
     self.configureTableView()
   }
   
-  private func configureTopView() {
+  fileprivate func configureTopView() {
     //    if AppReadOnlyUser.profileImageURL.isNotEmpty() {
     //      let url = NSURL(string: AppReadOnlyUser.profileImageURL)
     //        self.profileImageView.hnk_setImageFromURL(url)
@@ -143,20 +143,20 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
     self.role.text = AppReadOnlyUser.roleName
   }
   
-  private func configureTableView() {
+  fileprivate func configureTableView() {
     refreshControl = UIRefreshControl()
-    refreshControl.tintColor = UIColor.redColor()
+    refreshControl.tintColor = UIColor.red
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-    refreshControl.addTarget(self, action: #selector(self.profileNetworking), forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl.addTarget(self, action: #selector(self.profileNetworking), for: UIControlEvents.valueChanged)
     self.profileTable.addSubview(refreshControl)
   }
   
   // MARK: Segue
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == AppSegues.profileReportDetail {
-      if let detailVC = segue.destinationViewController as? ReportDetailVC {
-        if let path = sender as? NSIndexPath {
-          detailVC.reportId = self.tabReports[path.row].id
+      if let detailVC = segue.destination as? ReportDetailVC {
+        if let path = sender as? IndexPath {
+          detailVC.reportId = self.tabReports[(path as NSIndexPath).row].id
         }
       }
     }
@@ -171,7 +171,7 @@ extension ProfileVC {
       self.tableViewIndicator()
     }
     
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .JSON)
+    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
       .responseJSON { response in
         if self.firstNetworking {
           self.appIndicator.stopAnimating()
@@ -179,7 +179,7 @@ extension ProfileVC {
         }
         
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print(AppDebugMessages.serviceConnectionProfileIsOk, self.requestBaseURL, separator: "\n")
           let json = JSON(value)
           let serviceCode = json["serviceCode"].intValue
@@ -194,27 +194,27 @@ extension ProfileVC {
             self.profileNetworkingUnsuccessful(exception)
           }
           
-        case .Failure(let error):
-          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .Alert, actionStyle: .Destructive)
+        case .failure(let error):
+          self.createAlertController(title: AppAlertMessages.networkingFailuredTitle, message: AppAlertMessages.networkingFailuredMessage, controllerStyle: .alert, actionStyle: .destructive)
           debugPrint(error)
         }
     }
   }
   
-  private func profileNetworkingSuccessful(data: JSON) {
+  fileprivate func profileNetworkingSuccessful(_ data: JSON) {
     self.writeReportDataToModel(dataJsonFromNetworking: data)
     self.tabReports = self.reportsDict["0"]!
     self.profileTable.reloadData()
-    if self.refreshControl.refreshing {
+    if self.refreshControl.isRefreshing {
       self.refreshControl.endRefreshing()
     }
   }
   
-  private func profileNetworkingUnsuccessful(exception: JSON) {
+  fileprivate func profileNetworkingUnsuccessful(_ exception: JSON) {
     let c = exception["exceptionCode"].intValue
     let m = exception["exceptionMessage"].stringValue
     let (title, message) = self.getHandledExceptionDebug(exceptionCode: c, elseMessage: m)
-    self.createAlertController(title: title, message: message, controllerStyle: .Alert, actionStyle: .Default)
+    self.createAlertController(title: title, message: message, controllerStyle: .alert, actionStyle: .default)
   }
 
 }
@@ -222,7 +222,7 @@ extension ProfileVC {
 // MARK: - Model
 extension ProfileVC {
   
-  private func writeReportDataToModel(dataJsonFromNetworking data: JSON) {
+  fileprivate func writeReportDataToModel(dataJsonFromNetworking data: JSON) {
     self.reportsDict = [:]
     for (statusName, statusArrayJSON): (String, JSON) in data {
       self.reportsDict[statusName] = []
