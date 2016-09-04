@@ -1,16 +1,16 @@
 PODS:
-  - Alamofire (3.4.0)
-  - AWSCore (2.4.2)
-  - AWSS3 (2.4.2):
-    - AWSCore (= 2.4.2)
-  - Crashlytics (3.7.0):
+  - Alamofire (3.4.2)
+  - AWSCore (2.4.7)
+  - AWSS3 (2.4.7):
+    - AWSCore (= 2.4.7)
+  - Crashlytics (3.8.0):
     - Fabric (~> 1.6.3)
   - Dodo (2.2.1)
-  - Fabric (1.6.7)
+  - Fabric (1.6.8)
   - HanekeSwift (0.10.1)
-  - LTMorphingLabel (0.2.0)
-  - RAMAnimatedTabBarController (1.4.0)
-  - SwiftyGif (1.2.1)
+  - LTMorphingLabel (0.2.1)
+  - RAMAnimatedTabBarController (1.5.3)
+  - SwiftyGif (1.2.2)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -26,18 +26,18 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  AWSCore: 08cc4318682a518ad73e452900336ba54e823e03
-  AWSS3: 21bbd5d41eb175bf2fd371dc8af5339752f7f5b7
-  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
+  AWSCore: 9a729a3c0050a51ece3547d546c327acdac7838a
+  AWSS3: 0f3c8ed11e04cd78cf86ed396c06330ab142db7a
+  Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
   Dodo: 9c9a368ec6c869928429c691eecc926889882a2d
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
-  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
-  LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
-  RAMAnimatedTabBarController: 6f221d7dc647b4266c9e05618c84b5639f190297
-  SwiftyGif: ede36725afc8fe16273ffc3418818d51af681a95
+  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
+  HanekeSwift: '08e47d3d0f2899ec58e5d257beba0de619aca9e8'
+  LTMorphingLabel: 1858358ea38ef4d548e1f58b648b0d08ec3a62ed
+  RAMAnimatedTabBarController: 04b624cf8958a0032bf7fa9c0f2c515f59d30b9c
+  SwiftyGif: 5b93bed65ed6df90796dff11fea231d7119da460
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 PODFILE CHECKSUM: d1a10bbff71369109a3d94e0600e596ba52088a5
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1
