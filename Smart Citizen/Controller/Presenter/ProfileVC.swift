@@ -171,7 +171,7 @@ extension ProfileVC {
       self.tableViewIndicator()
     }
     
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
+    Alamofire.request(self.requestBaseURL, method: .get, encoding: JSONEncoding.default)
       .responseJSON { response in
         if self.firstNetworking {
           self.appIndicator.stopAnimating()

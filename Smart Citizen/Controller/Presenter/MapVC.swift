@@ -181,7 +181,7 @@ class MapVC: AppVC, MKMapViewDelegate {
 // MARK: - Networking
 extension MapVC {
   fileprivate func mapNetworking() {
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
+    Alamofire.request(self.requestBaseURL, method: .get, encoding: JSONEncoding.default)
       .responseJSON { response in
         
         switch response.result {

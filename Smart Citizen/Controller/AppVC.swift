@@ -141,9 +141,9 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   }
   
   func keyboardWillShow(_ sender: Notification) {
-    let userInfo: [NSObject : AnyObject] = (sender as NSNotification).userInfo!
-    let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue.size
-    let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue.size
+    let userInfo: [AnyHashable : Any?] = sender.userInfo!
+    let keyboardSize: CGSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgSizeValue
+    let offset: CGSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgSizeValue
     
     if keyboardSize.height == offset.height {
       if self.view.frame.origin.y == 0 {
@@ -159,8 +159,8 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   }
   
   func keyboardWillHide(_ sender: Notification) {
-    let userInfo: [NSObject : AnyObject] = (sender as NSNotification).userInfo!
-    let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+    let userInfo: [AnyHashable : Any?] = sender.userInfo!
+    let keyboardSize: CGSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgSizeValue
     self.view.frame.origin.y += keyboardSize.height
   }
   

@@ -146,7 +146,7 @@ extension ReportDetailVC {
       "type": type as AnyObject
     ]
     
-    Alamofire.request(.POST, url, parameters: params, encoding: ParameterEncoding.json)
+    Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default)
       .responseJSON { response in
         
         switch response.result {
@@ -173,7 +173,7 @@ extension ReportDetailVC {
   }
   
   fileprivate func reportDetailNetworking() {
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
+    Alamofire.request(self.requestBaseURL, method: .get, encoding: JSONEncoding.default)
       .responseJSON { response in
         
         switch response.result {

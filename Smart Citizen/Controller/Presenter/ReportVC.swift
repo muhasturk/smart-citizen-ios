@@ -148,8 +148,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     uploadRequest?.acl = .publicRead
     
     let transferManager = AWSS3TransferManager.default()
-    transferManager.upload(uploadRequest).continue { (task) -> AnyObject! in
-      
+    transferManager?.upload(uploadRequest).continue({ (task) -> Any? in
       if let error = task.error {
         print("Upload failed ❌ (\(error))")
       }
@@ -164,15 +163,16 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
         print("Seçtiğiniz resim AWS servise yüklenemedi.")
         return ""
       }
-      let uploadedImageURL = "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest.key!)"
+      let uploadedImageURL = "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest?.key!)"
       print(uploadedImageURL)
       let params = self.configureReportNetworkingParameters(imageUrl: uploadedImageURL)
-      self.reportNetworking(networkingParameters: params)
+      self.reportNetworking(networkingParameters: params as [String : AnyObject])
       return ""
-    }
+    })
+
   }
 
-  fileprivate func configureReportNetworkingParameters(imageUrl url: String) -> [String: AnyObject] {
+  fileprivate func configureReportNetworkingParameters(imageUrl url: String) -> [String: Any] {
     var latitude: Double?
     var longitude: Double?
     
@@ -181,11 +181,11 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
       longitude = location.longitude
     }
     
-    let params: [String: AnyObject] = [
-      "email": AppReadOnlyUser.email as AnyObject,
-      "password": AppReadOnlyUser.password as AnyObject,
-      "latitude": latitude as AnyObject? ?? 40.984312 as AnyObject,
-      "longitude": longitude as AnyObject? ?? 28.753676,
+    let params: [String: Any] = [
+      "email": AppReadOnlyUser.email as Any,
+      "password": AppReadOnlyUser.password as Any,
+      "latitude": latitude ?? 40.984312,
+      "longitude": longitude ?? 28.753676,
       "title": self.titleField.text!,
       "description": self.descriptionField.text!,
       "categoryId": categoryId!,
@@ -300,7 +300,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
 extension ReportVC {
   
   fileprivate func reportNetworking(networkingParameters params: [String: AnyObject]) {
-    Alamofire.request(.POST, self.requestBaseURL, parameters: params, encoding: .json)
+    Alamofire.request(self.requestBaseURL, method: .post, parameters: params, encoding: JSONEncoding.default)
       .responseJSON { response in
         self.stopIndicator()
         switch response.result {

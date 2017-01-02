@@ -153,7 +153,7 @@ extension DashboardVC {
     if firstNetworking {
       self.startIndicator()
     }
-    Alamofire.request(.GET, self.requestBaseURL, encoding: .json)
+    Alamofire.request(self.requestBaseURL, method: .get, parameters: nil)
       .responseJSON { response in
         if self.firstNetworking {
           self.stopIndicator()

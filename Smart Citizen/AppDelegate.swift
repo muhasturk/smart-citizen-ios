@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+  private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
     
     self.configureThirdParty()
     self.decideSceneToOpen()
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     print("Couldn’t register for remote notification: \(error)")
   }
   
-  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : Any]) {
+  private func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : Any]) {
     print(userInfo)
   }
 

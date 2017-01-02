@@ -37,7 +37,7 @@ extension UIImageView {
         let data = data , error == nil,
         let imageData = UIImage(data: data)
         else {
-          print(AppDebugMessages.downloadImageFromURLFailed + String(url));
+          print(AppDebugMessages.downloadImageFromURLFailed + String(describing: url));
           return
       }
       DispatchQueue.main.async { () -> Void in

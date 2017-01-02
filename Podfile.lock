@@ -1,43 +1,50 @@
 PODS:
-  - Alamofire (3.4.2)
-  - AWSCore (2.4.7)
-  - AWSS3 (2.4.7):
-    - AWSCore (= 2.4.7)
-  - Crashlytics (3.8.0):
+  - Alamofire (4.2.0)
+  - AWSCore (2.4.16)
+  - AWSS3 (2.4.16):
+    - AWSCore (= 2.4.16)
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
-  - Dodo (2.2.1)
-  - Fabric (1.6.8)
+  - Dodo (7.0.0)
+  - Fabric (1.6.11)
   - HanekeSwift (0.10.1)
-  - LTMorphingLabel (0.2.1)
-  - RAMAnimatedTabBarController (1.5.3)
-  - SwiftyGif (1.2.2)
-  - SwiftyJSON (2.3.2)
+  - RAMAnimatedTabBarController (2.1.1)
+  - SwiftyGif (3.0.0)
+  - SwiftyJSON (3.1.3)
 
 DEPENDENCIES:
   - Alamofire
   - AWSS3
   - Crashlytics
-  - Dodo (~> 2.2)
+  - Dodo
   - Fabric
-  - HanekeSwift
-  - LTMorphingLabel
+  - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`, branch `feature/swift-3`)
   - RAMAnimatedTabBarController
   - SwiftyGif
   - SwiftyJSON
 
+EXTERNAL SOURCES:
+  HanekeSwift:
+    :branch: feature/swift-3
+    :git: https://github.com/Haneke/HanekeSwift.git
+
+CHECKOUT OPTIONS:
+  HanekeSwift:
+    :commit: 1157a124ec699f4ad926cb054f1d0bfce88ae7a9
+    :git: https://github.com/Haneke/HanekeSwift.git
+
 SPEC CHECKSUMS:
-  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
-  AWSCore: 9a729a3c0050a51ece3547d546c327acdac7838a
-  AWSS3: 0f3c8ed11e04cd78cf86ed396c06330ab142db7a
-  Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
-  Dodo: 9c9a368ec6c869928429c691eecc926889882a2d
-  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  HanekeSwift: '08e47d3d0f2899ec58e5d257beba0de619aca9e8'
-  LTMorphingLabel: 1858358ea38ef4d548e1f58b648b0d08ec3a62ed
-  RAMAnimatedTabBarController: 04b624cf8958a0032bf7fa9c0f2c515f59d30b9c
-  SwiftyGif: 5b93bed65ed6df90796dff11fea231d7119da460
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  AWSCore: 7c3c129991e6387bcbad7132bc3661e7135754db
+  AWSS3: fef6aa8f8f625df8f67f1b6574fe761f3a4ddc99
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Dodo: c66cf87f905dfde6d2ff660835975694927cb694
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  HanekeSwift: 4113367892828e7700d24a384027de6ebc79aad1
+  RAMAnimatedTabBarController: 128e0d71dc802766de575a3c59c6fdcc8e2f921b
+  SwiftyGif: d6b4d63de2a2a5134d8b54ba5719837319d77ef0
+  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: d1a10bbff71369109a3d94e0600e596ba52088a5
+PODFILE CHECKSUM: dbbe7b64b971366f5072c9b20ff967ce8f89170c
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

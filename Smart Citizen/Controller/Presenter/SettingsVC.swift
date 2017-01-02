@@ -21,11 +21,10 @@
  */
 
 import UIKit
-import LTMorphingLabel
 
 class SettingsVC: AppVC {
   
-  @IBOutlet weak var versionLabel: LTMorphingLabel!
+  @IBOutlet weak var versionLabel: UITextField!
   
   @IBAction func logoutApplication(_ sender: AnyObject) {
     UserDefaults.standard.set(false, forKey: AppConstants.DefaultKeys.APP_ALIVE)
@@ -51,7 +50,6 @@ class SettingsVC: AppVC {
             print("CFBundleShortVersionString is missing on info.plist!")
             return
     }
-    versionLabel.morphingEffect = .evaporate
     versionLabel.text = "Version: \(version as! String)"
   }
   
