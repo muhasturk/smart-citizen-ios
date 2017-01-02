@@ -27,7 +27,7 @@ pod install
 ```
 
 ### ⚙ Requirements
-* OSX 10.11.5+
+* macOS 10.12+
 * Xcode 8.2+
 * CocoaPods 1.1+
 
