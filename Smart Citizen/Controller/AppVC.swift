@@ -52,7 +52,8 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     appBlurEffectView = UIVisualEffectView(effect: blurEffect)
     appBlurEffectView.frame = self.view.bounds
     appBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    self.view.addSubview(appBlurEffectView)
+//    self.view.addSubview(appBlurEffectView)
+    UIApplication.shared.keyWindow!.rootViewController!.view.addSubview(appBlurEffectView)
   }
   
   // MARK: - Start Indicator
@@ -62,7 +63,8 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     appIndicator.center = self.view.center
     appIndicator.hidesWhenStopped = true
     appIndicator.activityIndicatorViewStyle = .gray
-    self.view.addSubview(appIndicator)
+//    self.view.addSubview(appIndicator)
+    UIApplication.shared.keyWindow!.rootViewController!.view.addSubview(appIndicator)
     appIndicator.startAnimating()
     //UIApplication.sharedApplication().beginIgnoringInteractionEvents()
   }
@@ -140,29 +142,25 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
   }
   
-  func keyboardWillShow(_ sender: Notification) {
-    let userInfo: [AnyHashable : Any?] = sender.userInfo!
-    let keyboardSize: CGSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgSizeValue
-    let offset: CGSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgSizeValue
+  func keyboardWillShow(notification: NSNotification) {
     
-    if keyboardSize.height == offset.height {
-      if self.view.frame.origin.y == 0 {
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-          self.view.frame.origin.y -= keyboardSize.height
-        })
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+      if self.view.frame.origin.y == 0{
+        self.view.frame.origin.y -= keyboardSize.height
       }
-    } else {
-      UIView.animate(withDuration: 0.1, animations: { () -> Void in
-        self.view.frame.origin.y += keyboardSize.height - offset.height
-      })
+    }
+    
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+      if self.view.frame.origin.y != 0{
+        self.view.frame.origin.y += keyboardSize.height
+      }
     }
   }
   
-  func keyboardWillHide(_ sender: Notification) {
-    let userInfo: [AnyHashable : Any?] = sender.userInfo!
-    let keyboardSize: CGSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgSizeValue
-    self.view.frame.origin.y += keyboardSize.height
-  }
+
   
 }
 

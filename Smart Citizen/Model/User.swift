@@ -33,11 +33,11 @@ final class User: NSObject, NSCoding {
   
   required convenience init?(coder aDecoder: NSCoder) {
     self.init()
-    self.id = aDecoder.decodeObject(forKey: "id") as! Int
+    self.id = aDecoder.decodeInteger(forKey: "id")
     self.fullName = aDecoder.decodeObject(forKey: "fullName") as! String
     self.email = aDecoder.decodeObject(forKey: "email") as! String
     self.password = aDecoder.decodeObject(forKey: "password") as! String
-    self.roleId = aDecoder.decodeObject(forKey: "roleId") as! Int
+    self.roleId = aDecoder.decodeInteger(forKey: "roleId")
     self.roleName = aDecoder.decodeObject(forKey: "roleName") as! String
   }
   

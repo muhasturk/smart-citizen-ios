@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.2.0)
+  - Alamofire (4.3.0)
   - AWSCore (2.4.16)
   - AWSS3 (2.4.16):
     - AWSCore (= 2.4.16)
@@ -10,7 +10,7 @@ PODS:
   - HanekeSwift (0.10.1)
   - RAMAnimatedTabBarController (2.1.1)
   - SwiftyGif (3.0.0)
-  - SwiftyJSON (3.1.3)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -34,7 +34,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Haneke/HanekeSwift.git
 
 SPEC CHECKSUMS:
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AWSCore: 7c3c129991e6387bcbad7132bc3661e7135754db
   AWSS3: fef6aa8f8f625df8f67f1b6574fe761f3a4ddc99
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
@@ -43,7 +43,7 @@ SPEC CHECKSUMS:
   HanekeSwift: 4113367892828e7700d24a384027de6ebc79aad1
   RAMAnimatedTabBarController: 128e0d71dc802766de575a3c59c6fdcc8e2f921b
   SwiftyGif: d6b4d63de2a2a5134d8b54ba5719837319d77ef0
-  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
 PODFILE CHECKSUM: dbbe7b64b971366f5072c9b20ff967ce8f89170c
 

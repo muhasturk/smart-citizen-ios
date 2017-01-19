@@ -13,7 +13,6 @@
 		12471D461BD1810B00B86052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12471D441BD1810B00B86052 /* LaunchScreen.storyboard */; };
 		1252C08F1CC7861600264853 /* Contants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252C08E1CC7861600264853 /* Contants.swift */; };
 		1266379F1CE15DD500E0EE72 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1266379E1CE15DD500E0EE72 /* LICENSE */; };
-		126637A11CE15DDF00E0EE72 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126637A01CE15DDF00E0EE72 /* Package.swift */; };
 		127B2B291CE33ABF00515465 /* ReportDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127B2B281CE33ABF00515465 /* ReportDetailVC.swift */; };
 		127B2B2B1CE3670400515465 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127B2B2A1CE3670400515465 /* Annotation.swift */; };
 		127FB0CF1CF42E9400B6E0CC /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FB0CE1CF42E9400B6E0CC /* CategoryCell.swift */; };
@@ -52,7 +51,6 @@
 		12471D471BD1810B00B86052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Citizen/Info.plist"; sourceTree = "<group>"; };
 		1252C08E1CC7861600264853 /* Contants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contants.swift; path = Core/Contants.swift; sourceTree = "<group>"; };
 		1266379E1CE15DD500E0EE72 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		126637A01CE15DDF00E0EE72 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		127B2B281CE33ABF00515465 /* ReportDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportDetailVC.swift; path = Controller/Presenter/ReportDetailVC.swift; sourceTree = "<group>"; };
 		127B2B2A1CE3670400515465 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Annotation.swift; path = Model/Annotation.swift; sourceTree = "<group>"; };
 		127FB0CE1CF42E9400B6E0CC /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = View/CategoryCell.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				12D0EEF81BD6EB0B006A2801 /* .gitignore */,
 				12471D471BD1810B00B86052 /* Info.plist */,
 				1266379E1CE15DD500E0EE72 /* LICENSE */,
-				126637A01CE15DDF00E0EE72 /* Package.swift */,
 				12D0EEFC1BD6EBA6006A2801 /* README.md */,
 				12DB29CC1CBD635100EA154A /* Garden.playground */,
 			);
@@ -284,7 +281,7 @@
 				TargetAttributes = {
 					12471D371BD1810A00B86052 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = A77EMFAA87;
+						DevelopmentTeam = 52RY82NS5L;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -399,7 +396,6 @@
 				12B2AD811CD927FE0096B8BD /* IntroVC.swift in Sources */,
 				12B2AD7D1CD903100096B8BD /* ReportVC.swift in Sources */,
 				127B2B291CE33ABF00515465 /* ReportDetailVC.swift in Sources */,
-				126637A11CE15DDF00E0EE72 /* Package.swift in Sources */,
 				12471D3C1BD1810A00B86052 /* AppDelegate.swift in Sources */,
 				12A2807C1CC28ED200E38EBD /* AlertMessagesFile.swift in Sources */,
 				12B2AD7F1CD903100096B8BD /* SignUpVC.swift in Sources */,
@@ -534,9 +530,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 52RY82NS5L;
 				INFOPLIST_FILE = "Smart Citizen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mustafahasturk.Smart-Citizen";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mustafahasturk.smartcitizen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -549,9 +546,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 52RY82NS5L;
 				INFOPLIST_FILE = "Smart Citizen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mustafahasturk.Smart-Citizen";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mustafahasturk.smartcitizen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

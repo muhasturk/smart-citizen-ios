@@ -61,7 +61,7 @@ class SignUpVC: AppVC {
         "password": password,
         "deviceToken": UserDefaults.standard.string(forKey: AppConstants.DefaultKeys.DEVICE_TOKEN) ?? "5005"
       ]
-      self.signUpNetworking(networkingParameters: parameters as [String : AnyObject])
+      self.signUpNetworking(networkingParameters: parameters as [String : Any])
     }
     
   }
@@ -112,10 +112,10 @@ class SignUpVC: AppVC {
 
 // MARK: - Networking
 extension SignUpVC {
-  fileprivate func signUpNetworking(networkingParameters params: [String: AnyObject]) {
+  fileprivate func signUpNetworking(networkingParameters params: [String: Any]) {
     self.startIndicator()
     
-    Alamofire.request(self.requestBaseURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
+    Alamofire.request(self.requestBaseURL, method: .post, parameters: params, encoding: JSONEncoding.default)
       .responseJSON { response in
         self.stopIndicator()
         

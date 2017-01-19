@@ -102,7 +102,7 @@ extension LoginVC {
   
   fileprivate func loginNetworking(networkingParameters params: [String: AnyObject]) {
     self.startIndicator()
-    Alamofire.request(self.requestBaseURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
+    Alamofire.request(self.requestBaseURL, method: .post, parameters: params, encoding: JSONEncoding.default)
       .responseJSON { response in
         self.stopIndicator()
         
@@ -129,7 +129,7 @@ extension LoginVC {
     }
   }
   
-  fileprivate func loginNetworkingSuccessful(_ data: JSON) {
+  private func loginNetworkingSuccessful(_ data: JSON) {
     self.writeUserDataToModel(dataJsonFromNetworking: data)
     self.performSegue(withIdentifier: AppSegues.doLoginSegue, sender: nil)
   }

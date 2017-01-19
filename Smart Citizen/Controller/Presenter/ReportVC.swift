@@ -199,10 +199,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - Image Picker
   fileprivate func configureImagePickerController() {
     self.imagePicker.delegate = self
-    //    self.picker.allowsEditing = true
-    //    if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera) {
-    //      self.picker.mediaTypes = mediaTypes
-    //    }
   }
   
   @IBAction func chooseMediaAction(_ sender: AnyObject) {
@@ -233,7 +229,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   fileprivate func pickFromCamera() {
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
       self.imagePicker.sourceType = .camera
-      self.imagePicker.modalPresentationStyle = .currentContext
+      self.imagePicker.modalPresentationStyle = .fullScreen
       self.present(self.imagePicker, animated: true, completion: nil)
     }
     else {
@@ -243,8 +239,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   }
   
   fileprivate func pickFromPhotos() {
-    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
       self.imagePicker.sourceType = .photoLibrary
+      self.imagePicker.modalPresentationStyle = .fullScreen
       self.present(self.imagePicker, animated: true, completion: nil)
     }
     else {
@@ -256,6 +253,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   fileprivate func pickFromMoments() {
     if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
       self.imagePicker.sourceType = .savedPhotosAlbum
+      self.imagePicker.modalPresentationStyle = .fullScreen
       self.present(self.imagePicker, animated: true, completion: nil)
     }
     else {
@@ -267,7 +265,6 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   // MARK: - Image Picker Delegate
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-      UIImageWriteToSavedPhotosAlbum(pickedImage, nil, nil, nil)
       self.choosenImage.image = pickedImage
       self.imagePicked = true
     }
