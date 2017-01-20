@@ -136,7 +136,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     let imageURL: URL = temporaryDirectoryURL.appendingPathComponent("pickedImage.png")
     let pathString = imageURL.absoluteString // has file:// prefix
     let onlyPathString = pathString.trimmingCharacters(in: CharacterSet(charactersIn: "file://"))
-    //let imageData: NSData = UIImagePNGRepresentation(pickedImage)!
+    
     let imageData: Data = UIImageJPEGRepresentation(pickedImage, 0.7)!
     try? imageData.write(to: URL(fileURLWithPath: onlyPathString), options: [.atomic]) // change onlypathstring
     
@@ -163,7 +163,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
         print("Seçtiğiniz resim AWS servise yüklenemedi.")
         return ""
       }
-      let uploadedImageURL = "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest?.key!)"
+      let uploadedImageURL = "https://s3-us-west-2.amazonaws.com/\(self.AWSS3BucketName)/\(uploadRequest!.key!)"
       print(uploadedImageURL)
       let params = self.configureReportNetworkingParameters(imageUrl: uploadedImageURL)
       self.reportNetworking(networkingParameters: params as [String : AnyObject])

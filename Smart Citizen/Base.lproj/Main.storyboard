@@ -290,10 +290,10 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dashboardCell" id="vkR-No-uzr">
-                                        <rect key="frame" x="0.0" y="55.5" width="608" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="391" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vkR-No-uzr" id="imX-W0-mod">
-                                            <rect key="frame" x="0.0" y="0.0" width="608" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="391" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -594,10 +594,10 @@
                                 <color key="backgroundColor" red="0.84313725490196079" green="0.96862745098039216" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categoryCell" id="WyZ-dT-uAH" customClass="CategoryCell" customModule="Smart_Citizen" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="383" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WyZ-dT-uAH" id="CX2-xU-UAL">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1070,7 +1070,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYu-d0-pkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2436.5" y="1109.5"/>
+            <point key="canvasLocation" x="-2631" y="1109"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="dx4-Zg-1AI">
