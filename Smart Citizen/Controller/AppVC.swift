@@ -42,7 +42,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   // MARK: - LC
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.dodo.topLayoutGuide = topLayoutGuide
+    view.dodo.topAnchor = view.safeAreaLayoutGuide.topAnchor
     view.dodo.style.bar.hideOnTap = true
   }
   
@@ -62,7 +62,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     appIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     appIndicator.center = self.view.center
     appIndicator.hidesWhenStopped = true
-    appIndicator.activityIndicatorViewStyle = .gray
+    appIndicator.style = .gray
 //    self.view.addSubview(appIndicator)
     UIApplication.shared.keyWindow!.rootViewController!.view.addSubview(appIndicator)
     appIndicator.startAnimating()
@@ -77,7 +77,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   }
   
   // MARK: - Create Alert Controller
-  func createAlertController(title: String, message: String, controllerStyle: UIAlertControllerStyle, actionStyle: UIAlertActionStyle) -> Void {
+  func createAlertController(title: String, message: String, controllerStyle: UIAlertController.Style, actionStyle: UIAlertAction.Style) -> Void {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: controllerStyle)
     
     let okAction = UIAlertAction(title: "Tamam", style: actionStyle, handler: nil)
@@ -125,7 +125,7 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   func reflectAttributes(reflectingObject o: Any) {
     let m = Mirror(reflecting: o)
     for (index, attribute) in m.children.enumerated() {
-      if let property = attribute.label as String! {
+        if let property = attribute.label {
         print("\(index) - \(property) - \(attribute.value)")
       }
     }
@@ -133,18 +133,18 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
   
   // MARK: - Keyboard Observer
   func addKeyboardObserver() {
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
   }
   
   func removeKeyboardObserver() {
-    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
-    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
   }
   
-  func keyboardWillShow(notification: NSNotification) {
+  @objc func keyboardWillShow(notification: NSNotification) {
     
-    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
       if self.view.frame.origin.y == 0{
         self.view.frame.origin.y -= keyboardSize.height
       }
@@ -152,8 +152,8 @@ class AppVC: UIViewController, CLLocationManagerDelegate {
     
   }
   
-  func keyboardWillHide(notification: NSNotification) {
-    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+  @objc func keyboardWillHide(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
       if self.view.frame.origin.y != 0{
         self.view.frame.origin.y += keyboardSize.height
       }

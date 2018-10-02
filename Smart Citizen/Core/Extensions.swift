@@ -25,7 +25,7 @@ import SwiftyJSON
 
 // MARK: UIImageView
 extension UIImageView {
-  func downloadedFrom(imageURL link:String, contentMode mode: UIViewContentMode = .scaleAspectFill) {
+  func downloadedFrom(imageURL link:String, contentMode mode: UIView.ContentMode = .scaleAspectFill) {
     guard
       let url = URL(string: link)
       else {return}

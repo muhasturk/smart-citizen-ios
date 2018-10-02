@@ -77,7 +77,7 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
     appIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     appIndicator.center = self.profileTable.center
     appIndicator.hidesWhenStopped = true
-    appIndicator.activityIndicatorViewStyle = .gray
+    appIndicator.style = .gray
     self.view.addSubview(appIndicator)
     appIndicator.startAnimating()
   }
@@ -147,7 +147,7 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
     refreshControl = UIRefreshControl()
     refreshControl.tintColor = UIColor.red
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-    refreshControl.addTarget(self, action: #selector(self.profileNetworking), for: UIControlEvents.valueChanged)
+    refreshControl.addTarget(self, action: #selector(self.profileNetworking), for: UIControl.Event.valueChanged)
     self.profileTable.addSubview(refreshControl)
   }
   
@@ -166,7 +166,7 @@ class ProfileVC: AppVC, UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Networking
 extension ProfileVC {
-  func profileNetworking() {
+  @objc func profileNetworking() {
     if firstNetworking {
       self.tableViewIndicator()
     }

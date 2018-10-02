@@ -1,16 +1,14 @@
 PODS:
-  - Alamofire (4.3.0)
-  - AWSCore (2.4.16)
-  - AWSS3 (2.4.16):
-    - AWSCore (= 2.4.16)
-  - Crashlytics (3.8.3):
-    - Fabric (~> 1.6.3)
-  - Dodo (7.0.0)
-  - Fabric (1.6.11)
+  - Alamofire (4.7.3)
+  - AWSCore (2.6.31)
+  - AWSS3 (2.6.31):
+    - AWSCore (= 2.6.31)
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
+  - Dodo (12.0.0)
+  - Fabric (1.7.12)
   - HanekeSwift (0.10.1)
-  - RAMAnimatedTabBarController (2.1.1)
-  - SwiftyGif (3.0.0)
-  - SwiftyJSON (3.1.4)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -19,9 +17,17 @@ DEPENDENCIES:
   - Dodo
   - Fabric
   - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`, branch `feature/swift-3`)
-  - RAMAnimatedTabBarController
-  - SwiftyGif
   - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AWSCore
+    - AWSS3
+    - Crashlytics
+    - Dodo
+    - Fabric
+    - SwiftyJSON
 
 EXTERNAL SOURCES:
   HanekeSwift:
@@ -30,21 +36,19 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HanekeSwift:
-    :commit: 1157a124ec699f4ad926cb054f1d0bfce88ae7a9
+    :commit: 2f6d87f1f725d204d85cb34492e8c399cd5a200f
     :git: https://github.com/Haneke/HanekeSwift.git
 
 SPEC CHECKSUMS:
-  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
-  AWSCore: 7c3c129991e6387bcbad7132bc3661e7135754db
-  AWSS3: fef6aa8f8f625df8f67f1b6574fe761f3a4ddc99
-  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
-  Dodo: c66cf87f905dfde6d2ff660835975694927cb694
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AWSCore: c7abfb87ef802d1c4b5dd56db64ac8b4a7823ef0
+  AWSS3: 5647e89f9ac8e7033f3e5507dbb3eccc37f82b75
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
+  Dodo: c2a3e49a6b5fcba6c17d4127e72de4decbdd9534
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   HanekeSwift: 4113367892828e7700d24a384027de6ebc79aad1
-  RAMAnimatedTabBarController: 128e0d71dc802766de575a3c59c6fdcc8e2f921b
-  SwiftyGif: d6b4d63de2a2a5134d8b54ba5719837319d77ef0
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: dbbe7b64b971366f5072c9b20ff967ce8f89170c
+PODFILE CHECKSUM: a9c6465934277237540e9f0c3759157e1949d7e5
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.3

@@ -21,7 +21,6 @@
  */
 
 import UIKit
-import SwiftyGif
 
 class IntroVC: AppVC {
   
@@ -34,9 +33,9 @@ class IntroVC: AppVC {
   }
   
   fileprivate func configureUI() {
-    let gifManager = SwiftyGifManager(memoryLimit:20)
-    let gifImage = UIImage(gifName: "intro")
-    self.backgroundImage.setGifImage(gifImage, manager: gifManager, loopCount: -1)
+//    let gifManager = SwiftyGifManager(memoryLimit:20)
+//    let gifImage = UIImage(gifName: "intro")
+//    self.backgroundImage.setGifImage(gifImage, manager: gifManager, loopCount: -1)
   }
   
   // FIX: https://github.com/muhasturk/smart-citizen-ios/issues/4

@@ -47,7 +47,7 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
     refreshControl = UIRefreshControl()
     refreshControl.tintColor = UIColor.red
     refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-    refreshControl.addTarget(self, action: #selector(self.dashboardNetworking), for: UIControlEvents.valueChanged)
+    refreshControl.addTarget(self, action: #selector(self.dashboardNetworking), for: UIControl.Event.valueChanged)
     self.dashboardTableView.addSubview(refreshControl)
   }
   
@@ -149,7 +149,7 @@ class DashboardVC: AppVC, UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - Networkng
 extension DashboardVC {
-  func dashboardNetworking() {
+  @objc func dashboardNetworking() {
     if firstNetworking {
       self.startIndicator()
     }

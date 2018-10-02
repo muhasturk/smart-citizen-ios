@@ -63,10 +63,10 @@ class ReportDetailVC: AppVC {
   fileprivate func configureUIForRoleId() {
     if AppReadOnlyUser.roleId != 0 {
       let positiveAuthorizedImage = UIImage(named: "workingAuthorized")
-      self.positiveButton.setImage(positiveAuthorizedImage, for: UIControlState())
+      self.positiveButton.setImage(positiveAuthorizedImage, for: UIControl.State())
       
       let completedAuthorizedImage = UIImage(named: "completedAuthorized")
-      self.negativeButton.setImage(completedAuthorizedImage, for: UIControlState())
+      self.negativeButton.setImage(completedAuthorizedImage, for: UIControl.State())
     }
   }
   

@@ -141,9 +141,9 @@ class MapVC: AppVC, MKMapViewDelegate {
     self.goReportDetailView()
   }
   
-  func goReportDetailView() {
+  @objc func goReportDetailView() {
     self.performSegue(withIdentifier: AppSegues.mapReportDetail, sender: nil)
-    print("annotation selected id: \(self.selectedReportId)")
+    print("annotation selected id: \(String(describing: self.selectedReportId))")
   }
   
   

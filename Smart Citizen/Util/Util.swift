@@ -23,7 +23,7 @@
 import UIKit
 
 class AppUtil {
-  func getCustomBorderLayer(_ object: AnyObject, width: CGFloat, color: CGColor) -> CALayer {
+  func getCustomBorderLayer(_ object: UIView, width: CGFloat, color: CGColor) -> CALayer {
     let layer = CALayer()
     layer.borderColor = color
     layer.borderWidth = width

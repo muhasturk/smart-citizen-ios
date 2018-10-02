@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     self.configureThirdParty()
     self.decideSceneToOpen()
     self.prepareDeviceToken()
@@ -54,12 +54,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   fileprivate func configureAWS() {    
     let CognitoPoolID = "us-east-1:d91b018b-71d6-4831-9b05-6ca53bb92725"
     
-    let Region = AWSRegionType.usEast1 // Cognito Region
+    let Region = AWSRegionType.USEast1 // Cognito Region
     
     let credentialsProvider = AWSCognitoCredentialsProvider(regionType: Region,
                                                             identityPoolId: CognitoPoolID)
     // S3 Region
-    let configuration = AWSServiceConfiguration(region: AWSRegionType.usWest2, credentialsProvider: credentialsProvider)
+    let configuration = AWSServiceConfiguration(region: AWSRegionType.USWest2, credentialsProvider: credentialsProvider)
     
     AWSServiceManager.default().defaultServiceConfiguration = configuration
   }

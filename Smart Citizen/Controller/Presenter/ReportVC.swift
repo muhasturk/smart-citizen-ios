@@ -38,7 +38,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
 
   var categoryTitle: String? {
     didSet {
-      self.categoryButton.setTitle(categoryTitle, for: UIControlState())
+      self.categoryButton.setTitle(categoryTitle, for: UIControl.State())
     }
   }
   
@@ -47,10 +47,10 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   fileprivate var imagePicked = false {
     willSet {
       if newValue {
-        self.mediaButton.setTitle("Resmi Değiştir", for: UIControlState())
+        self.mediaButton.setTitle("Resmi Değiştir", for: UIControl.State())
       }
       else {
-        self.mediaButton.setTitle("Resim Ekle", for: UIControlState())
+        self.mediaButton.setTitle("Resim Ekle", for: UIControl.State())
       }
     }
   }
@@ -64,7 +64,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.dodo.style.bar.hideOnTap = true
-    self.view.dodo.topLayoutGuide = topLayoutGuide
+    self.view.dodo.topAnchor = view.safeAreaLayoutGuide.topAnchor
 
     super.locationManager.startUpdatingLocation()
     self.configureImagePickerController()
@@ -124,7 +124,7 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     self.categorySelected = false
     self.titleField.text = ""
     self.descriptionField.text = ""
-    self.categoryButton.setTitle("Kategori", for: UIControlState())
+    self.categoryButton.setTitle("Kategori", for: UIControl.State())
   }
   
   // MARK: - Networking
@@ -137,8 +137,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     let pathString = imageURL.absoluteString // has file:// prefix
     let onlyPathString = pathString.trimmingCharacters(in: CharacterSet(charactersIn: "file://"))
     
-    let imageData: Data = UIImageJPEGRepresentation(pickedImage, 0.7)!
+    let imageData: Data = pickedImage.jpegData(compressionQuality: 0.7)!
     try? imageData.write(to: URL(fileURLWithPath: onlyPathString), options: [.atomic]) // change onlypathstring
+    
     
     let uploadRequest = AWSS3TransferManagerUploadRequest()
     uploadRequest?.body = imageURL
@@ -147,14 +148,9 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
     uploadRequest?.contentType = "image/" + ext
     uploadRequest?.acl = .publicRead
     
-    let transferManager = AWSS3TransferManager.default()
-    transferManager?.upload(uploadRequest).continue({ (task) -> Any? in
+    AWSS3TransferManager.init().upload(uploadRequest!).continueWith(block: { (task) -> Any? in
       if let error = task.error {
         print("Upload failed ❌ (\(error))")
-      }
-      
-      if let exception = task.exception {
-        print("Upload failed ❌ (\(exception))")
       }
       
       guard task.result != nil else {
@@ -263,8 +259,11 @@ class ReportVC: AppVC, UINavigationControllerDelegate, UIImagePickerControllerDe
   }
   
   // MARK: - Image Picker Delegate
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+    if let pickedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
       self.choosenImage.image = pickedImage
       self.imagePicked = true
     }
@@ -333,4 +332,14 @@ extension ReportVC {
     self.view.dodo.error("Rapor yüklemesi başarısız oldu.")
   }
   
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }
