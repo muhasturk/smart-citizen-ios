@@ -3,52 +3,30 @@ PODS:
   - AWSCore (2.6.31)
   - AWSS3 (2.6.31):
     - AWSCore (= 2.6.31)
-  - Crashlytics (3.10.8):
-    - Fabric (~> 1.7.12)
   - Dodo (12.0.0)
-  - Fabric (1.7.12)
-  - HanekeSwift (0.10.1)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - AWSS3
-  - Crashlytics
   - Dodo
-  - Fabric
-  - HanekeSwift (from `https://github.com/Haneke/HanekeSwift.git`, branch `feature/swift-3`)
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - AWSCore
     - AWSS3
-    - Crashlytics
     - Dodo
-    - Fabric
     - SwiftyJSON
-
-EXTERNAL SOURCES:
-  HanekeSwift:
-    :branch: feature/swift-3
-    :git: https://github.com/Haneke/HanekeSwift.git
-
-CHECKOUT OPTIONS:
-  HanekeSwift:
-    :commit: 2f6d87f1f725d204d85cb34492e8c399cd5a200f
-    :git: https://github.com/Haneke/HanekeSwift.git
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AWSCore: c7abfb87ef802d1c4b5dd56db64ac8b4a7823ef0
   AWSS3: 5647e89f9ac8e7033f3e5507dbb3eccc37f82b75
-  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
   Dodo: c2a3e49a6b5fcba6c17d4127e72de4decbdd9534
-  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
-  HanekeSwift: 4113367892828e7700d24a384027de6ebc79aad1
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: a9c6465934277237540e9f0c3759157e1949d7e5
+PODFILE CHECKSUM: 673cd07e389f9ba76da8f9b6acf36a0289953675
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.11.3

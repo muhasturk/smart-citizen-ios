@@ -21,7 +21,6 @@
  */
 
 import UIKit
-import Haneke
 import MapKit
 import Alamofire
 import SwiftyJSON
@@ -93,7 +92,7 @@ class ReportDetailVC: AppVC {
     
     if r.imageUrl.isNotEmpty {
       if let url = URL(string: r.imageUrl) {
-        self.reportedImageView.hnk_setImageFromURL(url)
+//        self.reportedImageView.hnk_setImageFromURL(url)
       }
     }
     

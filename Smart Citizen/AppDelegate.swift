@@ -21,8 +21,6 @@
  */
 
 import UIKit
-import Fabric
-import Crashlytics
 import AWSS3
 
 @UIApplicationMain
@@ -47,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func configureThirdParty() {
-    Fabric.with([Crashlytics.self])
     self.configureAWS()
   }
   
